@@ -603,7 +603,7 @@ public partial class MainWindowViewModel
 
     public bool CanSaveChanges => HasAnyUnsavedChanges;
 
-    public string UnsavedChangesText => HasAnyUnsavedChanges ? "Unsaved changes" : string.Empty;
+    public string UnsavedChangesText => HasAnyUnsavedChanges ? "未保存的更改" : string.Empty;
 
     public bool HasFrameThumbnails => FrameThumbnails.Count > 0;
 
