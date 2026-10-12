@@ -44,19 +44,19 @@
                                FormatString="0"
                                Margin="0,0,10,6"/>
 
-                <Button Content="Light Tools" Margin="0,0,10,6">
+                <Button Content="光源工具" Margin="0,0,10,6">
                     <Button.Flyout>
                         <MenuFlyout>
-                            <MenuItem Header="New Blank" Command="{Binding CreateBlankLightCommand}" />
-                            <MenuItem Header="Clear Selected" Command="{Binding ClearSelectedLightCommand}" />
-                            <MenuItem Header="Remove Selected" Command="{Binding RemoveSelectedLightCommand}" />
-                            <MenuItem Header="Round Preset" Command="{Binding CreateRoundLightCommand}" />
-                            <MenuItem Header="Window Preset" Command="{Binding CreateWindowLightCommand}" />
-                            <MenuItem Header="Door Slit Preset" Command="{Binding CreateDoorSlitLightCommand}" />
-                            <MenuItem Header="Soften Selected" Command="{Binding SoftenSelectedLightCommand}" />
-                            <MenuItem Header="Sharpen Selected" Command="{Binding SharpenSelectedLightCommand}" />
-                            <MenuItem Header="Flip Horizontal" Command="{Binding FlipSelectedLightHorizontalCommand}" />
-                            <MenuItem Header="Flip Vertical" Command="{Binding FlipSelectedLightVerticalCommand}" />
+                            <MenuItem Header="新建空白" Command="{Binding CreateBlankLightCommand}" />
+                            <MenuItem Header="清除选中" Command="{Binding ClearSelectedLightCommand}" />
+                            <MenuItem Header="删除选中" Command="{Binding RemoveSelectedLightCommand}" />
+                            <MenuItem Header="圆形预设" Command="{Binding CreateRoundLightCommand}" />
+                            <MenuItem Header="窗口预设" Command="{Binding CreateWindowLightCommand}" />
+                            <MenuItem Header="门缝预设" Command="{Binding CreateDoorSlitLightCommand}" />
+                            <MenuItem Header="柔和选中" Command="{Binding SoftenSelectedLightCommand}" />
+                            <MenuItem Header="锐化选中" Command="{Binding SharpenSelectedLightCommand}" />
+                            <MenuItem Header="水平翻转" Command="{Binding FlipSelectedLightHorizontalCommand}" />
+                            <MenuItem Header="竖直翻转" Command="{Binding FlipSelectedLightVerticalCommand}" />
                         </MenuFlyout>
                     </Button.Flyout>
                 </Button>
