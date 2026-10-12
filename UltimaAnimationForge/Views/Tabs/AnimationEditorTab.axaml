@@ -644,8 +644,8 @@ x:DataType="vm:MainWindowViewModel">
                                 <Border Classes="thumbCard" Tag="{Binding $parent[ListBox].DataContext}">
                                     <Border.ContextMenu>
                                         <ContextMenu>
-                                            <MenuItem Header="Replace" Click="ReplaceThumbnailMenuItem_Click" Tag="{Binding}"/>
-                                            <MenuItem Header="Remove" Click="RemoveThumbnailMenuItem_Click" Tag="{Binding}"/>
+                                            <MenuItem Header="替换" Click="ReplaceThumbnailMenuItem_Click" Tag="{Binding}"/>
+                                            <MenuItem Header="删除" Click="RemoveThumbnailMenuItem_Click" Tag="{Binding}"/>
                                         </ContextMenu>
                                     </Border.ContextMenu>
                                     <StackPanel Spacing="4" HorizontalAlignment="Center">
