@@ -840,7 +840,7 @@ public partial class MainWindowViewModel
 
         TextBlock profileNameLabel = new TextBlock
         {
-            Text = "Profile Name",
+            Text = "配置名称",
             VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center
         };
         editorGrid.Children.Add(profileNameLabel);
@@ -853,7 +853,7 @@ public partial class MainWindowViewModel
 
         TextBlock folderPathLabel = new TextBlock
         {
-            Text = "Folder Path",
+            Text = "文件夹路径",
             VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center
         };
         editorGrid.Children.Add(folderPathLabel);
@@ -866,7 +866,7 @@ public partial class MainWindowViewModel
 
         TextBlock outputFolderPathLabel = new TextBlock
         {
-            Text = "Output Folder",
+            Text = "输出文件夹",
             VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center
         };
         editorGrid.Children.Add(outputFolderPathLabel);
