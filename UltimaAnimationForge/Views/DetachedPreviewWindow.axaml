@@ -11,7 +11,7 @@
         MinHeight="560"
         Background="#1B1F25"
         Foreground="White"
-        Title="Detached Preview"
+        Title="独立预览"
         mc:Ignorable="d">
 
     <Design.DataContext>
@@ -26,16 +26,16 @@
                 Padding="12,10">
             <WrapPanel Orientation="Horizontal"
                        VerticalAlignment="Center">
-                <CheckBox Content="Follow Main Selection"
+                <CheckBox Content="跟随主选择"
                           IsChecked="{Binding FollowMainSelection, Mode=TwoWay}"
                           VerticalAlignment="Center"
                           Margin="0,0,12,0" />
 
-                <Button Content="Copy Main Selection"
+                <Button Content="复制主选择"
                         Command="{Binding CopyMainSelectionCommand}"
                         Margin="0,0,14,0" />
 
-                <TextBlock Text="Animation"
+                <TextBlock Text="动画"
                            VerticalAlignment="Center"
                            Margin="0,0,8,0" />
 
@@ -50,7 +50,7 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
 
-                <TextBlock Text="Action"
+                <TextBlock Text="动作"
                            VerticalAlignment="Center"
                            Margin="14,0,8,0" />
 
@@ -59,7 +59,7 @@
                           SelectedItem="{Binding SelectedAction, Mode=TwoWay}"
                           IsEnabled="{Binding !FollowMainSelection}" />
 
-                <TextBlock Text="Dir"
+                <TextBlock Text="方向"
                            VerticalAlignment="Center"
                            Margin="14,0,8,0" />
 
@@ -101,7 +101,7 @@
                         Margin="0,0,14,0"
                         Content="▶" />
 
-                <TextBlock Text="Speed"
+                <TextBlock Text="速度"
                            VerticalAlignment="Center"
                            Margin="0,0,8,0" />
 
@@ -115,7 +115,7 @@
                            VerticalAlignment="Center"
                            Margin="0,0,14,0" />
 
-                <TextBlock Text="Zoom"
+                <TextBlock Text="缩放"
                            VerticalAlignment="Center"
                            Margin="0,0,8,0" />
 
@@ -129,7 +129,7 @@
                            VerticalAlignment="Center"
                            Margin="0,0,14,0" />
 
-                <CheckBox Content="Checker Background"
+                <CheckBox Content="棋盘背景"
                           IsChecked="{Binding ShowCheckerBackground, Mode=TwoWay}"
                           VerticalAlignment="Center" />
             </WrapPanel>
