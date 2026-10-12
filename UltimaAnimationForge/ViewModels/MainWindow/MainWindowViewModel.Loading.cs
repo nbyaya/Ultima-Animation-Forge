@@ -57,7 +57,7 @@ public partial class MainWindowViewModel
 
         FolderPickerOpenOptions folderPickerOpenOptions = new FolderPickerOpenOptions
         {
-            Title = "Select Ultima Online Folder",
+            Title = "选择 Ultima Online 文件夹",
             AllowMultiple = false
         };
 
