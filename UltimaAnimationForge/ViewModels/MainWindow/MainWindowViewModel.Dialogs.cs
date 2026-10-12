@@ -32,7 +32,7 @@ public partial class MainWindowViewModel
 
         Window dialog = new Window
         {
-            Title = "Manage Profiles",
+            Title = "管理配置",
             Width = 860,
             Height = 620,
             MinWidth = 860,
@@ -73,48 +73,48 @@ public partial class MainWindowViewModel
 
         TextBox profileNameTextBox = new TextBox
         {
-            Watermark = "Profile name",
+            Watermark = "配置名称",
             IsEnabled = false
         };
 
         TextBox folderPathTextBox = new TextBox
         {
-            Watermark = "Folder path",
+            Watermark = "文件夹路径",
             IsReadOnly = true,
             IsEnabled = false
         };
 
         TextBox outputFolderPathTextBox = new TextBox
         {
-            Watermark = "Output folder path",
+            Watermark = "输出文件夹路径",
             IsReadOnly = true,
             IsEnabled = false
         };
 
         Button browseOutputFolderButton = new Button
         {
-            Content = "Set Output",
+            Content = "设置输出",
             Width = 100,
             IsEnabled = false
         };
 
         CheckBox loadUopCheckBox = new CheckBox
         {
-            Content = "Load UOP files for this profile",
+            Content = "为此配置加载 UOP 文件",
             IsEnabled = false,
             Margin = new Thickness(0, 4, 0, 4)
         };
 
         CheckBox checkerBackgroundCheckBox = new CheckBox
         {
-            Content = "Enable checker background by default",
+            Content = "默认启用棋盘背景",
             IsEnabled = false,
             Margin = new Thickness(0, 2, 0, 2)
         };
 
         CheckBox loopPlaybackCheckBox = new CheckBox
         {
-            Content = "Enable loop playback by default",
+            Content = "默认启用循环播放",
             IsEnabled = false,
             Margin = new Thickness(0, 2, 0, 4)
         };
@@ -127,67 +127,67 @@ public partial class MainWindowViewModel
 
         Button newButton = new Button
         {
-            Content = "New",
+            Content = "新建",
             Width = 80
         };
 
         Button renameButton = new Button
         {
-            Content = "Rename",
+            Content = "重命名",
             Width = 80,
             IsEnabled = false
         };
 
         Button deleteButton = new Button
         {
-            Content = "Delete",
+            Content = "删除",
             Width = 80,
             IsEnabled = false
         };
 
         Button browseButton = new Button
         {
-            Content = "Set Folder",
+            Content = "设置文件夹",
             Width = 100,
             IsEnabled = false
         };
 
         Button makeActiveButton = new Button
         {
-            Content = "Make Active",
+            Content = "设为活跃",
             Width = 110,
             IsEnabled = false
         };
 
         Button duplicateButton = new Button
         {
-            Content = "Duplicate",
+            Content = "复制",
             Width = 90,
             IsEnabled = false
         };
 
         Button clearCacheButton = new Button
         {
-            Content = "Clear Cache",
+            Content = "清除缓存",
             Width = 98,
             IsEnabled = false
         };
 
         Button clearAllCachesButton = new Button
         {
-            Content = "Clear All Caches",
+            Content = "清除所有缓存",
             Width = 118
         };
 
         Button saveButton = new Button
         {
-            Content = "Save",
+            Content = "保存",
             Width = 90
         };
 
         Button cancelButton = new Button
         {
-            Content = "Cancel",
+            Content = "取消",
             Width = 90
         };
 
@@ -270,7 +270,7 @@ public partial class MainWindowViewModel
                 loopPlaybackCheckBox.IsChecked = false;
                 outputFolderPathTextBox.Text = string.Empty;
                 statusTextBlock.Inlines.Clear();
-                statusTextBlock.Text = "Select a profile to edit.";
+                statusTextBlock.Text = "选择一个配置进行编辑。";
                 return;
             }
 
@@ -288,30 +288,30 @@ public partial class MainWindowViewModel
 
             statusTextBlock.Inlines.Clear();
 
-            statusTextBlock.Inlines.Add(new Run("Profile ID:\n") { FontWeight = FontWeight.Bold });
+            statusTextBlock.Inlines.Add(new Run("配置 ID:\n") { FontWeight = FontWeight.Bold });
             statusTextBlock.Inlines.Add(new Run(selectedWorkingProfile.ProfileId + Environment.NewLine + Environment.NewLine));
 
-            statusTextBlock.Inlines.Add(new Run("Status:\n") { FontWeight = FontWeight.Bold });
-            statusTextBlock.Inlines.Add(new Run((isActive ? "Active" : "Inactive") + Environment.NewLine + Environment.NewLine));
+            statusTextBlock.Inlines.Add(new Run("状态:\n") { FontWeight = FontWeight.Bold });
+            statusTextBlock.Inlines.Add(new Run((isActive ? "活跃" : "非活跃") + Environment.NewLine + Environment.NewLine));
 
-            statusTextBlock.Inlines.Add(new Run("Folder:\n") { FontWeight = FontWeight.Bold });
+            statusTextBlock.Inlines.Add(new Run("文件夹:\n") { FontWeight = FontWeight.Bold });
             statusTextBlock.Inlines.Add(new Run(
                 string.IsNullOrWhiteSpace(selectedWorkingProfile.UoFolderPath)
-                    ? "(not set)" + Environment.NewLine + Environment.NewLine
+                    ? "(未设置)" + Environment.NewLine + Environment.NewLine
                     : selectedWorkingProfile.UoFolderPath + Environment.NewLine + Environment.NewLine));
 
-            statusTextBlock.Inlines.Add(new Run("Output Folder:\n") { FontWeight = FontWeight.Bold });
+            statusTextBlock.Inlines.Add(new Run("输出文件夹:\n") { FontWeight = FontWeight.Bold });
             statusTextBlock.Inlines.Add(new Run(
                 string.IsNullOrWhiteSpace(selectedWorkingProfile.OutputFolderPath)
-                    ? "(not set)" + Environment.NewLine + Environment.NewLine
+                    ? "(未设置)" + Environment.NewLine + Environment.NewLine
                     : selectedWorkingProfile.OutputFolderPath + Environment.NewLine + Environment.NewLine));
 
-            statusTextBlock.Inlines.Add(new Run("Preview Defaults:\n") { FontWeight = FontWeight.Bold });
+            statusTextBlock.Inlines.Add(new Run("预览默认值:\n") { FontWeight = FontWeight.Bold });
             statusTextBlock.Inlines.Add(new Run(
-                "Checker: " + (selectedWorkingProfile.ShowCheckerBackground ? "On" : "Off") + Environment.NewLine +
-                "Loop: " + (selectedWorkingProfile.LoopPlayback ? "On" : "Off") + Environment.NewLine + Environment.NewLine));
+                "棋盘: " + (selectedWorkingProfile.ShowCheckerBackground ? "开" : "关") + Environment.NewLine +
+                "循环: " + (selectedWorkingProfile.LoopPlayback ? "开" : "关") + Environment.NewLine + Environment.NewLine));
 
-            statusTextBlock.Inlines.Add(new Run("Cache File:\n") { FontWeight = FontWeight.Bold });
+            statusTextBlock.Inlines.Add(new Run("缓存文件:\n") { FontWeight = FontWeight.Bold });
             statusTextBlock.Inlines.Add(new Run(animationCacheService.GetCacheFilePath(selectedWorkingProfile.ProfileId)));
         }
 
@@ -332,13 +332,13 @@ public partial class MainWindowViewModel
 
             panel.Children.Add(new TextBlock
             {
-                Text = profile.ProfileName + (isActive ? "  [Active]" : string.Empty),
+                Text = profile.ProfileName + (isActive ? "  [活跃]" : string.Empty),
                 FontWeight = FontWeight.Bold
             });
 
             panel.Children.Add(new TextBlock
             {
-                Text = string.IsNullOrWhiteSpace(profile.UoFolderPath) ? "(no folder set)" : profile.UoFolderPath,
+                Text = string.IsNullOrWhiteSpace(profile.UoFolderPath) ? "(未设置文件夹)" : profile.UoFolderPath,
                 Foreground = Brushes.LightGray,
                 TextTrimming = TextTrimming.CharacterEllipsis
             });
@@ -397,7 +397,7 @@ public partial class MainWindowViewModel
             if (string.IsNullOrWhiteSpace(newName))
             {
                 statusTextBlock.Inlines.Clear();
-                statusTextBlock.Text = "Profile name cannot be empty.";
+                statusTextBlock.Text = "配置名称不能为空。";
                 return;
             }
 
@@ -408,7 +408,7 @@ public partial class MainWindowViewModel
             if (duplicateNameExists)
             {
                 statusTextBlock.Inlines.Clear();
-                statusTextBlock.Text = "A profile with that name already exists.";
+                statusTextBlock.Text = "已存在同名配置。";
                 return;
             }
 
