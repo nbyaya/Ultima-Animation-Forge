@@ -14,7 +14,7 @@
         Background="#1B1F25"
         Foreground="White"
         RequestedThemeVariant="Dark"
-        Title="Ultima Animation Forge Alpha 29"
+        Title="Ultima 动画锻造厂 Alpha 29"
         DragDrop.AllowDrop="True"
         KeyDown="Window_KeyDown"
         mc:Ignorable="d">
@@ -333,11 +333,11 @@
     <Grid RowDefinitions="Auto,Auto,*">
 
         <!-- profile/action bar -->
-        <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,*,360,Auto"
+        <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,*,360,Auto"
               ColumnSpacing="8">
 
             <TextBlock Grid.Column="0"
-                       Text="Profile"
+                       Text="配置"
                        VerticalAlignment="Center"
                        Foreground="#D5DCE4" />
 
@@ -348,13 +348,13 @@
                       Width="110" />
 
             <Button Grid.Column="2"
-                    Content="Manage Profiles"
+                    Content="管理配置"
                     Command="{Binding ManageProfilesCommand}"
                     MinHeight="32"
                     Padding="12,6" />
 
             <Button Grid.Column="3"
-                    Content="Open UO Folder"
+                    Content="打开 UO 文件夹"
                     Command="{Binding OpenFolderCommand}"
                     MinHeight="32"
                     Padding="12,6" />
@@ -376,7 +376,7 @@
                        VerticalAlignment="Center"
                        IsVisible="{Binding ShowAnimationEditorPanel}">
 
-                <Button Content="Save Changes"
+                <Button Content="保存更改"
                         Command="{Binding SaveChangesCommand}"
                         IsEnabled="{Binding CanSaveChanges}"
                         MinHeight="32"
@@ -384,7 +384,7 @@
                         Padding="12,6"
                         Margin="0,0,8,0" />
 
-                <Button Content="Preview Window"
+                <Button Content="预览窗口"
                         Command="{Binding PopOutPreviewCommand}"
                         MinHeight="32"
                         MinWidth="132"
@@ -393,26 +393,26 @@
 
                 <Menu Background="Transparent"
                       Margin="0,0,8,0">
-                    <MenuItem Header="Edit ▼"
+                    <MenuItem Header="编辑 ▼"
                               Classes="topAction"
                               MinHeight="32"
                               MinWidth="78"
                               Padding="12,6">
-                        <MenuItem Header="MUL Slot View"
+                        <MenuItem Header="MUL 槽位视图"
                                   ToggleType="CheckBox"
                                   IsChecked="{Binding ShowMulSlotView, Mode=TwoWay}" />
                         <Separator />
-                        <MenuItem Header="Replace Frame"
+                        <MenuItem Header="替换帧"
                                   Command="{Binding ReplaceSelectedFrameCommand}"
                                   IsVisible="{Binding ShowAnimationView}" />
-                        <MenuItem Header="Remove Frame"
+                        <MenuItem Header="删除帧"
                                   Command="{Binding RemoveSelectedFrameCommand}"
                                   IsVisible="{Binding ShowAnimationView}" />
-                        <MenuItem Header="Import PNG Sequence"
+                        <MenuItem Header="导入 PNG 序列"
                                   Command="{Binding ImportPngSequenceCommand}"
                                   IsVisible="{Binding ShowAnimationView}" />
                         <Separator IsVisible="{Binding ShowAnimationView}" />
-                        <MenuItem Header="Undo"
+                        <MenuItem Header="撤销"
                                   Command="{Binding UndoFrameEditCommand}"
                                   IsEnabled="{Binding CanUndoFrameEdit}"
                                   IsVisible="{Binding ShowAnimationView}" />
@@ -420,35 +420,35 @@
                 </Menu>
 
                 <Menu Background="Transparent">
-                    <MenuItem Header="Import / Export ▼"
+                    <MenuItem Header="导入/导出 ▼"
                               Classes="topAction"
                               MinHeight="32"
                               MinWidth="150"
                               Padding="12,6">
-                        <MenuItem Header="Open EC / KR Package Viewer"
+                        <MenuItem Header="打开 EC/KR 包查看器"
                                   Command="{Binding OpenMythicPackageViewerCommand}" />
-                        <MenuItem Header="Open Equipment Binder Tool"
+                        <MenuItem Header="打开装备绑定工具"
                                   Command="{Binding OpenEquipmentBinderToolCommand}" />
                         <Separator />
-                        <MenuItem Header="Create Empty MUL/IDX"
+                        <MenuItem Header="创建空的 MUL/IDX"
                                   Command="{Binding CreateEmptyLegacyMulIdxCommand}" />
                         <Separator />
-                        <MenuItem Header="Export Frames"
+                        <MenuItem Header="导出帧"
                                   Command="{Binding ExportFramesCommand}" />
-                        <MenuItem Header="Export VD"
+                        <MenuItem Header="导出 VD"
                                   Command="{Binding ExportVdCommand}"
                                   IsVisible="{Binding ShowAnimationView}" />
                         <Separator />
-                        <MenuItem Header="Import VD"
+                        <MenuItem Header="导入 VD"
                                   Command="{Binding ImportVdCommand}"
                                   IsVisible="{Binding ShowSlotView}" />
-                        <MenuItem Header="Import UOP VD"
+                        <MenuItem Header="导入 UOP VD"
                                   Command="{Binding ImportVdToUopCommand}"
                                   IsVisible="{Binding ShowSlotView}" />
-                        <MenuItem Header="Import Sprite Sheet"
+                        <MenuItem Header="导入雪碧图"
                                   Command="{Binding ImportSpriteSheetCommand}" />
                         <Separator />
-                        <MenuItem Header="Delete Animation"
+                        <MenuItem Header="删除动画"
                                   Command="{Binding DeleteAnimationCommand}"
                                   IsVisible="{Binding ShowAnimationView}" />
                     </MenuItem>
@@ -456,14 +456,7 @@
             </WrapPanel>
 
             <Button Grid.Column="6"
-                    Content="Uox3 - Discord"
-                    Command="{Binding OpenDiscordCommand}"
-                    MinHeight="32"
-                    MinWidth="128"
-                    Padding="12,6" />
-
-                     <Button Grid.Column="7"
-                    Content="AI Assistant"
+                    Content="AI 助手"
         Click="OpenAiAssistant_Click"
         IsVisible="{Binding IsAiAssistantAvailable}"
         ToolTip.Tip="{Binding AiAssistantRequirementText}"
@@ -471,7 +464,7 @@
                     MinWidth="128"
                     Padding="12,6" />
 
-            <Border Grid.Column="9"
+            <Border Grid.Column="8"
                     Background="#1A1F25"
                     BorderBrush="#39414D"
                     BorderThickness="1"
@@ -502,49 +495,49 @@
                 <StackPanel Grid.Column="0"
                             Orientation="Horizontal"
                             Spacing="2">
-                    <Button Content="Animations"
+                    <Button Content="动画"
                             Command="{Binding ShowAnimationEditorCommand}"
                             CornerRadius="0"
                             Padding="14,6"
                             MinHeight="28" />
 
-                    <Button Content="Animation Browser"
+                    <Button Content="动画浏览器"
                             Command="{Binding ShowAnimationBrowserCommand}"
                             CornerRadius="0"
                             Padding="14,6"
                             MinHeight="28" />
 
-                    <Button Content="Gumps"
+                    <Button Content="窗口"
                             Command="{Binding ShowGumpEditorCommand}"
                             CornerRadius="0"
                             Padding="14,6"
                             MinHeight="28" />
 
-                    <Button Content="TileData"
+                    <Button Content="地形数据"
                             Command="{Binding ShowTileDataCommand}"
                             CornerRadius="0"
                             Padding="14,6"
                             MinHeight="28" />
 
-                    <Button Content="Art"
+                    <Button Content="美术"
                             Command="{Binding ShowArtCommand}"
                             CornerRadius="0"
                             Padding="14,6"
                             MinHeight="28" />
 
-                    <Button Content="AnimData"
+                    <Button Content="动画数据"
                             Command="{Binding ShowAnimDataCommand}"
                             CornerRadius="0"
                             Padding="14,6"
                             MinHeight="28" />
 
-                    <Button Content="Hues"
+                    <Button Content="色调"
                             Command="{Binding ShowHueEditorCommand}"
                             CornerRadius="0"
                             Padding="14,6"
                             MinHeight="28" />
 
-                    <Button Content="Lights"
+                    <Button Content="光源"
                             Command="{Binding ShowLightCommand}"
                             CornerRadius="0"
                             Padding="14,6"
@@ -556,40 +549,40 @@
                             Padding="14,6"
                             MinHeight="28" />
 
-                    <Button Content="RadarCol"
+                    <Button Content="雷达颜色"
                             Command="{Binding ShowRadarColCommand}"
                             CornerRadius="0"
                             Padding="14,6"
                             MinHeight="28" />
 
-                    <Button Content="Multis"
+                    <Button Content="多重组件"
                             Command="{Binding ShowMultisCommand}"
                             CornerRadius="0"
                             Padding="14,6"
                             MinHeight="28" />
 
-                    <Button Content="Sounds"
+                    <Button Content="声音"
                             Command="{Binding ShowSoundsCommand}"
                             CornerRadius="0"
                             Padding="14,6"
                             MinHeight="28" />
 
-                    <Button Content="Map"
+                    <Button Content="地图"
                             Command="{Binding ShowMapsCommand}"
                             CornerRadius="0"
                             Padding="14,6"
                             MinHeight="28" />
 
-                    <Button Content="Map Maker"
+                    <Button Content="地图制作器"
                             Command="{Binding ShowMapMakerCommand}"
                             CornerRadius="0"
                             Padding="14,6"
                             MinHeight="28" />
 
-                    <Button Content="Wearables"
+                    <Button Content="装扮"
                             Command="{Binding ShowWearableWizardCommand}"/>
 
-                    <Button Content="Gump Builder"
+                    <Button Content="Gump 构建器"
                             Command="{Binding ShowGumpBuilderCommand}" />
                 </StackPanel>
             </Grid>
