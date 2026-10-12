@@ -9,7 +9,7 @@
         Height="760"
         MinWidth="1000"
         MinHeight="650"
-        Title="Multi Editor"
+        Title="多重编辑器"
         Background="#0B0F14"
         KeyDown="MultiEditorWindow_OnKeyDown">
 
@@ -31,21 +31,21 @@
                 <StackPanel Orientation="Horizontal"
                             Spacing="8">
 
-                    <Button Content="Select" Command="{Binding UseSelectToolCommand}"/>
-                    <Button Content="Draw" Command="{Binding UseDrawToolCommand}"/>
-                    <Button Content="Remove" Command="{Binding UseRemoveToolCommand}"/>
-                    <Button Content="Pipette" Command="{Binding UsePipetteToolCommand}"/>
+                    <Button Content="选择" Command="{Binding UseSelectToolCommand}"/>
+                    <Button Content="绘制" Command="{Binding UseDrawToolCommand}"/>
+                    <Button Content="删除" Command="{Binding UseRemoveToolCommand}"/>
+                    <Button Content="吸管" Command="{Binding UsePipetteToolCommand}"/>
 
 
-                    <Button Content="Undo" Command="{Binding UndoCommand}"/>
-                    <Button Content="Redo" Command="{Binding RedoCommand}"/>
+                    <Button Content="撤销" Command="{Binding UndoCommand}"/>
+                    <Button Content="重做" Command="{Binding RedoCommand}"/>
 
 
-                    <CheckBox Content="Virtual Floor"
+                    <CheckBox Content="虚拟地板"
                               IsChecked="{Binding DrawVirtualFloor}"
                               VerticalAlignment="Center"/>
 
-                    <TextBlock Text="Item ID" VerticalAlignment="Center" Foreground="#C7D1DB"/>
+                    <TextBlock Text="物品ID" VerticalAlignment="Center" Foreground="#C7D1DB"/>
                     <NumericUpDown Width="130"
                                    Minimum="0"
                                    Maximum="65535"
@@ -53,7 +53,7 @@
                                    FormatString="0"
                                    Value="{Binding DrawItemId, Mode=TwoWay}"/>
 
-                    <TextBlock Text="Draw Z" VerticalAlignment="Center" Foreground="#C7D1DB"/>
+                    <TextBlock Text="绘制Z" VerticalAlignment="Center" Foreground="#C7D1DB"/>
                     <NumericUpDown Width="90"
                                    Minimum="-128"
                                    Maximum="127"
@@ -63,12 +63,12 @@
 
                     <Button Content="Z -" Command="{Binding DrawZDownCommand}"/>
                     <Button Content="Z +" Command="{Binding DrawZUpCommand}"/>
-                    <Button Content="Floor -5" Command="{Binding FloorZDownCommand}"/>
-                    <Button Content="Floor +5" Command="{Binding FloorZUpCommand}"/>
+                    <Button Content="地板 -5" Command="{Binding FloorZDownCommand}"/>
+                    <Button Content="地板 +5" Command="{Binding FloorZUpCommand}"/>
 
-                    <Button Content="Add Tile" Command="{Binding AddTileCommand}"/>
-                    <Button Content="Rect Fill" Command="{Binding UseRectFillToolCommand}"/>
-                    <Button Content="Remove Selected" Command="{Binding RemoveSelectedCommand}"/>
+                    <Button Content="添加图块" Command="{Binding AddTileCommand}"/>
+                    <Button Content="矩形填充" Command="{Binding UseRectFillToolCommand}"/>
+                    <Button Content="删除所选" Command="{Binding RemoveSelectedCommand}"/>
 
                     <TextBlock Text="{Binding SelectedTool}"
                                VerticalAlignment="Center"
@@ -88,7 +88,7 @@
                     Padding="8">
 
                 <TabControl>
-                    <TabItem Header="Tiles">
+                    <TabItem Header="图块">
                         <Grid RowDefinitions="Auto,Auto,Auto,*"
                               RowSpacing="8"
                               Margin="4">
@@ -102,7 +102,7 @@
                                       SelectedItem="{Binding SelectedTileSubgroup}"/>
 
                             <TextBox Grid.Row="2"
-                                     Watermark="Search tile ID / name"
+                                     Watermark="搜索图块ID/名称"
                                      Text="{Binding TilePickerSearchText, Mode=TwoWay}"/>
 
                             <ListBox Grid.Row="3"
@@ -139,7 +139,7 @@
                         </Grid>
                     </TabItem>
 
-                    <TabItem Header="Components">
+                    <TabItem Header="组件">
                         <ListBox ItemsSource="{Binding Components}"
                                  SelectedItem="{Binding SelectedComponent}">
                             <ListBox.ItemTemplate>
@@ -209,7 +209,7 @@
                               HorizontalScrollBarVisibility="Disabled">
 
                     <StackPanel Spacing="8">
-                        <TextBlock Text="Selected Tile"
+                        <TextBlock Text="选中的图块"
                                    FontWeight="Bold"
                                    Foreground="#E8EDF2"/>
 
@@ -231,10 +231,10 @@
                                        Maximum="127"
                                        Value="{Binding SelectedComponent.Z}"/>
 
-                        <Button Content="Apply To Multis Tab"
+                        <Button Content="应用到多重组件"
                                 Command="{Binding ApplyCommand}"/>
 
-                        <TextBlock Text="Move"
+                        <TextBlock Text="移动"
                                    Margin="0,10,0,0"
                                    FontWeight="Bold"
                                    Foreground="#E8EDF2"/>
@@ -275,12 +275,12 @@
                                     Command="{Binding MoveSelectedZUpCommand}"/>
                         </Grid>
 
-                        <TextBlock Text="Z Visibility"
+                        <TextBlock Text="Z 可见性"
                                    Margin="0,12,0,0"
                                    FontWeight="Bold"
                                    Foreground="#E8EDF2"/>
 
-                        <TextBlock Text="Max Z"
+                        <TextBlock Text="最大Z"
                                    Foreground="#C7D1DB"/>
 
                         <NumericUpDown Width="120"
@@ -290,15 +290,15 @@
                                        FormatString="0"
                                        Value="{Binding VisibleMaxZ, Mode=TwoWay}"/>
 
-                        <Button Content="Show All Z"
+                        <Button Content="显示全部Z"
                                 Command="{Binding ShowAllZCommand}"/>
 
-                        <TextBlock Text="Auto Roof"
+                        <TextBlock Text="自动屋顶"
                                    Margin="0,14,0,0"
                                    FontWeight="Bold"
                                    Foreground="#E8EDF2"/>
 
-                        <TextBlock Text="Roof Profile"
+                        <TextBlock Text="屋顶轮廓"
                                    Foreground="#C7D1DB"/>
 
                         <ComboBox ItemsSource="{Binding RoofProfiles}"
@@ -308,7 +308,7 @@
                               ColumnSpacing="6">
 
                             <StackPanel Grid.Column="0">
-                                <TextBlock Text="Width"
+                                <TextBlock Text="宽度"
                                            Foreground="#C7D1DB"/>
                                 <NumericUpDown Minimum="1"
                                                Maximum="100"
@@ -318,7 +318,7 @@
                             </StackPanel>
 
                             <StackPanel Grid.Column="1">
-                                <TextBlock Text="Length"
+                                <TextBlock Text="长度"
                                            Foreground="#C7D1DB"/>
                                 <NumericUpDown Minimum="1"
                                                Maximum="100"
@@ -328,7 +328,7 @@
                             </StackPanel>
                         </Grid>
 
-                        <TextBlock Text="Base Z"
+                        <TextBlock Text="基础Z"
                                    Foreground="#C7D1DB"/>
 
                         <NumericUpDown Minimum="-128"
@@ -337,22 +337,22 @@
                                        FormatString="0"
                                        Value="{Binding RoofBaseZ, Mode=TwoWay}"/>
 
-                        <Button Content="Build Roof"
+                        <Button Content="构建屋顶"
                                 Command="{Binding BuildRoofCommand}"/>
 
-                        <Button Content="Place Roof From Click"
+                        <Button Content="从点击放置屋顶"
                                 Command="{Binding PlaceRoofFromClickCommand}"/>
 
-                        <TextBlock Text="Direction"
+                        <TextBlock Text="方向"
                                    Foreground="#C7D1DB"/>
 
                         <ComboBox ItemsSource="{Binding RoofDirections}"
                                   SelectedItem="{Binding SelectedRoofDirection}"/>
 
-                        <Button Content="Clear Roof Area"
+                        <Button Content="清除屋顶区域"
                                 Command="{Binding ClearRoofAreaCommand}"/>
 
-                        <Button Content="Clear Roof From Click"
+                        <Button Content="从点击清除屋顶"
                                 Command="{Binding ClearRoofFromClickCommand}"/>
                     </StackPanel>
                 </ScrollViewer>

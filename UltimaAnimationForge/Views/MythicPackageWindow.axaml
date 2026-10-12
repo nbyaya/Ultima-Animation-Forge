@@ -6,7 +6,7 @@
         Height="820"
         MinWidth="1180"
         MinHeight="720"
-        Title="EC / KR Mythic Package Viewer"
+        Title="EC / KR 神话包查看器"
         Background="#15181D">
 
     <Grid RowDefinitions="Auto,*"
@@ -26,7 +26,7 @@
                 <WrapPanel Grid.Row="0"
                            Grid.Column="0"
                            Orientation="Horizontal">
-                    <Button Content="Open Package"
+                    <Button Content="打开包"
                             Command="{Binding OpenPackageCommand}"
                             MinWidth="112"
                             Margin="0,0,8,0"
@@ -38,7 +38,7 @@
                             Margin="0,0,8,0"
                             Padding="12,7" />-->
 
-					<Button Content="Export Body VD"
+					<Button Content="导出身体VD"
 							Command="{Binding ExportFullAmouVdCommand}"
 							MinWidth="150"
                             Margin="0,0,8,0"
@@ -50,19 +50,19 @@
                             Margin="0,0,18,0"
                             Padding="12,7" /> -->
 
-                    <Button Content="Export Selected"
+                    <Button Content="导出所选"
                             Command="{Binding ExportSelectedCommand}"
                             MinWidth="124"
                             Margin="0,0,8,0"
                             Padding="12,7" />
 
-                    <Button Content="Export All"
+                    <Button Content="导出全部"
                             Command="{Binding ExportAllCommand}"
                             MinWidth="96"
                             Margin="0,0,8,0"
                             Padding="12,7" />
 
-                    <Button Content="Export Frames"
+                    <Button Content="导出帧"
                             Command="{Binding ExportAmouFramesCommand}"
                             MinWidth="120"
                             Margin="0,0,8,0"
@@ -89,7 +89,7 @@
                   RowSpacing="8">
 
                 <TextBlock Grid.Row="0"
-                           Text="Animation Browser"
+                           Text="动画浏览器"
                            Foreground="#D5DCE4"
                            FontWeight="Bold" />
 
@@ -100,7 +100,7 @@
                       RowSpacing="8">
                     <TextBlock Grid.Row="0"
                                Grid.Column="0"
-                               Text="Body"
+                               Text="身体"
                                Foreground="#D5DCE4"
                                VerticalAlignment="Center" />
 
@@ -118,7 +118,7 @@
 
                     <TextBlock Grid.Row="1"
                                Grid.Column="0"
-                               Text="Action"
+                               Text="动作"
                                Foreground="#D5DCE4"
                                VerticalAlignment="Center" />
 
@@ -136,7 +136,7 @@
                 </Grid>
 
                 <TextBlock Grid.Row="2"
-                           Text="Package Entries"
+                           Text="包条目"
                            Foreground="#D5DCE4"
                            FontWeight="Bold"
                            Margin="0,4,0,0" />
@@ -176,7 +176,7 @@
                         Padding="14">
                     <Grid RowDefinitions="Auto,*,Auto">
                         <TextBlock Grid.Row="0"
-                                   Text="Preview"
+                                   Text="预览"
                                    Foreground="#D5DCE4"
                                    FontWeight="Bold"
                                    Margin="0,0,0,10" />
@@ -231,7 +231,7 @@
                             Padding="12">
                         <Grid RowDefinitions="Auto,*">
                             <TextBlock Grid.Row="0"
-                                       Text="Debug Info"
+                                       Text="调试信息"
                                        Foreground="#D5DCE4"
                                        FontWeight="Bold"
                                        Margin="0,0,0,8" />
@@ -256,7 +256,7 @@
                             Padding="12">
                         <Grid RowDefinitions="Auto,*">
                             <TextBlock Grid.Row="0"
-                                       Text="Hex Preview"
+                                       Text="十六进制预览"
                                        Foreground="#D5DCE4"
                                        FontWeight="Bold"
                                        Margin="0,0,0,8" />
