@@ -4,7 +4,7 @@
         xmlns:models="using:UltimaAnimationForge.Models"
         x:Class="UltimaAnimationForge.Views.EquipmentBinderWindow"
         x:DataType="vm:EquipmentBinderToolViewModel"
-        Title="Equipment Binder Tool"
+        Title="装备绑定工具"
         Width="760"
         Height="820"
         MinWidth="640"
@@ -13,7 +13,7 @@
   <ScrollViewer>
     <Border Padding="14">
       <StackPanel Spacing="10">
-        <TextBlock Text="Equipment Binder"
+        <TextBlock Text="装备绑定工具"
                    FontSize="20"
                    FontWeight="Bold" />
 
@@ -25,43 +25,43 @@
               RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
               ColumnSpacing="8"
               RowSpacing="6">
-          <TextBlock Grid.Row="0" Grid.Column="0" Text="Item Art ID:" VerticalAlignment="Center" />
+          <TextBlock Grid.Row="0" Grid.Column="0" Text="物品美术ID:" VerticalAlignment="Center" />
           <NumericUpDown Grid.Row="0" Grid.Column="1" Minimum="0" Maximum="65535" Value="{Binding EquipmentBinderItemArtId}" />
 
-          <TextBlock Grid.Row="1" Grid.Column="0" Text="Name:" VerticalAlignment="Center" />
+          <TextBlock Grid.Row="1" Grid.Column="0" Text="名称:" VerticalAlignment="Center" />
           <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding EquipmentBinderName}" Watermark="flail" />
 
-          <TextBlock Grid.Row="2" Grid.Column="0" Text="Display/Gump:" VerticalAlignment="Center" />
+          <TextBlock Grid.Row="2" Grid.Column="0" Text="显示/Gump:" VerticalAlignment="Center" />
           <DockPanel Grid.Row="2" Grid.Column="1">
-            <Button DockPanel.Dock="Right" Content="Auto" Margin="6,0,0,0" Command="{Binding AutoFillEquipmentBinderDisplayBodyCommand}" />
+            <Button DockPanel.Dock="Right" Content="自动" Margin="6,0,0,0" Command="{Binding AutoFillEquipmentBinderDisplayBodyCommand}" />
             <NumericUpDown Minimum="0" Maximum="65534" Value="{Binding EquipmentBinderDisplayBodyId}" />
           </DockPanel>
 
-          <TextBlock Grid.Row="3" Grid.Column="0" Text="Anim Body:" VerticalAlignment="Center" />
+          <TextBlock Grid.Row="3" Grid.Column="0" Text="动画 Body:" VerticalAlignment="Center" />
           <NumericUpDown Grid.Row="3" Grid.Column="1" Minimum="1" Maximum="65535" Value="{Binding EquipmentBinderAnimationBodyId}" />
 
           <TextBlock Grid.Row="4" Grid.Column="0" Text="MobType:" VerticalAlignment="Center" />
           <TextBlock Grid.Row="4" Grid.Column="1" Text="EQUIPMENT" FontWeight="Bold" VerticalAlignment="Center" />
 
           <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Spacing="4">
-            <CheckBox Content="Overwrite body.def redirect" IsChecked="{Binding EquipmentBinderOverwriteBodyDef}" />
-            <CheckBox Content="Overwrite mobtypes entry" IsChecked="{Binding EquipmentBinderOverwriteMobType}" />
-            <CheckBox Content="Update tiledata.mul animation" IsChecked="{Binding EquipmentBinderUpdateTileDataAnimation}" />
+            <CheckBox Content="覆盖 body.def 重定向" IsChecked="{Binding EquipmentBinderOverwriteBodyDef}" />
+            <CheckBox Content="覆盖 mobtypes 条目" IsChecked="{Binding EquipmentBinderOverwriteMobType}" />
+            <CheckBox Content="更新 tiledata.mul 动画" IsChecked="{Binding EquipmentBinderUpdateTileDataAnimation}" />
           </StackPanel>
         </Grid>
 
         <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="8" RowSpacing="6">
-          <Button Grid.Row="0" Grid.Column="0" Content="Load Art" Command="{Binding LoadEquipmentArtPickerCommand}"/>
-          <Button Grid.Row="0" Grid.Column="1" Content="Load Gumps" Command="{Binding LoadEquipmentGumpPickerCommand}"/>
-          <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Build Preview" Command="{Binding BuildEquipmentBinderPreviewCommand}"/>
-          <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Apply Binder" Command="{Binding ApplyEquipmentBinderCommand}"/>
+          <Button Grid.Row="0" Grid.Column="0" Content="加载美术" Command="{Binding LoadEquipmentArtPickerCommand}"/>
+          <Button Grid.Row="0" Grid.Column="1" Content="加载 Gumps" Command="{Binding LoadEquipmentGumpPickerCommand}"/>
+          <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="构建预览" Command="{Binding BuildEquipmentBinderPreviewCommand}"/>
+          <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="应用绑定" Command="{Binding ApplyEquipmentBinderCommand}"/>
         </Grid>
 
 
         <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
           <StackPanel Grid.Column="0" Spacing="4">
-            <TextBlock Text="Art Picker" FontWeight="Bold" />
-            <TextBox Text="{Binding EquipmentArtPickerSearchText}" Watermark="Search art ID or hex..." />
+            <TextBlock Text="美术拾取器" FontWeight="Bold" />
+            <TextBox Text="{Binding EquipmentArtPickerSearchText}" Watermark="搜索美术 ID 或十六进制..." />
             <ListBox ItemsSource="{Binding EquipmentArtPickerEntries}" SelectedItem="{Binding SelectedEquipmentArtPickerEntry}" MaxHeight="220">
               <ListBox.ItemTemplate>
                 <DataTemplate x:DataType="models:EquipmentArtPickerEntry">
@@ -77,8 +77,8 @@
           </StackPanel>
 
           <StackPanel Grid.Column="1" Spacing="4">
-            <TextBlock Text="Gump Picker" FontWeight="Bold" />
-            <TextBox Text="{Binding EquipmentGumpPickerSearchText}" Watermark="Search gump ID or hex..." />
+        <TextBlock Text="gump 拾取器" FontWeight="Bold" />
+            <TextBox Text="{Binding EquipmentGumpPickerSearchText}" Watermark="搜索 gump ID 或十六进制..." />
             <ListBox ItemsSource="{Binding EquipmentGumpPickerEntries}" SelectedItem="{Binding SelectedEquipmentGumpPickerEntry}" MaxHeight="220">
               <ListBox.ItemTemplate>
                 <DataTemplate x:DataType="models:EquipmentGumpPickerEntry">

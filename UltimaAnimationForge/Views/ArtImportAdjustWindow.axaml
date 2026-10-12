@@ -6,7 +6,7 @@
         Height="720"
         MinWidth="640"
         MinHeight="620"
-        Title="Adjust Art Import"
+        Title="调整美术导入"
         Background="#1B2027">
 
     <Grid RowDefinitions="*,Auto"
@@ -16,48 +16,48 @@
         <StackPanel Grid.Row="0"
                     Spacing="8">
 
-            <TextBlock Text="Art Import Adjust"
+            <TextBlock Text="美术导入调整"
                        FontSize="18"
                        FontWeight="Bold"
                        Foreground="#E4EAF2"/>
 
-            <CheckBox Content="Auto Trim Transparent Border"
+            <CheckBox Content="自动修剪透明边框"
                       IsChecked="{Binding ArtImportAutoTrim}"
                       Foreground="#C7D1DB"/>
 
-            <CheckBox Content="Center On Canvas"
+            <CheckBox Content="在画布上居中"
                       IsChecked="{Binding ArtImportCenterOnCanvas}"
                       Foreground="#C7D1DB"/>
 
-            <TextBlock Text="Canvas Width" Foreground="#AAB4C0"/>
+            <TextBlock Text="画布宽度" Foreground="#AAB4C0"/>
             <NumericUpDown Value="{Binding ArtImportCanvasWidth, Mode=TwoWay}"
                            Minimum="0"
                            Maximum="2048"
                            Increment="1"
                            FormatString="0"/>
 
-            <TextBlock Text="Canvas Height" Foreground="#AAB4C0"/>
+            <TextBlock Text="画布高度" Foreground="#AAB4C0"/>
             <NumericUpDown Value="{Binding ArtImportCanvasHeight, Mode=TwoWay}"
                            Minimum="0"
                            Maximum="2048"
                            Increment="1"
                            FormatString="0"/>
 
-            <TextBlock Text="Offset X" Foreground="#AAB4C0"/>
+            <TextBlock Text="偏移X" Foreground="#AAB4C0"/>
             <NumericUpDown Value="{Binding ArtImportOffsetX, Mode=TwoWay}"
                            Minimum="-1024"
                            Maximum="1024"
                            Increment="1"
                            FormatString="0"/>
 
-            <TextBlock Text="Offset Y" Foreground="#AAB4C0"/>
+            <TextBlock Text="偏移Y" Foreground="#AAB4C0"/>
             <NumericUpDown Value="{Binding ArtImportOffsetY, Mode=TwoWay}"
                            Minimum="-1024"
                            Maximum="1024"
                            Increment="1"
                            FormatString="0"/>
 
-            <Button Content="Preview"
+            <Button Content="预览"
                     Command="{Binding RefreshArtImportAdjustPreviewCommand}" />
 
             <Border MinHeight="260"
@@ -80,11 +80,11 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     Spacing="8">
-            <Button Content="Queue Import"
+            <Button Content="队列导入"
                     Width="110"
                     Click="QueueImport_Click"/>
 
-            <Button Content="Cancel"
+            <Button Content="取消"
                     Width="90"
                     Click="Cancel_Click"/>
         </StackPanel>

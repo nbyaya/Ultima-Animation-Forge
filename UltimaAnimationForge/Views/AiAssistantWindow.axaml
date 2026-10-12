@@ -6,7 +6,7 @@
         Height="650"
         MinWidth="420"
         MinHeight="500"
-        Title="AI Assistant"
+        Title="AI 助手"
         Background="#0B0F14">
 
     <Border Background="#111820"
@@ -20,14 +20,14 @@
               RowSpacing="10">
 
             <TextBlock Grid.Row="0"
-                       Text="AI Assistant"
+                       Text="AI 助手"
                        FontSize="18"
                        FontWeight="Bold"
                        Foreground="#E8EDF2"/>
 
             <TextBox Grid.Row="1"
                      Text="{Binding AiQuestionText, Mode=TwoWay}"
-                     Watermark="Ask about selected animation, offsets, imports..."
+                     Watermark="询问关于所选动画、偏移、导入..."
                      AcceptsReturn="True"
                      Height="90"
                      TextWrapping="Wrap"/>
@@ -40,7 +40,7 @@
             </ScrollViewer>
 
             <Button Grid.Row="3"
-                    Content="Ask AI"
+                    Content="询问 AI"
                     Command="{Binding AskAiCommand}"
                     IsEnabled="{Binding !IsAiBusy}"
                     HorizontalAlignment="Right"

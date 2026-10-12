@@ -6,7 +6,7 @@
         Height="560"
         MinWidth="440"
         MinHeight="520"
-        Title="Edit AnimData"
+        Title="编辑动画数据"
         Background="#1B2027">
 
     <Grid RowDefinitions="*,Auto"
@@ -26,7 +26,7 @@
                            Foreground="#AAB4C0"
                            TextWrapping="Wrap" />
 
-                <TextBlock Text="Frame Count"
+                <TextBlock Text="帧数"
                            Foreground="#AAB4C0" />
                 <NumericUpDown Value="{Binding SelectedArtAnimDataEntry.FrameCount, Mode=TwoWay}"
                                Minimum="0"
@@ -35,7 +35,7 @@
                                FormatString="0"
                                LostFocus="AnimDataEditField_LostFocus" />
 
-                <TextBlock Text="Frame Interval"
+                <TextBlock Text="帧间隔"
                            Foreground="#AAB4C0" />
                 <NumericUpDown Value="{Binding SelectedArtAnimDataEntry.FrameInterval, Mode=TwoWay}"
                                Minimum="0"
@@ -44,7 +44,7 @@
                                FormatString="0"
                                LostFocus="AnimDataEditField_LostFocus" />
 
-                <TextBlock Text="Frame Start"
+                <TextBlock Text="帧起始"
                            Foreground="#AAB4C0" />
                 <NumericUpDown Value="{Binding SelectedArtAnimDataEntry.FrameStart, Mode=TwoWay}"
                                Minimum="0"
@@ -53,7 +53,7 @@
                                FormatString="0"
                                LostFocus="AnimDataEditField_LostFocus" />
 
-                <TextBlock Text="Frames"
+                <TextBlock Text="帧"
                            Foreground="#C7D1DB"
                            FontWeight="Bold"
                            Margin="0,10,0,0" />
@@ -91,16 +91,16 @@
                                  Text="{Binding EditAnimDataAddFrameGraphicText}" />
 
                         <CheckBox Grid.Column="1"
-                                  Content="Rel"
+                                  Content="相对"
                                   IsChecked="{Binding EditAnimDataAddFrameRelative}"
                                   VerticalAlignment="Center" />
 
                         <Button Grid.Column="2"
-                                Content="Add"
+                                Content="添加"
                                 Command="{Binding AddEditAnimDataFrameCommand}" />
 
                         <Button Grid.Column="3"
-                                Content="Remove"
+                                Content="删除"
                                 Command="{Binding RemoveEditAnimDataFrameCommand}" />
                     </Grid>
 
@@ -108,11 +108,11 @@
                           ColumnDefinitions="*,*"
                           ColumnSpacing="6">
                         <Button Grid.Column="0"
-                                Content="Move Up"
+                                Content="向上移动"
                                 Command="{Binding MoveEditAnimDataFrameUpCommand}" />
 
                         <Button Grid.Column="1"
-                                Content="Move Down"
+                                Content="向下移动"
                                 Command="{Binding MoveEditAnimDataFrameDownCommand}" />
                     </Grid>
                 </Grid>
@@ -123,10 +123,10 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     Spacing="8">
-            <Button Content="Refresh Preview"
+            <Button Content="刷新预览"
                     Click="Refresh_Click" />
 
-            <Button Content="Close"
+            <Button Content="关闭"
                     Width="90"
                     Click="Close_Click" />
         </StackPanel>
