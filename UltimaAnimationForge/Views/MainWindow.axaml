@@ -700,7 +700,7 @@
                                       VerticalAlignment="Center" />
 
                             <CheckBox Grid.Column="14"
-                                      Content="Names"
+                                      Content="名称"
                                       IsChecked="{Binding AnimationBrowserShowNames}"
                                       VerticalAlignment="Center" />
                         </Grid>
@@ -736,43 +736,43 @@
                                                 PointerExited="AnimationBrowserTile_PointerExited">
                                             <Border.ContextMenu>
                                                 <ContextMenu>
-                                                    <MenuItem Header="Open in Editor"
+                                                    <MenuItem Header="在编辑器中打开"
                                                               Command="{Binding $parent[Window].DataContext.OpenAnimationBrowserTileCommand}"
                                                               CommandParameter="{Binding}" />
 
-                                                    <MenuItem Header="Open Detached Preview"
+                                                    <MenuItem Header="打开独立预览"
                                                               Command="{Binding $parent[Window].DataContext.OpenAnimationBrowserTileDetachedPreviewCommand}"
                                                               CommandParameter="{Binding}" />
 
-                                                    <MenuItem Header="Edit Name"
+                                                    <MenuItem Header="编辑名称"
                                                               Click="EditAnimationBrowserNameMenuItem_Click"
                                                               Tag="{Binding}" />
 
-                                                    <MenuItem Header="Refresh This Thumbnail"
+                                                    <MenuItem Header="刷新此缩略图"
                                                               Command="{Binding $parent[Window].DataContext.RefreshAnimationBrowserTileThumbnailCommand}"
                                                               CommandParameter="{Binding}" />
 
                                                     <Separator />
 
-                                                    <MenuItem Header="Export Frames"
+                                                    <MenuItem Header="导出帧"
                                                               Command="{Binding $parent[Window].DataContext.ExportAnimationBrowserTileFramesCommand}"
                                                               CommandParameter="{Binding}" />
 
-                                                    <MenuItem Header="Export VD"
+                                                    <MenuItem Header="导出VD"
                                                               Command="{Binding $parent[Window].DataContext.ExportAnimationBrowserTileVdCommand}"
                                                               CommandParameter="{Binding}" />
 
                                                     <Separator />
 
-                                                    <MenuItem Header="Delete Animation"
+                                                    <MenuItem Header="删除动画"
                                                               Command="{Binding $parent[Window].DataContext.DeleteAnimationBrowserTileCommand}"
                                                               CommandParameter="{Binding}" />
 
-                                                    <MenuItem Header="Copy Body ID"
+                                                    <MenuItem Header="复制身体ID"
                                                               Click="CopyAnimationBrowserBodyIdMenuItem_Click"
                                                               Tag="{Binding}" />
 
-                                                    <MenuItem Header="Copy Source File"
+                                                    <MenuItem Header="复制源文件"
                                                               Click="CopyAnimationBrowserSourceFileMenuItem_Click"
                                                               Tag="{Binding}" />
                                                 </ContextMenu>
