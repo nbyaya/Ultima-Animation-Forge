@@ -69,7 +69,7 @@
 
                 <Menu VerticalAlignment="Center"
                       Margin="8,0,0,0">
-                    <MenuItem Header="Export">
+                    <MenuItem Header="导出">
                         <MenuItem Header="UOX3 JavaScript"
                                   Command="{Binding ShowGumpBuilderUox3ExportCommand}"/>
                         <MenuItem Header="C#"
