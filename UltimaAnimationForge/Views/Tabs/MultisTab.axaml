@@ -34,16 +34,16 @@
                 <Button Content="Free Slots"
                         Command="{Binding ToggleMultiFreeSlotsCommand}"/>
 
-                <SplitButton Content="Export">
+                <SplitButton Content="导出">
                     <SplitButton.Flyout>
                         <MenuFlyout>
-                            <MenuItem Header="Export UOX3"
+                            <MenuItem Header="导出 UOX3"
                                       Command="{Binding ExportSelectedMultiUox3Command}"/>
-                            <MenuItem Header="Export PNG"
+                            <MenuItem Header="导出 PNG"
                                       Command="{Binding ExportSelectedMultiPngCommand}"/>
-                            <MenuItem Header="Export TXT"
+                            <MenuItem Header="导出 TXT"
                                       Command="{Binding ExportSelectedMultiTxtCommand}"/>
-                            <MenuItem Header="Export CSV"
+                            <MenuItem Header="导出 CSV"
                                       Command="{Binding ExportSelectedMultiCsvCommand}"/>
                         </MenuFlyout>
                     </SplitButton.Flyout>
