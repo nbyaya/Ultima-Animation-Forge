@@ -10,7 +10,7 @@
           VerticalAlignment="Stretch">
 
         <TextBlock Grid.Row="0"
-                   Text="Wearable Creation Wizard"
+                   Text="装扮创建向导"
                    FontSize="20"
                    FontWeight="Bold"
                    Foreground="#E4EAF2"/>
@@ -32,41 +32,41 @@
                 <ScrollViewer>
                     <StackPanel Spacing="8">
 
-                        <TextBlock Text="Basic Info" FontWeight="Bold" Foreground="#E4EAF2"/>
+                        <TextBlock Text="基本信息" FontWeight="Bold" Foreground="#E4EAF2"/>
 
-                        <TextBlock Text="Name" Foreground="#AAB4C0"/>
+                        <TextBlock Text="名称" Foreground="#AAB4C0"/>
                         <TextBox Text="{Binding WearableWizardName, Mode=TwoWay}"/>
 
-                        <TextBlock Text="Wearable Type" Foreground="#AAB4C0"/>
+                        <TextBlock Text="装扮类型" Foreground="#AAB4C0"/>
                         <ComboBox ItemsSource="{Binding WearableWizardTypes}"
                                   SelectedItem="{Binding WearableWizardType, Mode=TwoWay}"/>
 
-                        <TextBlock Text="Layer" Foreground="#AAB4C0"/>
+                        <TextBlock Text="层" Foreground="#AAB4C0"/>
                         <ComboBox ItemsSource="{Binding WearableWizardLayers}"
                                   SelectedItem="{Binding WearableWizardLayer, Mode=TwoWay}"/>
 
                         <Separator Margin="0,8,0,8"/>
 
-                        <TextBlock Text="Images" FontWeight="Bold" Foreground="#E4EAF2"/>
+                        <TextBlock Text="图片" FontWeight="Bold" Foreground="#E4EAF2"/>
 
-                        <Button Content="Load Male / Default Paperdoll Image"
+                        <Button Content="加载男性/默认纸娃娃图片"
                                 Command="{Binding BrowseWearablePaperdollImageCommand}"/>
                         <TextBlock Text="{Binding WearableWizardPaperdollImagePath}"
                                    Foreground="#AAB4C0"
                                    TextWrapping="Wrap"
                                    MaxHeight="40"/>
 
-                        <CheckBox Content="Create female variant"
+                        <CheckBox Content="创建女性变体"
                                   IsChecked="{Binding WearableWizardCreateFemaleVariant, Mode=TwoWay}"/>
 
-                        <Button Content="Load Female Paperdoll Image"
+                        <Button Content="加载女性纸娃娃图片"
                                 Command="{Binding BrowseWearableFemalePaperdollImageCommand}"/>
                         <TextBlock Text="{Binding WearableWizardFemalePaperdollImagePath}"
                                    Foreground="#AAB4C0"
                                    TextWrapping="Wrap"
                                    MaxHeight="40"/>
 
-                        <Button Content="Load Inventory / World Art Image"
+                        <Button Content="加载库存/世界美术图片"
                                 Command="{Binding BrowseWearableArtImageCommand}"/>
                         <TextBlock Text="{Binding WearableWizardArtImagePath}"
                                    Foreground="#AAB4C0"
@@ -75,7 +75,7 @@
 
                         <Separator Margin="0,8,0,8"/>
 
-                        <TextBlock Text="Slot Planning" FontWeight="Bold" Foreground="#E4EAF2"/>
+                        <TextBlock Text="槽位规划" FontWeight="Bold" Foreground="#E4EAF2"/>
 
                         <Border Background="#3A2020"
                                 BorderBrush="#AA5555"
@@ -88,13 +88,13 @@
                                        TextWrapping="Wrap"/>
                         </Border>
 
-                        <CheckBox Content="Use sitting-safe wearable range 50400-50999"
+                        <CheckBox Content="使用坐姿安全装扮范围 50400-50999"
                                   IsChecked="{Binding WearableWizardUseSittingSafeRange, Mode=TwoWay}"/>
 
-                        <CheckBox Content="Partial hueable"
+                        <CheckBox Content="部分可染色"
                                   IsChecked="{Binding WearableWizardPartialHue, Mode=TwoWay}"/>
 
-                        <Button Content="Auto Pick Free IDs"
+                        <Button Content="自动选择空闲 ID"
                                 Command="{Binding AutoPickWearableWizardIdsCommand}"/>
 
                         <Grid ColumnDefinitions="*,*"
@@ -102,7 +102,7 @@
                               ColumnSpacing="8"
                               RowSpacing="6">
 
-                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Male Gump ID" Foreground="#AAB4C0"/>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="男性 Gump ID" Foreground="#AAB4C0"/>
                             <NumericUpDown Grid.Row="0" Grid.Column="1"
                                            Value="{Binding WearableWizardMaleGumpIdInput, Mode=TwoWay}"
                                            Minimum="50000"
@@ -110,7 +110,7 @@
                                            Increment="1"
                                            FormatString="0"/>
 
-                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Female Gump ID" Foreground="#AAB4C0"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="女性 Gump ID" Foreground="#AAB4C0"/>
                             <NumericUpDown Grid.Row="1" Grid.Column="1"
                                            Value="{Binding WearableWizardFemaleGumpIdInput, Mode=TwoWay}"
                                            Minimum="60000"
@@ -118,7 +118,7 @@
                                            Increment="1"
                                            FormatString="0"/>
 
-                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Art ID" Foreground="#AAB4C0"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="美术 ID" Foreground="#AAB4C0"/>
                             <NumericUpDown Grid.Row="2" Grid.Column="1"
                                            Value="{Binding WearableWizardArtIdInput, Mode=TwoWay}"
                                            Minimum="0"
@@ -126,7 +126,7 @@
                                            Increment="1"
                                            FormatString="0"/>
 
-                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Animation ID" Foreground="#AAB4C0"/>
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="动画 ID" Foreground="#AAB4C0"/>
                             <NumericUpDown Grid.Row="3" Grid.Column="1"
                                            Value="{Binding WearableWizardAnimationIdInput, Mode=TwoWay}"
                                            Minimum="0"
@@ -137,27 +137,27 @@
 
                         <Separator Margin="0,8,0,8"/>
 
-                        <TextBlock Text="Animation Attachment" FontWeight="Bold" Foreground="#E4EAF2"/>
+                        <TextBlock Text="动画附加" FontWeight="Bold" Foreground="#E4EAF2"/>
 
                         <ComboBox ItemsSource="{Binding WearableWizardAnimationModes}"
                                   SelectedItem="{Binding WearableWizardAnimationMode, Mode=TwoWay}"/>
 
-                        <TextBlock Text="Existing Animation ID" Foreground="#AAB4C0"/>
+                        <TextBlock Text="现有动画 ID" Foreground="#AAB4C0"/>
                         <NumericUpDown Value="{Binding WearableWizardExistingAnimationId, Mode=TwoWay}"
                                        Minimum="0"
                                        Maximum="9999"
                                        Increment="1"
                                        FormatString="0"/>
 
-                        <TextBlock Text="Body.def Hue" Foreground="#AAB4C0"/>
+                        <TextBlock Text="Body.def 色调" Foreground="#AAB4C0"/>
                         <TextBox Text="{Binding WearableWizardHue, Mode=TwoWay}"/>
 
                         <Separator Margin="0,8,0,8"/>
 
                         <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
-                            <Button Grid.Column="0" Content="Rebuild" Command="{Binding RebuildWearableWizardPlanCommand}"/>
-                            <Button Grid.Column="1" Content="Reset" Command="{Binding ResetWearableWizardCommand}"/>
-                            <Button Grid.Column="2" Content="Apply" Command="{Binding ApplyWearableWizardCommand}"/>
+                            <Button Grid.Column="0" Content="重建" Command="{Binding RebuildWearableWizardPlanCommand}"/>
+                            <Button Grid.Column="1" Content="重置" Command="{Binding ResetWearableWizardCommand}"/>
+                            <Button Grid.Column="2" Content="应用" Command="{Binding ApplyWearableWizardCommand}"/>
                         </Grid>
 
                         <TextBlock Text="{Binding WearableWizardStatusText}"
@@ -188,7 +188,7 @@
 
                         <Grid RowDefinitions="Auto,*" RowSpacing="6">
                             <TextBlock Grid.Row="0"
-                                       Text="Image Previews"
+                                       Text="图片预览"
                                        FontWeight="Bold"
                                        Foreground="#E4EAF2"/>
 
@@ -198,21 +198,21 @@
 
                                 <Border Grid.Column="0" Background="#101318" BorderBrush="#303844" BorderThickness="1" CornerRadius="4" Padding="6">
                                     <StackPanel>
-                                        <TextBlock Text="Male" HorizontalAlignment="Center" Foreground="#AAB4C0"/>
+                                        <TextBlock Text="男性" HorizontalAlignment="Center" Foreground="#AAB4C0"/>
                                         <Image Source="{Binding WearableWizardPaperdollPreview}" Stretch="Uniform" MaxHeight="95"/>
                                     </StackPanel>
                                 </Border>
 
                                 <Border Grid.Column="1" Background="#101318" BorderBrush="#303844" BorderThickness="1" CornerRadius="4" Padding="6">
                                     <StackPanel>
-                                        <TextBlock Text="Female" HorizontalAlignment="Center" Foreground="#AAB4C0"/>
+                                        <TextBlock Text="女性" HorizontalAlignment="Center" Foreground="#AAB4C0"/>
                                         <Image Source="{Binding WearableWizardFemalePaperdollPreview}" Stretch="Uniform" MaxHeight="95"/>
                                     </StackPanel>
                                 </Border>
 
                                 <Border Grid.Column="2" Background="#101318" BorderBrush="#303844" BorderThickness="1" CornerRadius="4" Padding="6">
                                     <StackPanel>
-                                        <TextBlock Text="Art" HorizontalAlignment="Center" Foreground="#AAB4C0"/>
+                                        <TextBlock Text="美术" HorizontalAlignment="Center" Foreground="#AAB4C0"/>
                                         <Image Source="{Binding WearableWizardArtPreview}" Stretch="Uniform" MaxHeight="95"/>
                                     </StackPanel>
                                 </Border>
@@ -236,12 +236,12 @@
                                   ColumnSpacing="8">
 
                                 <TextBlock Grid.Column="0"
-                                           Text="Wearable Animation Overlay Preview"
+                                           Text="装扮动画叠加预览"
                                            FontWeight="Bold"
                                            Foreground="#E4EAF2"/>
 
                                 <CheckBox Grid.Column="1"
-                                          Content="Enabled"
+                                          Content="启用"
                                           IsChecked="{Binding WearableWizardOverlayPreviewEnabled, Mode=TwoWay}"/>
                             </Grid>
 
@@ -252,7 +252,7 @@
                                       ColumnSpacing="8">
 
                                     <TextBlock Grid.Column="0"
-                                               Text="Base"
+                                               Text="基础"
                                                VerticalAlignment="Center"
                                                Foreground="#AAB4C0"/>
                                     <NumericUpDown Grid.Column="1"
@@ -264,7 +264,7 @@
                                                    FormatString="0"/>
 
                                     <TextBlock Grid.Column="2"
-                                               Text="Action"
+                                               Text="动作"
                                                VerticalAlignment="Center"
                                                Foreground="#AAB4C0"/>
                                     <NumericUpDown Grid.Column="3"
@@ -276,7 +276,7 @@
                                                    FormatString="0"/>
 
                                     <TextBlock Grid.Column="4"
-                                               Text="Dir"
+                                               Text="方向"
                                                VerticalAlignment="Center"
                                                Foreground="#AAB4C0"/>
                                     <NumericUpDown Grid.Column="5"
@@ -292,7 +292,7 @@
                                       ColumnSpacing="8">
 
                                     <TextBlock Grid.Column="0"
-                                               Text="Frame"
+                                               Text="帧"
                                                VerticalAlignment="Center"
                                                Foreground="#AAB4C0"/>
                                     <NumericUpDown Grid.Column="1"
@@ -328,7 +328,7 @@
                                                    FormatString="0"/>
 
                                     <TextBlock Grid.Column="6"
-                                               Text="Scale"
+                                               Text="缩放"
                                                VerticalAlignment="Center"
                                                Foreground="#AAB4C0"/>
                                     <NumericUpDown Grid.Column="7"
@@ -362,7 +362,7 @@
                                            TextWrapping="Wrap"/>
 
                                 <Button Grid.Column="1"
-                                        Content="Refresh Preview"
+                                        Content="刷新预览"
                                         Command="{Binding RefreshWearableWizardOverlayPreviewCommand}"/>
                             </Grid>
                         </Grid>
@@ -386,7 +386,7 @@
                           RowSpacing="8">
 
                         <TextBlock Grid.Row="0"
-                                   Text="Planned Changes"
+                                   Text="规划的更改"
                                    FontWeight="Bold"
                                    Foreground="#E4EAF2"/>
 
@@ -416,7 +416,7 @@
                               RowSpacing="6">
 
                             <TextBlock Grid.Row="0"
-                                       Text="Free Animation Slot Browser"
+                                       Text="自由动画槽位浏览器"
                                        FontWeight="Bold"
                                        Foreground="#E4EAF2"/>
 
@@ -426,16 +426,16 @@
                                           SelectedItem="{Binding WearableWizardSelectedSlotFile, Mode=TwoWay}"/>
 
                                 <Button Grid.Column="1"
-                                        Content="Refresh"
+                                        Content="刷新"
                                         Command="{Binding RefreshWearableWizardFreeSlotsCommand}"/>
                             </Grid>
 
                             <TextBox Grid.Row="2"
-                                     Watermark="Search body/file/type..."
+                                     Watermark="搜索 body/文件/类型..."
                                      Text="{Binding WearableWizardSlotSearchText, Mode=TwoWay}"/>
 
                             <TextBlock Grid.Row="3"
-                                       Text="P (Human/Equipment) slots only"
+                                       Text="P (人类/装备) 槽位仅"
                                        Foreground="#AAB4C0"/>
 
                             <ListBox Grid.Row="4"
@@ -455,7 +455,7 @@
                             </ListBox>
 
                             <Button Grid.Row="5"
-                                    Content="Use Selected Slot"
+                                    Content="使用选中的槽位"
                                     HorizontalAlignment="Left"
                                     Command="{Binding UseWearableWizardSelectedSlotCommand}"/>
                         </Grid>
@@ -472,12 +472,12 @@
                               RowSpacing="6">
 
                             <TextBlock Grid.Row="0"
-                                       Text="Existing Animation Source Browser"
+                                       Text="现有动画源浏览器"
                                        FontWeight="Bold"
                                        Foreground="#E4EAF2"/>
 
                             <TextBox Grid.Row="1"
-                                     Watermark="Search P-slot animations..."
+                                     Watermark="搜索 P-槽位动画..."
                                      Text="{Binding WearableWizardSourceAnimationSearchText, Mode=TwoWay}"/>
 
                             <ListBox Grid.Row="2"
@@ -496,7 +496,7 @@
                             </ListBox>
 
                             <Button Grid.Row="3"
-                                    Content="Use Selected Source Animation"
+                                    Content="使用选中的源动画"
                                     HorizontalAlignment="Left"
                                     Command="{Binding UseWearableWizardSourceAnimationCommand}"/>
                         </Grid>
