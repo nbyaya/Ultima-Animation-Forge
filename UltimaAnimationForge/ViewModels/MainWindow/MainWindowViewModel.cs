@@ -817,7 +817,7 @@ public partial class MainWindowViewModel : ViewModelBase
     public ObservableCollection<UopBodySlotEntry> UopBodyEntries { get; } = new();
 
     [ObservableProperty]
-    private string statusText = "Ready. Open a UO folder to begin.";
+    private string statusText = "准备就绪。打开一个 UO 文件夹来开始。";
 
     [ObservableProperty]
     private string selectedSourceText = "No source loaded";
