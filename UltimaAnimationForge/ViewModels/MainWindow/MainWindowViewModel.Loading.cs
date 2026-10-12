@@ -51,7 +51,7 @@ public partial class MainWindowViewModel
         Window? mainWindow = GetMainWindow();
         if (mainWindow == null)
         {
-            StatusText = "Could not locate main window.";
+            StatusText = "无法找到主窗口。";
             return;
         }
 
@@ -74,14 +74,14 @@ public partial class MainWindowViewModel
 
         if (selectedFolders.Count == 0)
         {
-            StatusText = "Folder selection cancelled.";
+            StatusText = "文件夹选择已取消。";
             return;
         }
 
         string? localPath = selectedFolders[0].TryGetLocalPath();
         if (string.IsNullOrWhiteSpace(localPath))
         {
-            StatusText = "Selected folder does not have a local path.";
+            StatusText = "所选文件夹不具有本地路径。";
             return;
         }
 
@@ -117,13 +117,13 @@ public partial class MainWindowViewModel
     {
         if (string.IsNullOrWhiteSpace(localPath) || !Directory.Exists(localPath))
         {
-            StatusText = "Open a valid UO folder first.";
+            StatusText = "请先打开有效的 UO 文件夹。";
             return;
         }
 
         IsLoading = true;
         LoadingProgress = 0;
-        LoadingText = "Loading animation files...";
+        LoadingText = "正在加载动画文件...";
         SetRandomLoadingTip();
 
         OnPropertyChanged(nameof(IsLoading));
@@ -143,7 +143,7 @@ public partial class MainWindowViewModel
             activeAnimationDataSource = null;
             radarColService.Load(localPath, out _);
 
-            await ReportLoadingProgressAsync(10, "Initializing animation sources for cached data...");
+            await ReportLoadingProgressAsync(10, "正在初始化缓存数据的动画源...");
 
             bool shouldLoadUop = ShouldLoadUopForActiveProfile();
 
@@ -156,20 +156,20 @@ public partial class MainWindowViewModel
 
             if (!mulReady && !uopReady && !vdReady)
             {
-                StatusText = "Cached data was found, but animation sources could not be initialized.";
+                StatusText = "找到了缓存数据，但无法初始化动画源。";
                 IsLoading = false;
                 OnPropertyChanged(nameof(IsLoading));
                 return;
             }
 
-            await ReportLoadingProgressAsync(40, "Loading cached animation data...");
+            await ReportLoadingProgressAsync(40, "正在加载缓存的动画数据...");
 
             List<AnimationEntry> combinedEntries =
                 cacheData!.AnimationEntries ?? new List<AnimationEntry>();
 
             if (uopReady)
             {
-                await ReportLoadingProgressAsync(65, "Rebuilding UOP animation entries...");
+                await ReportLoadingProgressAsync(65, "正在重建 UOP 动画条目...");
 
                 const int uopBodiesToScan = 65536;
 
@@ -194,7 +194,7 @@ public partial class MainWindowViewModel
 
             if (vdReady)
             {
-                await ReportLoadingProgressAsync(80, "Rebuilding VD animation entries...");
+                await ReportLoadingProgressAsync(80, "正在重建 VD 动画条目...");
 
                 List<AnimationEntry> liveVdEntries =
                     await Task.Run(() => vdFolderAnimationDataSource.BuildAnimationEntries(0));
@@ -220,7 +220,7 @@ public partial class MainWindowViewModel
                 combinedEntries,
                 cacheData.MulSlotEntries ?? new List<MulSlotEntry>());
 
-            await ReportLoadingProgressAsync(100, "Loaded cached animation data.");
+            await ReportLoadingProgressAsync(100, "加载的缓存动画数据。");
 
             StatusText =
                 "Loaded " + allAnimationEntries.Count +
@@ -247,38 +247,38 @@ public partial class MainWindowViewModel
 
             FolderLoadResult loadResult = new FolderLoadResult();
 
-            await ReportLoadingProgressAsync(5, "Initializing animation sources...");
+            await ReportLoadingProgressAsync(5, "正在初始化动画源...");
 
             bool shouldLoadUop = ShouldLoadUopForActiveProfile();
 
             loadResult.MulReady = await Task.Run(() => mulAnimationDataSource.Initialize(localPath));
-            await ReportLoadingProgressAsync(15, "Initialized MUL animation source.");
+            await ReportLoadingProgressAsync(15, "MUL 动画源已初始化。");
 
             if (shouldLoadUop)
             {
                 loadResult.UopReady = await Task.Run(() => uopAnimationDataSource.Initialize(localPath));
-                await ReportLoadingProgressAsync(25, "Initialized UOP animation source.");
+                await ReportLoadingProgressAsync(25, "UOP 动画源已初始化。");
             }
             else
             {
                 loadResult.UopReady = false;
-                await ReportLoadingProgressAsync(25, "Skipped UOP animation source for this profile.");
+                await ReportLoadingProgressAsync(25, "在此配置中跳过了 UOP 动画源。");
             }
 
             loadResult.VdReady = await Task.Run(() => vdFolderAnimationDataSource.Initialize(localPath));
-            await ReportLoadingProgressAsync(30, "Initialized VD folder animation source.");
+            await ReportLoadingProgressAsync(30, "VD 文件夹动画源已初始化。");
 
             UpdatePreferredAnimationSources();
 
             if (!loadResult.MulReady && !loadResult.UopReady && !loadResult.VdReady)
             {
-                StatusText = "No supported animation data source found.";
+                StatusText = "未找到受支持的动画数据源。";
                 return;
             }
 
             if (loadResult.MulReady)
             {
-                await ReportLoadingProgressAsync(35, "Scanning MUL animation entries...");
+                await ReportLoadingProgressAsync(35, "正在扫描 MUL 动画条目...");
 
                 loadResult.MulEntries =
                     await Task.Run(() => mulAnimationDataSource.BuildAnimationEntries(mulBodiesToScan));
@@ -294,13 +294,13 @@ public partial class MainWindowViewModel
                     }
                 }
 
-                await ReportLoadingProgressAsync(55, "Finished scanning MUL animation entries.");
+                await ReportLoadingProgressAsync(55, "完成 MUL 动画条目扫描。");
                 loadResult.MulSlots = new List<MulSlotEntry>();
             }
 
             if (loadResult.UopReady)
             {
-                await ReportLoadingProgressAsync(60, "Scanning UOP animation entries...");
+                await ReportLoadingProgressAsync(60, "正在扫描 UOP 动画条目...");
 
                 loadResult.UopEntries =
                     await Task.Run(() => uopAnimationDataSource.BuildAnimationEntries(uopBodiesToScan));
@@ -316,12 +316,12 @@ public partial class MainWindowViewModel
                     }
                 }
 
-                await ReportLoadingProgressAsync(78, "Finished scanning UOP animation entries.");
+                await ReportLoadingProgressAsync(78, "完成 UOP 动画条目扫描。");
             }
 
             if (loadResult.VdReady)
             {
-                await ReportLoadingProgressAsync(80, "Scanning VD animation entries...");
+                await ReportLoadingProgressAsync(80, "正在扫描 VD 动画条目...");
 
                 loadResult.VdEntries =
                     await Task.Run(() => vdFolderAnimationDataSource.BuildAnimationEntries(0));
@@ -337,10 +337,10 @@ public partial class MainWindowViewModel
                     }
                 }
 
-                await ReportLoadingProgressAsync(88, "Finished scanning VD animation entries.");
+                await ReportLoadingProgressAsync(88, "完成 VD 动画条目扫描。");
             }
 
-            await ReportLoadingProgressAsync(90, "Building file lists...");
+            await ReportLoadingProgressAsync(90, "正在构建文件列表...");
 
             List<AnimationEntry> combinedEntries = new List<AnimationEntry>();
             combinedEntries.AddRange(loadResult.MulEntries);
@@ -349,7 +349,7 @@ public partial class MainWindowViewModel
 
             ApplyLoadedData(combinedEntries, loadResult.MulSlots);
 
-            await ReportLoadingProgressAsync(100, "Finished loading animations.");
+            await ReportLoadingProgressAsync(100, "完成加载动画。");
 
             AnimationCacheData newCache = animationCacheService.BuildCacheData(
                 profileId,
@@ -383,7 +383,7 @@ public partial class MainWindowViewModel
         }
         catch (Exception exception)
         {
-            StatusText = "Failed loading animation data: " + exception.Message;
+            StatusText = "加载动画数据失败: " + exception.Message;
         }
         finally
         {
@@ -403,15 +403,15 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(currentFolderPath))
         {
-            SelectedSourceText = "No source loaded";
-            StatusText = "Selected profile does not have a folder yet.";
+            SelectedSourceText = "未加载源";
+            StatusText = "所选配置还没有文件夹。";
             return;
         }
 
         if (!Directory.Exists(currentFolderPath))
         {
             SelectedSourceText = currentFolderPath;
-            StatusText = "The folder for the selected profile was not found.";
+            StatusText = "未找到所选配置的文件夹。";
             return;
         }
 
