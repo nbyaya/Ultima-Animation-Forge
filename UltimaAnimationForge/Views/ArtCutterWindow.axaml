@@ -4,7 +4,7 @@
         x:CompileBindings="False"
         Width="1000"
         Height="720"
-        Title="Static Art Cutter"
+        Title="静态美术切割工具"
         Background="#1B2027">
 
     <Grid RowDefinitions="Auto,*,Auto"
@@ -24,7 +24,7 @@
                   RowSpacing="8">
 
                 <TextBlock Grid.Row="0" Grid.Column="0"
-                           Text="Start Art ID"
+                           Text="起始美术ID"
                            VerticalAlignment="Center"
                            Foreground="#C7D1DB"/>
 
@@ -36,7 +36,7 @@
                                FormatString="0"/>
 
                 <TextBlock Grid.Row="0" Grid.Column="2"
-                           Text="Slice Width"
+                           Text="切片宽度"
                            VerticalAlignment="Center"
                            Foreground="#C7D1DB"/>
 
@@ -48,7 +48,7 @@
                                FormatString="0"/>
 
                 <TextBlock Grid.Row="0" Grid.Column="4"
-                           Text="Slice Height"
+                           Text="切片高度"
                            VerticalAlignment="Center"
                            Foreground="#C7D1DB"/>
 
@@ -60,7 +60,7 @@
                                FormatString="0"/>
 
                 <TextBlock Grid.Row="0" Grid.Column="6"
-                           Text="Source X"
+                           Text="源X"
                            VerticalAlignment="Center"
                            Foreground="#C7D1DB"/>
 
@@ -72,7 +72,7 @@
                                FormatString="0"/>
 
                 <TextBlock Grid.Row="0" Grid.Column="8"
-                           Text="Source Y"
+                           Text="源Y"
                            VerticalAlignment="Center"
                            Foreground="#C7D1DB"/>
 
@@ -88,15 +88,15 @@
                             Grid.ColumnSpan="10"
                             Orientation="Horizontal"
                             Spacing="14">
-                    <CheckBox Content="Auto Trim"
+                    <CheckBox Content="自动修剪"
                               IsChecked="{Binding ArtCutterAutoTrim}"
                               Foreground="#C7D1DB"/>
 
-                    <CheckBox Content="Skip Empty"
+                    <CheckBox Content="跳过空白"
                               IsChecked="{Binding ArtCutterSkipEmpty}"
                               Foreground="#C7D1DB"/>
 
-                    <CheckBox Content="Black Transparent"
+                    <CheckBox Content="黑色透明化"
                               IsChecked="{Binding ArtCutterBlackTransparent}"
                               Foreground="#C7D1DB"/>
                 </StackPanel>
@@ -104,7 +104,7 @@
                 <Button Grid.Row="0"
                         Grid.Column="10"
                         Grid.RowSpan="2"
-                        Content="Build Slices"
+                        Content="构建切片"
                         Command="{Binding BuildArtCutterSlicesCommand}"
                         HorizontalAlignment="Right"
                         Width="140"/>
@@ -169,11 +169,11 @@
                     HorizontalAlignment="Right"
                     Spacing="8">
 
-            <Button Content="Queue Checked"
+            <Button Content="队列已选中"
                     Width="140"
                     Click="QueueChecked_Click"/>
 
-            <Button Content="Close"
+            <Button Content="关闭"
                     Width="90"
                     Click="Close_Click"/>
         </StackPanel>
