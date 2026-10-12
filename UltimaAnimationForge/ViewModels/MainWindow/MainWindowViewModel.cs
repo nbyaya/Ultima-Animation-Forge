@@ -766,16 +766,16 @@ public partial class MainWindowViewModel : ViewModelBase
 
     private static readonly string[] LoadingTips =
     {
-    "Tip: Select a body, then change Action and Dir at the top to compare animations.",
-    "Tip: MUL imports are now queued until you click Save Changes.",
-    "Tip: Use the file filter to isolate a single anim.mul, anim2.mul, or UOP file.",
-    "Tip: Some bodies have fewer valid actions than their full animation group count.",
-    "Tip: Export Frames can export the current direction or every action and direction.",
-    "Tip: UOP and MUL can expose different action layouts for the same body style.",
-    "Tip: Empty MUL body slots are useful targets for staged VD imports.",
-    "Tip: If an action is missing, it will now stay hidden instead of cluttering the list.",
-    "Tip: The status panel on the right can help confirm which source file you are reading from.",
-    "Tip: Unsaved changes stay in memory until you click Save Changes."
+    "提示：选择一个身体，然后在顶部改变动作和方向来比较动画。",
+    "提示：MUL 导入现在被排队，直到你点击保存更改。",
+    "提示：使用文件过滤器来隔离单个 anim.mul、anim2.mul 或 UOP 文件。",
+    "提示：有些身体的有效动作比完整动画组数量要少。",
+    "提示：导出帧可以导出当前方向或每个动作和方向。",
+    "提示：UOP 和 MUL 对同一身体风格可能会暴露不同的动作布局。",
+    "提示：空的 MUL 身体槽位是分阶段 VD 导入的有用目标。",
+    "提示：如果缺少动作，它现在将保持隐藏，而不是杂乱列表。",
+    "提示：右侧的状态面板可以帮助确认你正在读取的源文件。",
+    "提示：未保存的更改会保留在内存中，直到你点击保存更改。"
 };
 
     [ObservableProperty]
