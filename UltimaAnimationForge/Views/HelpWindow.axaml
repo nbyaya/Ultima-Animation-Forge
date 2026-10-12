@@ -6,7 +6,7 @@
         Height="680"
         MinWidth="640"
         MinHeight="520"
-        Title="Ultima Animation Forge Help"
+        Title="Ultima Animation Forge 帮助"
         Background="#0B0F14"
         WindowStartupLocation="CenterOwner">
 
@@ -37,7 +37,7 @@
                     HorizontalAlignment="Right"
                     Spacing="8">
 
-            <Button Content="Close"
+            <Button Content="关闭"
                     Width="100"
                     Click="Close_Click"/>
         </StackPanel>

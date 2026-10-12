@@ -4,7 +4,7 @@
         x:CompileBindings="False"
         Width="760"
         Height="520"
-        Title="Edit TileData Flags"
+        Title="编辑地形数据标志"
         Background="#1B2027">
 
     <Grid RowDefinitions="Auto,*,Auto"
@@ -33,7 +33,7 @@
                   RowSpacing="8">
 
                 <CheckBox Grid.Row="0"
-                          Content="Apply flag changes to checked art tiles"
+                          Content="应用标志更改到已选中的美术图块"
                           IsChecked="{Binding ApplyTileDataFlagsToCheckedArt}"
                           Foreground="#C7D1DB"/>
 
@@ -66,7 +66,7 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     Spacing="8">
-            <Button Content="Close"
+            <Button Content="关闭"
                     Width="90"
                     Click="Close_Click"/>
         </StackPanel>

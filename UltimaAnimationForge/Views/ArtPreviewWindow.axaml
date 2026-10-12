@@ -6,7 +6,7 @@
         Height="620"
         MinWidth="420"
         MinHeight="420"
-        Title="Art Preview"
+        Title="美术预览"
         Background="#1B2027">
 
     <Grid RowDefinitions="Auto,*,Auto"
@@ -26,22 +26,22 @@
 
             <Menu Grid.Column="1"
                   Background="Transparent">
-                <MenuItem Header="Image Tools">
-                    <MenuItem Header="Enhance Image"
+                <MenuItem Header="图像工具">
+                    <MenuItem Header="增强图像"
                               Command="{Binding EnhanceSelectedArtCommand}" />
-                    <MenuItem Header="Sharpen"
+                    <MenuItem Header="锐化"
                               Command="{Binding SharpenSelectedArtCommand}" />
-                    <MenuItem Header="Outline Boost"
+                    <MenuItem Header="轮廓增强"
                               Command="{Binding OutlineBoostSelectedArtCommand}" />
-                    <MenuItem Header="Hue Shift"
+                    <MenuItem Header="色调偏移"
                               Command="{Binding HueShiftSelectedArtCommand}" />
                     <Separator/>
-                    <MenuItem Header="Load Overlay Image"
+                    <MenuItem Header="加载叠加层图像"
                               Command="{Binding LoadArtOverlayImageCommand}" />
-                    <MenuItem Header="Apply Overlay To Art"
+                    <MenuItem Header="应用叠加层到美术"
                               Command="{Binding ApplyArtOverlayCommand}" />
                     <Separator/>
-                    <MenuItem Header="Reset Edit"
+                    <MenuItem Header="重置编辑"
                               Command="{Binding ResetSelectedArtEditCommand}" />
                 </MenuItem>
             </Menu>
