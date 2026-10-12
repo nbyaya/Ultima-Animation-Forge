@@ -534,7 +534,7 @@
                             </StackPanel>
                         </StackPanel>
 
-                        <Expander Header="Image Tools"
+                        <Expander Header="图像工具"
                                   IsExpanded="{Binding ShowArtImageTools}">
                             <StackPanel Spacing="8"
                                         Margin="0,8,0,0">
