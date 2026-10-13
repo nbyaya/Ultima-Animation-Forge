@@ -30,7 +30,8 @@
                             Command="{Binding OpenPackageCommand}"
                             MinWidth="112"
                             Margin="0,0,8,0"
-                            Padding="12,7" />
+                            Padding="12,7"
+                            Foreground="#95A3B3" />
 
                     <!--  <Button Content="Open Dictionary"
                             Command="{Binding OpenDictionaryCommand}"
@@ -42,7 +43,8 @@
 							Command="{Binding ExportFullAmouVdCommand}"
 							MinWidth="150"
                             Margin="0,0,8,0"
-                            Padding="12,7" />
+                            Padding="12,7"
+                            Foreground="#95A3B3" />
 
                     <!--  <Button Content="Open Animation XML"
                             Command="{Binding OpenAnimationCollectionCommand}"
@@ -54,19 +56,22 @@
                             Command="{Binding ExportSelectedCommand}"
                             MinWidth="124"
                             Margin="0,0,8,0"
-                            Padding="12,7" />
+                            Padding="12,7"
+                            Foreground="#95A3B3" />
 
                     <Button Content="导出全部"
                             Command="{Binding ExportAllCommand}"
                             MinWidth="96"
                             Margin="0,0,8,0"
-                            Padding="12,7" />
+                            Padding="12,7"
+                            Foreground="#95A3B3" />
 
                     <Button Content="导出帧"
                             Command="{Binding ExportAmouFramesCommand}"
                             MinWidth="120"
                             Margin="0,0,8,0"
-                            Padding="12,7" />
+                            Padding="12,7"
+                            Foreground="#95A3B3" />
                 </WrapPanel>
 
                 <TextBlock Grid.Row="1"
@@ -108,10 +113,11 @@
                               Grid.Column="1"
                               HorizontalAlignment="Stretch"
                               ItemsSource="{Binding EcBodyOptions}"
-                              SelectedItem="{Binding SelectedEcBody, Mode=TwoWay}">
+                              SelectedItem="{Binding SelectedEcBody, Mode=TwoWay}"
+                              Foreground="#95A3B3">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding DisplayText}" />
+                                <TextBlock Text="{Binding DisplayText}" Foreground="#95A3B3" />
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
@@ -126,10 +132,11 @@
                               Grid.Column="1"
                               HorizontalAlignment="Stretch"
                               ItemsSource="{Binding EcActionOptions}"
-                              SelectedItem="{Binding SelectedEcAction, Mode=TwoWay}">
+                              SelectedItem="{Binding SelectedEcAction, Mode=TwoWay}"
+                              Foreground="#95A3B3">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding DisplayText}" />
+                                <TextBlock Text="{Binding DisplayText}" Foreground="#95A3B3" />
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
