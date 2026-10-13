@@ -1,4 +1,4 @@
-﻿<Window xmlns="https://github.com/avaloniaui"
+<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -10,7 +10,7 @@
         MinWidth="760"
         MinHeight="560"
         Background="#1B1F25"
-        Foreground="White"
+        Foreground="#95A3B3"
         Title="独立预览"
         mc:Ignorable="d">
 
@@ -29,44 +29,53 @@
                 <CheckBox Content="跟随主选择"
                           IsChecked="{Binding FollowMainSelection, Mode=TwoWay}"
                           VerticalAlignment="Center"
+                          Foreground="#95A3B3"
                           Margin="0,0,12,0" />
 
                 <Button Content="复制主选择"
                         Command="{Binding CopyMainSelectionCommand}"
+                        Foreground="#95A3B3"
                         Margin="0,0,14,0" />
 
                 <TextBlock Text="动画"
                            VerticalAlignment="Center"
+                           Foreground="White"
                            Margin="0,0,8,0" />
 
                 <ComboBox Width="250"
                           ItemsSource="{Binding AnimationEntries}"
                           SelectedItem="{Binding SelectedAnimation, Mode=TwoWay}"
-                          IsEnabled="{Binding !FollowMainSelection}">
+                          IsEnabled="{Binding !FollowMainSelection}"
+                          Foreground="#95A3B3">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding DisplayName}" />
+                            <TextBlock Text="{Binding DisplayName}" 
+                                       Foreground="#95A3B3" />
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
 
                 <TextBlock Text="动作"
                            VerticalAlignment="Center"
+                           Foreground="White"
                            Margin="14,0,8,0" />
 
                 <ComboBox Width="150"
                           ItemsSource="{Binding ActionOptions}"
                           SelectedItem="{Binding SelectedAction, Mode=TwoWay}"
-                          IsEnabled="{Binding !FollowMainSelection}" />
+                          IsEnabled="{Binding !FollowMainSelection}"
+                          Foreground="#95A3B3" />
 
                 <TextBlock Text="方向"
                            VerticalAlignment="Center"
+                           Foreground="White"
                            Margin="14,0,8,0" />
 
                 <ComboBox Width="130"
                           ItemsSource="{Binding DirectionOptions}"
                           SelectedItem="{Binding SelectedDirection, Mode=TwoWay}"
-                          IsEnabled="{Binding !FollowMainSelection}" />
+                          IsEnabled="{Binding !FollowMainSelection}"
+                          Foreground="#95A3B3" />
             </WrapPanel>
         </Border>
 
@@ -81,28 +90,33 @@
                         Width="40"
                         Height="32"
                         Margin="0,0,6,0"
+                        Foreground="#95A3B3"
                         Content="▶" />
 
                 <Button Command="{Binding PauseCommand}"
                         Width="40"
                         Height="32"
                         Margin="0,0,6,0"
+                        Foreground="#95A3B3"
                         Content="⏸" />
 
                 <Button Command="{Binding PreviousFrameCommand}"
                         Width="40"
                         Height="32"
                         Margin="0,0,6,0"
+                        Foreground="#95A3B3"
                         Content="◀" />
 
                 <Button Command="{Binding NextFrameCommand}"
                         Width="40"
                         Height="32"
                         Margin="0,0,14,0"
+                        Foreground="#95A3B3"
                         Content="▶" />
 
                 <TextBlock Text="速度"
                            VerticalAlignment="Center"
+                           Foreground="White"
                            Margin="0,0,8,0" />
 
                 <Slider Width="140"
@@ -117,6 +131,7 @@
 
                 <TextBlock Text="缩放"
                            VerticalAlignment="Center"
+                           Foreground="White"
                            Margin="0,0,8,0" />
 
                 <Slider Width="140"
@@ -131,7 +146,8 @@
 
                 <CheckBox Content="棋盘背景"
                           IsChecked="{Binding ShowCheckerBackground, Mode=TwoWay}"
-                          VerticalAlignment="Center" />
+                          VerticalAlignment="Center"
+                          Foreground="#95A3B3" />
             </WrapPanel>
         </Border>
 
@@ -143,11 +159,13 @@
             <StackPanel Spacing="4">
                 <TextBlock Text="{Binding CurrentFrameDisplayText}"
                            HorizontalAlignment="Center"
-                           FontWeight="SemiBold" />
+                           FontWeight="SemiBold"
+                           Foreground="White" />
                 <TextBlock Text="{Binding PreviewInfoText}"
                            HorizontalAlignment="Center"
                            TextAlignment="Center"
-                           TextWrapping="Wrap" />
+                           TextWrapping="Wrap"
+                           Foreground="White" />
             </StackPanel>
         </Border>
 

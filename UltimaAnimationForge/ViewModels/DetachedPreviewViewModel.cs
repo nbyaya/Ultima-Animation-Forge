@@ -51,7 +51,7 @@ public partial class DetachedPreviewViewModel : ViewModelBase
     private bool showCheckerBackground = true;
 
     [ObservableProperty]
-    private string previewInfoText = "No animation loaded.";
+    private string previewInfoText = "未加载动画。";
 
     public DetachedPreviewViewModel(MainWindowViewModel host)
     {
@@ -83,8 +83,8 @@ public partial class DetachedPreviewViewModel : ViewModelBase
 
     public string CurrentFrameDisplayText =>
         decodedFrames.Count == 0
-            ? "Frame: - / -"
-            : "Frame: " + (currentFrameIndex + 1) + " / " + decodedFrames.Count;
+            ? "帧: - / -"
+            : "帧: " + (currentFrameIndex + 1) + " / " + decodedFrames.Count;
 
     public double PreviewImageWidth =>
         PreviewBitmap != null ? PreviewBitmap.PixelSize.Width * ZoomLevel : 0;
@@ -334,7 +334,7 @@ public partial class DetachedPreviewViewModel : ViewModelBase
         {
             decodedFrames.Clear();
             PreviewBitmap = null;
-            PreviewInfoText = "No animation selected.";
+            PreviewInfoText = "未选择动画。";
             OnPropertyChanged(nameof(CurrentFrameDisplayText));
             return;
         }
