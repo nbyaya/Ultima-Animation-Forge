@@ -1702,7 +1702,7 @@ public partial class MainWindowViewModel
 
         Window dialog = new Window
         {
-            Title = "Export VD Hue",
+            Title = "导出 VD 色调",
             Width = 900,
             Height = 620,
             MinWidth = 700,
@@ -1712,13 +1712,13 @@ public partial class MainWindowViewModel
 
         CheckBox applyHueCheckBox = new CheckBox
         {
-            Content = "Apply hue recolor using hues.mul",
+            Content = "使用 hues.mul 应用色调重新着色",
             IsChecked = false
         };
 
         TextBox searchBox = new TextBox
         {
-            Watermark = "Search hues by id or name...",
+            Watermark = "按 ID 或名称搜索色调...",
             Margin = new Thickness(0, 8, 0, 0),
             IsEnabled = false
         };
@@ -1736,13 +1736,13 @@ public partial class MainWindowViewModel
 
         Button okButton = new Button
         {
-            Content = "OK",
+            Content = "确定",
             Width = 90
         };
 
         Button cancelButton = new Button
         {
-            Content = "Cancel",
+            Content = "取消",
             Width = 90
         };
 
@@ -1769,7 +1769,7 @@ public partial class MainWindowViewModel
             bool enabled = applyHueCheckBox.IsChecked == true;
             searchBox.IsEnabled = enabled;
             hueListBox.IsEnabled = enabled;
-            descriptionText.Text = enabled ? descriptionText.Text : "No hue change will be applied.";
+            descriptionText.Text = enabled ? descriptionText.Text : "不会应用色调更改。";
         };
 
         searchBox.TextChanged += (_, _) => RefreshHueList();
@@ -1783,12 +1783,12 @@ public partial class MainWindowViewModel
                 return;
             }
 
-            string hueName = string.IsNullOrWhiteSpace(selectedHue.Name) ? "(no name)" : selectedHue.Name;
+            string hueName = string.IsNullOrWhiteSpace(selectedHue.Name) ? "(无名称)" : selectedHue.Name;
 
             descriptionText.Text =
-                "Hue " + selectedHue.HueId + Environment.NewLine +
-                "Name: " + hueName + Environment.NewLine +
-                "Range: " + selectedHue.TableStart + " - " + selectedHue.TableEnd;
+                "色调 " + selectedHue.HueId + Environment.NewLine +
+                "名称: " + hueName + Environment.NewLine +
+                "范围: " + selectedHue.TableStart + " - " + selectedHue.TableEnd;
         };
 
         okButton.Click += (_, _) =>
@@ -1798,7 +1798,7 @@ public partial class MainWindowViewModel
 
             if (applyHue && selectedHue == null)
             {
-                descriptionText.Text = "Select a hue or turn off hue recolor.";
+                descriptionText.Text = "选择一个色调或关闭色调重新着色。";
                 return;
             }
 
@@ -1837,7 +1837,7 @@ public partial class MainWindowViewModel
                 return rootPanel;
             }
 
-            string hueName = string.IsNullOrWhiteSpace(hueEntry.Name) ? "(no name)" : hueEntry.Name;
+            string hueName = string.IsNullOrWhiteSpace(hueEntry.Name) ? "(无名称)" : hueEntry.Name;
 
             rootPanel.Children.Add(new TextBlock
             {
@@ -1917,7 +1917,7 @@ VdHueDialogResult? hueDialogResult)
     {
         Window dialog = new Window
         {
-            Title = "Export VD Enhancement",
+            Title = "导出 VD 增强",
             Width = 760,
             Height = 700,
             CanResize = false,
@@ -1928,7 +1928,7 @@ VdHueDialogResult? hueDialogResult)
 
         CheckBox sharpenCheckBox = new CheckBox
         {
-            Content = "Apply sharpen",
+            Content = "应用锐化",
             IsChecked = false
         };
 
@@ -1947,8 +1947,8 @@ VdHueDialogResult? hueDialogResult)
         {
             ItemsSource = new[]
             {
-                "Gaussian",
-                "Pixel"
+                "高斯",
+                "像素"
             },
             SelectedIndex = 0,
             Width = 140,
@@ -1958,7 +1958,7 @@ VdHueDialogResult? hueDialogResult)
 
         CheckBox contrastCheckBox = new CheckBox
         {
-            Content = "Apply contrast boost",
+            Content = "应用对比度增强",
             IsChecked = false,
             Margin = new Thickness(0, 12, 0, 0)
         };
@@ -1976,7 +1976,7 @@ VdHueDialogResult? hueDialogResult)
 
         CheckBox outlineBoostCheckBox = new CheckBox
         {
-            Content = "Apply outline boost",
+            Content = "应用轮廓增强",
             IsChecked = false,
             Margin = new Thickness(0, 12, 0, 0)
         };
@@ -2036,13 +2036,13 @@ VdHueDialogResult? hueDialogResult)
 
         Button okButton = new Button
         {
-            Content = "OK",
+            Content = "确定",
             Width = 90
         };
 
         Button cancelButton = new Button
         {
-            Content = "Cancel",
+            Content = "取消",
             Width = 90
         };
 
@@ -2094,18 +2094,18 @@ VdHueDialogResult? hueDialogResult)
                 hueDialogResult != null &&
                 hueDialogResult.ApplyHue &&
                 hueDialogResult.SelectedHue != null
-                    ? "Hue " + hueDialogResult.SelectedHue.HueId
-                    : "Off";
+                    ? "色调 " + hueDialogResult.SelectedHue.HueId
+                    : "关闭";
 
             previewText.Text =
-                "Selected enhancements:" + Environment.NewLine +
-                "- Sharpen: " + ((sharpenCheckBox.IsChecked == true)
-    ? ((sharpenModeComboBox.SelectedItem?.ToString() ?? "Gaussian") + " " + (sharpenAmountBox.Value?.ToString() ?? "0"))
-    : "Off") + Environment.NewLine +
-                "- Contrast: " + ((contrastCheckBox.IsChecked == true) ? contrastAmountBox.Value?.ToString() ?? "0" : "Off") + Environment.NewLine +
-                "- Outline Boost: " + ((outlineBoostCheckBox.IsChecked == true) ? "On" : "Off") + Environment.NewLine +
-                "- Hue: " + hueText + Environment.NewLine + Environment.NewLine +
-                "Preview uses the current displayed frame thumbnail.";
+                "已选择的增强:" + Environment.NewLine +
+                "- 锐化: " + ((sharpenCheckBox.IsChecked == true)
+    ? ((sharpenModeComboBox.SelectedItem?.ToString() ?? "高斯") + " " + (sharpenAmountBox.Value?.ToString() ?? "0"))
+    : "关闭") + Environment.NewLine +
+                "- 对比度: " + ((contrastCheckBox.IsChecked == true) ? contrastAmountBox.Value?.ToString() ?? "0" : "关闭") + Environment.NewLine +
+                "- 轮廓增强: " + ((outlineBoostCheckBox.IsChecked == true) ? "开启" : "关闭") + Environment.NewLine +
+                "- 色调: " + hueText + Environment.NewLine + Environment.NewLine +
+                "预览使用当前显示的帧缩略图。";
         }
 
         void RefreshAllPreview()
