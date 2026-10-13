@@ -49,7 +49,7 @@ public partial class EquipmentBinderToolViewModel : ViewModelBase
     [ObservableProperty] private string equipmentBinderBodyDefLine = string.Empty;
     [ObservableProperty] private string equipmentBinderBodyConvLine = string.Empty;
     [ObservableProperty] private string equipmentBinderMobTypeLine = string.Empty;
-    [ObservableProperty] private string equipmentBinderSummary = "Select a free MUL body ID, fill the equipment fields, then build preview.";
+    [ObservableProperty] private string equipmentBinderSummary = "选择一个空闲的 MUL body ID，填写装备字段，然后构建预览。";
     [ObservableProperty] private bool equipmentBinderBodyDefExists;
     [ObservableProperty] private bool equipmentBinderBodyConvExists;
     [ObservableProperty] private bool equipmentBinderMobTypeExists;
@@ -59,7 +59,7 @@ public partial class EquipmentBinderToolViewModel : ViewModelBase
     [ObservableProperty] private string equipmentBinderTileDataLine = string.Empty;
     [ObservableProperty] private EquipmentArtPickerEntry? selectedEquipmentArtPickerEntry;
     [ObservableProperty] private EquipmentGumpPickerEntry? selectedEquipmentGumpPickerEntry;
-    [ObservableProperty] private string equipmentPickerStatusText = "Art/Gump picker not loaded.";
+    [ObservableProperty] private string equipmentPickerStatusText = "美术/Gump 拾取器未加载。";
 
     public ObservableCollection<EquipmentArtPickerEntry> EquipmentArtPickerEntries { get; } = new();
     public ObservableCollection<EquipmentGumpPickerEntry> EquipmentGumpPickerEntries { get; } = new();
@@ -70,16 +70,16 @@ public partial class EquipmentBinderToolViewModel : ViewModelBase
         {
             MulSlotEntry? selectedMulSlot = hostContext.SelectedMulSlotProvider();
             return selectedMulSlot == null
-                ? "No free MUL body ID selected."
+                ? "未选择空闲的 MUL body ID。"
                 : selectedMulSlot.FileName + " | " + selectedMulSlot.TypeLetter + " | Slot " + selectedMulSlot.BodyIndex +
                   " | FileType " + selectedMulSlot.FileType + " | AnimLength " + selectedMulSlot.AnimLength;
         }
     }
 
     public string EquipmentBinderExistsText =>
-        "body.def: " + (EquipmentBinderBodyDefExists ? "exists/update" : "new") +
-        " | bodyconv.def: " + (EquipmentBinderBodyConvExists ? "exists/skip" : "new") +
-        " | mobtypes.txt: " + (EquipmentBinderMobTypeExists ? "exists/update" : "new");
+        "body.def: " + (EquipmentBinderBodyDefExists ? "存在/更新" : "新增") +
+        " | bodyconv.def: " + (EquipmentBinderBodyConvExists ? "存在/跳过" : "新增") +
+        " | mobtypes.txt: " + (EquipmentBinderMobTypeExists ? "存在/更新" : "新增");
 
     private void SetStatus(string message)
     {
@@ -98,14 +98,14 @@ public partial class EquipmentBinderToolViewModel : ViewModelBase
         string currentFolderPath = hostContext.CurrentFolderPathProvider();
         if (string.IsNullOrWhiteSpace(currentFolderPath) || !Directory.Exists(currentFolderPath))
         {
-            SetStatus("Open a valid UO folder first.");
+            SetStatus("请先打开有效的 UO 文件夹。");
             return;
         }
 
         int nextFree = equipmentBinderService.FindNextFreeDisplayBodyId(currentFolderPath, 4000);
         if (nextFree < 0)
         {
-            SetStatus("Could not find a free display body/gump ID under 65534.");
+            SetStatus("无法找到 65534 以下的空闲显示 Body/Gump ID。");
             return;
         }
 
@@ -115,7 +115,7 @@ public partial class EquipmentBinderToolViewModel : ViewModelBase
             EquipmentBinderAnimationBodyId = nextFree;
         }
 
-        SetStatus("Auto-filled display body/gump ID " + nextFree + ".");
+        SetStatus("自动填充显示 Body/Gump ID " + nextFree + "。");
         BuildEquipmentBinderPreview();
     }
 
@@ -126,14 +126,14 @@ public partial class EquipmentBinderToolViewModel : ViewModelBase
 
         if (string.IsNullOrWhiteSpace(currentFolderPath) || !Directory.Exists(currentFolderPath))
         {
-            EquipmentBinderSummary = "Open a valid UO folder first.";
+            EquipmentBinderSummary = "请先打开有效的 UO 文件夹。";
             SetStatus(EquipmentBinderSummary);
             return;
         }
 
         if (selectedMulSlot == null)
         {
-            EquipmentBinderSummary = "Select a free MUL body ID first.";
+            EquipmentBinderSummary = "请先选择一个空闲的 MUL body ID。";
             SetStatus(EquipmentBinderSummary);
             return;
         }
@@ -159,11 +159,11 @@ public partial class EquipmentBinderToolViewModel : ViewModelBase
 
             OnPropertyChanged(nameof(EquipmentBinderExistsText));
             OnPropertyChanged(nameof(EquipmentBinderTargetSlotText));
-            SetStatus("Equipment Binder preview built.");
+            SetStatus("装备绑定工具预览已构建。");
         }
         catch (Exception exception)
         {
-            EquipmentBinderSummary = "Equipment Binder preview failed: " + exception.Message;
+            EquipmentBinderSummary = "装备绑定工具预览失败: " + exception.Message;
             SetStatus(EquipmentBinderSummary);
         }
     }
@@ -175,13 +175,13 @@ public partial class EquipmentBinderToolViewModel : ViewModelBase
 
         if (string.IsNullOrWhiteSpace(currentFolderPath) || !Directory.Exists(currentFolderPath))
         {
-            SetStatus("Open a valid UO folder first.");
+            SetStatus("请先打开有效的 UO 文件夹。");
             return;
         }
 
         if (selectedMulSlot == null)
         {
-            SetStatus("Select a free MUL body ID first.");
+            SetStatus("请先选择一个空闲的 MUL body ID。");
             return;
         }
 
@@ -214,18 +214,18 @@ public partial class EquipmentBinderToolViewModel : ViewModelBase
         string currentFolderPath = hostContext.CurrentFolderPathProvider();
         if (string.IsNullOrWhiteSpace(currentFolderPath) || !Directory.Exists(currentFolderPath))
         {
-            EquipmentPickerStatusText = "Open a valid UO folder first.";
+            EquipmentPickerStatusText = "请先打开有效的 UO 文件夹。";
             SetStatus(EquipmentPickerStatusText);
             return;
         }
 
         EquipmentArtPickerEntries.Clear();
         allEquipmentArtPickerEntries.Clear();
-        EquipmentPickerStatusText = "Loading art index...";
+        EquipmentPickerStatusText = "正在加载美术索引...";
 
         List<EquipmentArtPickerEntry> artIndex = await Task.Run(() => equipmentImageService.LoadArtIndexEntries(currentFolderPath));
         allEquipmentArtPickerEntries.AddRange(artIndex);
-        EquipmentPickerStatusText = "Loaded art index: " + allEquipmentArtPickerEntries.Count + " entries.";
+        EquipmentPickerStatusText = "美术索引已加载: " + allEquipmentArtPickerEntries.Count + " 项。";
         SetStatus(EquipmentPickerStatusText);
 
         EquipmentArtPickerSearchText = string.Empty;
@@ -237,18 +237,18 @@ public partial class EquipmentBinderToolViewModel : ViewModelBase
         string currentFolderPath = hostContext.CurrentFolderPathProvider();
         if (string.IsNullOrWhiteSpace(currentFolderPath) || !Directory.Exists(currentFolderPath))
         {
-            EquipmentPickerStatusText = "Open a valid UO folder first.";
+            EquipmentPickerStatusText = "请先打开有效的 UO 文件夹。";
             SetStatus(EquipmentPickerStatusText);
             return;
         }
 
         EquipmentGumpPickerEntries.Clear();
         allEquipmentGumpPickerEntries.Clear();
-        EquipmentPickerStatusText = "Loading gump index...";
+        EquipmentPickerStatusText = "正在加载 Gump 索引...";
 
         List<EquipmentGumpPickerEntry> gumpIndex = await Task.Run(() => equipmentImageService.LoadGumpIndexEntries(currentFolderPath));
         allEquipmentGumpPickerEntries.AddRange(gumpIndex);
-        EquipmentPickerStatusText = "Loaded gump index: " + allEquipmentGumpPickerEntries.Count + " entries.";
+        EquipmentPickerStatusText = "Gump 索引已加载: " + allEquipmentGumpPickerEntries.Count + " 项。";
         SetStatus(EquipmentPickerStatusText);
 
         EquipmentGumpPickerSearchText = string.Empty;

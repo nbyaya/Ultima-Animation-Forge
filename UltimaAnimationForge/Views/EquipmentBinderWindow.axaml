@@ -15,52 +15,54 @@
       <StackPanel Spacing="10">
         <TextBlock Text="装备绑定工具"
                    FontSize="20"
-                   FontWeight="Bold" />
+                   FontWeight="Bold"
+                   Foreground="#95A3B3" />
 
         <TextBlock Text="{Binding EquipmentBinderTargetSlotText}"
                    TextWrapping="Wrap"
-                   Opacity="0.85" />
+                   Opacity="0.85"
+                   Foreground="#95A3B3" />
 
         <Grid ColumnDefinitions="Auto,*"
               RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
               ColumnSpacing="8"
               RowSpacing="6">
-          <TextBlock Grid.Row="0" Grid.Column="0" Text="物品美术ID:" VerticalAlignment="Center" />
+          <TextBlock Grid.Row="0" Grid.Column="0" Text="物品美术ID:" VerticalAlignment="Center" Foreground="#95A3B3" />
           <NumericUpDown Grid.Row="0" Grid.Column="1" Minimum="0" Maximum="65535" Value="{Binding EquipmentBinderItemArtId}" />
 
-          <TextBlock Grid.Row="1" Grid.Column="0" Text="名称:" VerticalAlignment="Center" />
-          <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding EquipmentBinderName}" Watermark="flail" />
+          <TextBlock Grid.Row="1" Grid.Column="0" Text="名称:" VerticalAlignment="Center" Foreground="#95A3B3" />
+          <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding EquipmentBinderName}" Watermark="锁矛" />
 
-          <TextBlock Grid.Row="2" Grid.Column="0" Text="显示/Gump:" VerticalAlignment="Center" />
+          <TextBlock Grid.Row="2" Grid.Column="0" Text="显示/Gump:" VerticalAlignment="Center" Foreground="#95A3B3" />
           <DockPanel Grid.Row="2" Grid.Column="1">
             <Button DockPanel.Dock="Right" Content="自动" Margin="6,0,0,0" Command="{Binding AutoFillEquipmentBinderDisplayBodyCommand}" />
             <NumericUpDown Minimum="0" Maximum="65534" Value="{Binding EquipmentBinderDisplayBodyId}" />
           </DockPanel>
 
-          <TextBlock Grid.Row="3" Grid.Column="0" Text="动画 Body:" VerticalAlignment="Center" />
+          <TextBlock Grid.Row="3" Grid.Column="0" Text="动画 Body:" VerticalAlignment="Center" Foreground="#95A3B3" />
           <NumericUpDown Grid.Row="3" Grid.Column="1" Minimum="1" Maximum="65535" Value="{Binding EquipmentBinderAnimationBodyId}" />
 
-          <TextBlock Grid.Row="4" Grid.Column="0" Text="MobType:" VerticalAlignment="Center" />
-          <TextBlock Grid.Row="4" Grid.Column="1" Text="EQUIPMENT" FontWeight="Bold" VerticalAlignment="Center" />
+          <TextBlock Grid.Row="4" Grid.Column="0" Text="MobType:" VerticalAlignment="Center" Foreground="#95A3B3" />
+          <TextBlock Grid.Row="4" Grid.Column="1" Text="装备" FontWeight="Bold" VerticalAlignment="Center" Foreground="#95A3B3" />
 
           <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Spacing="4">
-            <CheckBox Content="覆盖 body.def 重定向" IsChecked="{Binding EquipmentBinderOverwriteBodyDef}" />
-            <CheckBox Content="覆盖 mobtypes 条目" IsChecked="{Binding EquipmentBinderOverwriteMobType}" />
-            <CheckBox Content="更新 tiledata.mul 动画" IsChecked="{Binding EquipmentBinderUpdateTileDataAnimation}" />
+            <CheckBox Content="覆盖 body.def 重定向" IsChecked="{Binding EquipmentBinderOverwriteBodyDef}" Foreground="#95A3B3" />
+            <CheckBox Content="覆盖 mobtypes 条目" IsChecked="{Binding EquipmentBinderOverwriteMobType}" Foreground="#95A3B3" />
+            <CheckBox Content="更新 tiledata.mul 动画" IsChecked="{Binding EquipmentBinderUpdateTileDataAnimation}" Foreground="#95A3B3" />
           </StackPanel>
         </Grid>
 
         <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="8" RowSpacing="6">
-          <Button Grid.Row="0" Grid.Column="0" Content="加载美术" Command="{Binding LoadEquipmentArtPickerCommand}"/>
-          <Button Grid.Row="0" Grid.Column="1" Content="加载 Gumps" Command="{Binding LoadEquipmentGumpPickerCommand}"/>
-          <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="构建预览" Command="{Binding BuildEquipmentBinderPreviewCommand}"/>
-          <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="应用绑定" Command="{Binding ApplyEquipmentBinderCommand}"/>
+          <Button Grid.Row="0" Grid.Column="0" Content="加载美术" Command="{Binding LoadEquipmentArtPickerCommand}" Foreground="#95A3B3" />
+          <Button Grid.Row="0" Grid.Column="1" Content="加载 Gumps" Command="{Binding LoadEquipmentGumpPickerCommand}" Foreground="#95A3B3" />
+          <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="构建预览" Command="{Binding BuildEquipmentBinderPreviewCommand}" Foreground="#95A3B3" />
+          <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="应用绑定" Command="{Binding ApplyEquipmentBinderCommand}" Foreground="#95A3B3" />
         </Grid>
 
 
         <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
           <StackPanel Grid.Column="0" Spacing="4">
-            <TextBlock Text="美术拾取器" FontWeight="Bold" />
+            <TextBlock Text="美术拾取器" FontWeight="Bold" Foreground="#95A3B3" />
             <TextBox Text="{Binding EquipmentArtPickerSearchText}" Watermark="搜索美术 ID 或十六进制..." />
             <ListBox ItemsSource="{Binding EquipmentArtPickerEntries}" SelectedItem="{Binding SelectedEquipmentArtPickerEntry}" MaxHeight="220">
               <ListBox.ItemTemplate>
@@ -69,7 +71,7 @@
                     <Border Width="48" Height="48" BorderBrush="#39414D" BorderThickness="1">
                       <Image Source="{Binding Thumbnail}" Stretch="Uniform" />
                     </Border>
-                    <TextBlock Text="{Binding DisplayText}" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding DisplayText}" VerticalAlignment="Center" Foreground="#95A3B3" />
                   </StackPanel>
                 </DataTemplate>
               </ListBox.ItemTemplate>
@@ -77,7 +79,7 @@
           </StackPanel>
 
           <StackPanel Grid.Column="1" Spacing="4">
-        <TextBlock Text="gump 拾取器" FontWeight="Bold" />
+        <TextBlock Text="gump 拾取器" FontWeight="Bold" Foreground="#95A3B3" />
             <TextBox Text="{Binding EquipmentGumpPickerSearchText}" Watermark="搜索 gump ID 或十六进制..." />
             <ListBox ItemsSource="{Binding EquipmentGumpPickerEntries}" SelectedItem="{Binding SelectedEquipmentGumpPickerEntry}" MaxHeight="220">
               <ListBox.ItemTemplate>
@@ -86,7 +88,7 @@
                     <Border Width="48" Height="48" BorderBrush="#39414D" BorderThickness="1">
                       <Image Source="{Binding Thumbnail}" Stretch="Uniform" />
                     </Border>
-                    <TextBlock Text="{Binding DisplayText}" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding DisplayText}" VerticalAlignment="Center" Foreground="#95A3B3" />
                   </StackPanel>
                 </DataTemplate>
               </ListBox.ItemTemplate>
@@ -94,22 +96,22 @@
           </StackPanel>
         </Grid>
 
-        <TextBlock Text="{Binding EquipmentBinderExistsText}" TextWrapping="Wrap" Opacity="0.8"/>
+        <TextBlock Text="{Binding EquipmentBinderExistsText}" TextWrapping="Wrap" Opacity="0.8" Foreground="#95A3B3"/>
 
-        <TextBlock Text="tiledata.mul:" FontWeight="Bold"/>
+        <TextBlock Text="地形数据.mul:" FontWeight="Bold" Foreground="#95A3B3"/>
         <TextBox Text="{Binding EquipmentBinderTileDataLine}" IsReadOnly="True"/>
 
-        <TextBlock Text="body.def:" FontWeight="Bold"/>
+        <TextBlock Text="身体定义.def:" FontWeight="Bold" Foreground="#95A3B3"/>
         <TextBox Text="{Binding EquipmentBinderBodyDefLine}" IsReadOnly="True"/>
 
-        <TextBlock Text="bodyconv.def:" FontWeight="Bold" />
+        <TextBlock Text="身体转换.def:" FontWeight="Bold" Foreground="#95A3B3" />
         <TextBox Text="{Binding EquipmentBinderBodyConvLine}" IsReadOnly="True" />
 
-        <TextBlock Text="mobtypes.txt:" FontWeight="Bold" />
+        <TextBlock Text="怪物类型.txt:" FontWeight="Bold" Foreground="#95A3B3" />
         <TextBox Text="{Binding EquipmentBinderMobTypeLine}" IsReadOnly="True" />
 
-        <TextBlock Text="{Binding EquipmentBinderSummary}" TextWrapping="Wrap" Opacity="0.85" />
-        <TextBlock Text="{Binding EquipmentPickerStatusText}" TextWrapping="Wrap" Opacity="0.75" />
+        <TextBlock Text="{Binding EquipmentBinderSummary}" TextWrapping="Wrap" Opacity="0.85" Foreground="#95A3B3" />
+        <TextBlock Text="{Binding EquipmentPickerStatusText}" TextWrapping="Wrap" Opacity="0.75" Foreground="#95A3B3" />
       </StackPanel>
     </Border>
   </ScrollViewer>
