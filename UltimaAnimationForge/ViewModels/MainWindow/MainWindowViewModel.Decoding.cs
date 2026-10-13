@@ -942,27 +942,27 @@ public partial class MainWindowViewModel
 
         if (animation == null)
         {
-            result.Message = "No animation selected.";
+            result.Message = "未选择动画。";
             return result;
         }
 
         IAnimationDataSource? dataSource = GetDataSourceForEntry(animation);
         if (dataSource == null)
         {
-            result.Message = "No animation data source is available.";
+            result.Message = "没有可用的动画数据源。";
             return result;
         }
 
         if (!dataSource.TryResolveAnimationBlock(animation.BodyId, actionIndex, directionIndex, out ResolvedAnimationBlock resolvedBlock))
         {
-            result.Message = "No animation data for body " + animation.BodyId + ", action " + actionIndex + ", direction " + directionIndex + ".";
+            result.Message = "Body " + animation.BodyId + "、动作 " + actionIndex + "、方向 " + directionIndex + " 没有动画数据。";
             return result;
         }
 
         byte[] blockData = dataSource.ReadAnimationBlock(resolvedBlock);
         if (blockData.Length == 0)
         {
-            result.Message = "Failed to read animation block.";
+            result.Message = "读取动画数据块失败。";
             return result;
         }
 
@@ -976,7 +976,7 @@ public partial class MainWindowViewModel
         {
             if (blockData.Length < 516)
             {
-                result.Message = "Animation block too small.";
+                result.Message = "动画数据块过小。";
                 return result;
             }
 
@@ -989,7 +989,7 @@ public partial class MainWindowViewModel
 
         if (frames.Count == 0)
         {
-            result.Message = "No frames decoded.";
+            result.Message = "未解码任何帧。";
             return result;
         }
 
@@ -1000,10 +1000,10 @@ public partial class MainWindowViewModel
         result.FrameSizeText = frames[0].PixelSize.Width + " x " + frames[0].PixelSize.Height;
         result.PreviewInfoText =
             "Body " + animation.BodyId +
-            " | Action " + actionIndex +
-            " | Direction " + directionIndex +
+            " | 动作 " + actionIndex +
+            " | 方向 " + directionIndex +
             " | " + resolvedBlock.SourceFileName +
-            " | Frames: " + frames.Count;
+            " | 帧数: " + frames.Count;
 
         return result;
     }
