@@ -1011,7 +1011,7 @@ public partial class MainWindowViewModel
     {
         Window dialog = new Window
         {
-            Title = "Export Frames",
+            Title = "导出帧",
             Width = 460,
             Height = 540,
             CanResize = false,
@@ -1022,10 +1022,10 @@ public partial class MainWindowViewModel
         {
             ItemsSource = new[]
             {
-            "Current frame",
-            "Current direction",
-            "All directions",
-            "All actions and directions"
+            "当前帧",
+            "当前方向",
+            "所有方向",
+            "所有动作和方向"
         },
             SelectedIndex = 2,
             Margin = new Thickness(0, 6, 0, 0),
@@ -1039,8 +1039,8 @@ public partial class MainWindowViewModel
             "PNG",
             "JPG",
             "BMP",
-            "Animated GIF",
-            "Sprite Sheet PNG"
+            "动画 GIF",
+            "精灵表 PNG"
         },
             SelectedIndex = 0,
             Margin = new Thickness(0, 6, 0, 0),
@@ -1049,7 +1049,7 @@ public partial class MainWindowViewModel
 
         CheckBox gifLoopCheckBox = new CheckBox
         {
-            Content = "Loop animated GIF",
+            Content = "动画 GIF 循环",
             IsChecked = true,
             Margin = new Thickness(0, 2, 0, 0)
         };
@@ -1066,7 +1066,7 @@ public partial class MainWindowViewModel
 
         CheckBox resizeCheckBox = new CheckBox
         {
-            Content = "Resize exported frames",
+            Content = "调整导出的帧大小",
             IsChecked = false,
             Margin = new Thickness(0, 2, 0, 0)
         };
@@ -1085,11 +1085,11 @@ public partial class MainWindowViewModel
         {
             ItemsSource = new[]
 {
-    "Auto",
-    "Nearest Neighbor",
+    "自动",
+    "最近邻插值",
     "Lanczos3",
-    "Spline",
-    "Bicubic Sharper"
+    "样条插值",
+    "双三次锐化"
 },
             SelectedIndex = 0,
             IsEnabled = false,
@@ -1113,7 +1113,7 @@ public partial class MainWindowViewModel
                 {
                     new TextBlock
                     {
-                        Text = "Scale %",
+                        Text = "缩放比例 %",
                         Width = 70,
                         VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center
                     },
@@ -1130,7 +1130,7 @@ public partial class MainWindowViewModel
                 {
                     new TextBlock
                     {
-                        Text = "Sampler",
+                        Text = "采样器",
                         Width = 70,
                         VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center
                     },
@@ -1142,7 +1142,7 @@ public partial class MainWindowViewModel
 
         TextBlock spriteColumnsLabel = new TextBlock
         {
-            Text = "Columns",
+            Text = "列数",
             Width = 80,
             VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center
         };
@@ -1158,7 +1158,7 @@ public partial class MainWindowViewModel
 
         TextBlock spritePaddingLabel = new TextBlock
         {
-            Text = "Padding",
+            Text = "内边距",
             Width = 80,
             VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center
         };
@@ -1174,7 +1174,7 @@ public partial class MainWindowViewModel
 
         TextBlock spriteMetadataLabel = new TextBlock
         {
-            Text = "Metadata",
+            Text = "元数据",
             Width = 80,
             VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center
         };
@@ -1183,7 +1183,7 @@ public partial class MainWindowViewModel
         {
             ItemsSource = new[]
             {
-            "None",
+            "无",
             "CSV",
             "JSON"
         },
@@ -1200,7 +1200,7 @@ public partial class MainWindowViewModel
         {
             new TextBlock
             {
-                Text = "Sprite sheet options",
+                Text = "精灵表选项",
                 FontWeight = FontWeight.SemiBold,
                 Margin = new Thickness(0, 0, 0, 2)
             },
@@ -1257,13 +1257,13 @@ public partial class MainWindowViewModel
 
         Button exportButton = new Button
         {
-            Content = "Export",
+            Content = "导出",
             Width = 90
         };
 
         Button cancelButton = new Button
         {
-            Content = "Cancel",
+            Content = "取消",
             Width = 90
         };
 
@@ -1286,33 +1286,33 @@ public partial class MainWindowViewModel
 
             List<string> lines = new List<string>
         {
-            "Resize: " + (resizeEnabled ? (resizePercent.ToString("0") + "%") : "Off"),
-            "Sampler: " + (resizeEnabled ? samplerLabel : "Off"),
-            "GIF Loop: " + (isGif ? ((gifLoopCheckBox.IsChecked ?? true) ? "On" : "Off") : "N/A")
+            "调整大小：" + (resizeEnabled ? (resizePercent.ToString("0") + "%") : "关闭"),
+            "采样器：" + (resizeEnabled ? samplerLabel : "关闭"),
+            "GIF 循环：" + (isGif ? ((gifLoopCheckBox.IsChecked ?? true) ? "开启" : "关闭") : "N/A")
         };
 
             if (isSpriteSheet)
             {
-                lines.Add("Columns: " + (spriteColumnsBox.Value ?? 8m));
-                lines.Add("Padding: " + (spritePaddingBox.Value ?? 2m));
-                lines.Add("Metadata: " + (spriteMetadataComboBox.SelectedItem?.ToString() ?? "None"));
+                lines.Add("列数：" + (spriteColumnsBox.Value ?? 8m));
+                lines.Add("内边距：" + (spritePaddingBox.Value ?? 2m));
+                lines.Add("元数据：" + (spriteMetadataComboBox.SelectedItem?.ToString() ?? "无"));
             }
 
             lines.Add(string.Empty);
 
             if (resizeEnabled)
             {
-                lines.Add("Downscale: Bicubic Sharper usually gives cleaner UO sprites with less halo than Lanczos3.");
-                lines.Add("Upscale: Nearest Neighbor = crisp pixels, Spline = smoother enlargement.");
+                lines.Add("缩小：双三次锐化通常对 UO 精灵提供更清晰的效果，晕轮比 Lanczos3 更少。");
+                lines.Add("放大：最近邻插值=清晰像素，样条插值=更平滑的放大。");
             }
             else
             {
-                lines.Add("Frames will export at original size.");
+                lines.Add("帧将以原始大小导出。");
             }
 
             if (isSpriteSheet)
             {
-                lines.Add("Sprite sheets align frame centers for cleaner motion.");
+                lines.Add("精灵表对帧中心对齐以实现更清晰的运动。");
             }
 
             previewText.Text = string.Join(Environment.NewLine, lines);
@@ -1410,10 +1410,10 @@ public partial class MainWindowViewModel
             Spacing = 12,
             Children =
         {
-            new TextBlock { Text = "Choose what to export:" },
+            new TextBlock { Text = "选择要导出的内容：" },
             modeComboBox,
 
-            new TextBlock { Text = "Choose output format:" },
+            new TextBlock { Text = "选择输出格式：" },
             formatComboBox,
 
             gifOptionsPanel,
@@ -2330,7 +2330,7 @@ VdHueDialogResult? hueDialogResult)
     {
         Window dialog = new Window
         {
-            Title = "Create Empty Legacy MUL/IDX",
+            Title = "创建空的传统 MUL/IDX",
             Width = 500,
             Height = 500,
             CanResize = false,
@@ -2340,16 +2340,16 @@ VdHueDialogResult? hueDialogResult)
         TextBox fileNameTextBox = new TextBox
         {
             Text = "anim_custom",
-            Watermark = "Base file name (without .mul / .idx)"
+            Watermark = "基础文件名（不含 .mul / .idx）"
         };
 
         ComboBox typeComboBox = new ComboBox
         {
             ItemsSource = new[]
             {
-            "H (22 actions)",
-            "L (13 actions)",
-            "P (35 actions)"
+            "H（22 动作）",
+            "L（13 动作）",
+            "P（35 动作）"
         },
             SelectedIndex = 0
         };
@@ -2382,13 +2382,13 @@ VdHueDialogResult? hueDialogResult)
 
         Button createButton = new Button
         {
-            Content = "Create",
+            Content = "创建",
             Width = 90
         };
 
         Button cancelButton = new Button
         {
-            Content = "Cancel",
+            Content = "取消",
             Width = 90
         };
 
@@ -2402,23 +2402,21 @@ VdHueDialogResult? hueDialogResult)
             typeComboBox.IsEnabled = !isAnimSeries;
 
             dialog.Title = isAnimSeries
-    ? "Create Empty CUO Anim MUL/IDX"
-    : "Create Empty Legacy MUL/IDX";
+    ? "创建空的 CUO 动画序列 MUL/IDX"
+    : "创建空的传统 MUL/IDX";
 
             helpText.Text = isAnimSeries
-                ? "Creates an empty CUO-compatible anim series MUL/IDX pair. " +
-                  "For anim, anim2, anim7, and other anim# files, slot layout is based on body range instead of a fixed H/L/P type."
-                : "Creates an empty classic fixed-layout MUL/IDX pair using the selected animation type. " +
-                  "All IDX entries are initialized as empty (-1, -1, -1).";
+                ? "创建一个空的 CUO 兼容动画序列 MUL/IDX 对。对于 anim、anim2、anim7 等 anim# 文件，槽位布局基于 Body 范围而不是固定的 H/L/P 类型。"
+                : "使用选定的动画类型创建一个空的经典固定布局 MUL/IDX 对。所有 IDX 条目初始化为空（-1, -1, -1）。";
 
             modeText.Text = isAnimSeries
-                ? "CUO anim-series layout:" + Environment.NewLine +
-                  "Bodies 0-199 = 22 actions" + Environment.NewLine +
-                  "Bodies 200-399 = 13 actions" + Environment.NewLine +
-                  "Bodies 400+ = 35 actions" + Environment.NewLine +
-                  "Animation type selection is ignored for anim# files."
-                : "Fixed-layout mode:" + Environment.NewLine +
-                  "The selected H / L / P type will be used for all bodies in the file.";
+                ? "CUO 动画序列布局：" + Environment.NewLine +
+                  "Body 0-199 = 22 动作" + Environment.NewLine +
+                  "Body 200-399 = 13 动作" + Environment.NewLine +
+                  "Body 400+ = 35 动作" + Environment.NewLine +
+                  "对于 anim# 文件，动画类型选择被忽略。"
+                : "固定布局模式：" + Environment.NewLine +
+                  "所选的 H / L / P 类型将用于文件中的所有 Body。";
         }
 
         fileNameTextBox.PropertyChanged += (_, args) =>
@@ -2468,13 +2466,13 @@ VdHueDialogResult? hueDialogResult)
         {
             helpText,
             modeText,
-            new TextBlock { Text = "Base file name" },
+            new TextBlock { Text = "基础文件名" },
             fileNameTextBox,
-            new TextBlock { Text = "Animation type" },
+            new TextBlock { Text = "动画类型" },
             typeComboBox,
-            new TextBlock { Text = "Start body ID" },
+            new TextBlock { Text = "起始 Body ID" },
             startBodyNumeric,
-            new TextBlock { Text = "End body ID" },
+            new TextBlock { Text = "结束 Body ID" },
             endBodyNumeric,
             new StackPanel
             {
