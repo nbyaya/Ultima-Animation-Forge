@@ -1627,7 +1627,7 @@ public partial class MainWindowViewModel : ViewModelBase
             OnPropertyChanged(nameof(SelectedUopVirtualPathDisplay));
         }
 
-        StatusText = "Showing " + AnimationEntries.Count + " filtered animation bodies.";
+        StatusText = "显示 " + AnimationEntries.Count + " 个筛选的动画身体。";
         if (AnimationBrowserVisible)
         {
             BuildAnimationBrowserTiles();
