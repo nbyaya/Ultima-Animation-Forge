@@ -472,7 +472,12 @@ public partial class MainWindowViewModel
                 return "ANIMAL";
             }
 
-            return "HUMAN";
+            if (bodyId < 500)
+            {
+                return "HUMAN";
+            }
+
+            return "EQUIPMENT";
         }
 
         return dataSource.GetBodyTypeName(bodyId);
@@ -979,11 +984,11 @@ public partial class MainWindowViewModel
 
         string[] names =
         {
-            "North (0)",
-            "Right (1)",
-            "East (2)",
-            "Down (3)",
-            "Left (4)"
+            "北方 (0)",
+            "右边 (1)",
+            "东方 (2)",
+            "下方 (3)",
+            "左边 (4)"
         };
 
         for (int i = 0; i < names.Length; i++)

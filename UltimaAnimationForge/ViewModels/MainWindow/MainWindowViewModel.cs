@@ -826,7 +826,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private string searchText = string.Empty;
 
     [ObservableProperty]
-    private string? selectedBodyType = "All";
+    private string? selectedBodyType = "所有";
 
     [ObservableProperty]
     private string? selectedAction = "All";
@@ -1169,11 +1169,11 @@ public partial class MainWindowViewModel : ViewModelBase
         ToggleCheckerCommand = new RelayCommand(() => ShowCheckerBackground = !ShowCheckerBackground);
         ToggleLoopCommand = new RelayCommand(() => LoopPlayback = !LoopPlayback);
 
-        BodyTypeOptions.Add("All");
-        BodyTypeOptions.Add("Monster");
-        BodyTypeOptions.Add("Animal");
-        BodyTypeOptions.Add("Human");
-        BodyTypeOptions.Add("Equipment");
+        BodyTypeOptions.Add("所有");
+        BodyTypeOptions.Add("怪物");
+        BodyTypeOptions.Add("动物");
+        BodyTypeOptions.Add("人类");
+        BodyTypeOptions.Add("装备");
 
         AnimationFileOptions.Add("All Files");
         SelectedAnimationFile = "All Files";
@@ -1183,18 +1183,18 @@ public partial class MainWindowViewModel : ViewModelBase
         SelectedAction = "Action 0";
 
         DirectionOptions.Clear();
-        DirectionOptions.Add("East (0)");
-        DirectionOptions.Add("South (1)");
-        DirectionOptions.Add("Southwest (2)");
-        DirectionOptions.Add("West (3)");
-        DirectionOptions.Add("Westnorth (4)");
+        DirectionOptions.Add("东方 (0)");
+        DirectionOptions.Add("南方 (1)");
+        DirectionOptions.Add("西南 (2)");
+        DirectionOptions.Add("西方 (3)");
+        DirectionOptions.Add("西北 (4)");
 
         directionNameToIndex.Clear();
-        directionNameToIndex["East (0)"] = 0;
-        directionNameToIndex["South (1)"] = 1;
-        directionNameToIndex["Southwest (2)"] = 2;
-        directionNameToIndex["West (3)"] = 3;
-        directionNameToIndex["Westnorth (4)"] = 4;
+        directionNameToIndex["东方 (0)"] = 0;
+        directionNameToIndex["南方 (1)"] = 1;
+        directionNameToIndex["西南 (2)"] = 2;
+        directionNameToIndex["西方 (3)"] = 3;
+        directionNameToIndex["西北 (4)"] = 4;
 
         SelectedDirection = DirectionOptions.Count > 0 ? DirectionOptions[0] : null;
 
@@ -1290,114 +1290,114 @@ public partial class MainWindowViewModel : ViewModelBase
 
     private static readonly string[] MulAnimalActions =
 {
-    "Walk",
-    "Run",
-    "Idle",
-    "Eat",
-    "Alert",
-    "Attack1",
-    "Attack2",
-    "GetHit",
-    "Die1",
-    "Idle",
-    "Fidget",
-    "LieDown",
-    "Die2"
+    "行走",
+    "跑步",
+    "静止",
+    "进食",
+    "警报",
+    "攻击1",
+    "攻击2",
+    "受伤",
+    "死亡1",
+    "静止",
+    "坐立不安",
+    "躺下",
+    "死亡2"
 };
 
     private static readonly string[] MulMonsterActions =
     {
-    "Walk",
-    "Idle",
-    "Die1",
-    "Die2",
-    "Attack1",
-    "Attack2",
-    "Attack3",
-    "AttackBow",
-    "AttackCrossBow",
-    "AttackThrow",
-    "GetHit",
-    "Pillage",
-    "Stomp",
-    "Cast2",
-    "Cast3",
-    "BlockRight",
-    "BlockLeft",
-    "Idle",
-    "Fidget",
-    "Fly",
-    "TakeOff",
-    "GetHitInAir"
+    "行走",
+    "静止",
+    "死亡1",
+    "死亡2",
+    "攻击1",
+    "攻击2",
+    "攻击3",
+    "弓箭攻击",
+    "弩攻击",
+    "投掷攻击",
+    "受伤",
+    "掠夺",
+    "踩踏",
+    "魔法2",
+    "魔法3",
+    "右侧防守",
+    "左侧防守",
+    "静止",
+    "坐立不安",
+    "飞行",
+    "起飞",
+    "空中受伤"
 };
 
     private static readonly string[] MulHumanActions =
     {
-    "Walk_01",
-    "WalkStaff_01",
-    "Run_01",
-    "RunStaff_01",
-    "Idle_01",
-    "Idle_01",
-    "Fidget_Yawn_Stretch_01",
-    "CombatIdle1H_01",
-    "CombatIdle1H_01",
-    "AttackSlash1H_01",
-    "AttackPierce1H_01",
-    "AttackBash1H_01",
-    "AttackBash2H_01",
-    "AttackSlash2H_01",
-    "AttackPierce2H_01",
-    "CombatAdvance_1H_01",
-    "Spell1",
-    "Spell2",
-    "AttackBow_01",
-    "AttackCrossbow_01",
-    "GetHit_Fr_Hi_01",
-    "Die_Hard_Fwd_01",
-    "Die_Hard_Back_01",
-    "Horse_Walk_01",
-    "Horse_Run_01",
-    "Horse_Idle_01",
-    "Horse_Attack1H_SlashRight_01",
-    "Horse_AttackBow_01",
-    "Horse_AttackCrossbow_01",
-    "Horse_Attack2H_SlashRight_01",
-    "Block_Shield_Hard_01",
-    "Punch_Punch_Jab_01",
-    "Bow_Lesser_01",
-    "Salute_Armed1h_01",
-    "Ingest_Eat_01"
+    "行走_01",
+    "持杖行走_01",
+    "跑步_01",
+    "持杖跑步_01",
+    "静止_01",
+    "静止_01",
+    "坐立不安_打哈欠_伸展_01",
+    "战斗静止1H_01",
+    "战斗静止1H_01",
+    "攻击斩1H_01",
+    "攻击刺1H_01",
+    "攻击打1H_01",
+    "攻击打2H_01",
+    "攻击斩2H_01",
+    "攻击刺2H_01",
+    "战斗前进_1H_01",
+    "法术1",
+    "法术2",
+    "攻击弓_01",
+    "攻击弩_01",
+    "受伤_正面_高_01",
+    "死亡_重伤_向前_01",
+    "死亡_重伤_向后_01",
+    "马匹_行走_01",
+    "马匹_跑步_01",
+    "马匹_静止_01",
+    "马匹_攻击1H_斩右_01",
+    "马匹_攻击弓_01",
+    "马匹_攻击弩_01",
+    "马匹_攻击2H_斩右_01",
+    "防守_盾牌_重伤_01",
+    "拳击_拳击_戳刺_01",
+    "弓_低级_01",
+    "致敬_持武1h_01",
+    "进食_吃_01"
 };
 
     private static readonly string[] MulFlyingActions =
     {
-    "Walk",
-    "Run",
-    "Idle",
-    "Eat",
-    "Alert",
-    "Attack1",
-    "Attack2",
-    "GetHit",
-    "Die1",
-    "Idle",
-    "Fidget",
-    "LieDown",
-    "Die2",
-    "Attack3",
-    "AttackBow",
-    "AttackCrossBow",
-    "AttackThrow",
-    "Pillage",
-    "Stomp",
-    "Cast2",
-    "Cast3",
-    "BlockRight",
-    "BlockLeft",
-    "Fly",
-    "TakeOff",
-    "GetHitInAir"
+    "行走",
+    "跑步",
+    "静止",
+    "进食",
+    "警报",
+    "攻击1",
+    "攻击2",
+    "受伤",
+    "死亡1",
+    "静止",
+    "坐立不安",
+    "躺下",
+    "死亡2",
+    "攻击3",
+    "弓箭攻击",
+    "弩攻击",
+    "投掷攻击",
+    "掠夺",
+    "踩踏",
+    "魔法2",
+    "魔法3",
+    "右侧防守",
+    "左侧防守",
+    "飞行",
+    "起飞",
+    "空中受伤"
 };
 
     private string[] GetActionNamesForBody(int bodyId)
@@ -1510,18 +1510,18 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         return new string[]
         {
-        "East",
-        "South",
-        "Southwest",
-        "West",
-        "Westnorth"
+            "东方",
+            "南方",
+            "西南",
+            "西方",
+            "西北"
         };
     }
 
     private void ApplyAnimationFilters()
     {
         string search = SearchText?.Trim() ?? string.Empty;
-        string selectedType = SelectedBodyType?.Trim() ?? "All";
+        string selectedType = SelectedBodyType?.Trim() ?? "所有";
         string selectedFile = NormalizeSelectedAnimationFile(SelectedAnimationFile);
 
         int? previousBodyId = SelectedAnimation?.BodyId;
@@ -1540,17 +1540,17 @@ public partial class MainWindowViewModel : ViewModelBase
         {
             bool matchesType = true;
 
-            if (!string.Equals(selectedType, "All", StringComparison.OrdinalIgnoreCase))
+            if (!string.Equals(selectedType, "所有", StringComparison.Ordinal))
             {
                 string entryType = GetBodyTypeName(entry.BodyId);
 
-                matchesType = selectedType.ToUpperInvariant() switch
+                matchesType = selectedType switch
                 {
-                    "MONSTER" => entryType == "MONSTER" || entryType == "SEA_MONSTER",
-                    "ANIMAL" => entryType == "ANIMAL",
-                    "HUMAN" => entryType == "HUMAN",
-                    "EQUIPMENT" => entryType == "EQUIPMENT",
-                    _ => true
+                    "怪物" => entryType == "MONSTER" || entryType == "SEA_MONSTER",
+                    "动物" => entryType == "ANIMAL",
+                    "人类" => entryType == "HUMAN",
+                    "装备" => entryType == "EQUIPMENT",
+                    _ => false
                 };
             }
 
