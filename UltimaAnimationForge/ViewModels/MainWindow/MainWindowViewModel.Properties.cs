@@ -594,10 +594,20 @@ public partial class MainWindowViewModel
     public string LivePreviewHueText =>
         LivePreviewHueEnabled && LivePreviewSelectedHue != null
             ? LivePreviewSelectedHue.DisplayText
-            : "None";
+            : "无";
+
+    private string GetResizeSamplerModeName(ResizeSamplerMode mode) => mode switch
+    {
+        ResizeSamplerMode.Auto => "自动",
+        ResizeSamplerMode.NearestNeighbor => "最近邻插值",
+        ResizeSamplerMode.Lanczos3 => "Lanczos3",
+        ResizeSamplerMode.Spline => "样条插值",
+        ResizeSamplerMode.BicubicSharper => "双三次锐化",
+        _ => mode.ToString()
+    };
 
     public string LivePreviewScaleText =>
-        LivePreviewScalePercent.ToString("0") + "% / " + LivePreviewResizeSampler;
+        LivePreviewScalePercent.ToString("0") + "% / " + GetResizeSamplerModeName(LivePreviewResizeSampler);
 
     public bool HasAnyUnsavedChanges => HasUnsavedChanges || hasFrameEdits;
 
