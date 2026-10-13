@@ -1466,7 +1466,7 @@ public partial class MainWindowViewModel
     {
         Window dialog = new Window
         {
-            Title = "Export VD Scale",
+            Title = "导出 VD 动画缩放",
             Width = 420,
             MinWidth = 420,
             Height = 430,
@@ -1505,10 +1505,10 @@ public partial class MainWindowViewModel
         {
             ItemsSource = new[]
             {
-        "Auto",
-        "Nearest Neighbor",
+        "自动",
+        "最近邻插值",
         "Lanczos3",
-        "Spline"
+        "样条插值"
     },
             SelectedIndex = 0,
             Margin = new Thickness(0, 8, 0, 0)
@@ -1516,7 +1516,7 @@ public partial class MainWindowViewModel
 
         CheckBox useCustomCheckBox = new CheckBox
         {
-            Content = "Use custom scale percent",
+            Content = "使用自定义缩放百分比",
             Margin = new Thickness(0, 12, 0, 0)
         };
 
@@ -1528,13 +1528,13 @@ public partial class MainWindowViewModel
 
         Button okButton = new Button
         {
-            Content = "OK",
+            Content = "确定",
             Width = 90
         };
 
         Button cancelButton = new Button
         {
-            Content = "Cancel",
+            Content = "取消",
             Width = 90
         };
 
@@ -1562,12 +1562,12 @@ public partial class MainWindowViewModel
             }
 
             double scaleFactor = percent / 100.0;
-            string samplerLabel = samplerComboBox.SelectedItem?.ToString() ?? "Auto";
+            string samplerLabel = samplerComboBox.SelectedItem?.ToString() ?? "自动";
 
             previewText.Text =
-                "Scale factor: " + scaleFactor.ToString("0.00") + "x" + Environment.NewLine +
-                "Resize sampler: " + samplerLabel + Environment.NewLine +
-                "This will resize all exported animation frames and scale their centers before VD export.";
+                "缩放系数：" + scaleFactor.ToString("0.00") + "x" + Environment.NewLine +
+                "调整采样器：" + samplerLabel + Environment.NewLine +
+                "这将调整所有导出的动画帧大小并在 VD 导出前缩放它们的中心。";
         }
 
         presetComboBox.SelectionChanged += (_, _) =>
@@ -1651,14 +1651,14 @@ public partial class MainWindowViewModel
         {
             new TextBlock
             {
-                Text = "Choose export scale for the VD animation:"
+                Text = "选择 VD 动画的导出缩放比例："
             },
             presetComboBox,
             useCustomCheckBox,
             customPercentBox,
             new TextBlock
             {
-                Text = "Resize sampler"
+                Text = "调整采样器"
             },
             samplerComboBox,
             previewText,
