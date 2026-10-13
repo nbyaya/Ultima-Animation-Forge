@@ -405,22 +405,22 @@ x:DataType="vm:MainWindowViewModel">
                                 <WrapPanel>
                                     <Button Content="对比原文件"
                                             Command="{Binding ToggleOriginalFrameCompareCommand}"
-                                            ToolTip.Tip="Shows the original frame as a ghost behind the moved frame so you can compare the offset."
+                                            ToolTip.Tip="在移动的帧后面显示原始帧的幽灵图像，以便您可以比较偏移量。"
                                             Margin="0,0,6,0"/>
 
                                     <Button Content="应用帧"
                                             Command="{Binding ApplySelectedAnimationOffsetToCurrentFrameCommand}"
-                                            ToolTip.Tip="Applies the X/Y offset only to the currently selected frame."
+                                            ToolTip.Tip="只将 X/Y 偏移应用于当前选中的帧。"
                                             Margin="0,0,6,0"/>
 
                                     <Button Content="应用方向"
                                             Command="{Binding ApplySelectedAnimationOffsetToCurrentDirectionCommand}"
-                                            ToolTip.Tip="Applies the X/Y offset to every frame in the currently loaded direction."
+                                            ToolTip.Tip="将 X/Y 偏移应用于当前加载方向中的每一帧。"
                                             Margin="0,0,6,0"/>
 
                                     <Button Content="清除"
                                             Command="{Binding ClearSelectedAnimationOffsetCommand}"
-                                            ToolTip.Tip="Clears the current X/Y offset preview."/>
+                                            ToolTip.Tip="清除当前的 X/Y 偏移预览。"/>
                                     <Border Classes="card" Padding="8" Margin="0,4,0,0">
                                         <StackPanel Spacing="8">
                                             <TextBlock Text="对齐工具" Classes="sectionTitle"/>
@@ -432,22 +432,22 @@ x:DataType="vm:MainWindowViewModel">
                                             <WrapPanel>
                                                 <Button Content="设置参考"
                                                         Command="{Binding SetAnimationAlignReferenceCommand}"
-                                                        ToolTip.Tip="Uses the current frame as the alignment reference."
+                                                        ToolTip.Tip="使用当前帧作为对齐参考。"
                                                         Margin="0,0,6,0"/>
 
                                                 <Button Content="匹配帧"
                                                         Command="{Binding MatchCurrentFrameToAlignReferenceCommand}"
-                                                        ToolTip.Tip="Calculates the X/Y offset needed to match the reference frame."
+                                                        ToolTip.Tip="计算匹配参考帧所需的 X/Y 偏移。"
                                                         Margin="0,0,6,0"/>
 
                                                 <Button Content="对齐方向"
                                                         Command="{Binding AlignCurrentDirectionToReferenceCommand}"
-                                                        ToolTip.Tip="Applies the same offset to all loaded frames."
+                                                        ToolTip.Tip="将相同的偏移应用于所有加载的帧。"
                                                         Margin="0,0,6,0"/>
 
                                                 <Button Content="自动对齐帧"
                                                         Command="{Binding AutoAlignCurrentDirectionFramesCommand}"
-                                                        ToolTip.Tip="Calculates and applies alignment separately for each frame."/>
+                                                        ToolTip.Tip="为每一帧单独计算并应用对齐。"/>
                                             </WrapPanel>
                                         </StackPanel>
                                     </Border>
@@ -497,22 +497,22 @@ x:DataType="vm:MainWindowViewModel">
                                 <WrapPanel>
                                     <Button Content="骑乘对齐"
                                             Command="{Binding SetupMountRiderAlignmentCommand}"
-                                            ToolTip.Tip="Sets up compare mode for aligning a rider animation on top of a mount animation."
+                                            ToolTip.Tip="为将骑手动画对齐到坐骑动画之上设置对比模式。"
                                             Margin="0,0,6,0"/>
 
                                     <Button Content="保存姿势"
                                             Command="{Binding SaveComparePoseForCurrentFrameCommand}"
-                                            ToolTip.Tip="Saves the current compare X/Y pose for this frame."
+                                            ToolTip.Tip="为此帧保存当前的对比 X/Y 姿势。"
                                             Margin="0,0,6,0"/>
 
                                     <Button Content="复制前帧"
                                             Command="{Binding CopyComparePoseFromPreviousFrameCommand}"
-                                            ToolTip.Tip="Copies the compare pose from the previous frame to the current frame."
+                                            ToolTip.Tip="从前一帧复制对比姿势到当前帧。"
                                             Margin="0,0,6,0"/>
 
                                     <Button Content="清除"
                                             Command="{Binding ClearCompareOverlayCommand}"
-                                            ToolTip.Tip="Turns off and clears the compare overlay."/>
+                                            ToolTip.Tip="关闭并清除对比叠加层。"/>
                                 </WrapPanel>
                             </StackPanel>
                         </Border>
@@ -547,22 +547,22 @@ x:DataType="vm:MainWindowViewModel">
                                 <WrapPanel>
                                     <Button Content="加载"
                                             Command="{Binding LoadPropOverlayCommand}"
-                                            ToolTip.Tip="Loads an image prop to preview over the animation."
+                                            ToolTip.Tip="加载一个图像道具在动画上方预览。"
                                             Margin="0,0,6,0"/>
 
                                     <Button Content="应用帧"
                                             Command="{Binding ApplyPropOverlayToCurrentFrameCommand}"
-                                            ToolTip.Tip="Applies the prop overlay only to the selected frame."
+                                            ToolTip.Tip="仅将道具叠加应用于选定的帧。"
                                             Margin="0,0,6,0"/>
 
                                     <Button Content="应用方向"
                                             Command="{Binding ApplyPropOverlayToCurrentDirectionCommand}"
-                                            ToolTip.Tip="Applies the prop overlay to every frame in the current direction."
+                                            ToolTip.Tip="将道具叠加应用于当前方向的每一帧。"
                                             Margin="0,0,6,0"/>
 
                                     <Button Content="清除"
                                             Command="{Binding ClearPropOverlayCommand}"
-                                            ToolTip.Tip="Removes the loaded prop overlay from preview."/>
+                                            ToolTip.Tip="从预览中移除加载的道具叠加。"/>
                                 </WrapPanel>
                             </StackPanel>
                         </Border>
@@ -587,22 +587,22 @@ x:DataType="vm:MainWindowViewModel">
                                 <WrapPanel>
                                     <Button Content="色调..."
                                             Command="{Binding ConfigureLivePreviewHueCommand}"
-                                            ToolTip.Tip="Opens hue settings for previewing the animation with a UO hue."
+                                            ToolTip.Tip="打开色调设置，以使用 UO 色调预览动画。"
                                             Margin="0,0,6,0"/>
 
                                     <Button Content="缩放..."
                                             Command="{Binding ConfigureLivePreviewScaleCommand}"
-                                            ToolTip.Tip="Opens scale settings for previewing or resizing the animation."
+                                            ToolTip.Tip="打开缩放设置，用于预览或调整动画大小。"
                                             Margin="0,0,6,0"/>
 
                                     <Button Content="应用方向"
                                             Command="{Binding ApplyLivePreviewToCurrentDirectionCommand}"
-                                            ToolTip.Tip="Applies the current live effects to every frame in this direction."
+                                            ToolTip.Tip="将当前实时效果应用于此方向的每一帧。"
                                             Margin="0,0,6,0"/>
 
                                     <Button Content="重置"
                                             Command="{Binding ResetLivePreviewCommand}"
-                                            ToolTip.Tip="Turns off all live preview effects and restores normal preview."/>
+                                            ToolTip.Tip="关闭所有实时预览效果并恢复正常预览。"/>
                                 </WrapPanel>
                                 <TextBlock Text="{Binding LivePreviewHueText}" Classes="muted" TextWrapping="Wrap"/>
                                 <TextBlock Text="{Binding LivePreviewScaleText}" Classes="muted" TextWrapping="Wrap"/>
