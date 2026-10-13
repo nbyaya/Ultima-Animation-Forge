@@ -37,7 +37,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private string aiQuestionText = string.Empty;
 
     [ObservableProperty]
-    private string aiAnswerText = "Ask me about the selected animation, UOP/MUL import errors, frame alignment, bodyconv, mobtypes, or tool workflow.";
+    private string aiAnswerText = "询问我关于选中的动画、UOP/MUL 导入错误、帧对齐、bodyconv、怪物类型或工具工作流程的问题。";
 
     [ObservableProperty]
     private bool isAiBusy;
@@ -50,7 +50,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private VdFrameData? animationAlignReferenceFrame;
 
     [ObservableProperty]
-    private string animationAlignReferenceText = "None";
+    private string animationAlignReferenceText = "无";
 
     [ObservableProperty]
     private bool originalFrameCompareEnabled = false;
@@ -291,14 +291,14 @@ public partial class MainWindowViewModel : ViewModelBase
     }
 
     [ObservableProperty]
-    private string animationBrowserSortMode = "Body ID Asc";
+    private string animationBrowserSortMode = "身体 ID 升序";
 
     public ObservableCollection<string> AnimationBrowserSortModeOptions { get; } = new()
 {
-    "Body ID Asc",
-    "Body ID Desc",
-    "Name",
-    "Source File"
+    "身体 ID 升序",
+    "身体 ID 降序",
+    "名称",
+    "源文件"
 };
 
     [ObservableProperty]
@@ -308,26 +308,26 @@ public partial class MainWindowViewModel : ViewModelBase
     private string animationBrowserSearchText = string.Empty;
 
     [ObservableProperty]
-    private string animationBrowserSourceFilter = "All";
+    private string animationBrowserSourceFilter = "所有";
 
     [ObservableProperty]
-    private string animationBrowserTypeFilter = "All";
+    private string animationBrowserTypeFilter = "所有";
 
     public ObservableCollection<string> AnimationBrowserSourceFilters { get; } = new();
 
     public ObservableCollection<string> AnimationBrowserTypeFilters { get; } = new();
 
     [ObservableProperty]
-    private string animationBrowserTileSize = "Small";
+    private string animationBrowserTileSize = "小";
 
     [ObservableProperty]
-    private string animationBrowserCountText = "Showing 0";
+    private string animationBrowserCountText = "显示 0";
 
     public ObservableCollection<string> AnimationBrowserTileSizeOptions { get; } = new()
     {
-        "Small",
-        "Medium",
-        "Large"
+        "小",
+        "中",
+        "大"
     };
 
     private readonly Dictionary<string, List<WriteableBitmap>> animationBrowserHoverFrameCache = new();
@@ -338,22 +338,22 @@ public partial class MainWindowViewModel : ViewModelBase
     private bool animationBrowserHoverPreviewEnabled = true;
 
     [ObservableProperty]
-    private string animationBrowserHoverSpeed = "100 ms";
+    private string animationBrowserHoverSpeed = "100 毫秒";
 
     public ObservableCollection<string> AnimationBrowserHoverSpeedOptions { get; } = new()
 {
-    "50 ms",
-    "100 ms",
-    "150 ms",
-    "200 ms"
+    "50 毫秒",
+    "100 毫秒",
+    "150 毫秒",
+    "200 毫秒"
 };
 
     public int AnimationBrowserHoverFrameDelayMs =>
         AnimationBrowserHoverSpeed switch
         {
-            "50 ms" => 50,
-            "150 ms" => 150,
-            "200 ms" => 200,
+            "50 毫秒" => 50,
+            "150 毫秒" => 150,
+            "200 毫秒" => 200,
             _ => 100
         };
 
@@ -536,7 +536,7 @@ public partial class MainWindowViewModel : ViewModelBase
     public ObservableCollection<string> CompareDirectionOptions { get; } = new();
 
     [ObservableProperty]
-    private string? compareSelectedAnimationFile = "All Files";
+    private string? compareSelectedAnimationFile = "所有文件";
 
     [ObservableProperty]
     private string? compareSelectedAction = null;
@@ -624,7 +624,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private bool propOverlayEnabled = false;
 
     [ObservableProperty]
-    private string propOverlayFileName = "None";
+    private string propOverlayFileName = "无";
 
     [ObservableProperty]
     private int propOverlayOffsetX = 0;
@@ -820,7 +820,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private string statusText = "准备就绪。打开一个 UO 文件夹来开始。";
 
     [ObservableProperty]
-    private string selectedSourceText = "No source loaded";
+    private string selectedSourceText = "未加载源";
 
     [ObservableProperty]
     private string searchText = string.Empty;
@@ -829,7 +829,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private string? selectedBodyType = "所有";
 
     [ObservableProperty]
-    private string? selectedAction = "All";
+    private string? selectedAction = "所有";
 
     [ObservableProperty]
     private AnimationEntry? selectedAnimation;
@@ -856,7 +856,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private WriteableBitmap? previewBitmap;
 
     [ObservableProperty]
-    private string? selectedDirection = "Direction 0";
+    private string? selectedDirection = "方向 0";
 
     [ObservableProperty]
     private bool isLoading = false;
@@ -868,7 +868,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private string loadingText = string.Empty;
 
     [ObservableProperty]
-    private string? selectedAnimationFile = "All Files";
+    private string? selectedAnimationFile = "所有文件";
 
     [ObservableProperty]
     private bool livePreviewSharpenEnabled = false;
