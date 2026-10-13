@@ -1175,12 +1175,12 @@ public partial class MainWindowViewModel : ViewModelBase
         BodyTypeOptions.Add("人类");
         BodyTypeOptions.Add("装备");
 
-        AnimationFileOptions.Add("All Files");
-        SelectedAnimationFile = "All Files";
+        AnimationFileOptions.Add("所有文件");
+        SelectedAnimationFile = "所有文件";
 
         ActionOptions.Clear();
-        ActionOptions.Add("Action 0");
-        SelectedAction = "Action 0";
+        ActionOptions.Add("动作 0");
+        SelectedAction = "动作 0";
 
         DirectionOptions.Clear();
         DirectionOptions.Add("东方 (0)");
@@ -1240,7 +1240,7 @@ public partial class MainWindowViewModel : ViewModelBase
             window.Show();
         }
 
-        StatusText = "Opened EC / KR Mythic Package Viewer.";
+        StatusText = "已打开 EC / KR 神话包查看器。";
     }
 
     private void OpenEquipmentBinderTool()
@@ -1285,7 +1285,7 @@ public partial class MainWindowViewModel : ViewModelBase
         }
 
         equipmentBinderToolViewModel.RefreshHostSelection();
-        StatusText = "Opened Equipment Binder Tool.";
+        StatusText = "已打开装备绑定工具。";
     }
 
     private static readonly string[] MulAnimalActions =
@@ -1760,7 +1760,7 @@ public partial class MainWindowViewModel : ViewModelBase
             SelectedMulSlot = null;
         }
 
-        StatusText = "Showing " + MulSlotEntries.Count + " free MUL body IDs.";
+        StatusText = "显示 " + MulSlotEntries.Count + " 个可用的 MUL Body ID。";
     }
 
     private void RebuildUopBodyEntries()
@@ -1843,7 +1843,7 @@ public partial class MainWindowViewModel : ViewModelBase
             " | Actions: " + SelectedUopBodySlot.ActionCount +
             " | UOP target";
 
-        StatusText = "Selected UOP body target.";
+        StatusText = "已选择 UOP 身体目标。";
         OnPropertyChanged(nameof(SelectedBlockHeader));
     }
 
@@ -1862,7 +1862,7 @@ public partial class MainWindowViewModel : ViewModelBase
             return;
         }
 
-        StatusText = "Selected free MUL body slot.";
+        StatusText = "已选择可用 MUL Body ID 槽位。";
         SelectedBlockHeaderText =
             "File: " + SelectedMulSlot.FileName +
             " | Type: " + SelectedMulSlot.TypeLetter +
@@ -1994,7 +1994,7 @@ public partial class MainWindowViewModel : ViewModelBase
             BuildAnimationBrowserTiles();
         }
 
-        StatusText = "Saved animation name to " + Path.GetFileName(path) + ".";
+        StatusText = "动画名称已保存到 " + Path.GetFileName(path) + "。";
     }
 
     private void LoadAnimationBrowserNames()
@@ -2311,12 +2311,12 @@ public partial class MainWindowViewModel : ViewModelBase
             tile.Thumbnail = thumbnail;
             tile.IsLoadingThumbnail = false;
 
-            StatusText = "Refreshed thumbnail for " + tile.SourceEntry.DisplayName + ".";
+            StatusText = "已刷新 " + tile.SourceEntry.DisplayName + " 的缩略图。";
         }
         catch
         {
             tile.IsLoadingThumbnail = false;
-            StatusText = "Failed to refresh thumbnail.";
+            StatusText = "缩略图刷新失败。";
         }
     }
 
@@ -2334,7 +2334,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
         StartAnimationBrowserThumbnailLoading();
 
-        StatusText = "Animation Browser thumbnails refreshed.";
+        StatusText = "已刷新动画浏览器缩略图。";
     }
 
     partial void OnAnimationBrowserTileSizeChanged(string value)
@@ -2348,32 +2348,32 @@ public partial class MainWindowViewModel : ViewModelBase
     public double AnimationBrowserTileWidth =>
     AnimationBrowserTileSize switch
     {
-        "Medium" => 110,
-        "Large" => 145,
+        "中" => 110,
+        "大" => 145,
         _ => 82
     };
 
     public double AnimationBrowserTileHeight =>
         AnimationBrowserTileSize switch
         {
-            "Medium" => 128,
-            "Large" => 165,
+            "中" => 128,
+            "大" => 165,
             _ => 98
         };
 
     public double AnimationBrowserImageHostSize =>
         AnimationBrowserTileSize switch
         {
-            "Medium" => 96,
-            "Large" => 128,
+            "中" => 96,
+            "大" => 128,
             _ => 72
         };
 
     public double AnimationBrowserImageBoxSize =>
         AnimationBrowserTileSize switch
         {
-            "Medium" => 90,
-            "Large" => 120,
+            "中" => 90,
+            "大" => 120,
             _ => 68
         };
 
@@ -2520,9 +2520,10 @@ public partial class MainWindowViewModel : ViewModelBase
 
         filteredEntries = AnimationBrowserSortMode switch
         {
-            "Body ID Desc" => filteredEntries.OrderByDescending(x => x.BodyId),
-            "Name" => filteredEntries.OrderBy(x => GetAnimationBrowserDisplayName(x), StringComparer.OrdinalIgnoreCase),
-            "Source File" => filteredEntries
+            "身体 ID 升序" => filteredEntries.OrderBy(x => x.BodyId),
+            "身体 ID 降序" => filteredEntries.OrderByDescending(x => x.BodyId),
+            "名称" => filteredEntries.OrderBy(x => GetAnimationBrowserDisplayName(x), StringComparer.OrdinalIgnoreCase),
+            "源文件" => filteredEntries
                 .OrderBy(x => x.SourceFile, StringComparer.OrdinalIgnoreCase)
                 .ThenBy(x => x.BodyId),
             _ => filteredEntries.OrderBy(x => x.BodyId)
@@ -2553,7 +2554,7 @@ public partial class MainWindowViewModel : ViewModelBase
                         IsMissingSlot = true,
                         IsLoadingThumbnail = false,
                         DisplayName = bodyId + " missing",
-                        SecondaryText = "Missing slot",
+                        SecondaryText = "缺少槽位",
                         SourceText = string.Empty
                     });
                 }
@@ -2567,7 +2568,7 @@ public partial class MainWindowViewModel : ViewModelBase
             }
         }
 
-        AnimationBrowserCountText = "Showing " + AnimationBrowserTiles.Count + " / " + totalCount;
+        AnimationBrowserCountText = "显示 " + AnimationBrowserTiles.Count + " / " + totalCount;
 
         StartAnimationBrowserThumbnailLoading();
     }
@@ -2826,7 +2827,7 @@ public partial class MainWindowViewModel : ViewModelBase
             SelectedUopBodySlot = null;
         }
 
-        StatusText = "Showing " + UopBodyEntries.Count + " UOP bodies with empty MUL targets.";
+        StatusText = "显示 " + UopBodyEntries.Count + " 个空的 MUL 目标 UOP body。";
     }
 
     private FolderLoadResult LoadAnimationDataForFolder(string folderPath, int mulBodiesToScan, int uopBodiesToScan)
@@ -2944,13 +2945,13 @@ public partial class MainWindowViewModel : ViewModelBase
 
         Button yesButton = new Button
         {
-            Content = "Yes",
+            Content = "是",
             Width = 90
         };
 
         Button noButton = new Button
         {
-            Content = "No",
+            Content = "否",
             Width = 90
         };
 
@@ -2995,13 +2996,13 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         if (!ShowMulSlotView)
         {
-            StatusText = "Switch to BODY IDS view first.";
+            StatusText = "先切换到 BODY IDS 视图。";
             return;
         }
 
         if (SelectedMulSlot == null)
         {
-            StatusText = "Select a BODY ID slot first.";
+            StatusText = "先选择一个 BODY ID 槽位。";
             return;
         }
 
@@ -3009,7 +3010,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
         if (string.IsNullOrWhiteSpace(currentFolderPath) || !Directory.Exists(currentFolderPath))
         {
-            StatusText = "Open a valid UO folder first.";
+            StatusText = "先打开有效的 UO 文件夹。";
             return;
         }
 
@@ -3054,7 +3055,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
         if (string.IsNullOrWhiteSpace(AiQuestionText))
         {
-            AiAnswerText = "Type a question first.";
+            AiAnswerText = "先输入问题。";
             return;
         }
 
