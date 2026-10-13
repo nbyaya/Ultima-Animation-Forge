@@ -546,10 +546,10 @@ public partial class MainWindowViewModel : ViewModelBase
 
     public ObservableCollection<string> CompareOverlaySyncModeOptions { get; } = new()
     {
-        "Same Frame",
-        "Loop Secondary",
-        "Clamp Secondary",
-        "Manual Frame"
+        "相同帧",
+        "循环次级",
+        "夹持次级",
+        "手动帧"
     };
 
 
@@ -562,7 +562,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private AnimationBrowserTileViewModel? selectedAnimationBrowserTile;
 
     [ObservableProperty]
-    private string compareOverlaySyncMode = "Same Frame";
+    private string compareOverlaySyncMode = "相同帧";
 
     partial void OnSelectedAnimationBrowserTileChanged(AnimationBrowserTileViewModel? value)
     {

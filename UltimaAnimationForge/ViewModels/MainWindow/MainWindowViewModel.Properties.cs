@@ -113,15 +113,15 @@ public partial class MainWindowViewModel
     public string CompareOverlayFrameModeText =>
         CompareOverlaySyncMode switch
         {
-            "Same Frame" => "Same Frame",
-            "Loop Secondary" => "Loop Secondary",
-            "Clamp Secondary" => "Clamp Secondary",
-            "Manual Frame" => "Manual Frame " + Math.Max(0, CompareOverlayFrameIndex),
+            "相同帧" => "相同帧",
+            "循环次级" => "循环次级",
+            "夹持次级" => "夹持次级",
+            "手动帧" => "手动帧 " + Math.Max(0, CompareOverlayFrameIndex),
             _ => CompareOverlaySyncMode
         };
 
     public bool IsCompareOverlayManualFrameMode =>
-    string.Equals(CompareOverlaySyncMode, "Manual Frame", StringComparison.Ordinal);
+    string.Equals(CompareOverlaySyncMode, "手动帧", StringComparison.Ordinal);
 
     public string CompareOverlayOffsetText =>
         "X " + CompareOverlayOffsetX + " | Y " + CompareOverlayOffsetY;

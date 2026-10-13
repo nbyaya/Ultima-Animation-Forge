@@ -1893,7 +1893,7 @@ public partial class MainWindowViewModel
         compareOverlayActionIndex = 0;
         compareOverlayDirectionIndex = 0;
         compareOverlayFrameIndex = 0;
-        compareOverlaySyncMode = "Same Frame";
+        compareOverlaySyncMode = "相同帧";
         compareOverlayOffsetX = 0;
         compareOverlayOffsetY = 0;
         compareOverlayOpacityPercent = 50.0;
@@ -2890,10 +2890,10 @@ public partial class MainWindowViewModel
 
         switch (CompareOverlaySyncMode)
         {
-            case "Same Frame":
+            case "相同帧":
                 return primaryFrameIndex;
 
-            case "Loop Secondary":
+            case "循环次级":
                 if (compareOverlayFrames.Count <= 0)
                 {
                     return 0;
@@ -2907,10 +2907,10 @@ public partial class MainWindowViewModel
 
                 return wrapped;
 
-            case "Clamp Secondary":
+            case "夹持次级":
                 return Math.Clamp(primaryFrameIndex, 0, maxIndex);
 
-            case "Manual Frame":
+            case "手动帧":
                 return Math.Clamp(CompareOverlayFrameIndex, 0, maxIndex);
 
             default:
@@ -4150,7 +4150,7 @@ public partial class MainWindowViewModel
 
         CompareOverlayActionIndex = GuessMountedRiderActionIndex();
         CompareOverlayDirectionIndex = GetSelectedDirectionIndex();
-        CompareOverlaySyncMode = "Loop Secondary";
+        CompareOverlaySyncMode = "循环次级";
         CompareOverlayFrameIndex = 0;
         CompareOverlayOpacityPercent = 65.0;
 
