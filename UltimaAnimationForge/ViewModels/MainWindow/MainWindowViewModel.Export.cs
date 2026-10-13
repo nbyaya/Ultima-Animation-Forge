@@ -405,7 +405,7 @@ public partial class MainWindowViewModel
 
         if (exportRequest.Format == ExportImageFormat.SpriteSheetPng)
         {
-            StatusText = "Sprite sheet export is only available from Export Frames.";
+            StatusText = "精灵表导出仅在'导出帧'中可用。";
             return;
         }
 
@@ -571,7 +571,7 @@ public partial class MainWindowViewModel
 
         if (folders.Count == 0)
         {
-            StatusText = "Export frames cancelled.";
+            StatusText = "导出帧已取消。";
             return;
         }
 
