@@ -275,8 +275,8 @@ public partial class MainWindow : Window
         viewModel.SaveAnimationBrowserName(tile, newName);
 
         await ShowSimpleMessage(
-            "Name Saved",
-            "Saved to animation_names.json.\n\nMake sure this file is included with your tool build/release.");
+            "名称已保存",
+            "已保存到 animation_names.json。\n\n请确保将此文件包含在工具构建/发布中。");
     }
 
     private async Task<string?> ShowEditAnimationNameDialog(int bodyId, string currentName)
@@ -285,22 +285,22 @@ public partial class MainWindow : Window
         {
             Text = currentName,
             Width = 320,
-            Watermark = "Animation name..."
+            Watermark = "动画名称..."
         };
 
         Button cancelButton = new Button
         {
-            Content = "Cancel"
+            Content = "取消"
         };
 
         Button saveButton = new Button
         {
-            Content = "Save"
+            Content = "保存"
         };
 
         Window dialog = new Window
         {
-            Title = "Edit Animation Name",
+            Title = "编辑动画名称",
             Width = 420,
             Height = 180,
             WindowStartupLocation = WindowStartupLocation.CenterOwner,
@@ -313,7 +313,7 @@ public partial class MainWindow : Window
             {
                 new TextBlock
                 {
-                    Text = "Body " + bodyId + " name:",
+                    Text = "身体 " + bodyId + " 名称:",
                     FontWeight = FontWeight.Bold
                 },
                 nameBox,
@@ -342,7 +342,7 @@ public partial class MainWindow : Window
     {
         Button okButton = new Button
         {
-            Content = "OK",
+            Content = "确定",
             HorizontalAlignment = HorizontalAlignment.Right
         };
 

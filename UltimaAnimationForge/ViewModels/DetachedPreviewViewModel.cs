@@ -84,7 +84,7 @@ public partial class DetachedPreviewViewModel : ViewModelBase
     public string CurrentFrameDisplayText =>
         decodedFrames.Count == 0
             ? "帧: - / -"
-            : "帧: " + (currentFrameIndex + 1) + " / " + decodedFrames.Count;
+            : $"帧: {currentFrameIndex + 1} / {decodedFrames.Count}";
 
     public double PreviewImageWidth =>
         PreviewBitmap != null ? PreviewBitmap.PixelSize.Width * ZoomLevel : 0;

@@ -607,7 +607,7 @@ public partial class MainWindowViewModel
 
     public bool HasFrameThumbnails => FrameThumbnails.Count > 0;
 
-    public string CurrentFrameDisplayText => decodedFrames.Count == 0 ? "Frame: - / -" : "Frame: " + (currentFrameIndex + 1) + " / " + decodedFrames.Count;
+    public string CurrentFrameDisplayText => decodedFrames.Count == 0 ? "帧: - / -" : "帧: " + (currentFrameIndex + 1) + " / " + decodedFrames.Count;
 
     public bool HasFrameEdits => hasFrameEdits;
 
@@ -746,7 +746,7 @@ public partial class MainWindowViewModel
                 return "No animation selected";
             }
 
-            return "Selected: " + SelectedAnimation.DisplayName + "   |   Frames: " + SelectedAnimation.FrameCount;
+            return "已选择: " + SelectedAnimation.DisplayName + "   |   帧数: " + SelectedAnimation.FrameCount;
         }
     }
 

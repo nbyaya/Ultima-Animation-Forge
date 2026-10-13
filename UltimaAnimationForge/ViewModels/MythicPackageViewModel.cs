@@ -35,8 +35,8 @@ public partial class MythicPackageViewModel : ViewModelBase
 
     public string CurrentFrameText =>
     decodedAmouFrames.Count == 0
-        ? "Frame: - / -"
-        : "Frame: " + (currentAmouFrameIndex + 1) + " / " + decodedAmouFrames.Count;
+        ? "帧: - / -"
+        : "帧: " + (currentAmouFrameIndex + 1) + " / " + decodedAmouFrames.Count;
 
     public ObservableCollection<EcAmouBodyOption> EcBodyOptions { get; } = new();
     public ObservableCollection<EcAmouActionOption> EcActionOptions { get; } = new();

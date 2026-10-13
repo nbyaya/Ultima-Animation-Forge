@@ -167,14 +167,14 @@ public sealed class EcAmouPreviewDecoderService
             AmouHeader header = ReadHeader(data);
             List<FrameIndex> frames = ReadFrameIndexes(data, header);
 
-            string firstFrameText = "First Frame: none";
+            string firstFrameText = "首帧: 无";
             if (frames.Count > 0)
             {
                 FrameIndex first = frames[0];
                 firstFrameText =
-                    "First Frame:" + Environment.NewLine +
+                    "首帧:" + Environment.NewLine +
                     "  ID: " + first.Id + Environment.NewLine +
-                    "  Frame: " + first.FrameNumber + Environment.NewLine +
+                    "  帧: " + first.FrameNumber + Environment.NewLine +
                     "  Init: " + first.InitX + "," + first.InitY + Environment.NewLine +
                     "  End: " + first.EndX + "," + first.EndY + Environment.NewLine +
                     "  Size: " + first.Width + " x " + first.Height + Environment.NewLine +

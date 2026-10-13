@@ -903,7 +903,7 @@ public partial class MainWindowViewModel
         bool hasSelectedArt = SelectedArtBitmap != null;
 
         selectedArtAnimDataStatusText =
-            "Frames: " + animEntry.FrameCount +
+            "帧数: " + animEntry.FrameCount +
             " | Interval: " + animEntry.FrameInterval +
             " | Start: " + animEntry.FrameStart +
             ((hasSelectedArt || hasAnyFrameArt) ? string.Empty : " | Missing art");

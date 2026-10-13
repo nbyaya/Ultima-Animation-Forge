@@ -171,7 +171,7 @@ public partial class MainWindowViewModel
         if (activeProfile == null)
         {
             SelectedAnimationFile = "All Files";
-            SelectedBodyType = "All";
+            SelectedBodyType = "所有";
             SearchText = string.Empty;
             SelectedDirection = null;
             ZoomLevel = 1.0;
@@ -189,7 +189,7 @@ public partial class MainWindowViewModel
             : activeProfile.SelectedAnimationFile;
 
         SelectedBodyType = string.IsNullOrWhiteSpace(activeProfile.SelectedBodyType)
-            ? "All"
+            ? "所有"
             : activeProfile.SelectedBodyType;
 
         SearchText = activeProfile.SearchText ?? string.Empty;
@@ -223,7 +223,7 @@ public partial class MainWindowViewModel
         }
 
         activeProfile.SelectedAnimationFile = SelectedAnimationFile ?? "All Files";
-        activeProfile.SelectedBodyType = SelectedBodyType ?? "All";
+        activeProfile.SelectedBodyType = SelectedBodyType ?? "所有";
         activeProfile.SearchText = SearchText ?? string.Empty;
         activeProfile.SelectedDirection = SelectedDirection ?? string.Empty;
         activeProfile.PreviewZoomLevel = ZoomLevel;
