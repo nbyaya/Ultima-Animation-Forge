@@ -85,15 +85,15 @@
 
                         <StackPanel Orientation="Horizontal"
                                     Spacing="12">
-                            <CheckBox Content="Land"
+                            <CheckBox Content="地形"
                                       IsChecked="{Binding ShowLandArt}" />
 
-                            <CheckBox Content="Statics"
+                            <CheckBox Content="静态物品"
                                       IsChecked="{Binding ShowStaticArt}" />
 
-                            <CheckBox Content="ArtTiles"
+                            <CheckBox Content="美术块"
                                       IsChecked="{Binding ShowArtThumbnails}" />
-                            <CheckBox Content="Browser"
+                            <CheckBox Content="浏览器"
                                       IsChecked="{Binding ShowArtBrowserMode}" />
                         </StackPanel>
                     </StackPanel>
@@ -413,7 +413,7 @@
                                         MinWidth="110"
                                         Margin="0,0,6,6"/>
 
-                                <Button Content="Revert"
+                                <Button Content="还原"
                                         Command="{Binding RevertSelectedRadarColorCommand}"
                                         MinWidth="80"
                                         Margin="0,0,6,6"/>

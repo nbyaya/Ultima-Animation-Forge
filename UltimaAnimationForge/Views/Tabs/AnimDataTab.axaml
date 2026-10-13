@@ -19,13 +19,13 @@
                 <Button Content="Save AnimData"
                         Command="{Binding SaveAnimDataCommand}" />
 
-                <Button Content="Export"
+                <Button Content="导出"
                         Command="{Binding ExportAnimDataCommand}" />
 
-                <Button Content="Import"
+                <Button Content="导入"
                         Command="{Binding ImportAnimDataCommand}" />
 
-                <Button Content="Check All"
+                <Button Content="全选"
                         Command="{Binding CheckAllAnimDataCommand}" />
 
                 <Button Content="Uncheck All"

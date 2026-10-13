@@ -35,11 +35,11 @@
                                   IsChecked="{Binding UseUoxDictionaryMode}"
                                   VerticalAlignment="Center"/>
 
-                        <CheckBox Content="Duplicates"
+                        <CheckBox Content="重复项"
                                   IsChecked="{Binding ShowOnlyDuplicateClilocs}"
                                   VerticalAlignment="Center"/>
 
-                        <CheckBox Content="Empty"
+                        <CheckBox Content="空项"
                                   IsChecked="{Binding ShowOnlyEmptyClilocs}"
                                   VerticalAlignment="Center"/>
 
@@ -47,26 +47,26 @@
                                    Height="24"
                                    Background="#3A4350"/>
 
-                        <Button Content="Import"
+                        <Button Content="导入"
                                 Command="{Binding ImportClilocCommand}"/>
 
-                        <Button Content="Export"
+                        <Button Content="导出"
                                 Command="{Binding ExportClilocCommand}"/>
 
-                        <Button Content="Save"
+                        <Button Content="保存"
                                 Command="{Binding SaveClilocCommand}"/>
 
-                        <Button Content="Add Entry"
+                        <Button Content="添加条目"
                                 Command="{Binding AddClilocEntryCommand}"/>
 
-                        <Button Content="Delete Entry"
+                        <Button Content="删除条目"
                                 Command="{Binding DeleteClilocEntryCommand}"/>
 
                         <TextBox Width="110"
-                                 Watermark="Jump ID"
+                                 Watermark="跳转 ID"
                                  Text="{Binding JumpToClilocText, Mode=TwoWay}"/>
 
-                        <Button Content="Go"
+                        <Button Content="转到"
                                 Command="{Binding JumpToClilocCommand}"/>
 
                     </StackPanel>
