@@ -1002,8 +1002,8 @@ public partial class MainWindowViewModel
             "Body " + animation.BodyId +
             " | 动作 " + actionIndex +
             " | 方向 " + directionIndex +
-            " | " + resolvedBlock.SourceFileName +
-            " | 帧数: " + frames.Count;
+            " | 源文件 " + resolvedBlock.SourceFileName +
+            " | 帧数 " + frames.Count;
 
         return result;
     }
