@@ -114,13 +114,13 @@ x:DataType="vm:MainWindowViewModel">
                   ColumnSpacing="6"
                   VerticalAlignment="Center">
 
-                <TextBlock Grid.Column="0" Text="File" VerticalAlignment="Center" Classes="muted"/>
+                <TextBlock Grid.Column="0" Text="文件" VerticalAlignment="Center" Classes="muted"/>
                 <ComboBox Grid.Column="1"
                           ItemsSource="{Binding AnimationFileOptions}"
                           SelectedItem="{Binding SelectedAnimationFile}"/>
 
                 <TextBlock Grid.Column="3"
-                           Text="Type"
+                           Text="类型"
                            VerticalAlignment="Center"
                            Classes="muted"
                            IsVisible="{Binding ShowAnimationOnlyControls}"/>
@@ -130,7 +130,7 @@ x:DataType="vm:MainWindowViewModel">
                           IsVisible="{Binding ShowAnimationOnlyControls}"/>
 
                 <TextBlock Grid.Column="6"
-                           Text="Action"
+                           Text="动作"
                            VerticalAlignment="Center"
                            Classes="muted"
                            IsVisible="{Binding ShowActionDirectionControls}"/>
@@ -140,7 +140,7 @@ x:DataType="vm:MainWindowViewModel">
                           IsVisible="{Binding ShowActionDirectionControls}"/>
 
                 <TextBlock Grid.Column="9"
-                           Text="Direction"
+                           Text="方向"
                            VerticalAlignment="Center"
                            Classes="muted"
                            IsVisible="{Binding ShowActionDirectionControls}"/>
@@ -150,13 +150,13 @@ x:DataType="vm:MainWindowViewModel">
                           IsVisible="{Binding ShowActionDirectionControls}"/>
 
                 <StackPanel Grid.Column="12" Orientation="Horizontal" Spacing="8" HorizontalAlignment="Right">
-                    <CheckBox Content="Compare"
+                    <CheckBox Content="对比"
                               IsChecked="{Binding CompareOverlayEnabled, Mode=TwoWay}"
                               VerticalAlignment="Center"/>
-                    <CheckBox Content="Split"
+                    <CheckBox Content="分割"
                               IsChecked="{Binding CompareSideBySideEnabled, Mode=TwoWay}"
                               VerticalAlignment="Center"/>
-                    <CheckBox Content="Prop"
+                    <CheckBox Content="装扮"
                               IsChecked="{Binding PropOverlayEnabled, Mode=TwoWay}"
                               VerticalAlignment="Center"/>
                 </StackPanel>
@@ -170,7 +170,7 @@ x:DataType="vm:MainWindowViewModel">
             <Border Grid.Column="0" Classes="panel" Padding="10">
                 <Grid RowDefinitions="Auto,Auto,Auto,*" RowSpacing="10">
                     <TextBlock Grid.Row="0"
-                               Text="Animations"
+                               Text="动画"
                                Classes="panelTitle"
                                IsVisible="{Binding ShowAnimationView}"/>
                     <TextBlock Grid.Row="0"
@@ -179,18 +179,18 @@ x:DataType="vm:MainWindowViewModel">
                                IsVisible="{Binding ShowSlotView}"/>
 
                     <TextBox Grid.Row="1"
-                             Watermark="Search body, slot, file..."
+                             Watermark="搜索 Body、槽位、文件..."
                              Text="{Binding SearchText}"/>
 
                     <Border Grid.Row="2" Classes="card" Padding="10" IsVisible="{Binding ShowMulSlotList}">
                         <StackPanel Spacing="8">
-                            <TextBlock Text="Slot Filter" Classes="sectionTitle"/>
+                            <TextBlock Text="槽位筛选" Classes="sectionTitle"/>
                             <WrapPanel>
-                                <CheckBox Content="H Monster" IsChecked="{Binding MulSlotShowHFilter}" Margin="0,0,10,0"/>
-                                <CheckBox Content="L Animal" IsChecked="{Binding MulSlotShowLFilter}" Margin="0,0,10,0"/>
-                                <CheckBox Content="P Human" IsChecked="{Binding MulSlotShowPFilter}"/>
+                                <CheckBox Content="H 怪物" IsChecked="{Binding MulSlotShowHFilter}" Margin="0,0,10,0"/>
+                                <CheckBox Content="L 动物" IsChecked="{Binding MulSlotShowLFilter}" Margin="0,0,10,0"/>
+                                <CheckBox Content="P 人类" IsChecked="{Binding MulSlotShowPFilter}"/>
                             </WrapPanel>
-                            <Button Content="Clear Selected Slot" Command="{Binding ClearSelectedMulSlotCommand}"/>
+                            <Button Content="清除所选槽位" Command="{Binding ClearSelectedMulSlotCommand}"/>
                         </StackPanel>
                     </Border>
 
@@ -263,21 +263,21 @@ x:DataType="vm:MainWindowViewModel">
             <Grid Grid.Column="1" RowDefinitions="Auto,*" RowSpacing="10">
                 <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
                     <StackPanel Orientation="Horizontal" Spacing="10">
-                        <TextBlock Text="Viewport" Classes="panelTitle"/>
+                        <TextBlock Text="视口" Classes="panelTitle"/>
                         <TextBlock Text="{Binding CurrentFrameDisplayText}" Classes="muted" VerticalAlignment="Center"/>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="6">
-                        <Button Command="{Binding PlayCommand}" Classes="iconButton" ToolTip.Tip="Play">
+                        <Button Command="{Binding PlayCommand}" Classes="iconButton" ToolTip.Tip="播放">
                             <PathIcon Data="M 3 2 L 3 14 L 13 8 Z" Width="14" Height="14"/>
                         </Button>
-                        <Button Command="{Binding PauseCommand}" Classes="iconButton" ToolTip.Tip="Pause">
+                        <Button Command="{Binding PauseCommand}" Classes="iconButton" ToolTip.Tip="暂停">
                             <PathIcon Data="M 3 2 H 6 V 14 H 3 Z M 10 2 H 13 V 14 H 10 Z" Width="14" Height="14"/>
                         </Button>
-                        <Button Command="{Binding PreviousFrameCommand}" Classes="iconButton" ToolTip.Tip="Previous frame">
+                        <Button Command="{Binding PreviousFrameCommand}" Classes="iconButton" ToolTip.Tip="上一帧">
                             <PathIcon Data="M 11 2 L 3 8 L 11 14 Z M 12 2 H 14 V 14 H 12 Z" Width="14" Height="14"/>
                         </Button>
-                        <Button Command="{Binding NextFrameCommand}" Classes="iconButton" ToolTip.Tip="Next frame">
+                        <Button Command="{Binding NextFrameCommand}" Classes="iconButton" ToolTip.Tip="下一帧">
                             <PathIcon Data="M 3 2 L 11 8 L 3 14 Z M 12 2 H 14 V 14 H 12 Z" Width="14" Height="14"/>
                         </Button>
                     </StackPanel>
@@ -350,13 +350,13 @@ x:DataType="vm:MainWindowViewModel">
             <Border Grid.Column="2" Classes="panel" Padding="10">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel Spacing="10">
-                        <TextBlock Text="Inspector" Classes="panelTitle"/>
+                        <TextBlock Text="检查器" Classes="panelTitle"/>
 
                         <Border Classes="card">
                             <StackPanel Spacing="8">
-                                <TextBlock Text="Playback" Classes="sectionTitle"/>
+                                <TextBlock Text="播放设置" Classes="sectionTitle"/>
                                 <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="8">
-                                    <TextBlock Grid.Column="0" Text="Speed" VerticalAlignment="Center" Classes="muted"/>
+                                    <TextBlock Grid.Column="0" Text="速度" VerticalAlignment="Center" Classes="muted"/>
                                     <Slider Grid.Column="1" Minimum="1" Maximum="20" Value="{Binding PlaybackSpeed}" TickFrequency="1"/>
                                     <TextBlock Grid.Column="2" Text="{Binding PlaybackSpeedText}" Width="42" VerticalAlignment="Center"/>
                                 </Grid>
@@ -365,27 +365,27 @@ x:DataType="vm:MainWindowViewModel">
 
                         <Border Classes="card" IsVisible="{Binding ShowAnimationView}">
                             <StackPanel Spacing="8">
-                                <TextBlock Text="Animation Details" Classes="sectionTitle"/>
+                                <TextBlock Text="动画详情" Classes="sectionTitle"/>
                                 <Grid ColumnDefinitions="92,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="5">                                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding SelectedAnimationName}" TextWrapping="Wrap"/>
-                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Body" Classes="muted"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="身体ID" Classes="muted"/>
                                     <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SelectedBodyId}"/>
-                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Action" Classes="muted"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="动作" Classes="muted"/>
                                     <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding SelectedActionId}"/>
-                                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Frames" Classes="muted"/>
+                                    <TextBlock Grid.Row="3" Grid.Column="0" Text="帧数" Classes="muted"/>
                                     <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding SelectedFrameCount}"/>
-                                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Size" Classes="muted"/>
+                                    <TextBlock Grid.Row="4" Grid.Column="0" Text="尺寸" Classes="muted"/>
                                     <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding SelectedFrameSize}"/>
-                                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Source" Classes="muted"/>
+                                    <TextBlock Grid.Row="5" Grid.Column="0" Text="源文件" Classes="muted"/>
                                     <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding SelectedAnimationSource}" TextWrapping="Wrap"/>
-                                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Index" Classes="muted"/>
+                                    <TextBlock Grid.Row="6" Grid.Column="0" Text="索引" Classes="muted"/>
                                     <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding SelectedIndexNumber}"/>
-                                    <TextBlock Grid.Row="7" Grid.Column="0" Text="Frame X" Classes="muted"/>
+                                    <TextBlock Grid.Row="7" Grid.Column="0" Text="帧 X" Classes="muted"/>
                                     <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding CurrentFrameCenterX}"/>
 
-                                    <TextBlock Grid.Row="8" Grid.Column="0" Text="Frame Y" Classes="muted"/>
+                                    <TextBlock Grid.Row="8" Grid.Column="0" Text="帧 Y" Classes="muted"/>
                                     <TextBlock Grid.Row="8" Grid.Column="1" Text="{Binding CurrentFrameCenterY}"/>
 
-                                    <TextBlock Grid.Row="9" Grid.Column="0" Text="Bounds" Classes="muted"/>
+                                    <TextBlock Grid.Row="9" Grid.Column="0" Text="范围" Classes="muted"/>
                                     <TextBlock Grid.Row="9" Grid.Column="1"
                                                Text="{Binding CurrentFrameBoundsText}"
                                                TextWrapping="Wrap"/>
@@ -395,7 +395,7 @@ x:DataType="vm:MainWindowViewModel">
 
                         <Border Classes="card">
                             <StackPanel Spacing="8">
-                                <TextBlock Text="Selected Frame Offset" Classes="sectionTitle"/>
+                                <TextBlock Text="所选帧偏移" Classes="sectionTitle"/>
                                 <Grid ColumnDefinitions="Auto,*,Auto,*" ColumnSpacing="8">
                                     <TextBlock Grid.Column="0" Text="X" VerticalAlignment="Center" Classes="muted"/>
                                     <NumericUpDown Grid.Column="1" Minimum="-500" Maximum="500" Increment="1" FormatString="0" ShowButtonSpinner="False" Value="{Binding SelectedAnimationOffsetXText, Mode=TwoWay}"/>
@@ -403,49 +403,49 @@ x:DataType="vm:MainWindowViewModel">
                                     <NumericUpDown Grid.Column="3" Minimum="-500" Maximum="500" Increment="1" FormatString="0" ShowButtonSpinner="False" Value="{Binding SelectedAnimationOffsetYText, Mode=TwoWay}"/>
                                 </Grid>
                                 <WrapPanel>
-                                    <Button Content="Compare Original"
+                                    <Button Content="对比原文件"
                                             Command="{Binding ToggleOriginalFrameCompareCommand}"
                                             ToolTip.Tip="Shows the original frame as a ghost behind the moved frame so you can compare the offset."
                                             Margin="0,0,6,0"/>
 
-                                    <Button Content="Apply Frame"
+                                    <Button Content="应用帧"
                                             Command="{Binding ApplySelectedAnimationOffsetToCurrentFrameCommand}"
                                             ToolTip.Tip="Applies the X/Y offset only to the currently selected frame."
                                             Margin="0,0,6,0"/>
 
-                                    <Button Content="Apply Direction"
+                                    <Button Content="应用方向"
                                             Command="{Binding ApplySelectedAnimationOffsetToCurrentDirectionCommand}"
                                             ToolTip.Tip="Applies the X/Y offset to every frame in the currently loaded direction."
                                             Margin="0,0,6,0"/>
 
-                                    <Button Content="Clear"
+                                    <Button Content="清除"
                                             Command="{Binding ClearSelectedAnimationOffsetCommand}"
                                             ToolTip.Tip="Clears the current X/Y offset preview."/>
                                     <Border Classes="card" Padding="8" Margin="0,4,0,0">
                                         <StackPanel Spacing="8">
-                                            <TextBlock Text="Align Tools" Classes="sectionTitle"/>
+                                            <TextBlock Text="对齐工具" Classes="sectionTitle"/>
 
                                             <TextBlock Text="{Binding AnimationAlignReferenceText}"
                                                        Classes="muted"
                                                        TextWrapping="Wrap"/>
 
                                             <WrapPanel>
-                                                <Button Content="Set Ref"
+                                                <Button Content="设置参考"
                                                         Command="{Binding SetAnimationAlignReferenceCommand}"
                                                         ToolTip.Tip="Uses the current frame as the alignment reference."
                                                         Margin="0,0,6,0"/>
 
-                                                <Button Content="Match Frame"
+                                                <Button Content="匹配帧"
                                                         Command="{Binding MatchCurrentFrameToAlignReferenceCommand}"
                                                         ToolTip.Tip="Calculates the X/Y offset needed to match the reference frame."
                                                         Margin="0,0,6,0"/>
 
-                                                <Button Content="Align Direction"
+                                                <Button Content="对齐方向"
                                                         Command="{Binding AlignCurrentDirectionToReferenceCommand}"
                                                         ToolTip.Tip="Applies the same offset to all loaded frames."
                                                         Margin="0,0,6,0"/>
 
-                                                <Button Content="Auto Align Frames"
+                                                <Button Content="自动对齐帧"
                                                         Command="{Binding AutoAlignCurrentDirectionFramesCommand}"
                                                         ToolTip.Tip="Calculates and applies alignment separately for each frame."/>
                                             </WrapPanel>
@@ -457,7 +457,7 @@ x:DataType="vm:MainWindowViewModel">
 
                         <Border Classes="card">
                             <StackPanel Spacing="8">
-                                <TextBlock Text="Compare / Mount Align" Classes="sectionTitle"/>
+                                <TextBlock Text="对比 / 骑乘对齐" Classes="sectionTitle"/>
                                 <StackPanel Spacing="6" IsVisible="{Binding ShowCompareSelectorBar}">
                                     <TextBlock Text="{Binding CompareTargetHeaderText}" Classes="sectionTitle"/>
 
@@ -491,26 +491,26 @@ x:DataType="vm:MainWindowViewModel">
                                     <NumericUpDown Grid.Column="3" Minimum="-500" Maximum="500" Increment="1" FormatString="0" ShowButtonSpinner="False" Value="{Binding CompareOverlayOffsetYText, Mode=TwoWay}"/>
                                 </Grid>
                                 <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
-                                    <TextBlock Grid.Column="0" Text="Opacity" VerticalAlignment="Center" Classes="muted"/>
+                                    <TextBlock Grid.Column="0" Text="不透明度" VerticalAlignment="Center" Classes="muted"/>
                                     <NumericUpDown Grid.Column="1" Minimum="0" Maximum="100" Increment="1" FormatString="0" ShowButtonSpinner="False" Value="{Binding CompareOverlayOpacityPercentText, Mode=TwoWay}"/>
                                 </Grid>
                                 <WrapPanel>
-                                    <Button Content="Mount Rider Align"
+                                    <Button Content="骑乘对齐"
                                             Command="{Binding SetupMountRiderAlignmentCommand}"
                                             ToolTip.Tip="Sets up compare mode for aligning a rider animation on top of a mount animation."
                                             Margin="0,0,6,0"/>
 
-                                    <Button Content="Save Pose"
+                                    <Button Content="保存姿势"
                                             Command="{Binding SaveComparePoseForCurrentFrameCommand}"
                                             ToolTip.Tip="Saves the current compare X/Y pose for this frame."
                                             Margin="0,0,6,0"/>
 
-                                    <Button Content="Copy Prev"
+                                    <Button Content="复制前帧"
                                             Command="{Binding CopyComparePoseFromPreviousFrameCommand}"
                                             ToolTip.Tip="Copies the compare pose from the previous frame to the current frame."
                                             Margin="0,0,6,0"/>
 
-                                    <Button Content="Clear"
+                                    <Button Content="清除"
                                             Command="{Binding ClearCompareOverlayCommand}"
                                             ToolTip.Tip="Turns off and clears the compare overlay."/>
                                 </WrapPanel>
@@ -519,48 +519,48 @@ x:DataType="vm:MainWindowViewModel">
 
                         <Border Classes="card">
                             <StackPanel Spacing="8">
-                                <TextBlock Text="Prop Overlay" Classes="sectionTitle"/>
+                                <TextBlock Text="道具叠加" Classes="sectionTitle"/>
                                 <Grid ColumnDefinitions="Auto,*,Auto,*" ColumnSpacing="8" RowDefinitions="Auto,Auto,Auto">
                                     <TextBlock Grid.Row="0" Grid.Column="0" Text="X" VerticalAlignment="Center" Classes="muted"/>
                                     <NumericUpDown Grid.Row="0" Grid.Column="1" Minimum="-500" Maximum="500" Increment="1" FormatString="0" ShowButtonSpinner="False" Value="{Binding PropOverlayOffsetXValue, Mode=TwoWay}"/>
                                     <TextBlock Grid.Row="0" Grid.Column="2" Text="Y" VerticalAlignment="Center" Classes="muted"/>
                                     <NumericUpDown Grid.Row="0" Grid.Column="3" Minimum="-500" Maximum="500" Increment="1" FormatString="0" ShowButtonSpinner="False" Value="{Binding PropOverlayOffsetYValue, Mode=TwoWay}"/>
 
-                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Scale" VerticalAlignment="Center" Classes="muted"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="缩放" VerticalAlignment="Center" Classes="muted"/>
                                     <NumericUpDown Grid.Row="1" Grid.Column="1" Minimum="1" Maximum="800" Increment="1" FormatString="0" ShowButtonSpinner="False" Value="{Binding PropOverlayScalePercentValue, Mode=TwoWay}"/>
-                                    <TextBlock Grid.Row="1" Grid.Column="2" Text="Rot" VerticalAlignment="Center" Classes="muted"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="2" Text="旋转" VerticalAlignment="Center" Classes="muted"/>
                                     <NumericUpDown Grid.Row="1" Grid.Column="3" Minimum="-180" Maximum="180" Increment="1" FormatString="0" ShowButtonSpinner="False" Value="{Binding PropOverlayRotationDegreesValue, Mode=TwoWay}"/>
 
-                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Pivot X" VerticalAlignment="Center" Classes="muted"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="枢轴 X" VerticalAlignment="Center" Classes="muted"/>
                                     <NumericUpDown Grid.Row="2" Grid.Column="1" Minimum="-500" Maximum="500" Increment="1" FormatString="0" ShowButtonSpinner="False" Value="{Binding PropOverlayPivotXValue, Mode=TwoWay}"/>
-                                    <TextBlock Grid.Row="2" Grid.Column="2" Text="Pivot Y" VerticalAlignment="Center" Classes="muted"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="2" Text="枢轴 Y" VerticalAlignment="Center" Classes="muted"/>
                                     <NumericUpDown Grid.Row="2" Grid.Column="3" Minimum="-500" Maximum="500" Increment="1" FormatString="0" ShowButtonSpinner="False" Value="{Binding PropOverlayPivotYValue, Mode=TwoWay}"/>
                                 </Grid>
                                 <WrapPanel>
-                                    <CheckBox Content="Flip H" IsChecked="{Binding PropOverlayFlipHorizontal}" Margin="0,0,10,0"/>
-                                    <CheckBox Content="Flip V" IsChecked="{Binding PropOverlayFlipVertical}" Margin="0,0,10,0"/>
+                                    <CheckBox Content="水平翻转" IsChecked="{Binding PropOverlayFlipHorizontal}" Margin="0,0,10,0"/>
+                                    <CheckBox Content="竖直翻转" IsChecked="{Binding PropOverlayFlipVertical}" Margin="0,0,10,0"/>
                                     <ComboBox Width="92" SelectedIndex="{Binding PropOverlayDrawOrderIndex}">
-                                        <ComboBoxItem Content="Behind"/>
-                                        <ComboBoxItem Content="Front"/>
+                                        <ComboBoxItem Content="后面"/>
+                                        <ComboBoxItem Content="前面"/>
                                     </ComboBox>
                                 </WrapPanel>
                                 <WrapPanel>
-                                    <Button Content="Load"
+                                    <Button Content="加载"
                                             Command="{Binding LoadPropOverlayCommand}"
                                             ToolTip.Tip="Loads an image prop to preview over the animation."
                                             Margin="0,0,6,0"/>
 
-                                    <Button Content="Apply Frame"
+                                    <Button Content="应用帧"
                                             Command="{Binding ApplyPropOverlayToCurrentFrameCommand}"
                                             ToolTip.Tip="Applies the prop overlay only to the selected frame."
                                             Margin="0,0,6,0"/>
 
-                                    <Button Content="Apply Dir"
+                                    <Button Content="应用方向"
                                             Command="{Binding ApplyPropOverlayToCurrentDirectionCommand}"
                                             ToolTip.Tip="Applies the prop overlay to every frame in the current direction."
                                             Margin="0,0,6,0"/>
 
-                                    <Button Content="Clear"
+                                    <Button Content="清除"
                                             Command="{Binding ClearPropOverlayCommand}"
                                             ToolTip.Tip="Removes the loaded prop overlay from preview."/>
                                 </WrapPanel>
@@ -569,38 +569,38 @@ x:DataType="vm:MainWindowViewModel">
 
                         <Border Classes="card">
                             <StackPanel Spacing="8">
-                                <TextBlock Text="Live Effects" Classes="sectionTitle"/>
+                                <TextBlock Text="实时效果" Classes="sectionTitle"/>
                                 <WrapPanel>
-                                    <CheckBox Content="Sharpen" IsChecked="{Binding LivePreviewSharpenEnabled}" Margin="0,0,8,0"/>
+                                    <CheckBox Content="锐化" IsChecked="{Binding LivePreviewSharpenEnabled}" Margin="0,0,8,0"/>
                                     <NumericUpDown Width="70" Minimum="0" Maximum="5" Increment="0.1" FormatString="0.0" ShowButtonSpinner="False" Value="{Binding LivePreviewSharpenAmountValue, Mode=TwoWay}" Margin="0,0,8,0"/>
                                     <ComboBox Width="100" SelectedIndex="{Binding LivePreviewSharpenModeIndex}">
-                                        <ComboBoxItem Content="Gaussian"/>
-                                        <ComboBoxItem Content="Pixel"/>
+                                        <ComboBoxItem Content="高斯"/>
+                                        <ComboBoxItem Content="像素"/>
                                     </ComboBox>
                                 </WrapPanel>
                                 <WrapPanel>
-                                    <CheckBox Content="Contrast" IsChecked="{Binding LivePreviewContrastEnabled}" Margin="0,0,8,0"/>
+                                    <CheckBox Content="对比度" IsChecked="{Binding LivePreviewContrastEnabled}" Margin="0,0,8,0"/>
                                     <NumericUpDown Width="70" Minimum="0" Maximum="2" Increment="0.05" FormatString="0.00" ShowButtonSpinner="False" Value="{Binding LivePreviewContrastAmountValue, Mode=TwoWay}" Margin="0,0,14,0"/>
-                                    <CheckBox Content="Outline" IsChecked="{Binding LivePreviewOutlineEnabled}" Margin="0,0,8,0"/>
+                                    <CheckBox Content="轮廓" IsChecked="{Binding LivePreviewOutlineEnabled}" Margin="0,0,8,0"/>
                                     <NumericUpDown Width="70" Minimum="0" Maximum="1" Increment="0.05" FormatString="0.00" ShowButtonSpinner="False" Value="{Binding LivePreviewOutlineStrengthValue, Mode=TwoWay}"/>
                                 </WrapPanel>
                                 <WrapPanel>
-                                    <Button Content="Hue..."
+                                    <Button Content="色调..."
                                             Command="{Binding ConfigureLivePreviewHueCommand}"
                                             ToolTip.Tip="Opens hue settings for previewing the animation with a UO hue."
                                             Margin="0,0,6,0"/>
 
-                                    <Button Content="Scale..."
+                                    <Button Content="缩放..."
                                             Command="{Binding ConfigureLivePreviewScaleCommand}"
                                             ToolTip.Tip="Opens scale settings for previewing or resizing the animation."
                                             Margin="0,0,6,0"/>
 
-                                    <Button Content="Apply Direction"
+                                    <Button Content="应用方向"
                                             Command="{Binding ApplyLivePreviewToCurrentDirectionCommand}"
                                             ToolTip.Tip="Applies the current live effects to every frame in this direction."
                                             Margin="0,0,6,0"/>
 
-                                    <Button Content="Reset"
+                                    <Button Content="重置"
                                             Command="{Binding ResetLivePreviewCommand}"
                                             ToolTip.Tip="Turns off all live preview effects and restores normal preview."/>
                                 </WrapPanel>
@@ -621,9 +621,9 @@ x:DataType="vm:MainWindowViewModel">
                 Padding="10,8">
             <Grid RowDefinitions="Auto,Auto" RowSpacing="8">
                 <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10">
-                    <TextBlock Text="Timeline" Classes="panelTitle"/>
+                    <TextBlock Text="时间线" Classes="panelTitle"/>
                     <TextBlock Text="{Binding CurrentFrameDisplayText}" Classes="muted" VerticalAlignment="Center"/>
-                    <TextBlock Text="Right click frame: replace / remove" Classes="muted" VerticalAlignment="Center"/>
+                    <TextBlock Text="右键点击帧：替换 / 删除" Classes="muted" VerticalAlignment="Center"/>
                 </StackPanel>
 
                 <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" MaxHeight="100">

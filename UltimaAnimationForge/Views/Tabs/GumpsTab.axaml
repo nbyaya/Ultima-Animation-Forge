@@ -46,7 +46,7 @@
                 <Button Content="Load Overlay Image"
                         Command="{Binding LoadGumpOverlayImageCommand}"/>
 
-                <TextBlock Text="Overlay Opacity %"
+                <TextBlock Text="叠加层不透明度 %"
                            Foreground="#AAB4C0"
                            VerticalAlignment="Center"/>
 
@@ -306,7 +306,7 @@
                             <TextBlock Grid.Row="0" Grid.Column="0" Text="Template ID" Foreground="#AAB4C0" VerticalAlignment="Center"/>
                             <NumericUpDown Grid.Row="0" Grid.Column="1" Minimum="0" Maximum="73727"
                                            Value="{Binding PaperdollTemplateGumpId, Mode=TwoWay}"/>
-                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Opacity" Foreground="#AAB4C0" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="不透明度" Foreground="#AAB4C0" VerticalAlignment="Center"/>
                             <NumericUpDown Grid.Row="1" Grid.Column="1" Minimum="0" Maximum="1" Increment="0.05"
                                            Value="{Binding PaperdollTemplateOpacity, Mode=TwoWay}"/>
                         </Grid>

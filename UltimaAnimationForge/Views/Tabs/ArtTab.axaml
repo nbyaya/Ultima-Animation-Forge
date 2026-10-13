@@ -569,14 +569,14 @@
                                         Background="#343B46"
                                         Margin="0,4"/>
 
-                                <TextBlock Text="Overlay"
+                                <TextBlock Text="叠加层"
                                            FontWeight="Bold"
                                            Foreground="#E4EAF2"/>
 
-                                <Button Content="Load Overlay Image"
+                                <Button Content="加载叠加层图像"
                                         Command="{Binding LoadArtOverlayImageCommand}"/>
 
-                                <TextBlock Text="{Binding ArtOverlayOpacity, StringFormat='Opacity: {0:0}%'}"/>
+                                <TextBlock Text="{Binding ArtOverlayOpacity, StringFormat='不透明度: {0:0}%'}"/>
                                 <Slider Minimum="0"
                                         Maximum="100"
                                         Value="{Binding ArtOverlayOpacity}"/>
@@ -584,7 +584,7 @@
                                 <ComboBox ItemsSource="{Binding ArtOverlayBlendModes}"
                                           SelectedItem="{Binding SelectedArtOverlayBlendMode}"/>
 
-                                <Button Content="Apply Overlay To Art"
+                                <Button Content="应用叠加层到美术"
                                         Command="{Binding ApplyArtOverlayCommand}"/>
 
                                 <Border Height="1"
