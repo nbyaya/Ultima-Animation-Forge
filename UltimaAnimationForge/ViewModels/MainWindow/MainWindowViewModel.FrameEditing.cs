@@ -452,11 +452,11 @@ public partial class MainWindowViewModel
         IReadOnlyList<IStorageFile> files = await mainWindow.StorageProvider.OpenFilePickerAsync(
             new FilePickerOpenOptions
             {
-                Title = "Choose PNG Frame",
+                Title = "选择 PNG 帧",
                 AllowMultiple = false,
                 FileTypeFilter = new[]
                 {
-                    new FilePickerFileType("PNG Image")
+                    new FilePickerFileType("PNG 图像")
                     {
                         Patterns = new[] { "*.png" }
                     }
@@ -465,7 +465,7 @@ public partial class MainWindowViewModel
 
         if (files.Count == 0)
         {
-            StatusText = "Replace frame cancelled.";
+            StatusText = "已取消替换帧。";
             return;
         }
 
@@ -473,7 +473,7 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(pngPath))
         {
-            StatusText = "Selected PNG does not have a local path.";
+            StatusText = "选中的 PNG 文件没有本地路径。";
             return;
         }
 
@@ -996,11 +996,11 @@ public partial class MainWindowViewModel
         IReadOnlyList<IStorageFile> files = await mainWindow.StorageProvider.OpenFilePickerAsync(
             new FilePickerOpenOptions
             {
-                Title = "Choose PNG Sequence",
+                Title = "选择 PNG 序列",
                 AllowMultiple = true,
                 FileTypeFilter = new[]
                 {
-                    new FilePickerFileType("PNG Images")
+                    new FilePickerFileType("PNG 图像")
                     {
                         Patterns = new[] { "*.png" }
                     }
@@ -1009,7 +1009,7 @@ public partial class MainWindowViewModel
 
         if (files.Count == 0)
         {
-            StatusText = "PNG sequence import cancelled.";
+            StatusText = "已取消导入 PNG 序列。";
             return;
         }
 
@@ -1021,7 +1021,7 @@ public partial class MainWindowViewModel
 
         if (pngPaths.Count == 0)
         {
-            StatusText = "Selected PNG files do not have local paths.";
+            StatusText = "选中的 PNG 文件没有本地路径。";
             return;
         }
 
