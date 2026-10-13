@@ -529,7 +529,7 @@ public partial class MainWindowViewModel
             }
             else
             {
-                actionLabel = "Action " + actionIndex;
+                actionLabel = "动作 " + actionIndex;
             }
 
             ActionOptions.Add(actionLabel);
@@ -952,7 +952,7 @@ public partial class MainWindowViewModel
             }
             else
             {
-                label = "Action " + actionIndex;
+                label = "动作 " + actionIndex;
             }
 
             CompareActionOptions.Add(label);
