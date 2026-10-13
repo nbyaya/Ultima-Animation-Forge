@@ -1161,7 +1161,7 @@ public partial class MainWindowViewModel
         IReadOnlyList<IStorageFile> files = await mainWindow.StorageProvider.OpenFilePickerAsync(
             new FilePickerOpenOptions
             {
-                Title = "Choose Sprite Sheet PNG",
+                Title = "选择雪碧图 PNG",
                 AllowMultiple = false,
                 FileTypeFilter = new[]
                 {
