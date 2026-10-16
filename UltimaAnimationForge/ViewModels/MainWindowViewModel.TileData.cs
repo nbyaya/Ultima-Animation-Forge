@@ -21,15 +21,15 @@ public partial class MainWindowViewModel
     private readonly TileDataMulService tileDataMulService = new();
     private static readonly string[] TileDataFlagNames =
 {
-    "Background", "Weapon", "Transparent", "Translucent", "Wall", "Damaging", "Impassable", "Wet",
-    "Unknown1", "Surface", "Bridge", "Generic", "Window", "NoShoot", "ArticleA", "ArticleAn",
-    "ArticleThe", "Foliage", "PartialHue", "NoHouse", "Map", "Container", "Wearable", "LightSource",
-    "Animation", "HoverOver", "NoDiagonal", "Armor", "Roof", "Door", "StairBack", "StairRight",
-    "AlphaBlend", "UseNewArt", "ArtUsed", "Unused8", "NoShadow", "PixelBleed", "PlayAnimOnce",
-    "MultiMovable", "Unused10", "Unused11", "Unused12", "Unused13", "Unused14", "Unused15",
-    "Unused16", "Unused17", "Unused18", "Unused19", "Unused20", "Unused21", "Unused22", "Unused23",
-    "Unused24", "Unused25", "Unused26", "Unused27", "Unused28", "Unused29", "Unused30", "Unused31",
-    "Unused32"
+    "背景", "武器", "透明", "半透明", "墙壁", "伤害", "不可通行", "湿润",
+    "未知1", "表面", "桥梁", "通用", "窗口", "不射击", "冠词A", "冠词An",
+    "冠词The", "叶片", "部分色调", "无房屋", "地图", "容器", "可穿戴", "光源",
+    "动画", "悬停", "无对角", "护甲", "屋顶", "门", "楼梯背", "楼梯右",
+    "Alpha混合", "使用新美术", "美术已使用", "未使用8", "无阴影", "像素出血", "播放动画一次",
+    "多重可移动", "未使用10", "未使用11", "未使用12", "未使用13", "未使用14", "未使用15",
+    "未使用16", "未使用17", "未使用18", "未使用19", "未使用20", "未使用21", "未使用22", "未使用23",
+    "未使用24", "未使用25", "未使用26", "未使用27", "未使用28", "未使用29", "未使用30", "未使用31",
+    "未使用32"
 };
 
     [ObservableProperty]
