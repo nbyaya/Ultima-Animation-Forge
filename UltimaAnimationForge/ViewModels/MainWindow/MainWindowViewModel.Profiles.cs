@@ -170,7 +170,7 @@ public partial class MainWindowViewModel
 
         if (activeProfile == null)
         {
-            SelectedAnimationFile = "All Files";
+            SelectedAnimationFile = "所有文件";
             SelectedBodyType = "所有";
             SearchText = string.Empty;
             SelectedDirection = null;
@@ -185,8 +185,8 @@ public partial class MainWindowViewModel
         }
 
         SelectedAnimationFile = string.IsNullOrWhiteSpace(activeProfile.SelectedAnimationFile)
-            ? "All Files"
-            : activeProfile.SelectedAnimationFile;
+            ? "所有文件"
+            : NormalizeAnimationFileName(activeProfile.SelectedAnimationFile);
 
         SelectedBodyType = string.IsNullOrWhiteSpace(activeProfile.SelectedBodyType)
             ? "所有"
@@ -222,7 +222,7 @@ public partial class MainWindowViewModel
             return;
         }
 
-        activeProfile.SelectedAnimationFile = SelectedAnimationFile ?? "All Files";
+        activeProfile.SelectedAnimationFile = SelectedAnimationFile ?? "所有文件";
         activeProfile.SelectedBodyType = SelectedBodyType ?? "所有";
         activeProfile.SearchText = SearchText ?? string.Empty;
         activeProfile.SelectedDirection = SelectedDirection ?? string.Empty;
@@ -243,5 +243,15 @@ public partial class MainWindowViewModel
     private bool ShouldLoadUopForActiveProfile()
     {
         return activeProfile?.LoadUopFiles ?? true;
+    }
+
+    private string NormalizeAnimationFileName(string value)
+    {
+        // 迁移旧配置中的英文值到新的中文值
+        return value switch
+        {
+            "All Files" => "所有文件",
+            _ => value
+        };
     }
 }

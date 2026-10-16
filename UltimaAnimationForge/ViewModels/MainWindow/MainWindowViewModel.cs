@@ -1561,7 +1561,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
             bool matchesFile = true;
 
-            if (!string.Equals(selectedFile, "All Files", StringComparison.OrdinalIgnoreCase))
+            if (!string.Equals(selectedFile, "所有文件", StringComparison.OrdinalIgnoreCase))
             {
                 string normalizedEntryFile = NormalizeAnimationFileNameForCompare(entry.SourceFile);
                 string normalizedSelectedFile = NormalizeAnimationFileNameForCompare(selectedFile);
@@ -1878,7 +1878,7 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         bool shouldLoadUop = ShouldLoadUopForActiveProfile();
         AnimationFileOptions.Clear();
-        AnimationFileOptions.Add("All Files");
+        AnimationFileOptions.Add("所有文件");
 
         HashSet<string> fileNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
@@ -1945,7 +1945,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
         if (string.IsNullOrWhiteSpace(SelectedAnimationFile) || !AnimationFileOptions.Contains(SelectedAnimationFile))
         {
-            SelectedAnimationFile = "All Files";
+            SelectedAnimationFile = "所有文件";
         }
     }
 
@@ -2383,8 +2383,9 @@ public partial class MainWindowViewModel : ViewModelBase
         string oldType = AnimationBrowserTypeFilter;
 
         AnimationBrowserSourceFilters.Clear();
-        AnimationBrowserSourceFilters.Add("All");
+        AnimationBrowserSourceFilters.Add("所有");
 
+        // 使用 Distinct() 和正确的比较器去除重复
         foreach (string source in AnimationEntries
             .Select(x => x.SourceFile)
             .Where(x => !string.IsNullOrWhiteSpace(x))
@@ -2395,11 +2396,13 @@ public partial class MainWindowViewModel : ViewModelBase
         }
 
         AnimationBrowserTypeFilters.Clear();
-        AnimationBrowserTypeFilters.Add("All");
+        AnimationBrowserTypeFilters.Add("所有");
 
+        // 使用 Distinct() 和正确的比较器去除重复
+        // 重要：过滤掉返回值为 "所有" 的类型，避免重复
         foreach (string type in AnimationEntries
             .Select(GetBrowserTypeFromEntry)
-            .Where(x => !string.IsNullOrWhiteSpace(x))
+            .Where(x => !string.IsNullOrWhiteSpace(x) && x != "所有")
             .Distinct(StringComparer.OrdinalIgnoreCase)
             .OrderBy(x => x, StringComparer.OrdinalIgnoreCase))
         {
@@ -2408,11 +2411,11 @@ public partial class MainWindowViewModel : ViewModelBase
 
         AnimationBrowserSourceFilter = AnimationBrowserSourceFilters.Contains(oldSource)
             ? oldSource
-            : "All";
+            : "所有";
 
         AnimationBrowserTypeFilter = AnimationBrowserTypeFilters.Contains(oldType)
             ? oldType
-            : "All";
+            : "所有";
     }
 
     private string GetBrowserTypeFromEntry(AnimationEntry entry)
@@ -2425,12 +2428,19 @@ public partial class MainWindowViewModel : ViewModelBase
         string text = entry.SecondaryText ?? string.Empty;
 
         int pipeIndex = text.IndexOf('|');
-        if (pipeIndex > 0)
-        {
-            return text.Substring(0, pipeIndex).Trim();
-        }
+        string typeValue = pipeIndex > 0
+            ? text.Substring(0, pipeIndex).Trim()
+            : text.Trim();
 
-        return text.Trim();
+        // 映射英文常量到汉化值（显示层）
+        return typeValue switch
+        {
+            "ANIMAL" => "动物",
+            "MONSTER" => "怪物",
+            "HUMAN" => "人类",
+            "EQUIPMENT" => "装备",
+            _ => typeValue  // 其他值保持原样
+        };
     }
 
     partial void OnAnimationBrowserSearchTextChanged(string value)
@@ -2505,14 +2515,14 @@ public partial class MainWindowViewModel : ViewModelBase
         }
 
         if (!string.IsNullOrWhiteSpace(AnimationBrowserSourceFilter) &&
-            !string.Equals(AnimationBrowserSourceFilter, "All", StringComparison.OrdinalIgnoreCase))
+            !string.Equals(AnimationBrowserSourceFilter, "所有", StringComparison.OrdinalIgnoreCase))
         {
             filteredEntries = filteredEntries.Where(entry =>
                 string.Equals(entry.SourceFile, AnimationBrowserSourceFilter, StringComparison.OrdinalIgnoreCase));
         }
 
         if (!string.IsNullOrWhiteSpace(AnimationBrowserTypeFilter) &&
-            !string.Equals(AnimationBrowserTypeFilter, "All", StringComparison.OrdinalIgnoreCase))
+            !string.Equals(AnimationBrowserTypeFilter, "所有", StringComparison.OrdinalIgnoreCase))
         {
             filteredEntries = filteredEntries.Where(entry =>
                 string.Equals(GetBrowserTypeFromEntry(entry), AnimationBrowserTypeFilter, StringComparison.OrdinalIgnoreCase));
