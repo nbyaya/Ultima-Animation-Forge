@@ -809,10 +809,10 @@ public partial class MainWindowViewModel
 
     private void RebuildCompareFileOptions()
     {
-        string previous = CompareSelectedAnimationFile ?? "All Files";
+        string previous = CompareSelectedAnimationFile ?? "所有文件";
 
         CompareAnimationFileOptions.Clear();
-        CompareAnimationFileOptions.Add("All Files");
+        CompareAnimationFileOptions.Add("所有文件");
 
         foreach (string fileName in allAnimationEntries
                      .Select(x => x.SourceFile)
@@ -834,7 +834,7 @@ public partial class MainWindowViewModel
         }
         else
         {
-            CompareSelectedAnimationFile = "All Files";
+            CompareSelectedAnimationFile = "所有文件";
         }
     }
 

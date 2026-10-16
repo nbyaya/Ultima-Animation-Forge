@@ -378,7 +378,7 @@ public class SettingsService
             }
 
             profile.UoFolderPath ??= string.Empty;
-            profile.SelectedAnimationFile ??= "All Files";
+            profile.SelectedAnimationFile ??= "所有文件";
             profile.SelectedBodyType ??= "所有";
             profile.SearchText ??= string.Empty;
             profile.SelectedDirection ??= string.Empty;

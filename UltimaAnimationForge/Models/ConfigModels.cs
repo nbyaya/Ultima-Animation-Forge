@@ -16,7 +16,7 @@ public class AnimationViewerProfile
     public string ProfileName { get; set; } = "Default";
     public string UoFolderPath { get; set; } = string.Empty;
 
-    public string SelectedAnimationFile { get; set; } = "All Files";
+    public string SelectedAnimationFile { get; set; } = "所有文件";
     public string SelectedBodyType { get; set; } = "所有";
     public string SearchText { get; set; } = string.Empty;
 
