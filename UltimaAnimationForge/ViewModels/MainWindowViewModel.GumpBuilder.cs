@@ -44,10 +44,10 @@ public partial class MainWindowViewModel
         {
             return GumpBuilderActiveExportKind switch
             {
-                "UOX3" => "UOX3 JavaScript Preview",
-                "CSharp" => "C# Preview",
-                "Sphere" => "Sphere Preview",
-                "POL" => "POL Preview",
+                "UOX3" => "UOX3 JavaScript 预览",
+                "CSharp" => "C# 预览",
+                "Sphere" => "Sphere 预览",
+                "POL" => "POL 预览",
                 _ => string.Empty
             };
         }
@@ -59,11 +59,11 @@ public partial class MainWindowViewModel
         {
             return GumpBuilderActiveExportKind switch
             {
-                "UOX3" => "Copy JS",
-                "CSharp" => "Copy C#",
-                "Sphere" => "Copy Sphere",
-                "POL" => "Copy POL",
-                _ => "Copy"
+                "UOX3" => "复制 JS",
+                "CSharp" => "复制 C#",
+                "Sphere" => "复制 Sphere",
+                "POL" => "复制 POL",
+                _ => "复制"
             };
         }
     }
@@ -177,7 +177,7 @@ public partial class MainWindowViewModel
     private int gumpBuilderHeight = 750;
 
     [ObservableProperty]
-    private string gumpBuilderStatusText = "Gump Builder ready.";
+    private string gumpBuilderStatusText = "Gump 构建器就绪。";
 
     public ObservableCollection<ArtEntry> GumpBuilderArtPickerEntries { get; } = new();
 
@@ -257,7 +257,7 @@ public partial class MainWindowViewModel
 
         if (gumpDataService.Entries.Count == 0)
         {
-            GumpBuilderStatusText = "No gumps are loaded. Open a UO folder first.";
+            GumpBuilderStatusText = "未加载任何 Gump。请先打开 UO 文件夹。";
             return false;
         }
 
@@ -276,7 +276,7 @@ public partial class MainWindowViewModel
 
         if (entry == null)
         {
-            GumpBuilderStatusText = "Gump " + gumpId + " was not found.";
+            GumpBuilderStatusText = "未找到 Gump " + gumpId + "。";
             return null;
         }
 
@@ -301,7 +301,7 @@ public partial class MainWindowViewModel
 
         if (gumpDataService.Entries.Count == 0)
         {
-            GumpBuilderStatusText = "No gumps are loaded. Open a UO folder first.";
+            GumpBuilderStatusText = "未加载任何 Gump。请先打开 UO 文件夹。";
             return;
         }
 
@@ -314,7 +314,7 @@ public partial class MainWindowViewModel
 
             if (entry == null)
             {
-                GumpBuilderStatusText = "Missing background gump part " + gumpId + ".";
+                GumpBuilderStatusText = "缺少背景 Gump 部分 " + gumpId + "。";
                 return;
             }
 
@@ -322,7 +322,7 @@ public partial class MainWindowViewModel
 
             if (!result.Success || result.Bitmap == null)
             {
-                GumpBuilderStatusText = "Failed loading background gump part " + gumpId + ". " + result.Message;
+                GumpBuilderStatusText = "加载背景 Gump 部分 " + gumpId + " 失败。" + result.Message;
                 return;
             }
 
@@ -348,7 +348,7 @@ public partial class MainWindowViewModel
             Bitmap = rendered
         });
 
-        GumpBuilderStatusText = "Added AddBackground 9200 using 9 gump parts.";
+        GumpBuilderStatusText = "添加了使用 9 个 Gump 部分的 AddBackground 9200。";
     }
 
     [RelayCommand]
@@ -357,9 +357,9 @@ public partial class MainWindowViewModel
         RefreshGumpBuilderArtPicker();
 
         GumpBuilderStatusText =
-            "Art Picker opened. Entries loaded: " +
+            "美术拾取器已打开。已加载条目：" +
             GumpBuilderArtPickerEntries.Count +
-            ". Scroll down to Art Picker, select art, then click Add Selected Art.";
+            "。向下滚动到美术拾取器，选择美术，然后单击\"添加所选美术\"。";
     }
 
     [RelayCommand]
@@ -370,7 +370,7 @@ public partial class MainWindowViewModel
 
         if (normalBitmap == null)
         {
-            GumpBuilderStatusText = "Could not load button gump 4005.";
+            GumpBuilderStatusText = "无法加载按钮 Gump 4005。";
             return;
         }
 
@@ -389,7 +389,7 @@ public partial class MainWindowViewModel
             PressedBitmap = pressedBitmap
         });
 
-        GumpBuilderStatusText = "Added button 4005 / 4006.";
+        GumpBuilderStatusText = "已添加按钮 4005 / 4006。";
     }
 
     [RelayCommand]
@@ -419,7 +419,7 @@ public partial class MainWindowViewModel
             GumpBuilderPickerEntries.Add(entry);
         }
 
-        GumpBuilderStatusText = "Loaded " + GumpBuilderPickerEntries.Count + " gumps in picker.";
+        GumpBuilderStatusText = "在拾取器中加载了 " + GumpBuilderPickerEntries.Count + " 个 Gump。";
     }
 
     [RelayCommand]
@@ -427,13 +427,13 @@ public partial class MainWindowViewModel
     {
         if (SelectedGumpBuilderElement == null)
         {
-            GumpBuilderStatusText = "No builder element selected.";
+            GumpBuilderStatusText = "未选择构建器元素。";
             return;
         }
 
         if (SelectedGumpBuilderPickerEntry == null)
         {
-            GumpBuilderStatusText = "No picker gump selected.";
+            GumpBuilderStatusText = "未选择拾取器 Gump。";
             return;
         }
 
@@ -461,13 +461,13 @@ public partial class MainWindowViewModel
 
         ExportGumpBuilderUox3JavaScript();
 
-        GumpBuilderStatusText = "Applied gump " +
+        GumpBuilderStatusText = "应用了 Gump " +
                                 SelectedGumpBuilderPickerEntry.GumpId +
-                                " at native size " +
+                                "，原生尺寸为 " +
                                 bitmap.PixelSize.Width +
                                 "x" +
                                 bitmap.PixelSize.Height +
-                                ".";
+                                "。";
     }
 
     [RelayCommand]
@@ -486,7 +486,7 @@ public partial class MainWindowViewModel
             Z = 10
         });
 
-        GumpBuilderStatusText = "Added AddText.";
+        GumpBuilderStatusText = "已添加 AddText。";
     }
 
     [RelayCommand]
@@ -509,7 +509,7 @@ public partial class MainWindowViewModel
             Z = 10
         });
 
-        GumpBuilderStatusText = "Added AddTextEntry.";
+        GumpBuilderStatusText = "已添加 AddTextEntry。";
     }
 
     [RelayCommand]
@@ -528,7 +528,7 @@ public partial class MainWindowViewModel
             Z = 10
         });
 
-        GumpBuilderStatusText = "Added AddCroppedText.";
+        GumpBuilderStatusText = "已添加 AddCroppedText。";
     }
 
     [RelayCommand]
@@ -536,13 +536,13 @@ public partial class MainWindowViewModel
     {
         if (SelectedGumpBuilderElement == null)
         {
-            GumpBuilderStatusText = "No builder element selected.";
+            GumpBuilderStatusText = "未选择构建器元素。";
             return;
         }
 
         GumpBuilderElements.Remove(SelectedGumpBuilderElement);
         SelectedGumpBuilderElement = null;
-        GumpBuilderStatusText = "Deleted builder element.";
+        GumpBuilderStatusText = "已删除构建器元素。";
         ExportGumpBuilderUox3JavaScript();
     }
 
@@ -595,7 +595,7 @@ public partial class MainWindowViewModel
         GumpBuilderElements.Add(element);
         SelectedGumpBuilderElement = element;
         WatchGumpBuilderElementForExport(element);
-        GumpBuilderStatusText = "Added " + element.Type + ".";
+        GumpBuilderStatusText = "已添加 " + element.Type + "。";
         ExportGumpBuilderUox3JavaScript();
     }
 
@@ -618,7 +618,7 @@ public partial class MainWindowViewModel
         }
 
         SelectedGumpBuilderElement = element;
-        GumpBuilderStatusText = "Selected " + element.Type + ".";
+        GumpBuilderStatusText = "已选择 " + element.Type + "。";
     }
 
     public int SnapGumpBuilderValue(int value)
@@ -650,7 +650,7 @@ public partial class MainWindowViewModel
     private void ExportGumpBuilderCSharp()
     {
         GumpBuilderCSharpExportText = GumpBuilderExportService.ExportCSharp(GumpBuilderElements);
-        GumpBuilderStatusText = "Generated C# gump code.";
+        GumpBuilderStatusText = "已生成 C# Gump 代码。";
     }
 
     [RelayCommand]
@@ -664,12 +664,12 @@ public partial class MainWindowViewModel
         if (Avalonia.Application.Current?.ApplicationLifetime is not Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop ||
             desktop.MainWindow == null)
         {
-            GumpBuilderStatusText = "Could not access clipboard.";
+            GumpBuilderStatusText = "无法访问剪贴板。";
             return;
         }
 
         await desktop.MainWindow.Clipboard!.SetTextAsync(GumpBuilderCSharpExportText);
-        GumpBuilderStatusText = "Copied C# gump code to clipboard.";
+        GumpBuilderStatusText = "已将 C# Gump 代码复制到剪贴板。";
     }
 
     private void WatchGumpBuilderElementForExport(GumpBuilderElement? element)
@@ -748,12 +748,12 @@ public partial class MainWindowViewModel
         if (Application.Current?.ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime desktop ||
             desktop.MainWindow?.Clipboard == null)
         {
-            GumpBuilderStatusText = "Clipboard is not available.";
+            GumpBuilderStatusText = "剪贴板不可用。";
             return;
         }
 
         await desktop.MainWindow.Clipboard.SetTextAsync(GumpBuilderExportText);
-        GumpBuilderStatusText = "Copied UOX3 JavaScript gump code to clipboard.";
+        GumpBuilderStatusText = "已将 UOX3 JavaScript Gump 代码复制到剪贴板。";
     }
 
     [RelayCommand]
@@ -773,7 +773,7 @@ public partial class MainWindowViewModel
             Z = 10
         });
 
-        GumpBuilderStatusText = "Added AddHTMLGump.";
+        GumpBuilderStatusText = "已添加 AddHTMLGump。";
     }
 
     [RelayCommand]
@@ -783,7 +783,7 @@ public partial class MainWindowViewModel
 
         if (checkboxBitmap == null)
         {
-            GumpBuilderStatusText = "Could not load checkbox gump 2706.";
+            GumpBuilderStatusText = "无法加载复选框 Gump 2706。";
             return;
         }
 
@@ -801,7 +801,7 @@ public partial class MainWindowViewModel
             Bitmap = checkboxBitmap
         });
 
-        GumpBuilderStatusText = "Added checkbox 2706.";
+        GumpBuilderStatusText = "已添加复选框 2706。";
     }
 
     [RelayCommand]
@@ -828,7 +828,7 @@ public partial class MainWindowViewModel
 
         if (tileBitmap == null)
         {
-            GumpBuilderStatusText = "Could not load tiled gump 2624.";
+            GumpBuilderStatusText = "无法加载平铺 Gump 2624。";
             return;
         }
 
@@ -851,7 +851,7 @@ public partial class MainWindowViewModel
             Bitmap = rendered
         });
 
-        GumpBuilderStatusText = "Added tiled gump 2624.";
+        GumpBuilderStatusText = "已添加平铺 Gump 2624。";
     }
 
     [RelayCommand]
@@ -859,7 +859,7 @@ public partial class MainWindowViewModel
     {
         if (SelectedGump == null || !SelectedGump.IsValid)
         {
-            GumpBuilderStatusText = "Select a valid gump from the Gumps tab first.";
+            GumpBuilderStatusText = "请先从\"Gump\"标签中选择有效的 Gump。";
             return;
         }
 
@@ -870,7 +870,7 @@ public partial class MainWindowViewModel
 
         if (SelectedGumpBitmap == null)
         {
-            GumpBuilderStatusText = "Selected gump bitmap is not loaded.";
+            GumpBuilderStatusText = "选定的 Gump 位图未加载。";
             return;
         }
 
@@ -889,7 +889,7 @@ public partial class MainWindowViewModel
             Bitmap = SelectedGumpBitmap
         });
 
-        GumpBuilderStatusText = "Added selected gump " + SelectedGump.GumpId + " at native size " + width + "x" + height + ".";
+        GumpBuilderStatusText = "已添加所选 Gump " + SelectedGump.GumpId + "，原生尺寸为 " + width + "x" + height + "。";
     }
 
     [RelayCommand]
@@ -904,7 +904,7 @@ public partial class MainWindowViewModel
 
         if (ArtEntries.Count == 0)
         {
-            GumpBuilderStatusText = "No art entries loaded. Open a UO folder first.";
+            GumpBuilderStatusText = "未加载任何美术条目。请先打开 UO 文件夹。";
             return;
         }
 
@@ -925,7 +925,7 @@ public partial class MainWindowViewModel
             GumpBuilderArtPickerEntries.Add(entry);
         }
 
-        GumpBuilderStatusText = "Loaded " + GumpBuilderArtPickerEntries.Count + " static art entries.";
+        GumpBuilderStatusText = "已加载 " + GumpBuilderArtPickerEntries.Count + " 个静态美术条目。";
     }
 
     [RelayCommand]
@@ -933,7 +933,7 @@ public partial class MainWindowViewModel
     {
         if (SelectedGumpBuilderArtPickerEntry == null)
         {
-            GumpBuilderStatusText = "No art selected.";
+            GumpBuilderStatusText = "未选择美术。";
             return;
         }
 
@@ -941,7 +941,7 @@ public partial class MainWindowViewModel
 
         if (bitmap == null)
         {
-            GumpBuilderStatusText = "Failed to load art " + SelectedGumpBuilderArtPickerEntry.ArtId + ".";
+            GumpBuilderStatusText = "加载美术 " + SelectedGumpBuilderArtPickerEntry.ArtId + " 失败。";
             return;
         }
 
@@ -961,7 +961,7 @@ public partial class MainWindowViewModel
 
         ExportGumpBuilderUox3JavaScript();
 
-        GumpBuilderStatusText = "Added art " + SelectedGumpBuilderArtPickerEntry.ArtId + ".";
+        GumpBuilderStatusText = "已添加美术 " + SelectedGumpBuilderArtPickerEntry.ArtId + "。";
     }
 
     [RelayCommand]
@@ -971,7 +971,7 @@ public partial class MainWindowViewModel
 
         if (buttonBitmap == null)
         {
-            GumpBuilderStatusText = "Could not load button gump 5050.";
+            GumpBuilderStatusText = "无法加载按钮 Gump 5050。";
             return;
         }
 
@@ -993,7 +993,7 @@ public partial class MainWindowViewModel
             Bitmap = buttonBitmap
         });
 
-        GumpBuilderStatusText = "Added ButtonTileArt 5050 with tile 1193.";
+        GumpBuilderStatusText = "已添加 ButtonTileArt 5050，tile 为 1193。";
     }
 
     [RelayCommand]
@@ -1010,7 +1010,7 @@ public partial class MainWindowViewModel
             Z = 100
         });
 
-        GumpBuilderStatusText = "Added checker transparent region.";
+        GumpBuilderStatusText = "已添加棋盘透明区域。";
     }
 
     partial void OnGumpBuilderMasterGumpIdChanged(int value)
@@ -1058,7 +1058,7 @@ public partial class MainWindowViewModel
             Z = 0
         });
 
-        GumpBuilderStatusText = "Added radio group start.";
+        GumpBuilderStatusText = "已添加单选组开始。";
     }
 
     [RelayCommand]
@@ -1075,7 +1075,7 @@ public partial class MainWindowViewModel
             Z = 0
         });
 
-        GumpBuilderStatusText = "Added radio group end.";
+        GumpBuilderStatusText = "已添加单选组结束。";
     }
 
     [RelayCommand]
@@ -1092,7 +1092,7 @@ public partial class MainWindowViewModel
             PageNumber = 1
         });
 
-        GumpBuilderStatusText = "Added page marker.";
+        GumpBuilderStatusText = "已添加页面标记。";
     }
 
     [RelayCommand]
@@ -1109,7 +1109,7 @@ public partial class MainWindowViewModel
             ItemPropertyObject = "myItem"
         });
 
-        GumpBuilderStatusText = "Added item property marker.";
+        GumpBuilderStatusText = "已添加物品属性标记。";
     }
 
     [RelayCommand]
@@ -1126,7 +1126,7 @@ public partial class MainWindowViewModel
             ClilocNumber = 1015094
         });
 
-        GumpBuilderStatusText = "Added cliloc tooltip marker.";
+        GumpBuilderStatusText = "已添加 cliloc 工具提示标记。";
     }
 
     [RelayCommand]
@@ -1135,9 +1135,9 @@ public partial class MainWindowViewModel
         RefreshGumpBuilderPicker();
 
         GumpBuilderStatusText =
-            "Gump Picker opened. Entries loaded: " +
+            "Gump 拾取器已打开。已加载条目：" +
             GumpBuilderPickerEntries.Count +
-            ". Select a gump, then click Add Selected Gump.";
+            "。选择一个 Gump，然后单击\"添加所选 Gump\"。";
     }
 
     [RelayCommand]
@@ -1145,7 +1145,7 @@ public partial class MainWindowViewModel
     {
         if (SelectedGumpBuilderPickerEntry == null)
         {
-            GumpBuilderStatusText = "No picker gump selected.";
+            GumpBuilderStatusText = "未选择拾取器 Gump。";
             return;
         }
 
@@ -1172,7 +1172,7 @@ public partial class MainWindowViewModel
 
         ExportGumpBuilderUox3JavaScript();
 
-        GumpBuilderStatusText = "Added gump " + SelectedGumpBuilderPickerEntry.GumpId + ".";
+        GumpBuilderStatusText = "已添加 Gump " + SelectedGumpBuilderPickerEntry.GumpId + "。";
     }
 
     [RelayCommand]
@@ -1182,7 +1182,7 @@ public partial class MainWindowViewModel
 
         if (sourceBitmap == null)
         {
-            GumpBuilderStatusText = "Could not load PicInPic source gump 0x9D3B.";
+            GumpBuilderStatusText = "无法加载 PicInPic 源 Gump 0x9D3B。";
             return;
         }
 
@@ -1207,7 +1207,7 @@ public partial class MainWindowViewModel
             Bitmap = previewBitmap
         });
 
-        GumpBuilderStatusText = "Added PicInPic gump 0x9D3B.";
+        GumpBuilderStatusText = "已添加 PicInPic Gump 0x9D3B。";
     }
 
     [RelayCommand]
@@ -1218,7 +1218,7 @@ public partial class MainWindowViewModel
 
         if (normalBitmap == null)
         {
-            GumpBuilderStatusText = "Could not load page button gump 5050.";
+            GumpBuilderStatusText = "无法加载页面按钮 Gump 5050。";
             return;
         }
 
@@ -1237,7 +1237,7 @@ public partial class MainWindowViewModel
             PressedBitmap = pressedBitmap
         });
 
-        GumpBuilderStatusText = "Added page button 5050 to page 1.";
+        GumpBuilderStatusText = "已添加页面按钮 5050 到第 1 页。";
     }
 
     [RelayCommand]
@@ -1257,7 +1257,7 @@ public partial class MainWindowViewModel
             Z = 10
         });
 
-        GumpBuilderStatusText = "Added AddXMFHTMLGump.";
+        GumpBuilderStatusText = "已添加 AddXMFHTMLGump。";
     }
 
     [RelayCommand]
@@ -1278,7 +1278,7 @@ public partial class MainWindowViewModel
             Z = 10
         });
 
-        GumpBuilderStatusText = "Added AddXMFHTMLGumpColor.";
+        GumpBuilderStatusText = "已添加 AddXMFHTMLGumpColor。";
     }
 
     [RelayCommand]
@@ -1302,7 +1302,7 @@ public partial class MainWindowViewModel
             Z = 10
         });
 
-        GumpBuilderStatusText = "Added AddXMFHTMLTok.";
+        GumpBuilderStatusText = "已添加 AddXMFHTMLTok。";
     }
 
     [RelayCommand]
@@ -1316,12 +1316,12 @@ public partial class MainWindowViewModel
         if (Application.Current?.ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime desktop ||
             desktop.MainWindow?.Clipboard == null)
         {
-            GumpBuilderStatusText = "Clipboard is not available.";
+            GumpBuilderStatusText = "剪贴板不可用。";
             return;
         }
 
         await desktop.MainWindow.Clipboard.SetTextAsync(GumpBuilderCSharpExportText);
-        GumpBuilderStatusText = "Copied C# gump code to clipboard.";
+        GumpBuilderStatusText = "已将 C# Gump 代码复制到剪贴板。";
     }
 
     [RelayCommand]
@@ -1335,7 +1335,7 @@ public partial class MainWindowViewModel
             GumpBuilderNoDispose,
             GumpBuilderNoMove);
 
-        GumpBuilderStatusText = "Generated Sphere gump code.";
+        GumpBuilderStatusText = "已生成 Sphere Gump 代码。";
     }
 
     [RelayCommand]
@@ -1349,12 +1349,12 @@ public partial class MainWindowViewModel
         if (Application.Current?.ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime desktop ||
             desktop.MainWindow?.Clipboard == null)
         {
-            GumpBuilderStatusText = "Clipboard is not available.";
+            GumpBuilderStatusText = "剪贴板不可用。";
             return;
         }
 
         await desktop.MainWindow.Clipboard.SetTextAsync(GumpBuilderSphereExportText);
-        GumpBuilderStatusText = "Copied Sphere gump code to clipboard.";
+        GumpBuilderStatusText = "已将 Sphere Gump 代码复制到剪贴板。";
     }
 
     [RelayCommand]
@@ -1368,7 +1368,7 @@ public partial class MainWindowViewModel
             GumpBuilderNoDispose,
             GumpBuilderNoMove);
 
-        GumpBuilderStatusText = "Generated POL gump code.";
+        GumpBuilderStatusText = "已生成 POL Gump 代码。";
     }
 
     [RelayCommand]
@@ -1382,12 +1382,12 @@ public partial class MainWindowViewModel
         if (Application.Current?.ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime desktop ||
             desktop.MainWindow?.Clipboard == null)
         {
-            GumpBuilderStatusText = "Clipboard is not available.";
+            GumpBuilderStatusText = "剪贴板不可用。";
             return;
         }
 
         await desktop.MainWindow.Clipboard.SetTextAsync(GumpBuilderPolExportText);
-        GumpBuilderStatusText = "Copied POL gump code to clipboard.";
+        GumpBuilderStatusText = "已将 POL Gump 代码复制到剪贴板。";
     }
 
     [RelayCommand]
@@ -1444,7 +1444,7 @@ public partial class MainWindowViewModel
                 break;
 
             default:
-                GumpBuilderStatusText = "No export preview selected.";
+                GumpBuilderStatusText = "未选择导出预览。";
                 break;
         }
     }
