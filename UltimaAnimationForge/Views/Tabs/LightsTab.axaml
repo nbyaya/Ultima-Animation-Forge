@@ -8,35 +8,35 @@
 
         <Border Grid.Row="0" Background="#1E232A" Padding="12,8">
             <WrapPanel Orientation="Horizontal">
-                <Button Content="Load" Command="{Binding LoadLightsCommand}" Margin="0,0,6,6"/>
-                <Button Content="Save" Command="{Binding SaveLightsCommand}" Margin="0,0,6,6"/>
-                <Button Content="Reset" Command="{Binding ResetLightsCommand}" Margin="0,0,6,6"/>
-                <Button Content="Undo" Command="{Binding UndoLightEditCommand}" Margin="0,0,6,6"/>
-                <Button Content="Redo" Command="{Binding RedoLightEditCommand}" Margin="0,0,6,6"/>
+                <Button Content="加载" Command="{Binding LoadLightsCommand}" Margin="0,0,6,6"/>
+                <Button Content="保存" Command="{Binding SaveLightsCommand}" Margin="0,0,6,6"/>
+                <Button Content="重置" Command="{Binding ResetLightsCommand}" Margin="0,0,6,6"/>
+                <Button Content="撤销" Command="{Binding UndoLightEditCommand}" Margin="0,0,6,6"/>
+                <Button Content="重做" Command="{Binding RedoLightEditCommand}" Margin="0,0,6,6"/>
 
-                <CheckBox Content="Show Removed"
+                <CheckBox Content="显示已删除"
                           IsChecked="{Binding ShowRemovedLightSlots, Mode=TwoWay}"
                           VerticalAlignment="Center"
                           Margin="0,0,10,6"/>
 
-                <Button Content="Import PNG" Command="{Binding ImportSelectedLightPngCommand}" Margin="0,0,6,6"/>
-                <Button Content="Export PNG" Command="{Binding ExportSelectedLightPngCommand}" Margin="0,0,10,6"/>
+                <Button Content="导入 PNG" Command="{Binding ImportSelectedLightPngCommand}" Margin="0,0,6,6"/>
+                <Button Content="导出 PNG" Command="{Binding ExportSelectedLightPngCommand}" Margin="0,0,10,6"/>
 
-                <TextBlock Text="W" VerticalAlignment="Center" Foreground="#AAB4C0" Margin="0,0,4,6"/>
+                <TextBlock Text="宽" VerticalAlignment="Center" Foreground="#AAB4C0" Margin="0,0,4,6"/>
                 <NumericUpDown Value="{Binding NewLightWidth, Mode=TwoWay}"
                                Minimum="8"
                                Maximum="600"
                                Width="120"
                                FormatString="0"/>
 
-                <TextBlock Text="H" VerticalAlignment="Center" Foreground="#AAB4C0" Margin="0,0,4,6"/>
+                <TextBlock Text="高" VerticalAlignment="Center" Foreground="#AAB4C0" Margin="0,0,4,6"/>
                 <NumericUpDown Value="{Binding NewLightHeight, Mode=TwoWay}"
                                Minimum="8"
                                Maximum="600"
                                Width="120"
                                FormatString="0"/>
 
-                <TextBlock Text="Strength" VerticalAlignment="Center" Foreground="#AAB4C0" Margin="0,0,4,6"/>
+                <TextBlock Text="强度" VerticalAlignment="Center" Foreground="#AAB4C0" Margin="0,0,4,6"/>
                 <NumericUpDown Value="{Binding LightPresetStrength, Mode=TwoWay}"
                                Minimum="1"
                                Maximum="31"
@@ -61,7 +61,7 @@
                     </Button.Flyout>
                 </Button>
 
-                <TextBlock Text="Brush" VerticalAlignment="Center" Foreground="#AAB4C0" Margin="0,0,4,6"/>
+                <TextBlock Text="笔刷" VerticalAlignment="Center" Foreground="#AAB4C0" Margin="0,0,4,6"/>
                 <NumericUpDown Value="{Binding LightBrushSize, Mode=TwoWay}"
                                Minimum="1"
                                Maximum="100"
@@ -69,7 +69,7 @@
                                FormatString="0"
                                Margin="0,0,6,6"/>
 
-                <TextBlock Text="Paint" VerticalAlignment="Center" Foreground="#AAB4C0" Margin="0,0,4,6"/>
+                <TextBlock Text="绘制" VerticalAlignment="Center" Foreground="#AAB4C0" Margin="0,0,4,6"/>
                 <NumericUpDown Value="{Binding LightBrushStrength, Mode=TwoWay}"
                                Minimum="1"
                                Maximum="31"
@@ -77,7 +77,7 @@
                                FormatString="0"
                                Margin="0,0,6,6"/>
 
-                <CheckBox Content="Erase"
+                <CheckBox Content="擦除"
                           IsChecked="{Binding LightBrushErase, Mode=TwoWay}"
                           VerticalAlignment="Center"
                           Margin="0,0,6,6"/>
