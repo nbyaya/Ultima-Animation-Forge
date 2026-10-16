@@ -32,20 +32,20 @@ public partial class ClilocEntry : ObservableObject
         {
             if (IsDuplicate)
             {
-                return "Duplicate";
+                return "重复";
             }
 
             if (string.IsNullOrWhiteSpace(Text))
             {
-                return "Empty";
+                return "空";
             }
 
             if (IsDirty)
             {
-                return "Edited";
+                return "已编辑";
             }
 
-            return "OK";
+            return "正常";
         }
     }
 
