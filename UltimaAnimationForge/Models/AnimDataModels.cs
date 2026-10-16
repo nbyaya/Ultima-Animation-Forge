@@ -45,9 +45,9 @@ public sealed partial class AnimDataEntry : ObservableObject
             : "0x" + Id.ToString("X4") + " " + TileName;
 
     public string SecondaryText =>
-        "Frames: " + FrameCount +
-        " | Interval: " + FrameInterval +
-        " | Start: " + FrameStart +
+        "帧数: " + FrameCount +
+        " | 间隔: " + FrameInterval +
+        " | 开始: " + FrameStart +
         " | " + ValidationText;
 
     public string ValidationText
@@ -56,15 +56,15 @@ public sealed partial class AnimDataEntry : ObservableObject
         {
             if (!ArtExists)
             {
-                return "Missing base art";
+                return "缺少基础美术";
             }
 
             if (!HasAnimationTileFlag)
             {
-                return "No TileData animation flag";
+                return "无 TileData 动画标志";
             }
 
-            return "OK";
+            return "正常";
         }
     }
 
@@ -155,8 +155,8 @@ public sealed partial class AnimDataFrameEntry : ObservableObject
     public string DisplayText =>
         (FrameIndex + 1).ToString("D2") +
         " | 0x" + GraphicId.ToString("X4") +
-        " | Offset " + Offset +
+        " | 偏移 " + Offset +
         (string.IsNullOrWhiteSpace(TileName) ? string.Empty : " | " + TileName);
 
-    public string StatusText => ArtExists ? "OK" : "Missing art";
+    public string StatusText => ArtExists ? "正常" : "缺少美术";
 }
