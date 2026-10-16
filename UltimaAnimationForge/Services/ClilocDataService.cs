@@ -47,13 +47,13 @@ public sealed class ClilocDataService
     {
         if (string.IsNullOrWhiteSpace(filePath))
         {
-            throw new ArgumentException("Cliloc path is required.", nameof(filePath));
+            throw new ArgumentException("Cliloc 路径为必需项。", nameof(filePath));
         }
 
         string? folder = Path.GetDirectoryName(filePath);
         if (string.IsNullOrWhiteSpace(folder) || !Directory.Exists(folder))
         {
-            throw new DirectoryNotFoundException("Cliloc folder was not found.");
+            throw new DirectoryNotFoundException("Cliloc 文件夹未找到。");
         }
 
         if (File.Exists(filePath))
@@ -77,7 +77,7 @@ public sealed class ClilocDataService
 
             if (textBytes.Length > ushort.MaxValue)
             {
-                throw new InvalidOperationException("Cliloc entry " + entry.Number + " is too long.");
+                throw new InvalidOperationException("Cliloc 条目 " + entry.Number + " 过长。");
             }
 
             writer.Write(entry.Number);
