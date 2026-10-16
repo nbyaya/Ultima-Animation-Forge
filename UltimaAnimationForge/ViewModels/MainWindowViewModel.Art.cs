@@ -134,12 +134,12 @@ public partial class MainWindowViewModel
     private string artImportAdjustStatusText = string.Empty;
 
     [ObservableProperty]
-    private string selectedArtSharpenMode = "Gaussian";
+    private string selectedArtSharpenMode = "高斯模糊";
 
     public ObservableCollection<string> ArtSharpenModes { get; } = new()
     {
-        "Gaussian",
-        "Pixel"
+        "高斯模糊",
+        "像素级"
     };
 
     [ObservableProperty]
@@ -147,13 +147,13 @@ public partial class MainWindowViewModel
 
     public ObservableCollection<string> ArtSlotFilterOptions { get; } = new()
     {
-        "All",
-        "Used Only",
-        "Free Slots"
+        "全部",
+        "仅已使用",
+        "空闲槽位"
     };
 
     [ObservableProperty]
-    private string selectedArtSlotFilter = "Used Only";
+    private string selectedArtSlotFilter = "仅已使用";
 
     public ObservableCollection<ArtEraFilter> ArtEraFilters { get; } = new();
 
@@ -194,15 +194,15 @@ public partial class MainWindowViewModel
     private double artOverlayOpacity = 35;
 
     [ObservableProperty]
-    private string selectedArtOverlayBlendMode = "Multiply";
+    private string selectedArtOverlayBlendMode = "正片叠底";
 
     public ObservableCollection<string> ArtOverlayBlendModes { get; } = new()
 {
-    "Normal",
-    "Multiply",
-    "Overlay",
-    "SoftLight",
-    "Screen"
+    "正常",
+    "正片叠底",
+    "叠加",
+    "柔光",
+    "滤色"
 };
 
     private WriteableBitmap? originalArtEditBitmap;
@@ -212,7 +212,7 @@ public partial class MainWindowViewModel
     private int artAnimDataPlaybackIndex;
     private bool isArtAnimDataPlaying;
 
-    public string ArtAnimDataPlayButtonText => isArtAnimDataPlaying ? "Pause" : "Play";
+    public string ArtAnimDataPlayButtonText => isArtAnimDataPlaying ? "暂停" : "播放";
 
     [ObservableProperty]
     private string selectedArtAnimDataStatusText = string.Empty;
@@ -233,7 +233,7 @@ public partial class MainWindowViewModel
     private bool showStaticArt = true;
 
     [ObservableProperty]
-    private string artStatusText = "Art not loaded.";
+    private string artStatusText = "美术未加载。";
 
     [ObservableProperty]
     private bool showArtThumbnails = true;
@@ -429,7 +429,7 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(folderPath))
         {
-            ArtStatusText = "Choose a UO folder first.";
+            ArtStatusText = "请先选择一个 UO 文件夹。";
             return;
         }
 
@@ -447,7 +447,7 @@ public partial class MainWindowViewModel
         {
             ArtEntries.Clear();
             SelectedArtBitmap = null;
-            ArtStatusText = "Could not find artLegacyMUL.uop or art.mul/artidx.mul.";
+            ArtStatusText = "找不到 artLegacyMUL.uop 或 art.mul/artidx.mul。";
             return;
         }
         LoadArtEraFilters();
@@ -463,7 +463,7 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(folderPath) || !Directory.Exists(folderPath))
         {
-            ArtStatusText = "Choose a UO folder first.";
+            ArtStatusText = "请先选择一个 UO 文件夹。";
             return;
         }
 
@@ -533,16 +533,16 @@ public partial class MainWindowViewModel
             if (entry.IsPendingArtChange && entry.IsPendingTileDataChange)
             {
                 entry.IsFreeSlot = false;
-                entry.SecondaryText = "Pending import + TileData edit - not saved yet";
+                entry.SecondaryText = "待处理导入 + 图块数据编辑 - 尚未保存";
             }
             else if (entry.IsPendingArtChange)
             {
                 entry.IsFreeSlot = false;
-                entry.SecondaryText = "Pending import - not saved yet";
+                entry.SecondaryText = "待处理导入 - 尚未保存";
             }
             else if (entry.IsPendingTileDataChange)
             {
-                entry.SecondaryText = "Pending TileData edit - not saved yet";
+                entry.SecondaryText = "待处理图块数据编辑 - 尚未保存";
             }
 
             // Thumbnails are populated by the view only when their item is realized.
@@ -560,7 +560,7 @@ public partial class MainWindowViewModel
             SelectedArtBitmap = null;
         }
 
-        ArtStatusText = "Loaded " + ArtEntries.Count + " art entries.";
+        ArtStatusText = "已加载 " + ArtEntries.Count + " 个美术条目。";
     }
 
     public void LoadArtThumbnailOnDemand(ArtEntry entry, bool browserThumbnail)
@@ -740,14 +740,14 @@ public partial class MainWindowViewModel
     {
         if (SelectedArtEntry == null || SelectedArtBitmap == null)
         {
-            ArtStatusText = "No art entry selected.";
+            ArtStatusText = "未选择美术条目。";
             return;
         }
 
         Window? mainWindow = GetMainWindow();
         if (mainWindow == null)
         {
-            ArtStatusText = "Could not locate main window.";
+            ArtStatusText = "无法找到主窗口。";
             return;
         }
 
@@ -765,19 +765,19 @@ public partial class MainWindowViewModel
 
         if (file == null)
         {
-            ArtStatusText = "Export cancelled.";
+            ArtStatusText = "导出已取消。";
             return;
         }
 
         string? path = file.TryGetLocalPath();
         if (string.IsNullOrWhiteSpace(path))
         {
-            ArtStatusText = "Selected export path is invalid.";
+            ArtStatusText = "选定的导出路径无效。";
             return;
         }
 
         artDataService.ExportBitmap(SelectedArtBitmap, path);
-        ArtStatusText = "Exported " + SelectedArtEntry.DisplayText + ".";
+        ArtStatusText = "已导出 " + SelectedArtEntry.DisplayText + "。";
     }
 
     [RelayCommand]
@@ -785,7 +785,7 @@ public partial class MainWindowViewModel
     {
         if (ArtEntries.Count == 0)
         {
-            ArtStatusText = "No art entries loaded.";
+            ArtStatusText = "未加载美术条目。";
             return;
         }
 
@@ -805,14 +805,14 @@ public partial class MainWindowViewModel
 
         if (folder == null)
         {
-            ArtStatusText = "Mass export cancelled.";
+            ArtStatusText = "批量导出已取消。";
             return;
         }
 
         string? folderPath = folder.TryGetLocalPath();
         if (string.IsNullOrWhiteSpace(folderPath))
         {
-            ArtStatusText = "Selected export folder is invalid.";
+            ArtStatusText = "选定的导出文件夹无效。";
             return;
         }
 
@@ -824,7 +824,7 @@ public partial class MainWindowViewModel
 
         if (entriesToExport.Count == 0)
         {
-            ArtStatusText = "No checked art entries to export.";
+            ArtStatusText = "未勾选任何美术条目。";
             return;
         }
 
@@ -843,7 +843,7 @@ public partial class MainWindowViewModel
             exported++;
         }
 
-        ArtStatusText = "Mass exported " + exported + " checked art entries.";
+        ArtStatusText = "批量导出了 " + exported + " 个已勾选的美术条目。";
     }
 
     partial void OnShowArtThumbnailsChanged(bool value)
@@ -859,7 +859,7 @@ public partial class MainWindowViewModel
             entry.IsChecked = true;
         }
 
-        ArtStatusText = "Checked " + ArtEntries.Count + " art entries.";
+        ArtStatusText = "已勾选 " + ArtEntries.Count + " 个美术条目。";
     }
 
     [RelayCommand]
@@ -870,7 +870,7 @@ public partial class MainWindowViewModel
             entry.IsChecked = false;
         }
 
-        ArtStatusText = "Unchecked all art entries.";
+        ArtStatusText = "已取消勾选所有美术条目。";
     }
 
     partial void OnShowFreeArtSlotsChanged(bool value)
@@ -1032,14 +1032,14 @@ public partial class MainWindowViewModel
     {
         if (SelectedArtEntry == null)
         {
-            ArtStatusText = "No art entry selected.";
+            ArtStatusText = "未选择美术条目。";
             return;
         }
 
         Window? mainWindow = GetMainWindow();
         if (mainWindow == null)
         {
-            ArtStatusText = "Could not locate main window.";
+            ArtStatusText = "无法找到主窗口。";
             return;
         }
 
@@ -1059,14 +1059,14 @@ public partial class MainWindowViewModel
 
         if (files.Count == 0)
         {
-            ArtStatusText = "Import cancelled.";
+            ArtStatusText = "导入已取消。";
             return;
         }
 
         string? path = files[0].TryGetLocalPath();
         if (string.IsNullOrWhiteSpace(path))
         {
-            ArtStatusText = "Selected image path is invalid.";
+            ArtStatusText = "选定的图像路径无效。";
             return;
         }
 
@@ -1077,7 +1077,7 @@ public partial class MainWindowViewModel
         ArtImportCanvasHeight = 0;
         ArtImportOffsetX = 0;
         ArtImportOffsetY = 0;
-        ArtImportAdjustStatusText = "Adjust import options, then queue the import.";
+        ArtImportAdjustStatusText = "调整导入选项，然后将导入加入队列。";
 
         ArtImportAdjustWindow window = new()
         {
@@ -1093,7 +1093,7 @@ public partial class MainWindowViewModel
         Window? mainWindow = GetMainWindow();
         if (mainWindow == null)
         {
-            ArtStatusText = "Could not locate main window.";
+            ArtStatusText = "无法找到主窗口。";
             return;
         }
 
@@ -1106,14 +1106,14 @@ public partial class MainWindowViewModel
 
         if (folders.Count == 0)
         {
-            ArtStatusText = "Mass import cancelled.";
+            ArtStatusText = "批量导入已取消。";
             return;
         }
 
         string? folderPath = folders[0].TryGetLocalPath();
         if (string.IsNullOrWhiteSpace(folderPath) || !Directory.Exists(folderPath))
         {
-            ArtStatusText = "Selected import folder is invalid.";
+            ArtStatusText = "选定的导入文件夹无效。";
             return;
         }
 
@@ -1126,7 +1126,7 @@ public partial class MainWindowViewModel
 
         if (imagePaths.Length == 0)
         {
-            ArtStatusText = "No PNG or BMP files found in selected folder.";
+            ArtStatusText = "未在选定文件夹中找到 PNG 或 BMP 文件。";
             return;
         }
 
@@ -1155,7 +1155,7 @@ public partial class MainWindowViewModel
 
         if (targetSlots.Count == 0)
         {
-            ArtStatusText = "No free static art slots found.";
+            ArtStatusText = "未找到空闲的静态美术槽位。";
             return;
         }
 
@@ -1477,13 +1477,13 @@ public partial class MainWindowViewModel
 
         if (entry.FrameCount >= 64)
         {
-            ArtStatusText = "AnimData already has 64 frames.";
+            ArtStatusText = "动画数据已有 64 帧。";
             return;
         }
 
         if (!TryParseAnimDataNumber(EditAnimDataAddFrameGraphicText, out int value))
         {
-            ArtStatusText = "Enter a valid graphic ID or offset.";
+            ArtStatusText = "请输入有效的图形 ID 或偏移值。";
             return;
         }
 
@@ -1493,7 +1493,7 @@ public partial class MainWindowViewModel
 
         if (offset < sbyte.MinValue || offset > sbyte.MaxValue)
         {
-            ArtStatusText = "Frame offset must be between -128 and 127.";
+            ArtStatusText = "帧偏移必须介于 -128 和 127 之间。";
             return;
         }
 
@@ -1505,7 +1505,7 @@ public partial class MainWindowViewModel
         RebuildSelectedArtAnimDataFrames();
         SelectedEditAnimDataFrame = entry.Frames.Count > newIndex ? entry.Frames[newIndex] : entry.Frames.LastOrDefault();
 
-        ArtStatusText = "Added AnimData frame.";
+        ArtStatusText = "已添加 AnimData 帧。";
     }
 
     [RelayCommand]
@@ -1543,7 +1543,7 @@ public partial class MainWindowViewModel
             SelectedEditAnimDataFrame = null;
         }
 
-        ArtStatusText = "Removed AnimData frame.";
+        ArtStatusText = "移除了 AnimData 帧。";
     }
 
     [RelayCommand]
@@ -1582,7 +1582,7 @@ public partial class MainWindowViewModel
         RebuildSelectedArtAnimDataFrames();
         SelectedEditAnimDataFrame = entry.Frames[targetIndex];
 
-        ArtStatusText = "Moved AnimData frame.";
+        ArtStatusText = "移动了 AnimData 帧。";
     }
 
     [RelayCommand]
@@ -1594,7 +1594,7 @@ public partial class MainWindowViewModel
 
         if (checkedEntries.Count == 0)
         {
-            ArtStatusText = "Check one or more art entries to remove.";
+            ArtStatusText = "请勾选一个或多个美术条目以删除。";
             return;
         }
 
@@ -1633,7 +1633,7 @@ public partial class MainWindowViewModel
         }
 
         SelectedArtBitmap = CloneBitmap(originalArtEditBitmap);
-        ArtStatusText = "Reset art edit preview.";
+        ArtStatusText = "已重置美术编辑预览。";
     }
 
     [RelayCommand]
@@ -1641,7 +1641,7 @@ public partial class MainWindowViewModel
     {
         if (SelectedArtBitmap == null)
         {
-            ArtStatusText = "No art selected.";
+            ArtStatusText = "未选择美术。";
             return;
         }
 
@@ -1652,7 +1652,7 @@ public partial class MainWindowViewModel
             ArtSharpness,
             SelectedArtSharpenMode);
 
-        ArtStatusText = "Applied art enhancement preview.";
+        ArtStatusText = "已应用美术增强预览。";
     }
 
     [RelayCommand]
@@ -1663,7 +1663,7 @@ public partial class MainWindowViewModel
             Window? mainWindow = GetMainWindow();
             if (mainWindow == null || mainWindow.StorageProvider == null)
             {
-                ArtStatusText = "Could not open the image picker.";
+                ArtStatusText = "无法打开图像选择器。";
                 return;
             }
 
@@ -1683,24 +1683,24 @@ public partial class MainWindowViewModel
 
             if (files.Count == 0)
             {
-                ArtStatusText = "Load overlay cancelled.";
+                ArtStatusText = "加载叠加层已取消。";
                 return;
             }
 
             string? path = files[0].TryGetLocalPath();
             if (string.IsNullOrWhiteSpace(path) || !File.Exists(path))
             {
-                ArtStatusText = "Selected overlay image is invalid.";
+                ArtStatusText = "选定的叠加层图像无效。";
                 return;
             }
 
             artOverlayBitmap = LoadBitmapFromImageFile(path);
-            ArtStatusText = "Loaded art overlay image: " + Path.GetFileName(path);
+            ArtStatusText = "已加载美术叠加层图像：" + Path.GetFileName(path);
         }
         catch (Exception ex)
         {
             artOverlayBitmap = null;
-            ArtStatusText = "Could not load overlay image: " + ex.Message;
+            ArtStatusText = "无法加载叠加层图像：" + ex.Message;
         }
     }
 
@@ -1709,13 +1709,13 @@ public partial class MainWindowViewModel
     {
         if (SelectedArtBitmap == null)
         {
-            ArtStatusText = "No art selected.";
+            ArtStatusText = "未选择美术。";
             return;
         }
 
         if (artOverlayBitmap == null)
         {
-            ArtStatusText = "Load an overlay image first.";
+            ArtStatusText = "请先加载叠加层图像。";
             return;
         }
 
@@ -1725,7 +1725,7 @@ public partial class MainWindowViewModel
             ArtOverlayOpacity / 100.0,
             SelectedArtOverlayBlendMode);
 
-        ArtStatusText = "Applied overlay to art preview.";
+        ArtStatusText = "已应用叠加层到美术预览。";
     }
 
     [RelayCommand]
@@ -1733,7 +1733,7 @@ public partial class MainWindowViewModel
     {
         if (SelectedArtEntry == null || SelectedArtBitmap == null)
         {
-            ArtStatusText = "No art selected.";
+            ArtStatusText = "未选择美术。";
             return;
         }
 
