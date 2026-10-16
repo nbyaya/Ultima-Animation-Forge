@@ -23,6 +23,10 @@ namespace UltimaAnimationForge.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
+    // 防止级联更新：记录上一次重建的动画条目状态
+    private List<string>? lastBuiltBrowserTypes = null;
+    private List<string>? lastBuiltBrowserSources = null;
+
     private readonly VdFolderAnimationDataSource vdFolderAnimationDataSource = new();
 
     [ObservableProperty]
@@ -2382,31 +2386,58 @@ public partial class MainWindowViewModel : ViewModelBase
         string oldSource = AnimationBrowserSourceFilter;
         string oldType = AnimationBrowserTypeFilter;
 
-        AnimationBrowserSourceFilters.Clear();
-        AnimationBrowserSourceFilters.Add("所有");
+        // 构建新的类型和源文件列表
+        var newBrowserTypes = new List<string> { "所有" };
+        var newBrowserSources = new List<string> { "所有" };
 
-        // 使用 Distinct() 和正确的比较器去除重复
-        foreach (string source in AnimationEntries
-            .Select(x => x.SourceFile)
-            .Where(x => !string.IsNullOrWhiteSpace(x))
-            .Distinct(StringComparer.OrdinalIgnoreCase)
-            .OrderBy(x => x, StringComparer.OrdinalIgnoreCase))
-        {
-            AnimationBrowserSourceFilters.Add(source);
-        }
-
-        AnimationBrowserTypeFilters.Clear();
-        AnimationBrowserTypeFilters.Add("所有");
-
-        // 使用 Distinct() 和正确的比较器去除重复
-        // 重要：过滤掉返回值为 "所有" 的类型，避免重复
+        // 收集新的类型
+        var typeSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         foreach (string type in AnimationEntries
             .Select(GetBrowserTypeFromEntry)
-            .Where(x => !string.IsNullOrWhiteSpace(x) && x != "所有")
-            .Distinct(StringComparer.OrdinalIgnoreCase)
-            .OrderBy(x => x, StringComparer.OrdinalIgnoreCase))
+            .Where(x => !string.IsNullOrWhiteSpace(x) && x != "所有"))
         {
-            AnimationBrowserTypeFilters.Add(type);
+            typeSet.Add(type);
+        }
+        foreach (var type in typeSet.OrderBy(x => x, StringComparer.OrdinalIgnoreCase))
+        {
+            newBrowserTypes.Add(type);
+        }
+
+        // 收集新的源文件
+        var sourceSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        foreach (string source in AnimationEntries
+            .Select(x => x.SourceFile)
+            .Where(x => !string.IsNullOrWhiteSpace(x)))
+        {
+            sourceSet.Add(source);
+        }
+        foreach (var source in sourceSet.OrderBy(x => x, StringComparer.OrdinalIgnoreCase))
+        {
+            newBrowserSources.Add(source);
+        }
+
+        // 只有当列表内容实际改变时，才更新集合
+        bool typesChanged = !ListsAreEqual(lastBuiltBrowserTypes, newBrowserTypes);
+        bool sourcesChanged = !ListsAreEqual(lastBuiltBrowserSources, newBrowserSources);
+
+        if (typesChanged)
+        {
+            AnimationBrowserTypeFilters.Clear();
+            foreach (var type in newBrowserTypes)
+            {
+                AnimationBrowserTypeFilters.Add(type);
+            }
+            lastBuiltBrowserTypes = new List<string>(newBrowserTypes);
+        }
+
+        if (sourcesChanged)
+        {
+            AnimationBrowserSourceFilters.Clear();
+            foreach (var source in newBrowserSources)
+            {
+                AnimationBrowserSourceFilters.Add(source);
+            }
+            lastBuiltBrowserSources = new List<string>(newBrowserSources);
         }
 
         AnimationBrowserSourceFilter = AnimationBrowserSourceFilters.Contains(oldSource)
@@ -2416,6 +2447,20 @@ public partial class MainWindowViewModel : ViewModelBase
         AnimationBrowserTypeFilter = AnimationBrowserTypeFilters.Contains(oldType)
             ? oldType
             : "所有";
+    }
+
+    private bool ListsAreEqual(List<string>? list1, List<string> list2)
+    {
+        if (list1 == null || list1.Count != list2.Count)
+            return false;
+
+        for (int i = 0; i < list1.Count; i++)
+        {
+            if (!string.Equals(list1[i], list2[i], StringComparison.OrdinalIgnoreCase))
+                return false;
+        }
+
+        return true;
     }
 
     private string GetBrowserTypeFromEntry(AnimationEntry entry)
