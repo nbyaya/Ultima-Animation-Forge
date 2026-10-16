@@ -52,6 +52,7 @@
                                           Margin="4"
                                           Content="{Binding Name}"
                                           IsChecked="{Binding IsChecked, Mode=TwoWay}"
+                                          Foreground="#C7D1DB"
                                           Command="{Binding $parent[ItemsControl].DataContext.ToggleSelectedTileDataFlagCommand}"
                                           CommandParameter="{Binding}"/>
                             </DataTemplate>
