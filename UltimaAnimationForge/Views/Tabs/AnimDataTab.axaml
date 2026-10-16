@@ -13,10 +13,10 @@
                 Padding="12,8">
             <StackPanel Orientation="Horizontal"
                         Spacing="8">
-                <Button Content="Load AnimData"
+                <Button Content="加载动画数据"
                         Command="{Binding LoadAnimDataTabCommand}" />
 
-                <Button Content="Save AnimData"
+                <Button Content="保存动画数据"
                         Command="{Binding SaveAnimDataCommand}" />
 
                 <Button Content="导出"
@@ -28,7 +28,7 @@
                 <Button Content="全选"
                         Command="{Binding CheckAllAnimDataCommand}" />
 
-                <Button Content="Uncheck All"
+                <Button Content="全不选"
                         Command="{Binding UncheckAllAnimDataCommand}" />
 
                 <TextBlock Text="{Binding AnimDataStatusText}"
@@ -54,15 +54,15 @@
                         CornerRadius="6"
                         Padding="8">
                     <StackPanel Spacing="6">
-                        <TextBox Watermark="Search ID / hex / name..."
+                        <TextBox Watermark="搜索 ID / 十六进制 / 名称..."
                                  Text="{Binding AnimDataSearchText}" />
 
                         <StackPanel Orientation="Horizontal"
                                     Spacing="12">
-                            <CheckBox Content="Missing Art"
+                            <CheckBox Content="缺少美术"
                                       IsChecked="{Binding ShowAnimDataMissingArt}" />
 
-                            <CheckBox Content="No Anim Flag"
+                            <CheckBox Content="无动画标志"
                                       IsChecked="{Binding ShowAnimDataWithoutAnimationFlag}" />
                         </StackPanel>
                     </StackPanel>
@@ -116,7 +116,7 @@
                         Padding="12">
                     <Grid RowDefinitions="Auto,*">
                         <TextBlock Grid.Row="0"
-                                   Text="Base Graphic"
+                                   Text="基础图形"
                                    FontWeight="Bold"
                                    Foreground="#E4EAF2"
                                    Margin="0,0,0,8" />
@@ -145,7 +145,7 @@
                         Padding="12">
                     <Grid RowDefinitions="Auto,*">
                         <TextBlock Grid.Row="0"
-                                   Text="Selected Frame Graphic"
+                                   Text="选定帧图形"
                                    FontWeight="Bold"
                                    Foreground="#E4EAF2"
                                    Margin="0,0,0,8" />
@@ -175,7 +175,7 @@
 
                     <StackPanel Grid.Row="0"
                                 Spacing="4">
-                        <TextBlock Text="AnimData Info"
+                        <TextBlock Text="动画数据信息"
                                    FontWeight="Bold"
                                    Foreground="#E4EAF2" />
 
@@ -195,7 +195,7 @@
                               Margin="0,8,0,0">
                             <TextBlock Grid.Row="0"
                                        Grid.Column="0"
-                                       Text="Unknown"
+                                       Text="未知"
                                        Foreground="#AAB4C0" />
 
                             <NumericUpDown Grid.Row="0"
@@ -206,7 +206,7 @@
 
                             <TextBlock Grid.Row="1"
                                        Grid.Column="0"
-                                       Text="Frame Count"
+                                       Text="帧数"
                                        Foreground="#AAB4C0" />
 
                             <NumericUpDown Grid.Row="1"
@@ -217,7 +217,7 @@
 
                             <TextBlock Grid.Row="2"
                                        Grid.Column="0"
-                                       Text="Frame Interval"
+                                       Text="帧间隔"
                                        Foreground="#AAB4C0" />
 
                             <NumericUpDown Grid.Row="2"
@@ -228,7 +228,7 @@
 
                             <TextBlock Grid.Row="3"
                                        Grid.Column="0"
-                                       Text="Frame Start"
+                                       Text="帧开始"
                                        Foreground="#AAB4C0" />
 
                             <NumericUpDown Grid.Row="3"
@@ -273,16 +273,16 @@
                                      Text="{Binding AnimDataAddFrameGraphicText}" />
 
                             <CheckBox Grid.Column="1"
-                                      Content="Rel"
+                                      Content="相对"
                                       IsChecked="{Binding AnimDataAddFrameRelative}"
                                       VerticalAlignment="Center" />
 
                             <Button Grid.Column="2"
-                                    Content="Add"
+                                    Content="添加"
                                     Command="{Binding AddAnimDataFrameCommand}" />
 
                             <Button Grid.Column="3"
-                                    Content="Remove"
+                                    Content="删除"
                                     Command="{Binding RemoveAnimDataFrameCommand}" />
                         </Grid>
 
@@ -290,15 +290,15 @@
                               ColumnDefinitions="*,*,*"
                               ColumnSpacing="6">
                             <Button Grid.Column="0"
-                                    Content="Move Up"
+                                    Content="上移"
                                     Command="{Binding MoveAnimDataFrameUpCommand}" />
 
                             <Button Grid.Column="1"
-                                    Content="Move Down"
+                                    Content="下移"
                                     Command="{Binding MoveAnimDataFrameDownCommand}" />
 
                             <Button Grid.Column="2"
-                                    Content="Play"
+                                    Content="播放"
                                     Command="{Binding ToggleAnimDataAnimationCommand}" />
                         </Grid>
                     </Grid>
@@ -313,7 +313,7 @@
                         <StackPanel Spacing="12">
 
                             <StackPanel Spacing="4">
-                                <TextBlock Text="Base TileData"
+                                <TextBlock Text="基础图块数据"
                                            FontWeight="Bold"
                                            Foreground="#E4EAF2" />
 
@@ -321,13 +321,13 @@
                                            Foreground="#C7D1DB"
                                            TextWrapping="Wrap" />
 
-                                <TextBlock Text="{Binding SelectedAnimDataTileDataEntry.Flags, StringFormat='Flags: 0x{0:X16}'}"
+                                <TextBlock Text="{Binding SelectedAnimDataTileDataEntry.Flags, StringFormat='标志: 0x{0:X16}'}"
                                            Foreground="#AAB4C0"
                                            TextWrapping="Wrap" />
                             </StackPanel>
 
                             <StackPanel Spacing="4">
-                                <TextBlock Text="Frame TileData"
+                                <TextBlock Text="帧图块数据"
                                            FontWeight="Bold"
                                            Foreground="#E4EAF2" />
 
@@ -335,7 +335,7 @@
                                            Foreground="#C7D1DB"
                                            TextWrapping="Wrap" />
 
-                                <TextBlock Text="{Binding SelectedAnimDataFrameTileDataEntry.Flags, StringFormat='Flags: 0x{0:X16}'}"
+                                <TextBlock Text="{Binding SelectedAnimDataFrameTileDataEntry.Flags, StringFormat='标志: 0x{0:X16}'}"
                                            Foreground="#AAB4C0"
                                            TextWrapping="Wrap" />
                             </StackPanel>
