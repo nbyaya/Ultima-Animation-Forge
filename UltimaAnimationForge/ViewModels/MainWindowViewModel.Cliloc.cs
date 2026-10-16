@@ -62,22 +62,22 @@ public partial class MainWindowViewModel
     private string clilocSearchText = string.Empty;
 
     [ObservableProperty]
-    private string clilocStatusText = "No cliloc loaded.";
+    private string clilocStatusText = "未加载 Cliloc。";
 
     public string ClilocEditorTitle =>
-    UseUoxDictionaryMode ? "UOX3 Dictionary Editor" : "Cliloc Editor";
+    UseUoxDictionaryMode ? "UOX3 字典编辑器" : "Cliloc 编辑器";
 
     public string EntryNumberLabel =>
-        UseUoxDictionaryMode ? "Dictionary ID" : "Cliloc ID";
+        UseUoxDictionaryMode ? "字典 ID" : "Cliloc ID";
 
     public string FreeNumberTitle =>
-    UseUoxDictionaryMode ? "Free Dictionary Numbers" : "Free Cliloc Numbers";
+    UseUoxDictionaryMode ? "空闲字典号" : "空闲 Cliloc 号";
 
     public string FindFreeNumbersButtonText =>
-        UseUoxDictionaryMode ? "Find Free Dictionary Numbers" : "Find Free Cliloc Numbers";
+        UseUoxDictionaryMode ? "查找空闲字典号" : "查找空闲 Cliloc 号";
 
     public string UseFreeNumberButtonText =>
-        UseUoxDictionaryMode ? "Use Selected Dictionary Number" : "Use Selected Cliloc Number";
+        UseUoxDictionaryMode ? "使用所选字典号" : "使用所选 Cliloc 号";
 
     [ObservableProperty]
     private string jumpToClilocText = string.Empty;
