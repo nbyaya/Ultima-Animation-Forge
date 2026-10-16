@@ -186,9 +186,9 @@ x:DataType="vm:MainWindowViewModel">
                         <StackPanel Spacing="8">
                             <TextBlock Text="槽位筛选" Classes="sectionTitle"/>
                             <WrapPanel>
-                                <CheckBox Content="H 怪物" IsChecked="{Binding MulSlotShowHFilter}" Margin="0,0,10,0"/>
-                                <CheckBox Content="L 动物" IsChecked="{Binding MulSlotShowLFilter}" Margin="0,0,10,0"/>
-                                <CheckBox Content="P 人类" IsChecked="{Binding MulSlotShowPFilter}"/>
+                                <CheckBox Content="H 怪物" IsChecked="{Binding MulSlotShowHFilter}" Margin="0,0,10,0" Foreground="#C7D1DB"/>
+                                <CheckBox Content="L 动物" IsChecked="{Binding MulSlotShowLFilter}" Margin="0,0,10,0" Foreground="#C7D1DB"/>
+                                <CheckBox Content="P 人类" IsChecked="{Binding MulSlotShowPFilter}" Foreground="#C7D1DB"/>
                             </WrapPanel>
                             <Button Content="清除所选槽位" Command="{Binding ClearSelectedMulSlotCommand}"/>
                         </StackPanel>
@@ -537,8 +537,8 @@ x:DataType="vm:MainWindowViewModel">
                                     <NumericUpDown Grid.Row="2" Grid.Column="3" Minimum="-500" Maximum="500" Increment="1" FormatString="0" ShowButtonSpinner="False" Value="{Binding PropOverlayPivotYValue, Mode=TwoWay}"/>
                                 </Grid>
                                 <WrapPanel>
-                                    <CheckBox Content="水平翻转" IsChecked="{Binding PropOverlayFlipHorizontal}" Margin="0,0,10,0"/>
-                                    <CheckBox Content="竖直翻转" IsChecked="{Binding PropOverlayFlipVertical}" Margin="0,0,10,0"/>
+                                    <CheckBox Content="水平翻转" IsChecked="{Binding PropOverlayFlipHorizontal}" Margin="0,0,10,0" Foreground="#C7D1DB"/>
+                                    <CheckBox Content="竖直翻转" IsChecked="{Binding PropOverlayFlipVertical}" Margin="0,0,10,0" Foreground="#C7D1DB"/>
                                     <ComboBox Width="92" SelectedIndex="{Binding PropOverlayDrawOrderIndex}">
                                         <ComboBoxItem Content="后面"/>
                                         <ComboBoxItem Content="前面"/>
@@ -579,9 +579,9 @@ x:DataType="vm:MainWindowViewModel">
                                     </ComboBox>
                                 </WrapPanel>
                                 <WrapPanel>
-                                    <CheckBox Content="对比度" IsChecked="{Binding LivePreviewContrastEnabled}" Margin="0,0,8,0"/>
+                                    <CheckBox Content="对比度" IsChecked="{Binding LivePreviewContrastEnabled}" Margin="0,0,8,0" Foreground="#C7D1DB"/>
                                     <NumericUpDown Width="70" Minimum="0" Maximum="2" Increment="0.05" FormatString="0.00" ShowButtonSpinner="False" Value="{Binding LivePreviewContrastAmountValue, Mode=TwoWay}" Margin="0,0,14,0"/>
-                                    <CheckBox Content="轮廓" IsChecked="{Binding LivePreviewOutlineEnabled}" Margin="0,0,8,0"/>
+                                    <CheckBox Content="轮廓" IsChecked="{Binding LivePreviewOutlineEnabled}" Margin="0,0,8,0" Foreground="#C7D1DB"/>
                                     <NumericUpDown Width="70" Minimum="0" Maximum="1" Increment="0.05" FormatString="0.00" ShowButtonSpinner="False" Value="{Binding LivePreviewOutlineStrengthValue, Mode=TwoWay}"/>
                                 </WrapPanel>
                                 <WrapPanel>
