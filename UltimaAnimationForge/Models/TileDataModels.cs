@@ -87,7 +87,7 @@ public partial class TileDataEntry : ObservableObject
     public byte Unknown2 { get; set; }
     public byte Unknown3 { get; set; }
 
-    public string TypeText => IsLand ? "Land" : "Item";
+    public string TypeText => IsLand ? "地形" : "物品";
     public string IdText => "0x" + Id.ToString("X4");
     public string DisplayText => IdText + " | " + TypeText + " | " + Name;
 }
