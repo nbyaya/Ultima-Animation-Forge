@@ -108,7 +108,8 @@
                                            Minimum="50000"
                                            Maximum="59999"
                                            Increment="1"
-                                           FormatString="0"/>
+                                           FormatString="0"
+                                           Foreground="#E4EAF2"/>
 
                             <TextBlock Grid.Row="1" Grid.Column="0" Text="女性 Gump ID" Foreground="#AAB4C0"/>
                             <NumericUpDown Grid.Row="1" Grid.Column="1"
@@ -116,7 +117,8 @@
                                            Minimum="60000"
                                            Maximum="65534"
                                            Increment="1"
-                                           FormatString="0"/>
+                                           FormatString="0"
+                                           Foreground="#E4EAF2"/>
 
                             <TextBlock Grid.Row="2" Grid.Column="0" Text="美术 ID" Foreground="#AAB4C0"/>
                             <NumericUpDown Grid.Row="2" Grid.Column="1"
@@ -124,7 +126,8 @@
                                            Minimum="0"
                                            Maximum="65535"
                                            Increment="1"
-                                           FormatString="0"/>
+                                           FormatString="0"
+                                           Foreground="#E4EAF2"/>
 
                             <TextBlock Grid.Row="3" Grid.Column="0" Text="动画 ID" Foreground="#AAB4C0"/>
                             <NumericUpDown Grid.Row="3" Grid.Column="1"
@@ -132,7 +135,8 @@
                                            Minimum="0"
                                            Maximum="9999"
                                            Increment="1"
-                                           FormatString="0"/>
+                                           FormatString="0"
+                                           Foreground="#E4EAF2"/>
                         </Grid>
 
                         <Separator Margin="0,8,0,8"/>
@@ -147,7 +151,8 @@
                                        Minimum="0"
                                        Maximum="9999"
                                        Increment="1"
-                                       FormatString="0"/>
+                                       FormatString="0"
+                                       Foreground="#E4EAF2"/>
 
                         <TextBlock Text="Body.def 色调" Foreground="#AAB4C0"/>
                         <TextBox Text="{Binding WearableWizardHue, Mode=TwoWay}"/>
@@ -261,7 +266,8 @@
                                                    Minimum="0"
                                                    Maximum="9999"
                                                    Increment="1"
-                                                   FormatString="0"/>
+                                                   FormatString="0"
+                                                   Foreground="#E4EAF2"/>
 
                                     <TextBlock Grid.Column="2"
                                                Text="动作"
@@ -273,7 +279,8 @@
                                                    Minimum="0"
                                                    Maximum="34"
                                                    Increment="1"
-                                                   FormatString="0"/>
+                                                   FormatString="0"
+                                                   Foreground="#E4EAF2"/>
 
                                     <TextBlock Grid.Column="4"
                                                Text="方向"
@@ -285,7 +292,8 @@
                                                    Minimum="0"
                                                    Maximum="4"
                                                    Increment="1"
-                                                   FormatString="0"/>
+                                                   FormatString="0"
+                                                   Foreground="#E4EAF2"/>
                                 </Grid>
 
                                 <Grid ColumnDefinitions="Auto,110,Auto,110,Auto,110,Auto,110"
@@ -301,7 +309,8 @@
                                                    Minimum="0"
                                                    Maximum="99"
                                                    Increment="1"
-                                                   FormatString="0"/>
+                                                   FormatString="0"
+                                                   Foreground="#E4EAF2"/>
 
                                     <TextBlock Grid.Column="2"
                                                Text="X"
@@ -313,7 +322,8 @@
                                                    Minimum="-500"
                                                    Maximum="500"
                                                    Increment="1"
-                                                   FormatString="0"/>
+                                                   FormatString="0"
+                                                   Foreground="#E4EAF2"/>
 
                                     <TextBlock Grid.Column="4"
                                                Text="Y"
@@ -325,7 +335,8 @@
                                                    Minimum="-500"
                                                    Maximum="500"
                                                    Increment="1"
-                                                   FormatString="0"/>
+                                                   FormatString="0"
+                                                   Foreground="#E4EAF2"/>
 
                                     <TextBlock Grid.Column="6"
                                                Text="缩放"
@@ -337,7 +348,8 @@
                                                    Minimum="0.1"
                                                    Maximum="5"
                                                    Increment="0.1"
-                                                   FormatString="0.0"/>
+                                                   FormatString="0.0"
+                                                   Foreground="#E4EAF2"/>
                                 </Grid>
                             </StackPanel>
 

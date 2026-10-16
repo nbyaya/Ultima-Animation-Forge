@@ -78,67 +78,78 @@
                         <NumericUpDown Value="{Binding SelectedTileDataEntry.Animation, Mode=TwoWay}"
                                        Minimum="-32768"
                                        Maximum="32767"
-                                       LostFocus="TileDataEditField_LostFocus"/>
+                                       LostFocus="TileDataEditField_LostFocus"
+                                       Foreground="#E4EAF2"/>
 
                         <TextBlock Text="Weight"/>
                         <NumericUpDown Value="{Binding SelectedTileDataEntry.Weight, Mode=TwoWay}"
                                        Minimum="0"
                                        Maximum="255"
-                                       LostFocus="TileDataEditField_LostFocus"/>
+                                       LostFocus="TileDataEditField_LostFocus"
+                                       Foreground="#E4EAF2"/>
 
                         <TextBlock Text="Quality/Layer/Light"/>
                         <NumericUpDown Value="{Binding SelectedTileDataEntry.Quality, Mode=TwoWay}"
                                        Minimum="0"
                                        Maximum="255"
-                                       LostFocus="TileDataEditField_LostFocus"/>
+                                       LostFocus="TileDataEditField_LostFocus"
+                                       Foreground="#E4EAF2"/>
 
                         <TextBlock Text="Quantity"/>
                         <NumericUpDown Value="{Binding SelectedTileDataEntry.Quantity, Mode=TwoWay}"
                                        Minimum="0"
                                        Maximum="255"
-                                       LostFocus="TileDataEditField_LostFocus"/>
+                                       LostFocus="TileDataEditField_LostFocus"
+                                       Foreground="#E4EAF2"/>
 
                         <TextBlock Text="Hue"/>
                         <NumericUpDown Value="{Binding SelectedTileDataEntry.Hue, Mode=TwoWay}"
                                        Minimum="0"
                                        Maximum="255"
-                                       LostFocus="TileDataEditField_LostFocus"/>
+                                       LostFocus="TileDataEditField_LostFocus"
+                                       Foreground="#E4EAF2"/>
 
                         <TextBlock Text="Stack Offset"/>
                         <NumericUpDown Value="{Binding SelectedTileDataEntry.StackingOffset, Mode=TwoWay}"
                                        Minimum="0"
                                        Maximum="255"
-                                       LostFocus="TileDataEditField_LostFocus"/>
+                                       LostFocus="TileDataEditField_LostFocus"
+                                       Foreground="#E4EAF2"/>
 
                         <TextBlock Text="Value"/>
                         <NumericUpDown Value="{Binding SelectedTileDataEntry.Value, Mode=TwoWay}"
                                        Minimum="0"
                                        Maximum="255"
-                                       LostFocus="TileDataEditField_LostFocus"/>
+                                       LostFocus="TileDataEditField_LostFocus"
+                                       Foreground="#E4EAF2"/>
 
                         <TextBlock Text="Height"/>
                         <NumericUpDown Value="{Binding SelectedTileDataEntry.Height, Mode=TwoWay}"
                                        Minimum="0"
                                        Maximum="255"
-                                       LostFocus="TileDataEditField_LostFocus"/>
+                                       LostFocus="TileDataEditField_LostFocus"
+                                       Foreground="#E4EAF2"/>
 
                         <TextBlock Text="MiscData"/>
                         <NumericUpDown Value="{Binding SelectedTileDataEntry.MiscData, Mode=TwoWay}"
                                        Minimum="0"
                                        Maximum="65535"
-                                       LostFocus="TileDataEditField_LostFocus"/>
+                                       LostFocus="TileDataEditField_LostFocus"
+                                       Foreground="#E4EAF2"/>
 
                         <TextBlock Text="Unk2"/>
                         <NumericUpDown Value="{Binding SelectedTileDataEntry.Unknown2, Mode=TwoWay}"
                                        Minimum="0"
                                        Maximum="255"
-                                       LostFocus="TileDataEditField_LostFocus"/>
+                                       LostFocus="TileDataEditField_LostFocus"
+                                       Foreground="#E4EAF2"/>
 
                         <TextBlock Text="Unk3"/>
                         <NumericUpDown Value="{Binding SelectedTileDataEntry.Unknown3, Mode=TwoWay}"
                                        Minimum="0"
                                        Maximum="255"
-                                       LostFocus="TileDataEditField_LostFocus"/>
+                                       LostFocus="TileDataEditField_LostFocus"
+                                       Foreground="#E4EAF2"/>
                     </StackPanel>
 
                     <Border Grid.Column="1"

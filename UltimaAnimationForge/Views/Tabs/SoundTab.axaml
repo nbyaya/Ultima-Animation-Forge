@@ -309,7 +309,8 @@
                                                    Value="{Binding EditableMusicId, Mode=TwoWay}"
                                                    Minimum="0"
                                                    Maximum="9999"
-                                                   FormatString="0" />
+                                                   FormatString="0"
+                                                   Foreground="#E4EAF2" />
 
                                     <TextBlock Grid.Row="1"
                                                Grid.Column="0"

@@ -59,7 +59,8 @@
                                Maximum="100"
                                Increment="5"
                                Width="125"
-                               Value="{Binding GumpOverlayOpacityPercent}"/>
+                               Value="{Binding GumpOverlayOpacityPercent}"
+                               Foreground="#E4EAF2"/>
 
                 <ComboBox Width="120"
                           ItemsSource="{Binding GumpOverlayBlendModes}"
@@ -325,10 +326,12 @@
                               IsVisible="{Binding ShowPaperdollTemplate}">
                             <TextBlock Grid.Row="0" Grid.Column="0" Text="模板编号" Foreground="#AAB4C0" VerticalAlignment="Center"/>
                             <NumericUpDown Grid.Row="0" Grid.Column="1" Minimum="0" Maximum="73727"
-                                           Value="{Binding PaperdollTemplateGumpId, Mode=TwoWay}"/>
+                                           Value="{Binding PaperdollTemplateGumpId, Mode=TwoWay}"
+                                           Foreground="#E4EAF2"/>
                             <TextBlock Grid.Row="1" Grid.Column="0" Text="不透明度" Foreground="#AAB4C0" VerticalAlignment="Center"/>
                             <NumericUpDown Grid.Row="1" Grid.Column="1" Minimum="0" Maximum="1" Increment="0.05"
-                                           Value="{Binding PaperdollTemplateOpacity, Mode=TwoWay}"/>
+                                           Value="{Binding PaperdollTemplateOpacity, Mode=TwoWay}"
+                                           Foreground="#E4EAF2"/>
                         </Grid>
 
                         <TextBlock Text="穿戴偏移" FontWeight="Bold"/>
