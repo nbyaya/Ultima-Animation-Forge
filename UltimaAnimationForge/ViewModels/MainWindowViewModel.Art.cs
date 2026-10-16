@@ -165,7 +165,7 @@ public partial class MainWindowViewModel
     private readonly ArtDataService artDataService = new();
 
     public string ArtAnimDataEditButtonText =>
-    SelectedArtAnimDataEntry == null ? "Create AnimData..." : "Edit AnimData...";
+    SelectedArtAnimDataEntry == null ? "创建动画数据..." : "编辑动画数据...";
 
     public ObservableCollection<ArtEntry> ArtEntries { get; } = new();
 
