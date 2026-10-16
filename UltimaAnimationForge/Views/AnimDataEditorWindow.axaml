@@ -33,6 +33,7 @@
                                Maximum="64"
                                Increment="1"
                                FormatString="0"
+                               Foreground="#E4EAF2"
                                LostFocus="AnimDataEditField_LostFocus" />
 
                 <TextBlock Text="帧间隔"
@@ -42,6 +43,7 @@
                                Maximum="255"
                                Increment="1"
                                FormatString="0"
+                               Foreground="#E4EAF2"
                                LostFocus="AnimDataEditField_LostFocus" />
 
                 <TextBlock Text="帧起始"
@@ -51,6 +53,7 @@
                                Maximum="255"
                                Increment="1"
                                FormatString="0"
+                               Foreground="#E4EAF2"
                                LostFocus="AnimDataEditField_LostFocus" />
 
                 <TextBlock Text="帧"
