@@ -58,12 +58,12 @@ public partial class MainWindowViewModel
     private bool showPaperdollTemplate;
 
     [ObservableProperty]
-    private string selectedPaperdollTemplate = "Male";
+    private string selectedPaperdollTemplate = "男性";
 
     public ObservableCollection<string> PaperdollTemplateOptions { get; } = new()
 {
-    "Male",
-    "Female"
+    "男性",
+    "女性"
 };
 
     [ObservableProperty]
@@ -173,14 +173,14 @@ public partial class MainWindowViewModel
 
     public ObservableCollection<string> GumpSharpenModes { get; } = new()
 {
-    "Mild Sharpen",
-    "Strong Sharpen",
-    "Edge Enhance",
-    "Unsharp Mask"
+    "轻度锐化",
+    "强力锐化",
+    "边缘增强",
+    "USM 锐化"
 };
 
     [ObservableProperty]
-    private string selectedGumpSharpenMode = "Mild Sharpen";
+    private string selectedGumpSharpenMode = "轻度锐化";
 
     private readonly GumpDataService gumpDataService = new();
 
@@ -210,7 +210,7 @@ public partial class MainWindowViewModel
     private int totalUsedGumpSlots;
 
     public string GumpSlotSummaryText =>
-        "Used: " + TotalUsedGumpSlots + "\nFree: " + TotalFreeGumpSlots;
+        "已用: " + TotalUsedGumpSlots + "\n空闲: " + TotalFreeGumpSlots;
 
     [ObservableProperty]
     private GumpFreeSlotMode selectedGumpFreeSlotMode = GumpFreeSlotMode.All;
@@ -229,14 +229,14 @@ public partial class MainWindowViewModel
         {
             if (!ShowFreeGumpSlots || GumpFreeSlotMatchCount == 0)
             {
-                return ShowFreeGumpSlots ? "No matching free slots" : string.Empty;
+                return ShowFreeGumpSlots ? "没有匹配的空闲槽位" : string.Empty;
             }
 
             int pageCount = Math.Max(1, (GumpFreeSlotMatchCount + GumpFreeSlotPageSize - 1) / GumpFreeSlotPageSize);
             int first = (GumpFreeSlotPage * GumpFreeSlotPageSize) + 1;
             int last = Math.Min(first + GumpFreeSlotPageSize - 1, GumpFreeSlotMatchCount);
-            return "Page " + (GumpFreeSlotPage + 1) + " / " + pageCount +
-                   "  |  " + first + "-" + last + " of " + GumpFreeSlotMatchCount;
+            return "第 " + (GumpFreeSlotPage + 1) + " / " + pageCount +
+                   "  |  " + first + "-" + last + " 共 " + GumpFreeSlotMatchCount;
         }
     }
 
@@ -256,8 +256,8 @@ public partial class MainWindowViewModel
     private int totalFreeFemaleWearableGumpSlots;
 
     public string GumpWearableSlotSummaryText =>
-        "Male 50000-59999 Free: " + TotalFreeMaleWearableGumpSlots +
-        "\nFemale 60000-65534 Free: " + TotalFreeFemaleWearableGumpSlots;
+        "男性 50000-59999 空闲: " + TotalFreeMaleWearableGumpSlots +
+        "\n女性 60000-65534 空闲: " + TotalFreeFemaleWearableGumpSlots;
 
     [ObservableProperty]
     private bool showGumpParallelView;
@@ -274,16 +274,16 @@ public partial class MainWindowViewModel
         {
             if (SelectedGump == null)
             {
-                return "Pair: -";
+                return "配对: -";
             }
 
             int pairId = GetWearablePairGumpId(SelectedGump.GumpId);
             if (pairId < 0)
             {
-                return "Pair: none";
+                return "配对: 无";
             }
 
-            return "Pair: " + pairId + " [0x" + pairId.ToString("X") + "]";
+            return "配对: " + pairId + " [0x" + pairId.ToString("X") + "]";
         }
     }
 
@@ -323,20 +323,20 @@ public partial class MainWindowViewModel
     {
         switch (SelectedGumpSharpenMode)
         {
-            case "Strong Sharpen":
-                ApplySelectedGumpEdit(ApplyStrongSharpen, "Strong Sharpen");
+            case "强力锐化":
+                ApplySelectedGumpEdit(ApplyStrongSharpen, "强力锐化");
                 break;
 
-            case "Edge Enhance":
-                ApplySelectedGumpEdit(ApplyEdgeEnhance, "Edge Enhance");
+            case "边缘增强":
+                ApplySelectedGumpEdit(ApplyEdgeEnhance, "边缘增强");
                 break;
 
-            case "Unsharp Mask":
-                ApplySelectedGumpEdit(ApplyUnsharpMask, "Unsharp Mask");
+            case "USM 锐化":
+                ApplySelectedGumpEdit(ApplyUnsharpMask, "USM 锐化");
                 break;
 
             default:
-                ApplySelectedGumpEdit(ApplySharpen, "Mild Sharpen");
+                ApplySelectedGumpEdit(ApplySharpen, "轻度锐化");
                 break;
         }
     }
@@ -946,7 +946,7 @@ public partial class MainWindowViewModel
                 {
                     GumpId = gumpId,
                     IsValid = false,
-                    SourceFile = "Free Slot"
+                    SourceFile = "空闲槽位"
                 });
             }
 
@@ -956,9 +956,9 @@ public partial class MainWindowViewModel
 
             GumpInfoText = SelectedGumpFreeSlotMode switch
             {
-                GumpFreeSlotMode.MaleWearables => "Showing free male wearable gump slots.",
-                GumpFreeSlotMode.FemaleWearables => "Showing free female wearable gump slots.",
-                _ => "Showing free gump slots."
+                GumpFreeSlotMode.MaleWearables => "显示可用的男性穿戴窗口槽位。",
+                GumpFreeSlotMode.FemaleWearables => "显示可用的女性穿戴窗口槽位。",
+                _ => "显示可用的窗口槽位。"
             };
         }
         else
@@ -2010,12 +2010,22 @@ public partial class MainWindowViewModel
         SelectedGumpBitmap = BuildBitmapFromGumpPixels(blended);
         HasUnsavedGumpEdit = true;
 
+        string blendModeName = SelectedGumpOverlayBlendMode switch
+        {
+            GumpOverlayBlendMode.NormalFade => "普通淡化",
+            GumpOverlayBlendMode.Multiply => "正片叠底",
+            GumpOverlayBlendMode.Overlay => "叠加",
+            GumpOverlayBlendMode.SoftLight => "柔光",
+            GumpOverlayBlendMode.Screen => "滤色",
+            _ => SelectedGumpOverlayBlendMode.ToString()
+        };
+
         GumpInfoText =
-            "Overlay applied using " +
-            SelectedGumpOverlayBlendMode +
-            " at " +
+            "使用 " +
+            blendModeName +
+            " 模式应用叠加层，不透明度 " +
             GumpOverlayOpacityPercent.ToString("0") +
-            "%. Click Save Edit to write it.";
+            "%。点击保存编辑以提交更改。";
     }
 
     private static WriteableBitmap LoadBitmapAsWriteableBitmap(string path)
