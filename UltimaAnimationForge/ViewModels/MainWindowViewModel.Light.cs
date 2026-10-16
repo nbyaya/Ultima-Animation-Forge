@@ -123,7 +123,7 @@ public partial class MainWindowViewModel
         SelectedLightEntry = LightEntries.FirstOrDefault(x => !x.IsRemoved) ??
                              LightEntries.FirstOrDefault();
 
-        StatusText = $"Loaded {allLightEntries.Count} light index entries.";
+        StatusText = $"已加载 {allLightEntries.Count} 条光源索引条目。";
     }
 
     private void RemoveSelectedLight()
@@ -132,7 +132,7 @@ public partial class MainWindowViewModel
 
         if (entry == null)
         {
-            StatusText = "Select a light first.";
+            StatusText = "请先选择一个光源。";
             return;
         }
 
@@ -143,7 +143,7 @@ public partial class MainWindowViewModel
         lightMulService.Remove(entry);
 
         HasUnsavedChanges = true;
-        StatusText = $"Removed light {removedIndex}.";
+        StatusText = $"已删除光源 {removedIndex}。";
 
         RebuildVisibleLightEntries();
     }
@@ -153,7 +153,7 @@ public partial class MainWindowViewModel
         string folder = GetCurrentFolderPath();
         lightMulService.Save(folder, allLightEntries);
         HasUnsavedChanges = false;
-        StatusText = "Saved light.mul and lightidx.mul.";
+        StatusText = "已保存 light.mul 和 lightidx.mul。";
     }
 
     private void RebuildVisibleLightEntries()
@@ -185,14 +185,14 @@ public partial class MainWindowViewModel
     {
         if (SelectedLightEntry == null)
         {
-            StatusText = "Select a light entry first.";
+            StatusText = "请先选择一个光源条目。";
             return;
         }
 
         Window? mainWindow = GetMainWindow();
         if (mainWindow == null)
         {
-            StatusText = "Could not locate main window.";
+            StatusText = "找不到主窗口。";
             return;
         }
 
@@ -201,7 +201,7 @@ public partial class MainWindowViewModel
         IReadOnlyList<IStorageFile> files = await mainWindow.StorageProvider.OpenFilePickerAsync(
             new FilePickerOpenOptions
             {
-                Title = "Import Light PNG",
+                Title = "导入光源 PNG",
                 AllowMultiple = false,
                 FileTypeFilter = new[]
                 {
@@ -214,41 +214,41 @@ public partial class MainWindowViewModel
 
         if (files.Count == 0)
         {
-            StatusText = "Import cancelled.";
+            StatusText = "导入已取消。";
             return;
         }
 
         string? path = files[0].TryGetLocalPath();
         if (string.IsNullOrWhiteSpace(path))
         {
-            StatusText = "Selected file has no local path.";
+            StatusText = "选定文件没有本地路径。";
             return;
         }
 
         lightMulService.ImportPngIntoLight(SelectedLightEntry, path);
         HasUnsavedChanges = true;
-        StatusText = $"Imported PNG into light {SelectedLightEntry.Index}.";
+        StatusText = $"已将 PNG 导入到光源 {SelectedLightEntry.Index}。";
     }
 
     private async Task ExportSelectedLightPngAsync()
     {
         if (SelectedLightEntry == null)
         {
-            StatusText = "Select a light entry first.";
+            StatusText = "请先选择一个光源条目。";
             return;
         }
 
         Window? mainWindow = GetMainWindow();
         if (mainWindow == null)
         {
-            StatusText = "Could not locate main window.";
+            StatusText = "找不到主窗口。";
             return;
         }
 
         IStorageFile? file = await mainWindow.StorageProvider.SaveFilePickerAsync(
             new FilePickerSaveOptions
             {
-                Title = "Export Light PNG",
+                Title = "导出光源 PNG",
                 SuggestedFileName = $"light_{SelectedLightEntry.Index:D3}.png",
                 FileTypeChoices = new[]
                 {
@@ -261,19 +261,19 @@ public partial class MainWindowViewModel
 
         if (file == null)
         {
-            StatusText = "Export cancelled.";
+            StatusText = "导出已取消。";
             return;
         }
 
         string? path = file.TryGetLocalPath();
         if (string.IsNullOrWhiteSpace(path))
         {
-            StatusText = "Selected file has no local path.";
+            StatusText = "选定文件没有本地路径。";
             return;
         }
 
         lightMulService.ExportLightToPng(SelectedLightEntry, path);
-        StatusText = $"Exported light {SelectedLightEntry.Index}.";
+        StatusText = $"已导出光源 {SelectedLightEntry.Index}。";
     }
 
     private void CreateBlankLight()
@@ -306,21 +306,21 @@ public partial class MainWindowViewModel
         SelectedLightEntry = target;
         HasUnsavedChanges = true;
 
-        StatusText = $"Created blank light {target.Index}.";
+        StatusText = $"已创建空白光源 {target.Index}。";
     }
 
     private void ResetLights()
     {
         LoadLights();
         HasUnsavedChanges = false;
-        StatusText = "Reloaded lights from disk.";
+        StatusText = "已从磁盘重新加载光源。";
     }
 
     private void ClearSelectedLight()
     {
         if (SelectedLightEntry == null)
         {
-            StatusText = "Select a light first.";
+            StatusText = "请先选择一个光源。";
             return;
         }
 
@@ -329,7 +329,7 @@ public partial class MainWindowViewModel
         lightMulService.ClearLight(SelectedLightEntry);
         HasUnsavedChanges = true;
 
-        StatusText = $"Cleared light {SelectedLightEntry.Index}.";
+        StatusText = $"已清除光源 {SelectedLightEntry.Index}。";
     }
 
     private void CreateRoundLight()
@@ -365,6 +365,14 @@ public partial class MainWindowViewModel
         int height = Math.Clamp(NewLightHeight, 8, 600);
         int strength = Math.Clamp(LightPresetStrength, 1, 31);
 
+        string presetName = preset switch
+        {
+            "round" => "圆形",
+            "window" => "窗口",
+            "door" => "门缝",
+            _ => preset
+        };
+
         switch (preset)
         {
             case "round":
@@ -381,7 +389,7 @@ public partial class MainWindowViewModel
         }
 
         HasUnsavedChanges = true;
-        StatusText = $"Applied {preset} preset to light {SelectedLightEntry.Index}.";
+        StatusText = $"已应用 {presetName} 预设到光源 {SelectedLightEntry.Index}。";
     }
 
     private int GetNextLightIndex()
@@ -499,7 +507,7 @@ public partial class MainWindowViewModel
     {
         if (lightUndoStack.Count == 0 || SelectedLightEntry == null)
         {
-            StatusText = "No light edit to undo.";
+            StatusText = "没有可撤销的光源编辑。";
             return;
         }
 
@@ -509,14 +517,14 @@ public partial class MainWindowViewModel
         RestoreLightSnapshot(snapshot);
 
         HasUnsavedChanges = true;
-        StatusText = "Undid light edit.";
+        StatusText = "已撤销光源编辑。";
     }
 
     private void RedoLightEdit()
     {
         if (lightRedoStack.Count == 0 || SelectedLightEntry == null)
         {
-            StatusText = "No light edit to redo.";
+            StatusText = "没有可重做的光源编辑。";
             return;
         }
 
@@ -526,14 +534,14 @@ public partial class MainWindowViewModel
         RestoreLightSnapshot(snapshot);
 
         HasUnsavedChanges = true;
-        StatusText = "Redid light edit.";
+        StatusText = "已重做光源编辑。";
     }
 
     private void SoftenSelectedLight()
     {
         if (SelectedLightEntry == null)
         {
-            StatusText = "Select a light first.";
+            StatusText = "请先选择一个光源。";
             return;
         }
 
@@ -545,14 +553,14 @@ public partial class MainWindowViewModel
         RebuildVisibleLightEntries();
         SelectedLightEntry = LightEntries.FirstOrDefault(x => x.Index == SelectedLightEntry.Index);
 
-        StatusText = $"Softened light {SelectedLightEntry?.Index}.";
+        StatusText = $"已柔和光源 {SelectedLightEntry?.Index}。";
     }
 
     private void FlipSelectedLightHorizontal()
     {
         if (SelectedLightEntry == null)
         {
-            StatusText = "Select a light first.";
+            StatusText = "请先选择一个光源。";
             return;
         }
 
@@ -565,14 +573,14 @@ public partial class MainWindowViewModel
         RebuildVisibleLightEntries();
         SelectedLightEntry = LightEntries.FirstOrDefault(x => x.Index == selectedIndex);
 
-        StatusText = $"Flipped light {selectedIndex} horizontally.";
+        StatusText = $"已将光源 {selectedIndex} 水平翻转。";
     }
 
     private void FlipSelectedLightVertical()
     {
         if (SelectedLightEntry == null)
         {
-            StatusText = "Select a light first.";
+            StatusText = "请先选择一个光源。";
             return;
         }
 
@@ -585,14 +593,14 @@ public partial class MainWindowViewModel
         RebuildVisibleLightEntries();
         SelectedLightEntry = LightEntries.FirstOrDefault(x => x.Index == selectedIndex);
 
-        StatusText = $"Flipped light {selectedIndex} vertically.";
+        StatusText = $"已将光源 {selectedIndex} 竖直翻转。";
     }
 
     private void SharpenSelectedLight()
     {
         if (SelectedLightEntry == null)
         {
-            StatusText = "Select a light first.";
+            StatusText = "请先选择一个光源。";
             return;
         }
 
@@ -605,6 +613,6 @@ public partial class MainWindowViewModel
         RebuildVisibleLightEntries();
         SelectedLightEntry = LightEntries.FirstOrDefault(x => x.Index == selectedIndex);
 
-        StatusText = $"Sharpened light {selectedIndex}.";
+        StatusText = $"已锐化光源 {selectedIndex}。";
     }
 }
