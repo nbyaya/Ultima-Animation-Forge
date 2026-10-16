@@ -106,7 +106,7 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(folderPath))
         {
-            AnimDataStatusText = "Choose a UO folder first.";
+            AnimDataStatusText = "请先选择 UO 文件夹。";
             return;
         }
 
@@ -117,7 +117,7 @@ public partial class MainWindowViewModel
 
         if (!artDataService.Initialize(folderPath))
         {
-            AnimDataStatusText = "Art was not loaded. AnimData can still load, but previews may be blank.";
+            AnimDataStatusText = "Art 未加载。AnimData 仍然可以加载，但预览可能为空。";
         }
 
         if (!animDataMulService.Initialize(folderPath))
@@ -127,7 +127,7 @@ public partial class MainWindowViewModel
             SelectedAnimDataFrame = null;
             SelectedAnimDataBaseBitmap = null;
             SelectedAnimDataFrameBitmap = null;
-            AnimDataStatusText = "Could not find animdata.mul.";
+            AnimDataStatusText = "找不到 animdata.mul。";
             return;
         }
         animDataStaticArtEntryCache.Clear();
@@ -167,7 +167,7 @@ public partial class MainWindowViewModel
             SelectedAnimDataFrameBitmap = null;
         }
 
-        AnimDataStatusText = "Loaded " + AnimDataEntries.Count + " AnimData entries.";
+        AnimDataStatusText = "加载了 " + AnimDataEntries.Count + " 个 AnimData 条目。";
     }
 
     [RelayCommand]
@@ -177,26 +177,26 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(folderPath))
         {
-            AnimDataStatusText = "Choose a UO folder first.";
+            AnimDataStatusText = "请先选择 UO 文件夹。";
             return;
         }
 
         try
         {
             animDataMulService.Save(folderPath, animDataMulService.AllLoadedEntries);
-            AnimDataStatusText = "Saved animdata.mul.";
+            AnimDataStatusText = "已保存 animdata.mul。";
         }
         catch (UnauthorizedAccessException)
         {
-            AnimDataStatusText = "Access denied while saving animdata.mul.";
+            AnimDataStatusText = "保存 animdata.mul 时被拒绝访问。";
         }
         catch (IOException exception)
         {
-            AnimDataStatusText = "I/O error while saving animdata.mul: " + exception.Message;
+            AnimDataStatusText = "保存 animdata.mul 时出现 I/O 错误：" + exception.Message;
         }
         catch (Exception exception)
         {
-            AnimDataStatusText = "Failed saving animdata.mul: " + exception.Message;
+            AnimDataStatusText = "保存 animdata.mul 失败：" + exception.Message;
         }
     }
 
@@ -208,7 +208,7 @@ public partial class MainWindowViewModel
             entry.IsChecked = true;
         }
 
-        AnimDataStatusText = "Checked " + AnimDataEntries.Count + " AnimData entries.";
+        AnimDataStatusText = "已勾选 " + AnimDataEntries.Count + " 个 AnimData 条目。";
     }
 
     [RelayCommand]
@@ -219,7 +219,7 @@ public partial class MainWindowViewModel
             entry.IsChecked = false;
         }
 
-        AnimDataStatusText = "Unchecked all AnimData entries.";
+        AnimDataStatusText = "已取消勾选所有 AnimData 条目。";
     }
 
     partial void OnSelectedAnimDataEntryChanged(AnimDataEntry? value)
@@ -365,7 +365,7 @@ public partial class MainWindowViewModel
     {
         if (SelectedAnimDataEntry == null || SelectedAnimDataEntry.Frames.Count == 0)
         {
-            AnimDataStatusText = "No AnimData frames to animate.";
+            AnimDataStatusText = "没有 AnimData 帧可以播放。";
             return;
         }
 
@@ -491,13 +491,13 @@ public partial class MainWindowViewModel
 
         if (SelectedAnimDataEntry.FrameCount >= 64)
         {
-            AnimDataStatusText = "AnimData already has 64 frames.";
+            AnimDataStatusText = "AnimData 已有 64 个帧。";
             return;
         }
 
         if (!TryParseAnimDataNumber(AnimDataAddFrameGraphicText, out int value))
         {
-            AnimDataStatusText = "Enter a valid graphic ID or offset.";
+            AnimDataStatusText = "输入有效的 Graphic ID 或偏移值。";
             return;
         }
 
@@ -507,7 +507,7 @@ public partial class MainWindowViewModel
 
         if (offset < sbyte.MinValue || offset > sbyte.MaxValue)
         {
-            AnimDataStatusText = "Frame offset must be between -128 and 127.";
+            AnimDataStatusText = "帧偏移必须在 -128 到 127 之间。";
             return;
         }
 
@@ -551,7 +551,7 @@ public partial class MainWindowViewModel
         Window? mainWindow = GetMainWindow();
         if (mainWindow == null)
         {
-            AnimDataStatusText = "Could not locate main window.";
+            AnimDataStatusText = "无法定位主窗口。";
             return;
         }
 
@@ -566,14 +566,14 @@ public partial class MainWindowViewModel
 
         if (entriesToExport.Count == 0)
         {
-            AnimDataStatusText = "No AnimData entries selected for export.";
+            AnimDataStatusText = "没有选中要导出的 AnimData 条目。";
             return;
         }
 
         IStorageFile? file = await mainWindow.StorageProvider.SaveFilePickerAsync(
             new FilePickerSaveOptions
             {
-                Title = "Export AnimData",
+                Title = "导出 AnimData",
                 SuggestedFileName = "animdata_export.json",
                 FileTypeChoices = new[]
                 {
@@ -587,7 +587,7 @@ public partial class MainWindowViewModel
         string? path = file?.TryGetLocalPath();
         if (string.IsNullOrWhiteSpace(path))
         {
-            AnimDataStatusText = "AnimData export cancelled.";
+            AnimDataStatusText = "AnimData 导出已取消。";
             return;
         }
 
@@ -617,7 +617,7 @@ public partial class MainWindowViewModel
 
         await File.WriteAllTextAsync(path, json);
 
-        AnimDataStatusText = "Exported " + exportEntries.Count + " AnimData entries.";
+        AnimDataStatusText = "已导出 " + exportEntries.Count + " 个 AnimData 条目。";
     }
 
     [RelayCommand]
@@ -626,14 +626,14 @@ public partial class MainWindowViewModel
         Window? mainWindow = GetMainWindow();
         if (mainWindow == null)
         {
-            AnimDataStatusText = "Could not locate main window.";
+            AnimDataStatusText = "无法定位主窗口。";
             return;
         }
 
         IReadOnlyList<IStorageFile> files = await mainWindow.StorageProvider.OpenFilePickerAsync(
             new FilePickerOpenOptions
             {
-                Title = "Import AnimData",
+                Title = "导入 AnimData",
                 AllowMultiple = false,
                 FileTypeFilter = new[]
                 {
@@ -646,14 +646,14 @@ public partial class MainWindowViewModel
 
         if (files.Count == 0)
         {
-            AnimDataStatusText = "AnimData import cancelled.";
+            AnimDataStatusText = "AnimData 导入已取消。";
             return;
         }
 
         string? path = files[0].TryGetLocalPath();
         if (string.IsNullOrWhiteSpace(path) || !File.Exists(path))
         {
-            AnimDataStatusText = "Invalid AnimData import file.";
+            AnimDataStatusText = "无效的 AnimData 导入文件。";
             return;
         }
 
@@ -667,7 +667,7 @@ public partial class MainWindowViewModel
         }
         catch (Exception exception)
         {
-            AnimDataStatusText = "Failed to parse AnimData import file: " + exception.Message;
+            AnimDataStatusText = "解析 AnimData 导入文件失败：" + exception.Message;
             return;
         }
 
@@ -675,7 +675,7 @@ public partial class MainWindowViewModel
 
         if (importedEntries == null || importedEntries.Count == 0)
         {
-            AnimDataStatusText = "No AnimData entries found in import file.";
+            AnimDataStatusText = "导入文件中没有找到 AnimData 条目。";
             return;
         }
 
@@ -726,6 +726,6 @@ public partial class MainWindowViewModel
 
         RebuildAnimDataEntries();
 
-        AnimDataStatusText = "Imported " + importedCount + " AnimData entries. Click Save AnimData to write animdata.mul.";
+        AnimDataStatusText = "已导入 " + importedCount + " 个 AnimData 条目。点击「保存 AnimData」以写入 animdata.mul。";
     }
 }
