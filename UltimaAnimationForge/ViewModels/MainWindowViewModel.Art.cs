@@ -754,12 +754,12 @@ public partial class MainWindowViewModel
         IStorageFile? file = await mainWindow.StorageProvider.SaveFilePickerAsync(
             new FilePickerSaveOptions
             {
-                Title = "Export Selected Art",
+                Title = "导出所选美术",
                 SuggestedFileName = SelectedArtEntry.Type.ToLowerInvariant() + "_0x" + SelectedArtEntry.ArtId.ToString("X4") + ".png",
                 FileTypeChoices = new[]
                 {
-                new FilePickerFileType("PNG Image") { Patterns = new[] { "*.png" } },
-                new FilePickerFileType("BMP Image") { Patterns = new[] { "*.bmp" } }
+                new FilePickerFileType("PNG 图像") { Patterns = new[] { "*.png" } },
+                new FilePickerFileType("BMP 图像") { Patterns = new[] { "*.bmp" } }
                 }
             });
 
@@ -792,14 +792,14 @@ public partial class MainWindowViewModel
         Window? mainWindow = GetMainWindow();
         if (mainWindow == null)
         {
-            ArtStatusText = "Could not locate main window.";
+            ArtStatusText = "无法找到主窗口。";
             return;
         }
 
         IStorageFolder? folder = await mainWindow.StorageProvider.OpenFolderPickerAsync(
             new FolderPickerOpenOptions
             {
-                Title = "Choose Art Export Folder",
+                Title = "选择美术导出文件夹",
                 AllowMultiple = false
             }).ContinueWith(task => task.Result.Count > 0 ? task.Result[0] : null);
 
@@ -1046,11 +1046,11 @@ public partial class MainWindowViewModel
         IReadOnlyList<IStorageFile> files = await mainWindow.StorageProvider.OpenFilePickerAsync(
             new FilePickerOpenOptions
             {
-                Title = "Import Art Image",
+                Title = "导入美术图像",
                 AllowMultiple = false,
                 FileTypeFilter = new[]
                 {
-                new FilePickerFileType("Image files")
+                new FilePickerFileType("图像文件")
                 {
                     Patterns = new[] { "*.png", "*.bmp" }
                 }
@@ -1100,7 +1100,7 @@ public partial class MainWindowViewModel
         IReadOnlyList<IStorageFolder> folders = await mainWindow.StorageProvider.OpenFolderPickerAsync(
             new FolderPickerOpenOptions
             {
-                Title = "Choose Art Import Folder",
+                Title = "选择美术导入文件夹",
                 AllowMultiple = false
             });
 
@@ -1670,11 +1670,11 @@ public partial class MainWindowViewModel
             IReadOnlyList<IStorageFile> files = await mainWindow.StorageProvider.OpenFilePickerAsync(
                 new FilePickerOpenOptions
                 {
-                    Title = "Choose Art Overlay Image",
+                    Title = "选择美术叠加层图像",
                     AllowMultiple = false,
                     FileTypeFilter = new[]
                     {
-                        new FilePickerFileType("Image files")
+                        new FilePickerFileType("图像文件")
                         {
                             Patterns = new[] { "*.png", "*.jpg", "*.jpeg", "*.bmp" }
                         }
@@ -2024,13 +2024,13 @@ public partial class MainWindowViewModel
     {
         if (SelectedArtEntry == null)
         {
-            ArtStatusText = "No art entry selected.";
+            ArtStatusText = "未选择美术条目。";
             return;
         }
 
         if (string.IsNullOrWhiteSpace(PendingArtImportImagePath))
         {
-            ArtStatusText = "No import image selected.";
+            ArtStatusText = "未选择导入图像。";
             return;
         }
 
@@ -2131,18 +2131,18 @@ public partial class MainWindowViewModel
         Window? mainWindow = GetMainWindow();
         if (mainWindow == null)
         {
-            ArtStatusText = "Could not locate main window.";
+            ArtStatusText = "无法找到主窗口。";
             return;
         }
 
         IReadOnlyList<IStorageFile> files = await mainWindow.StorageProvider.OpenFilePickerAsync(
             new FilePickerOpenOptions
             {
-                Title = "Choose Large Art Image",
+                Title = "选择大型美术图像",
                 AllowMultiple = false,
                 FileTypeFilter = new[]
                 {
-                new FilePickerFileType("Image files")
+                new FilePickerFileType("图像文件")
                 {
                     Patterns = new[] { "*.png", "*.bmp" }
                 }
@@ -2151,14 +2151,14 @@ public partial class MainWindowViewModel
 
         if (files.Count == 0)
         {
-            ArtStatusText = "Art cutter cancelled.";
+            ArtStatusText = "美术裁剪已取消。";
             return;
         }
 
         string? path = files[0].TryGetLocalPath();
         if (string.IsNullOrWhiteSpace(path))
         {
-            ArtStatusText = "Selected cutter image path is invalid.";
+            ArtStatusText = "选定的裁剪图像路径无效。";
             return;
         }
 
@@ -2235,7 +2235,7 @@ public partial class MainWindowViewModel
     {
         if (SelectedArtEntry == null)
         {
-            ArtStatusText = "No art selected.";
+            ArtStatusText = "未选择美术条目。";
             return;
         }
 
@@ -2304,7 +2304,7 @@ public partial class MainWindowViewModel
 
         if (checkedEntries.Count == 0)
         {
-            ArtStatusText = "No checked art entries.";
+            ArtStatusText = "未勾选任何美术条目。";
             return;
         }
 
