@@ -182,7 +182,7 @@ public sealed class LightMulService
 
         if (string.IsNullOrWhiteSpace(pngPath) || !File.Exists(pngPath))
         {
-            throw new FileNotFoundException("PNG file was not found.", pngPath);
+            throw new FileNotFoundException("PNG 文件未找到。", pngPath);
         }
 
         using FileStream stream = File.OpenRead(pngPath);
@@ -205,7 +205,7 @@ public sealed class LightMulService
     {
         if (entry == null || entry.RawData.Length == 0 || entry.Width <= 0 || entry.Height <= 0)
         {
-            throw new InvalidOperationException("Selected light has no image data.");
+            throw new InvalidOperationException("选定的光源没有图像数据。");
         }
 
         WriteableBitmap bitmap = BuildLightBitmap(entry.RawData, entry.Width, entry.Height);

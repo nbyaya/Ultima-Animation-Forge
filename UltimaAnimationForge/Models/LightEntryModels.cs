@@ -13,6 +13,6 @@ public sealed class LightEntry
     public byte[] RawData { get; set; } = [];
     public WriteableBitmap? Preview { get; set; }
 
-    public string DisplayText => $"Light {Index} (0x{Index:X})";
-    public string SizeText => IsRemoved ? "Removed" : $"{Width}x{Height}";
+    public string DisplayText => $"光 {Index} (0x{Index:X})";
+    public string SizeText => IsRemoved ? "已删除" : $"{Width}x{Height}";
 }
