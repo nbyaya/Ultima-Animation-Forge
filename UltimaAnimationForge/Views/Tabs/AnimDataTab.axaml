@@ -60,10 +60,12 @@
                         <StackPanel Orientation="Horizontal"
                                     Spacing="12">
                             <CheckBox Content="缺少美术"
-                                      IsChecked="{Binding ShowAnimDataMissingArt}" />
+                                      IsChecked="{Binding ShowAnimDataMissingArt}"
+                                      Foreground="#C7D1DB" />
 
                             <CheckBox Content="无动画标志"
-                                      IsChecked="{Binding ShowAnimDataWithoutAnimationFlag}" />
+                                      IsChecked="{Binding ShowAnimDataWithoutAnimationFlag}"
+                                      Foreground="#C7D1DB" />
                         </StackPanel>
                     </StackPanel>
                 </Border>
@@ -275,7 +277,8 @@
                             <CheckBox Grid.Column="1"
                                       Content="相对"
                                       IsChecked="{Binding AnimDataAddFrameRelative}"
-                                      VerticalAlignment="Center" />
+                                      VerticalAlignment="Center"
+                                      Foreground="#C7D1DB" />
 
                             <Button Grid.Column="2"
                                     Content="添加"

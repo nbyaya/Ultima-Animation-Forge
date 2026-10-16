@@ -108,7 +108,8 @@
                                 Spacing="6"
                                 Margin="0,0,0,8">
                         <CheckBox Content="显示空闲窗口槽位"
-                                  IsChecked="{Binding ShowFreeGumpSlots, Mode=TwoWay}"/>
+                                  IsChecked="{Binding ShowFreeGumpSlots, Mode=TwoWay}"
+                                  Foreground="#C7D1DB"/>
 
                         <ComboBox ItemsSource="{Binding GumpFreeSlotModes}"
                                   SelectedItem="{Binding SelectedGumpFreeSlotMode, Mode=TwoWay}"
@@ -309,10 +310,12 @@
                         <Separator/>
 
                         <CheckBox Content="平行穿戴配对视图"
-                                  IsChecked="{Binding ShowGumpParallelView, Mode=TwoWay}"/>
+                                  IsChecked="{Binding ShowGumpParallelView, Mode=TwoWay}"
+                                  Foreground="#C7D1DB"/>
 
                         <CheckBox Content="显示纸娃娃模板"
-                                  IsChecked="{Binding ShowPaperdollTemplate, Mode=TwoWay}"/>
+                                  IsChecked="{Binding ShowPaperdollTemplate, Mode=TwoWay}"
+                                  Foreground="#C7D1DB"/>
 
                         <ComboBox ItemsSource="{Binding PaperdollTemplateOptions}"
                                   SelectedItem="{Binding SelectedPaperdollTemplate, Mode=TwoWay}"

@@ -43,7 +43,8 @@
 
                     <CheckBox Content="虚拟地板"
                               IsChecked="{Binding DrawVirtualFloor}"
-                              VerticalAlignment="Center"/>
+                              VerticalAlignment="Center"
+                              Foreground="#C7D1DB"/>
 
                     <TextBlock Text="物品ID" VerticalAlignment="Center" Foreground="#C7D1DB"/>
                     <NumericUpDown Width="130"

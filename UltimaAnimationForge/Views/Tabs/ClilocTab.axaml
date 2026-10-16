@@ -33,15 +33,18 @@
 
                         <CheckBox Content="使用 UOX3 字典模式"
                                   IsChecked="{Binding UseUoxDictionaryMode}"
-                                  VerticalAlignment="Center"/>
+                                  VerticalAlignment="Center"
+                                  Foreground="#C7D1DB"/>
 
                         <CheckBox Content="重复项"
                                   IsChecked="{Binding ShowOnlyDuplicateClilocs}"
-                                  VerticalAlignment="Center"/>
+                                  VerticalAlignment="Center"
+                                  Foreground="#C7D1DB"/>
 
                         <CheckBox Content="空项"
                                   IsChecked="{Binding ShowOnlyEmptyClilocs}"
-                                  VerticalAlignment="Center"/>
+                                  VerticalAlignment="Center"
+                                  Foreground="#C7D1DB"/>
 
                         <Separator Width="1"
                                    Height="24"

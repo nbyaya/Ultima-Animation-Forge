@@ -249,7 +249,8 @@
 
                                     <CheckBox Content="Loop"
                                               Margin="0,0,8,8"
-                                              IsChecked="{Binding ImportedMusicShouldLoop}" />
+                                              IsChecked="{Binding ImportedMusicShouldLoop}"
+                                              Foreground="#C7D1DB" />
 
                                     <Button Content="Play Music"
                                             Margin="0,0,8,8"
@@ -269,7 +270,8 @@
 
                                     <CheckBox Content="Delete MP3"
                                               Margin="0,0,8,8"
-                                              IsChecked="{Binding DeleteMusicFileOnRemove}" />
+                                              IsChecked="{Binding DeleteMusicFileOnRemove}"
+                                              Foreground="#C7D1DB" />
                                 </WrapPanel>
                             </StackPanel>
                         </Border>
