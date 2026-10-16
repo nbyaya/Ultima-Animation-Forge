@@ -218,7 +218,7 @@ public partial class MainWindowViewModel
 
         if (ClilocEntries.Count == 0)
         {
-            StatusText = "Load cliloc.enu first.";
+            StatusText = "请先加载 cliloc.enu。";
             return;
         }
 
@@ -293,7 +293,7 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(folder) || !Directory.Exists(folder))
         {
-            StatusText = "Open a UO folder first.";
+            StatusText = "请先打开 UO 文件夹。";
             return;
         }
 
@@ -305,7 +305,7 @@ public partial class MainWindowViewModel
 
         if (!File.Exists(path))
         {
-            StatusText = fileName + " was not found in the selected UO folder.";
+            StatusText = fileName + " 在选定的 UO 文件夹中找不到。";
             return;
         }
 
@@ -471,9 +471,9 @@ public partial class MainWindowViewModel
     {
         RefreshDictionaryFileOptions();
 
-        if (SelectedDictionaryFile == null || !File.Exists(SelectedDictionaryFile.FullPath))
+        if (selectedDictionaryFile == null || !File.Exists(selectedDictionaryFile.FullPath))
         {
-            StatusText = "No UOX3 dictionary file selected.";
+            StatusText = "未选择 UOX3 字典文件。";
             return;
         }
 
@@ -491,7 +491,7 @@ public partial class MainWindowViewModel
         RefreshUoxDictionaryCategories();
         RefreshClilocDuplicateFlags();
 
-        StatusText = "Loaded " + ClilocEntries.Count + " dictionary entries from " + SelectedDictionaryFile.FileName + ".";
+        StatusText = "已从 " + SelectedDictionaryFile.FileName + " 加载了 " + ClilocEntries.Count + " 个字典条目。";
         OnPropertyChanged(nameof(FilteredClilocEntries));
     }
 
@@ -501,7 +501,7 @@ public partial class MainWindowViewModel
 
         if (mainWindow == null)
         {
-            StatusText = "Could not locate main window.";
+            StatusText = "无法定位主窗口。";
             return;
         }
 
@@ -509,13 +509,13 @@ public partial class MainWindowViewModel
             await mainWindow.StorageProvider.OpenFolderPickerAsync(
                 new FolderPickerOpenOptions
                 {
-                    Title = "Select UOX3 Dictionary Folder",
+                    Title = "选择 UOX3 字典文件夹",
                     AllowMultiple = false
                 });
 
         if (folders.Count == 0)
         {
-            StatusText = "UOX3 dictionary folder selection cancelled.";
+            StatusText = "UOX3 字典文件夹选择已取消。";
             return;
         }
 
@@ -523,21 +523,21 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(path) || !Directory.Exists(path))
         {
-            StatusText = "Selected UOX3 dictionary folder is invalid.";
+            StatusText = "选定的 UOX3 字典文件夹无效。";
             return;
         }
 
         UoxDictionaryFolderPath = path;
         RefreshDictionaryFileOptions();
 
-        StatusText = "Selected UOX3 dictionary folder: " + path;
+        StatusText = "选定的 UOX3 字典文件夹：" + path;
     }
 
     private void SaveDictionary()
     {
         if (string.IsNullOrWhiteSpace(loadedDictionaryPath))
         {
-            StatusText = "Load a dictionary file before saving.";
+            StatusText = "保存前请先加载字典文件。";
             return;
         }
 
@@ -545,12 +545,12 @@ public partial class MainWindowViewModel
         {
             uoxDictionaryDataService.Save(loadedDictionaryPath, ClilocEntries);
 
-            StatusText = "Saved " + ClilocEntries.Count + " dictionary entries to " + Path.GetFileName(loadedDictionaryPath) + ".";
+            StatusText = "已将 " + ClilocEntries.Count + " 个字典条目保存到 " + Path.GetFileName(loadedDictionaryPath) + "。";
             OnPropertyChanged(nameof(FilteredClilocEntries));
         }
         catch (Exception exception)
         {
-            StatusText = "Dictionary save failed: " + exception.Message;
+            StatusText = "字典保存失败：" + exception.Message;
         }
     }
 
@@ -558,14 +558,14 @@ public partial class MainWindowViewModel
     {
         if (ClilocEntries.Count == 0)
         {
-            StatusText = "Load cliloc or dictionary entries before exporting.";
+            StatusText = "导出前请先加载 Cliloc 或字典条目。";
             return;
         }
 
         Window? mainWindow = GetMainWindow();
         if (mainWindow == null)
         {
-            StatusText = "Could not locate main window.";
+            StatusText = "无法定位主窗口。";
             return;
         }
 
@@ -592,21 +592,21 @@ public partial class MainWindowViewModel
         IStorageFile? file = await mainWindow.StorageProvider.SaveFilePickerAsync(
             new FilePickerSaveOptions
             {
-                Title = isDictionary ? "Export Dictionary Text" : "Export Cliloc CSV",
+                Title = isDictionary ? "导出字典文本" : "导出 Cliloc CSV",
                 SuggestedFileName = defaultName,
                 SuggestedStartLocation = suggestedFolder
             });
 
         if (file == null)
         {
-            StatusText = "Export cancelled.";
+            StatusText = "导出已取消。";
             return;
         }
 
         string? path = file.TryGetLocalPath();
         if (string.IsNullOrWhiteSpace(path))
         {
-            StatusText = "Export path is invalid.";
+            StatusText = "导出路径无效。";
             return;
         }
 
@@ -615,17 +615,17 @@ public partial class MainWindowViewModel
             if (isDictionary)
             {
                 ExportDictionaryText(path);
-                StatusText = "Exported dictionary text to " + Path.GetFileName(path) + ".";
+                StatusText = "已将字典文本导出到 " + Path.GetFileName(path) + "。";
             }
             else
             {
                 ExportClilocCsv(path);
-                StatusText = "Exported cliloc CSV to " + Path.GetFileName(path) + ".";
+                StatusText = "已将 Cliloc CSV 导出到 " + Path.GetFileName(path) + "。";
             }
         }
         catch (Exception exception)
         {
-            StatusText = "Export failed: " + exception.Message;
+            StatusText = "导出失败：" + exception.Message;
         }
     }
 
@@ -634,7 +634,7 @@ public partial class MainWindowViewModel
         Window? mainWindow = GetMainWindow();
         if (mainWindow == null)
         {
-            StatusText = "Could not locate main window.";
+            StatusText = "无法定位主窗口。";
             return;
         }
 
@@ -643,20 +643,20 @@ public partial class MainWindowViewModel
         IReadOnlyList<IStorageFile> files = await mainWindow.StorageProvider.OpenFilePickerAsync(
             new FilePickerOpenOptions
             {
-                Title = isDictionary ? "Import Dictionary Text" : "Import Cliloc CSV",
+                Title = isDictionary ? "导入字典文本" : "导入 Cliloc CSV",
                 AllowMultiple = false
             });
 
         if (files.Count == 0)
         {
-            StatusText = "Import cancelled.";
+            StatusText = "导入已取消。";
             return;
         }
 
         string? path = files[0].TryGetLocalPath();
         if (string.IsNullOrWhiteSpace(path) || !File.Exists(path))
         {
-            StatusText = "Import file is invalid.";
+            StatusText = "导入文件无效。";
             return;
         }
 
@@ -675,12 +675,12 @@ public partial class MainWindowViewModel
 
             SelectedClilocEntry = ClilocEntries.FirstOrDefault();
 
-            StatusText = "Imported " + ClilocEntries.Count + " entries from " + Path.GetFileName(path) + ". Save to write changes.";
+            StatusText = "已从 " + Path.GetFileName(path) + " 导入了 " + ClilocEntries.Count + " 个条目。保存以写入更改。";
             OnPropertyChanged(nameof(FilteredClilocEntries));
         }
         catch (Exception exception)
         {
-            StatusText = "Import failed: " + exception.Message;
+            StatusText = "导入失败：" + exception.Message;
         }
     }
 
@@ -688,7 +688,7 @@ public partial class MainWindowViewModel
     {
         List<string> lines = new()
     {
-        "Number,Flag,Text"
+        "编号,标志,文本"
     };
 
         foreach (ClilocEntry entry in ClilocEntries.OrderBy(x => x.Number))
@@ -840,7 +840,7 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(text))
         {
-            StatusText = "Enter an ID to jump to.";
+            StatusText = "输入要跳转的编号。";
             return;
         }
 
@@ -850,13 +850,13 @@ public partial class MainWindowViewModel
         {
             if (!int.TryParse(text[2..], System.Globalization.NumberStyles.HexNumber, null, out number))
             {
-                StatusText = "Invalid hex ID.";
+                StatusText = "无效的十六进制编号。";
                 return;
             }
         }
         else if (!int.TryParse(text, out number))
         {
-            StatusText = "Invalid ID.";
+            StatusText = "无效的编号。";
             return;
         }
 
@@ -864,11 +864,11 @@ public partial class MainWindowViewModel
 
         if (entry == null)
         {
-            StatusText = "ID " + number + " was not found.";
+            StatusText = "未找到编号 " + number + "。";
             return;
         }
 
         SelectedClilocEntry = entry;
-        StatusText = "Selected ID " + number + ".";
+        StatusText = "已选择编号 " + number + "。";
     }
 }
