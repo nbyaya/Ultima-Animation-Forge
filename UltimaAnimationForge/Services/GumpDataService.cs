@@ -169,12 +169,12 @@ public sealed class GumpDataService
     {
         if (entry == null)
         {
-            return Fail("No gump selected.");
+            return Fail("未选择窗口。");
         }
 
         if (!entry.IsValid)
         {
-            return Fail("Selected gump slot is empty.");
+            return Fail("选定的窗口槽位为空。");
         }
 
         return usingUop
@@ -186,12 +186,12 @@ public sealed class GumpDataService
     {
         if (gumpUopReader == null)
         {
-            return Fail("gumpartLegacyMUL.uop is not loaded.");
+            return Fail("gumpartLegacyMUL.uop 未被加载。");
         }
 
         if (!uopHeadersByGumpId.TryGetValue(entry.GumpId, out UopDataHeader header))
         {
-            return Fail("Gump " + entry.GumpId + " was not found in gumpartLegacyMUL.uop.");
+            return Fail("窗口 " + entry.GumpId + " 未在 gumpartLegacyMUL.uop 中找到。");
         }
 
         try
@@ -199,7 +199,7 @@ public sealed class GumpDataService
             byte[]? fullData = ReadUopGumpPayload(header);
             if (fullData == null || fullData.Length < 8)
             {
-                return Fail("Selected UOP gump data is empty or truncated.");
+                return Fail("所选 UOP 窗口数据为空或被截断。");
             }
 
             int width = BitConverter.ToInt32(fullData, 0);
@@ -207,7 +207,7 @@ public sealed class GumpDataService
 
             if (!IsSaneGumpSize(width, height))
             {
-                return Fail("UOP gump has invalid dimensions: " + width + "x" + height + ".");
+                return Fail("UOP 窗口的尺寸无效: " + width + "x" + height + "。");
             }
 
             byte[] rleData = new byte[fullData.Length - 8];
@@ -216,7 +216,7 @@ public sealed class GumpDataService
             WriteableBitmap? bitmap = DecodeGumpRle(rleData, width, height);
             if (bitmap == null)
             {
-                return Fail("Failed to decode UOP gump image.");
+                return Fail("解码 UOP 窗口图像失败。");
             }
 
             entry.Width = width;
@@ -230,12 +230,12 @@ public sealed class GumpDataService
                 Bitmap = bitmap,
                 Width = width,
                 Height = height,
-                Message = "Loaded UOP gump " + entry.GumpId + " (" + width + "x" + height + ")."
+                Message = "已加载 UOP 窗口 " + entry.GumpId + " (" + width + "x" + height + ")。"
             };
         }
         catch (Exception exception)
         {
-            return Fail("Failed to load UOP gump: " + exception.Message);
+            return Fail("加载 UOP 窗口失败: " + exception.Message);
         }
     }
 
@@ -297,7 +297,7 @@ public sealed class GumpDataService
     {
         if (!File.Exists(mulPath))
         {
-            return Fail("Gumpart.mul was not found.");
+            return Fail("Gumpart.mul 未被找到。");
         }
 
         try
@@ -306,7 +306,7 @@ public sealed class GumpDataService
 
             if (entry.Lookup < 0 || entry.Lookup >= stream.Length)
             {
-                return Fail("Gump lookup is outside Gumpart.mul.");
+                return Fail("窗口查询超出 Gumpart.mul 范围。");
             }
 
             stream.Seek(entry.Lookup, SeekOrigin.Begin);
@@ -316,14 +316,14 @@ public sealed class GumpDataService
 
             if (read != data.Length)
             {
-                return Fail("Could not read complete gump data.");
+                return Fail("无法读取完整的窗口数据。");
             }
 
             WriteableBitmap? bitmap = DecodeGumpRle(data, entry.Width, entry.Height);
 
             if (bitmap == null)
             {
-                return Fail("Failed to decode gump image.");
+                return Fail("解码窗口图像失败。");
             }
 
             return new GumpLoadResult
@@ -332,12 +332,12 @@ public sealed class GumpDataService
                 Bitmap = bitmap,
                 Width = entry.Width,
                 Height = entry.Height,
-                Message = "Loaded MUL gump " + entry.GumpId + " (" + entry.Width + "x" + entry.Height + ")."
+                Message = "已加载 MUL 窗口 " + entry.GumpId + " (" + entry.Width + "x" + entry.Height + ")。"
             };
         }
         catch (Exception exception)
         {
-            return Fail("Failed to load MUL gump: " + exception.Message);
+            return Fail("加载 MUL 窗口失败: " + exception.Message);
         }
     }
 
@@ -458,7 +458,7 @@ public sealed class GumpDataService
             return new GumpSaveResult
             {
                 Success = false,
-                Message = "Saving is currently supported for gumpartLegacyMUL.uop only."
+                Message = "目前仅支持保存到 gumpartLegacyMUL.uop。"
             };
         }
 
@@ -467,7 +467,7 @@ public sealed class GumpDataService
             return new GumpSaveResult
             {
                 Success = false,
-                Message = "PNG file was not found."
+                Message = "未找到 PNG 文件。"
             };
         }
 
@@ -476,7 +476,7 @@ public sealed class GumpDataService
             return new GumpSaveResult
             {
                 Success = false,
-                Message = "Invalid gump ID."
+                Message = "无效的窗口编号。"
             };
         }
 
@@ -485,7 +485,7 @@ public sealed class GumpDataService
             return new GumpSaveResult
             {
                 Success = false,
-                Message = "gumpartLegacyMUL.uop is not loaded."
+                Message = "gumpartLegacyMUL.uop 未被加载。"
             };
         }
 
@@ -545,7 +545,7 @@ public sealed class GumpDataService
             return new GumpSaveResult
             {
                 Success = true,
-                Message = "Imported PNG into gump " + gumpId + " [0x" + gumpId.ToString("X") + "]."
+                Message = "已导入 PNG 到窗口 " + gumpId + " [0x" + gumpId.ToString("X") + "]。"
             };
         }
         catch (Exception exception)
@@ -553,7 +553,7 @@ public sealed class GumpDataService
             return new GumpSaveResult
             {
                 Success = false,
-                Message = "Failed to import PNG into gump: " + exception.Message
+                Message = "导入 PNG 到窗口失败: " + exception.Message
             };
         }
     }
@@ -749,7 +749,7 @@ public sealed class GumpDataService
             return new GumpSaveResult
             {
                 Success = false,
-                Message = "Removing is currently supported for gumpartLegacyMUL.uop only."
+                Message = "仅支持删除 gumpartLegacyMUL.uop 中的窗口。"
             };
         }
 
@@ -758,7 +758,7 @@ public sealed class GumpDataService
             return new GumpSaveResult
             {
                 Success = false,
-                Message = "Invalid gump ID."
+                Message = "无效的窗口 ID。"
             };
         }
 
@@ -767,7 +767,7 @@ public sealed class GumpDataService
             return new GumpSaveResult
             {
                 Success = false,
-                Message = "gumpartLegacyMUL.uop is not loaded."
+                Message = "gumpartLegacyMUL.uop 未加载。"
             };
         }
 
@@ -782,7 +782,7 @@ public sealed class GumpDataService
                 return new GumpSaveResult
                 {
                     Success = false,
-                    Message = "Gump " + gumpId + " is already free."
+                    Message = "窗口 " + gumpId + " 已是空闲状态。"
                 };
             }
 
@@ -825,7 +825,7 @@ public sealed class GumpDataService
             return new GumpSaveResult
             {
                 Success = true,
-                Message = "Removed gump " + gumpId + " [0x" + gumpId.ToString("X") + "]. Slot is now free."
+                Message = "已删除窗口 " + gumpId + " [0x" + gumpId.ToString("X") + "]。槽位现已空闲。"
             };
         }
         catch (Exception exception)
@@ -833,7 +833,7 @@ public sealed class GumpDataService
             return new GumpSaveResult
             {
                 Success = false,
-                Message = "Failed to remove gump: " + exception.Message
+                Message = "删除窗口失败: " + exception.Message
             };
         }
     }
@@ -845,7 +845,7 @@ public sealed class GumpDataService
             return new GumpSaveResult
             {
                 Success = false,
-                Message = "No gump selected."
+                Message = "未选择窗口。"
             };
         }
 
@@ -854,7 +854,7 @@ public sealed class GumpDataService
             return new GumpSaveResult
             {
                 Success = false,
-                Message = "Selected gump slot is empty."
+                Message = "选定的窗口槽位为空。"
             };
         }
 
@@ -863,7 +863,7 @@ public sealed class GumpDataService
             return new GumpSaveResult
             {
                 Success = false,
-                Message = "Export path is invalid."
+                Message = "导出路径无效。"
             };
         }
 
@@ -884,7 +884,7 @@ public sealed class GumpDataService
             return new GumpSaveResult
             {
                 Success = true,
-                Message = "Exported gump " + entry.GumpId + " [0x" + entry.GumpId.ToString("X") + "] to PNG."
+                Message = "已将窗口 " + entry.GumpId + " [0x" + entry.GumpId.ToString("X") + "] 导出为 PNG。"
             };
         }
         catch (Exception exception)
@@ -892,7 +892,7 @@ public sealed class GumpDataService
             return new GumpSaveResult
             {
                 Success = false,
-                Message = "Failed to export gump: " + exception.Message
+                Message = "导出窗口失败: " + exception.Message
             };
         }
     }
@@ -904,7 +904,7 @@ public sealed class GumpDataService
             return new GumpSaveResult
             {
                 Success = false,
-                Message = "Editing is currently supported for gumpartLegacyMUL.uop only."
+                Message = "仅支持编辑 gumpartLegacyMUL.uop 中的窗口。"
             };
         }
 
@@ -913,7 +913,7 @@ public sealed class GumpDataService
             return new GumpSaveResult
             {
                 Success = false,
-                Message = "No edited bitmap was supplied."
+                Message = "未提供编辑后的位图。"
             };
         }
 
@@ -922,7 +922,7 @@ public sealed class GumpDataService
             return new GumpSaveResult
             {
                 Success = false,
-                Message = "Invalid gump ID."
+                Message = "无效的窗口 ID。"
             };
         }
 
@@ -931,7 +931,7 @@ public sealed class GumpDataService
             return new GumpSaveResult
             {
                 Success = false,
-                Message = "gumpartLegacyMUL.uop is not loaded."
+                Message = "gumpartLegacyMUL.uop 未加载。"
             };
         }
 
@@ -988,7 +988,7 @@ public sealed class GumpDataService
             return new GumpSaveResult
             {
                 Success = true,
-                Message = editName + " applied to gump " + gumpId + " [0x" + gumpId.ToString("X") + "]."
+                Message = editName + " 已应用到窗口 " + gumpId + " [0x" + gumpId.ToString("X") + "]。"
             };
         }
         catch (Exception exception)
@@ -996,7 +996,7 @@ public sealed class GumpDataService
             return new GumpSaveResult
             {
                 Success = false,
-                Message = "Failed to edit gump: " + exception.Message
+                Message = "编辑窗口失败: " + exception.Message
             };
         }
     }
