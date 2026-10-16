@@ -96,15 +96,18 @@
                         <CheckBox Grid.Column="1"
                                   Content="相对"
                                   IsChecked="{Binding EditAnimDataAddFrameRelative}"
-                                  VerticalAlignment="Center" />
+                                  VerticalAlignment="Center"
+                                  Foreground="#E4EAF2" />
 
                         <Button Grid.Column="2"
                                 Content="添加"
-                                Command="{Binding AddEditAnimDataFrameCommand}" />
+                                Command="{Binding AddEditAnimDataFrameCommand}"
+                                Foreground="#E4EAF2" />
 
                         <Button Grid.Column="3"
                                 Content="删除"
-                                Command="{Binding RemoveEditAnimDataFrameCommand}" />
+                                Command="{Binding RemoveEditAnimDataFrameCommand}"
+                                Foreground="#E4EAF2" />
                     </Grid>
 
                     <Grid Grid.Row="1"
@@ -112,11 +115,13 @@
                           ColumnSpacing="6">
                         <Button Grid.Column="0"
                                 Content="向上移动"
-                                Command="{Binding MoveEditAnimDataFrameUpCommand}" />
+                                Command="{Binding MoveEditAnimDataFrameUpCommand}"
+                                Foreground="#E4EAF2" />
 
                         <Button Grid.Column="1"
                                 Content="向下移动"
-                                Command="{Binding MoveEditAnimDataFrameDownCommand}" />
+                                Command="{Binding MoveEditAnimDataFrameDownCommand}"
+                                Foreground="#E4EAF2" />
                     </Grid>
                 </Grid>
             </StackPanel>
@@ -127,11 +132,13 @@
                     HorizontalAlignment="Right"
                     Spacing="8">
             <Button Content="刷新预览"
-                    Click="Refresh_Click" />
+                    Click="Refresh_Click"
+                    Foreground="#E4EAF2" />
 
             <Button Content="关闭"
                     Width="90"
-                    Click="Close_Click" />
+                    Click="Close_Click"
+                    Foreground="#E4EAF2" />
         </StackPanel>
     </Grid>
 </Window>
