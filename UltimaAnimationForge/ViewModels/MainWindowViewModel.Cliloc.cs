@@ -68,7 +68,7 @@ public partial class MainWindowViewModel
     UseUoxDictionaryMode ? "UOX3 字典编辑器" : "Cliloc 编辑器";
 
     public string EntryNumberLabel =>
-        UseUoxDictionaryMode ? "字典 ID" : "Cliloc ID";
+        UseUoxDictionaryMode ? "字典编号" : "Cliloc 编号";
 
     public string FreeNumberTitle =>
     UseUoxDictionaryMode ? "空闲字典号" : "空闲 Cliloc 号";
@@ -239,14 +239,14 @@ public partial class MainWindowViewModel
 
         SelectedFreeClilocNumber = FreeClilocNumbers.FirstOrDefault();
 
-        StatusText = "Found " + FreeClilocNumbers.Count + " free cliloc numbers.";
+        StatusText = "找到 " + FreeClilocNumbers.Count + " 个空闲 Cliloc 编号。";
     }
 
     private void AddClilocEntryFromFreeNumber()
     {
         if (SelectedFreeClilocNumber == null || SelectedFreeClilocNumber <= 0)
         {
-            StatusText = "Select a free cliloc number first.";
+            StatusText = "请先选择一个空闲 Cliloc 编号。";
             return;
         }
 
@@ -254,7 +254,7 @@ public partial class MainWindowViewModel
 
         if (ClilocEntries.Any(x => x.Number == number))
         {
-            StatusText = "That cliloc number is already used.";
+            StatusText = "该 Cliloc 编号已被使用。";
             return;
         }
 
@@ -275,7 +275,7 @@ public partial class MainWindowViewModel
 
         FreeClilocNumbers.Remove(number);
 
-        StatusText = "Added new cliloc entry " + number + ".";
+        StatusText = "已添加新 Cliloc 条目 " + number + "。";
 
         RefreshUoxDictionaryCategories();
         RefreshClilocDuplicateFlags();
@@ -321,7 +321,7 @@ public partial class MainWindowViewModel
 
         SelectedClilocEntry = ClilocEntries.FirstOrDefault();
 
-        StatusText = "Loaded " + ClilocEntries.Count + " cliloc entries from " + Path.GetFileName(path) + ".";
+        StatusText = "已加载 " + ClilocEntries.Count + " 个 Cliloc 条目从 " + Path.GetFileName(path) + "。";
         OnPropertyChanged(nameof(FilteredClilocEntries));
     }
 
@@ -335,7 +335,7 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(loadedClilocPath))
         {
-            StatusText = "Load cliloc.enu before saving.";
+            StatusText = "保存前请先加载 cliloc.enu。";
             return;
         }
 
@@ -343,12 +343,12 @@ public partial class MainWindowViewModel
         {
             clilocDataService.Save(loadedClilocPath, ClilocEntries);
 
-            StatusText = "Saved " + ClilocEntries.Count + " cliloc entries to " + Path.GetFileName(loadedClilocPath) + ".";
+            StatusText = "已将 " + ClilocEntries.Count + " 个 Cliloc 条目保存到 " + Path.GetFileName(loadedClilocPath) + "。";
             OnPropertyChanged(nameof(FilteredClilocEntries));
         }
         catch (Exception exception)
         {
-            StatusText = "Save failed: " + exception.Message;
+            StatusText = "保存失败：" + exception.Message;
         }
     }
 
@@ -372,7 +372,7 @@ public partial class MainWindowViewModel
         ClilocEntries.Add(entry);
         SelectedClilocEntry = entry;
 
-        StatusText = "Added new cliloc entry " + entry.Number + ".";
+        StatusText = "已添加新 Cliloc 条目 " + entry.Number + "。";
         OnPropertyChanged(nameof(FilteredClilocEntries));
     }
 
@@ -380,7 +380,7 @@ public partial class MainWindowViewModel
     {
         if (SelectedClilocEntry == null)
         {
-            StatusText = "Select a cliloc entry to delete.";
+            StatusText = "请选择要删除的 Cliloc 条目。";
             return;
         }
 
@@ -389,7 +389,7 @@ public partial class MainWindowViewModel
         ClilocEntries.Remove(SelectedClilocEntry);
         SelectedClilocEntry = ClilocEntries.FirstOrDefault();
 
-        StatusText = "Deleted cliloc entry " + number + ". Save to write changes.";
+        StatusText = "已删除 Cliloc 条目 " + number + "。保存以写入更改。";
         OnPropertyChanged(nameof(FilteredClilocEntries));
     }
 
