@@ -507,7 +507,7 @@
                             Padding="14,6"
                             MinHeight="28" />
 
-                    <Button Content="窗口"
+                    <Button Content="Gump 窗口"
                             Command="{Binding ShowGumpEditorCommand}"
                             CornerRadius="0"
                             Padding="14,6"

@@ -19,31 +19,31 @@
                           ItemsSource="{Binding GumpSharpenModes}"
                           SelectedItem="{Binding SelectedGumpSharpenMode}"/>
 
-                <Button Content="Sharpen"
+                <Button Content="锐化"
                         Command="{Binding SharpenSelectedGumpCommand}"/>
 
-                <Button Content="Contrast +"
+                <Button Content="对比度 +"
                         Command="{Binding IncreaseGumpContrastCommand}"/>
 
-                <Button Content="Contrast -"
+                <Button Content="对比度 -"
                         Command="{Binding DecreaseGumpContrastCommand}"/>
 
-                <Button Content="Brighten"
+                <Button Content="亮化"
                         Command="{Binding BrightenGumpCommand}"/>
 
-                <Button Content="Darken"
+                <Button Content="暗化"
                         Command="{Binding DarkenGumpCommand}"/>
 
-                <Button Content="Sat +"
+                <Button Content="饱和度 +"
                         Command="{Binding IncreaseGumpSaturationCommand}"/>
 
-                <Button Content="Sat -"
+                <Button Content="饱和度 -"
                         Command="{Binding DecreaseGumpSaturationCommand}"/>
 
-                <Button Content="Outline"
+                <Button Content="轮廓"
                         Command="{Binding OutlineGumpCommand}"/>
 
-                <Button Content="Load Overlay Image"
+                <Button Content="加载叠加层图像"
                         Command="{Binding LoadGumpOverlayImageCommand}"/>
 
                 <TextBlock Text="叠加层不透明度 %"
@@ -60,13 +60,13 @@
                           ItemsSource="{Binding GumpOverlayBlendModes}"
                           SelectedItem="{Binding SelectedGumpOverlayBlendMode}"/>
 
-                <Button Content="Apply Overlay To Gump"
+                <Button Content="应用叠加层到窗口"
                         Command="{Binding ApplyOverlayToGumpCommand}"/>
 
-                <Button Content="Save Edit"
+                <Button Content="保存编辑"
                         Command="{Binding SaveGumpEditCommand}"/>
 
-                <Button Content="Reset Edit"
+                <Button Content="重置编辑"
                         Command="{Binding ResetGumpEditPreviewCommand}"/>
             </StackPanel>
         </Border>
@@ -85,18 +85,18 @@
                     <StackPanel Grid.Row="0"
                                 Spacing="6"
                                 Margin="0,0,0,8">
-                        <TextBlock Text="Search"
+                        <TextBlock Text="搜索"
                                    FontWeight="Bold"
                                    Foreground="#E4EAF2"/>
 
-                        <TextBox Watermark="Gump ID..."
+                        <TextBox Watermark="窗口 ID..."
                                  Text="{Binding GumpSearchText}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Row="1"
                                 Spacing="6"
                                 Margin="0,0,0,8">
-                        <CheckBox Content="Show free gump slots"
+                        <CheckBox Content="显示空闲窗口槽位"
                                   IsChecked="{Binding ShowFreeGumpSlots, Mode=TwoWay}"/>
 
                         <ComboBox ItemsSource="{Binding GumpFreeSlotModes}"
@@ -119,9 +119,9 @@
 
                         <Grid ColumnDefinitions="*,*" ColumnSpacing="6"
                               IsVisible="{Binding ShowFreeGumpSlots}">
-                            <Button Grid.Column="0" Content="Previous"
+                            <Button Grid.Column="0" Content="上一页"
                                     Command="{Binding PreviousGumpFreeSlotPageCommand}"/>
-                            <Button Grid.Column="1" Content="Next"
+                            <Button Grid.Column="1" Content="下一页"
                                     Command="{Binding NextGumpFreeSlotPageCommand}"/>
                         </Grid>
                     </StackPanel>
@@ -192,7 +192,7 @@
                         <StackPanel HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Spacing="8">
-                            <TextBlock Text="Selected"
+                            <TextBlock Text="已选中"
                                        HorizontalAlignment="Center"
                                        FontWeight="Bold"
                                        Foreground="#E4EAF2"/>
@@ -239,7 +239,7 @@
                               HorizontalScrollBarVisibility="Disabled">
                     <StackPanel Spacing="8">
 
-                        <TextBlock Text="Gump Info"
+                        <TextBlock Text="Gump 窗口信息"
                                    FontSize="16"
                                    FontWeight="Bold"
                                    Foreground="#E4EAF2"/>
@@ -248,22 +248,22 @@
                               RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
                               ColumnSpacing="10"
                               RowSpacing="5">
-                            <TextBlock Grid.Row="0" Grid.Column="0" Text="ID" Foreground="#AAB4C0"/>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="编号" Foreground="#AAB4C0"/>
                             <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding SelectedGump.GumpId}"/>
 
-                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Hex" Foreground="#AAB4C0"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="十六进制" Foreground="#AAB4C0"/>
                             <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SelectedGump.HexId}"/>
 
-                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Size" Foreground="#AAB4C0"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="大小" Foreground="#AAB4C0"/>
                             <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding SelectedGump.SizeText}"/>
 
-                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Length" Foreground="#AAB4C0"/>
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="长度" Foreground="#AAB4C0"/>
                             <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding SelectedGump.LengthText}"/>
 
-                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Source" Foreground="#AAB4C0"/>
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="来源" Foreground="#AAB4C0"/>
                             <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding SelectedGump.SourceFile}" TextWrapping="Wrap"/>
 
-                            <TextBlock Grid.Row="5" Grid.Column="0" Text="State" Foreground="#AAB4C0"/>
+                            <TextBlock Grid.Row="5" Grid.Column="0" Text="状态" Foreground="#AAB4C0"/>
                             <TextBlock Grid.Row="5" Grid.Column="1"
                                        Text="{Binding SelectedGump.DisplayText}"
                                        TextWrapping="Wrap"/>
@@ -271,30 +271,30 @@
 
                         <Separator/>
 
-                        <TextBlock Text="Selected Slot" FontWeight="Bold"/>
+                        <TextBlock Text="选中的槽位" FontWeight="Bold"/>
                         <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="6" RowSpacing="6">
-                            <Button Grid.Row="0" Grid.Column="0" Content="Import PNG" Command="{Binding ImportPngToGumpCommand}"/>
-                            <Button Grid.Row="0" Grid.Column="1" Content="Export PNG" Command="{Binding ExportSelectedGumpCommand}"/>
-                            <Button Grid.Row="1" Grid.Column="0" Content="Remove" Command="{Binding RemoveSelectedGumpCommand}"/>
-                            <Button Grid.Row="1" Grid.Column="1" Content="Reset Preview" Command="{Binding ResetGumpEditPreviewCommand}"/>
+                            <Button Grid.Row="0" Grid.Column="0" Content="导入 PNG" Command="{Binding ImportPngToGumpCommand}"/>
+                            <Button Grid.Row="0" Grid.Column="1" Content="导出 PNG" Command="{Binding ExportSelectedGumpCommand}"/>
+                            <Button Grid.Row="1" Grid.Column="0" Content="删除" Command="{Binding RemoveSelectedGumpCommand}"/>
+                            <Button Grid.Row="1" Grid.Column="1" Content="重置预览" Command="{Binding ResetGumpEditPreviewCommand}"/>
                         </Grid>
 
                         <Separator/>
 
-                        <TextBlock Text="Checked Slots" FontWeight="Bold"/>
+                        <TextBlock Text="已检查的槽位" FontWeight="Bold"/>
                         <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="6" RowSpacing="6">
-                            <Button Grid.Row="0" Grid.Column="0" Content="Check Visible" Command="{Binding CheckAllVisibleGumpsCommand}"/>
-                            <Button Grid.Row="0" Grid.Column="1" Content="Clear Checks" Command="{Binding ClearCheckedGumpsCommand}"/>
-                            <Button Grid.Row="1" Grid.Column="0" Content="Import Checked" Command="{Binding ImportCheckedGumpsCommand}"/>
-                            <Button Grid.Row="1" Grid.Column="1" Content="Export Checked" Command="{Binding ExportCheckedGumpsCommand}"/>
+                            <Button Grid.Row="0" Grid.Column="0" Content="检查可见项" Command="{Binding CheckAllVisibleGumpsCommand}"/>
+                            <Button Grid.Row="0" Grid.Column="1" Content="清除检查" Command="{Binding ClearCheckedGumpsCommand}"/>
+                            <Button Grid.Row="1" Grid.Column="0" Content="导入已检查" Command="{Binding ImportCheckedGumpsCommand}"/>
+                            <Button Grid.Row="1" Grid.Column="1" Content="导出已检查" Command="{Binding ExportCheckedGumpsCommand}"/>
                         </Grid>
 
                         <Separator/>
 
-                        <CheckBox Content="Parallel wearable pair view"
+                        <CheckBox Content="平行穿戴配对视图"
                                   IsChecked="{Binding ShowGumpParallelView, Mode=TwoWay}"/>
 
-                        <CheckBox Content="Show paperdoll template"
+                        <CheckBox Content="显示纸娃娃模板"
                                   IsChecked="{Binding ShowPaperdollTemplate, Mode=TwoWay}"/>
 
                         <ComboBox ItemsSource="{Binding PaperdollTemplateOptions}"
@@ -303,7 +303,7 @@
 
                         <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto" ColumnSpacing="8" RowSpacing="6"
                               IsVisible="{Binding ShowPaperdollTemplate}">
-                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Template ID" Foreground="#AAB4C0" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="模板编号" Foreground="#AAB4C0" VerticalAlignment="Center"/>
                             <NumericUpDown Grid.Row="0" Grid.Column="1" Minimum="0" Maximum="73727"
                                            Value="{Binding PaperdollTemplateGumpId, Mode=TwoWay}"/>
                             <TextBlock Grid.Row="1" Grid.Column="0" Text="不透明度" Foreground="#AAB4C0" VerticalAlignment="Center"/>
@@ -311,7 +311,7 @@
                                            Value="{Binding PaperdollTemplateOpacity, Mode=TwoWay}"/>
                         </Grid>
 
-                        <TextBlock Text="Wearable Offset" FontWeight="Bold"/>
+                        <TextBlock Text="穿戴偏移" FontWeight="Bold"/>
                         <TextBlock Text="{Binding GumpWearableOffsetX, StringFormat='X: {0}'}" Foreground="#AAB4C0"/>
                         <TextBlock Text="{Binding GumpWearableOffsetY, StringFormat='Y: {0}'}" Foreground="#AAB4C0"/>
                         <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto" ColumnSpacing="6" RowSpacing="6">
@@ -320,7 +320,7 @@
                             <Button Grid.Row="1" Grid.Column="1" Content="↓" Command="{Binding NudgeGumpDownCommand}"/>
                             <Button Grid.Row="1" Grid.Column="2" Content="→" Command="{Binding NudgeGumpRightCommand}"/>
                         </Grid>
-                        <Button Content="Reset Wearable Offset" Command="{Binding ResetGumpWearableOffsetCommand}"/>
+                        <Button Content="重置穿戴偏移" Command="{Binding ResetGumpWearableOffsetCommand}"/>
 
                         <Separator/>
 
