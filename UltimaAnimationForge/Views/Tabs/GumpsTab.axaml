@@ -1,8 +1,13 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="clr-namespace:UltimaAnimationForge.ViewModels"
+             xmlns:converters="clr-namespace:UltimaAnimationForge.Converters"
              x:Class="UltimaAnimationForge.Views.Tabs.GumpsTab"
              x:DataType="vm:MainWindowViewModel">
+
+    <UserControl.Resources>
+        <converters:EnumLocalizationConverter x:Key="EnumLocalizationConverter"/>
+    </UserControl.Resources>
 
     <Grid RowDefinitions="Auto,*">
 
@@ -58,7 +63,13 @@
 
                 <ComboBox Width="120"
                           ItemsSource="{Binding GumpOverlayBlendModes}"
-                          SelectedItem="{Binding SelectedGumpOverlayBlendMode}"/>
+                          SelectedItem="{Binding SelectedGumpOverlayBlendMode}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ., Converter={StaticResource EnumLocalizationConverter}}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
 
                 <Button Content="应用叠加层到窗口"
                         Command="{Binding ApplyOverlayToGumpCommand}"/>
@@ -101,7 +112,13 @@
 
                         <ComboBox ItemsSource="{Binding GumpFreeSlotModes}"
                                   SelectedItem="{Binding SelectedGumpFreeSlotMode, Mode=TwoWay}"
-                                  IsEnabled="{Binding ShowFreeGumpSlots}"/>
+                                  IsEnabled="{Binding ShowFreeGumpSlots}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ., Converter={StaticResource EnumLocalizationConverter}}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
 
                         <TextBlock Text="{Binding GumpSlotSummaryText}"
                                    Foreground="#AAB4C0"
