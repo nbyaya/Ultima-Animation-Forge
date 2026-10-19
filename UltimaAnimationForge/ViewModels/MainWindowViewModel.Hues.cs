@@ -26,20 +26,20 @@ public partial class MainWindowViewModel
 
     public ObservableCollection<string> HuePresetOptions { get; } = new()
 {
-    "Cloth",
-    "Metal",
-    "Glow",
-    "Fire",
-    "Ice",
-    "Poison",
-    "Shadow",
-    "Gold",
-    "Bone",
-    "Leather"
+    "布料",
+    "金属",
+    "发光",
+    "火焰",
+    "冰冻",
+    "毒素",
+    "阴影",
+    "黄金",
+    "骨头",
+    "皮革"
 };
 
     [ObservableProperty]
-    private string selectedHuePreset = "Cloth";
+    private string selectedHuePreset = "布料";
 
     public ICommand ApplyHuePresetCommand { get; private set; } = null!;
 
@@ -55,7 +55,7 @@ public partial class MainWindowViewModel
     [ObservableProperty]
     private bool hueEditorShowFreeOnly;
 
-    public string HueEditorFreeSlotText => GetFreeHueSlots().Count + " free slots";
+    public string HueEditorFreeSlotText => GetFreeHueSlots().Count + " 个空闲槽位";
 
     private string loadedHueEditorFilePath = string.Empty;
     private List<HueEditorEntry> allHueEditorEntries = new();
@@ -72,7 +72,7 @@ public partial class MainWindowViewModel
     private string hueEditorSearchText = string.Empty;
 
     [ObservableProperty]
-    private string hueEditorStatusText = "Open a UO folder or load hues.mul.";
+    private string hueEditorStatusText = "打开 UO 文件夹或加载 hues.mul。";
 
     [ObservableProperty]
     private byte hueEditorRed;
@@ -99,10 +99,10 @@ public partial class MainWindowViewModel
 
     public string HueEditorLoadedFileText =>
         string.IsNullOrWhiteSpace(loadedHueEditorFilePath)
-            ? "No hues.mul loaded"
+            ? "未加载 hues.mul"
             : Path.GetFileName(loadedHueEditorFilePath);
 
-    public string HueEditorCountText => HueEditorEntries.Count + " / " + allHueEditorEntries.Count + " hues";
+    public string HueEditorCountText => HueEditorEntries.Count + " / " + allHueEditorEntries.Count + " 个色调";
 
     public IBrush HueEditorSelectedColorBrush =>
         SelectedHueEditorColor == null
@@ -125,6 +125,11 @@ public partial class MainWindowViewModel
         ReplaceHueFromIndexCommand = new RelayCommand(ReplaceHueFromIndex);
         RefreshHuePreviewCommand = new RelayCommand(UpdateHueArtPreview);
         ApplyHuePresetCommand = new RelayCommand(ApplyHuePreset);
+        
+        // 初始化计算属性的显示值
+        OnPropertyChanged(nameof(HueEditorFreeSlotText));
+        OnPropertyChanged(nameof(HueEditorLoadedFileText));
+        OnPropertyChanged(nameof(HueEditorCountText));
     }
 
     private void CaptureOriginalHuePreview()
@@ -154,14 +159,14 @@ public partial class MainWindowViewModel
         Window? owner = GetMainWindow();
         if (owner == null)
         {
-            StatusText = "Could not locate main window.";
+            StatusText = "无法定位主窗口。";
             return;
         }
 
         string hueFilePath = await FindOrPromptForHueFileAsync(owner);
         if (string.IsNullOrWhiteSpace(hueFilePath) || !File.Exists(hueFilePath))
         {
-            HueEditorStatusText = "Hue load cancelled.";
+            HueEditorStatusText = "色调加载已取消。";
             return;
         }
 
@@ -175,7 +180,7 @@ public partial class MainWindowViewModel
             List<HueEditorEntry> loaded = hueDataService.LoadHueEditorEntries(hueFilePath);
             if (loaded.Count == 0)
             {
-                HueEditorStatusText = "No hues were found in hues.mul.";
+                HueEditorStatusText = "hues.mul 中未找到任何色调。";
                 return;
             }
 
@@ -189,13 +194,13 @@ public partial class MainWindowViewModel
             SelectedHueEditorEntry = HueEditorEntries.FirstOrDefault();
             SelectedHueEditorColor = SelectedHueEditorEntry?.Colors.FirstOrDefault();
 
-            HueEditorStatusText = "Loaded " + allHueEditorEntries.Count + " hues from " + Path.GetFileName(hueFilePath) + ".";
+            HueEditorStatusText = "已从 " + Path.GetFileName(hueFilePath) + " 加载 " + allHueEditorEntries.Count + " 个色调。";
             OnPropertyChanged(nameof(HueEditorLoadedFileText));
             OnPropertyChanged(nameof(HueEditorCountText));
         }
         catch (Exception exception)
         {
-            HueEditorStatusText = "Failed to load hues.mul: " + exception.Message;
+            HueEditorStatusText = "加载 hues.mul 失败: " + exception.Message;
         }
     }
 
@@ -237,7 +242,7 @@ public partial class MainWindowViewModel
     {
         if (string.IsNullOrWhiteSpace(loadedHueEditorFilePath))
         {
-            HueEditorStatusText = "No hues.mul is loaded.";
+            HueEditorStatusText = "未加载 hues.mul。";
             return;
         }
 
@@ -245,11 +250,11 @@ public partial class MainWindowViewModel
         {
             hueDataService.SaveHueEditorEntries(loadedHueEditorFilePath, allHueEditorEntries);
             cachedHueEntries = hueDataService.LoadHueEntries(loadedHueEditorFilePath);
-            HueEditorStatusText = "Saved hues.mul. Backup created as hues.mul.bak if one did not already exist.";
+            HueEditorStatusText = "已保存 hues.mul。如果不存在备份文件，已创建 hues.mul.bak。";
         }
         catch (Exception exception)
         {
-            HueEditorStatusText = "Failed to save hues.mul: " + exception.Message;
+            HueEditorStatusText = "保存 hues.mul 失败: " + exception.Message;
         }
     }
 
@@ -257,7 +262,7 @@ public partial class MainWindowViewModel
     {
         if (string.IsNullOrWhiteSpace(loadedHueEditorFilePath) || !File.Exists(loadedHueEditorFilePath))
         {
-            HueEditorStatusText = "No hues.mul is loaded.";
+            HueEditorStatusText = "未加载 hues.mul。";
             return;
         }
 
@@ -275,7 +280,7 @@ public partial class MainWindowViewModel
         SelectedHueEditorColor.Color = color;
         SelectedHueEditorColor.RawValue = HueDataService.ConvertAvaloniaColorToUoColor(color);
         OnPropertyChanged(nameof(HueEditorSelectedColorBrush));
-        HueEditorStatusText = "Updated color " + SelectedHueEditorColor.IndexText + ".";
+        HueEditorStatusText = "已更新颜色 " + SelectedHueEditorColor.IndexText + "。";
     }
 
     private void MakeHueEditorGradient()
@@ -305,7 +310,7 @@ public partial class MainWindowViewModel
             SelectedHueEditorEntry.Colors[i].RawValue = HueDataService.ConvertAvaloniaColorToUoColor(color);
         }
 
-        HueEditorStatusText = "Built gradient for hue " + SelectedHueEditorEntry.HueId + ".";
+        HueEditorStatusText = "已为色调 " + SelectedHueEditorEntry.HueId + " 生成梯度。";
     }
 
     private void CopyHueEditorNameToSearch()
@@ -347,14 +352,14 @@ public partial class MainWindowViewModel
     {
         if (SelectedHueEditorEntry == null)
         {
-            HueEditorStatusText = "Select an empty/custom hue slot first.";
+            HueEditorStatusText = "请先选择一个空/自定义色调槽位。";
             return;
         }
 
         Color baseColor = Color.FromRgb(HueEditorRed, HueEditorGreen, HueEditorBlue);
 
         SelectedHueEditorEntry.Name = string.IsNullOrWhiteSpace(SelectedHueEditorEntry.Name)
-            ? "Custom Hue " + SelectedHueEditorEntry.HueId
+            ? "自定义色调 " + SelectedHueEditorEntry.HueId
             : SelectedHueEditorEntry.Name;
 
         SelectedHueEditorEntry.TableStart = 1;
@@ -388,7 +393,7 @@ public partial class MainWindowViewModel
         }
 
         SelectedHueEditorColor = SelectedHueEditorEntry.Colors.FirstOrDefault();
-        HueEditorStatusText = "Created guided hue ramp for hue " + SelectedHueEditorEntry.HueId + ". Save hues.mul when ready.";
+        HueEditorStatusText = "已为色调 " + SelectedHueEditorEntry.HueId + " 创建导引色相。准备就绪后保存 hues.mul。";
     }
 
     private static byte ClampByte(double value)
@@ -438,7 +443,7 @@ public partial class MainWindowViewModel
 
         if (freeSlot == null)
         {
-            HueEditorStatusText = "No free hue slots were found.";
+            HueEditorStatusText = "未找到空闲色调槽位。";
             return;
         }
 
@@ -450,32 +455,32 @@ public partial class MainWindowViewModel
         SelectedHueEditorEntry = freeSlot;
         SelectedHueEditorColor = freeSlot.Colors.FirstOrDefault();
 
-        HueEditorStatusText = "Selected free hue slot " + freeSlot.HueId + ".";
+        HueEditorStatusText = "已选择空闲色调槽位 " + freeSlot.HueId + "。";
     }
 
     private async Task ExportSelectedHueAsync()
     {
         if (SelectedHueEditorEntry == null)
         {
-            HueEditorStatusText = "Select a hue to export.";
+            HueEditorStatusText = "请选择要导出的色调。";
             return;
         }
 
         Window? owner = GetMainWindow();
         if (owner == null)
         {
-            HueEditorStatusText = "Could not locate main window.";
+            HueEditorStatusText = "无法定位主窗口。";
             return;
         }
 
         IStorageFile? file = await owner.StorageProvider.SaveFilePickerAsync(
             new FilePickerSaveOptions
             {
-                Title = "Export Hue",
+                Title = "导出色调",
                 SuggestedFileName = "Hue " + SelectedHueEditorEntry.HueId + ".txt",
                 FileTypeChoices = new[]
                 {
-                new FilePickerFileType("Hue text file")
+                new FilePickerFileType("色调文本文件")
                 {
                     Patterns = new[] { "*.txt" }
                 }
@@ -485,37 +490,37 @@ public partial class MainWindowViewModel
         string? path = file?.TryGetLocalPath();
         if (string.IsNullOrWhiteSpace(path))
         {
-            HueEditorStatusText = "Hue export cancelled.";
+            HueEditorStatusText = "色调导出已取消。";
             return;
         }
 
         hueDataService.ExportHueText(path, SelectedHueEditorEntry);
-        HueEditorStatusText = "Exported hue " + SelectedHueEditorEntry.HueId + " to " + Path.GetFileName(path) + ".";
+        HueEditorStatusText = "已将色调 " + SelectedHueEditorEntry.HueId + " 导出到 " + Path.GetFileName(path) + "。";
     }
 
     private async Task ImportReplaceSelectedHueAsync()
     {
         if (SelectedHueEditorEntry == null)
         {
-            HueEditorStatusText = "Select the hue slot to replace first.";
+            HueEditorStatusText = "请先选择要替换的色调槽位。";
             return;
         }
 
         Window? owner = GetMainWindow();
         if (owner == null)
         {
-            HueEditorStatusText = "Could not locate main window.";
+            HueEditorStatusText = "无法定位主窗口。";
             return;
         }
 
         IReadOnlyList<IStorageFile> files = await owner.StorageProvider.OpenFilePickerAsync(
             new FilePickerOpenOptions
             {
-                Title = "Import Hue Text",
+                Title = "导入色调文本",
                 AllowMultiple = false,
                 FileTypeFilter = new[]
                 {
-                new FilePickerFileType("Hue text file")
+                new FilePickerFileType("色调文本文件")
                 {
                     Patterns = new[] { "*.txt" }
                 }
@@ -524,14 +529,14 @@ public partial class MainWindowViewModel
 
         if (files.Count == 0)
         {
-            HueEditorStatusText = "Hue import cancelled.";
+            HueEditorStatusText = "色调导入已取消。";
             return;
         }
 
         string? path = files[0].TryGetLocalPath();
         if (string.IsNullOrWhiteSpace(path) || !File.Exists(path))
         {
-            HueEditorStatusText = "Selected hue file is invalid.";
+            HueEditorStatusText = "选中的色调文件无效。";
             return;
         }
 
@@ -539,34 +544,34 @@ public partial class MainWindowViewModel
         CopyHueData(imported, SelectedHueEditorEntry, keepTargetHueId: true);
 
         SelectedHueEditorColor = SelectedHueEditorEntry.Colors.FirstOrDefault();
-        HueEditorStatusText = "Replaced hue " + SelectedHueEditorEntry.HueId + " from " + Path.GetFileName(path) + ". Save hues.mul when ready.";
+        HueEditorStatusText = "已从 " + Path.GetFileName(path) + " 替换色调 " + SelectedHueEditorEntry.HueId + "。准备就绪后保存 hues.mul。";
     }
 
     private void ReplaceHueFromIndex()
     {
         if (SelectedHueEditorEntry == null)
         {
-            HueEditorStatusText = "Select the hue slot to replace first.";
+            HueEditorStatusText = "请先选择要替换的色调槽位。";
             return;
         }
 
         HueEditorEntry? source = allHueEditorEntries.FirstOrDefault(x => x.HueId == HueEditorReplaceSourceHueId);
         if (source == null)
         {
-            HueEditorStatusText = "Source hue " + HueEditorReplaceSourceHueId + " was not found.";
+            HueEditorStatusText = "未找到源色调 " + HueEditorReplaceSourceHueId + "。";
             return;
         }
 
         if (ReferenceEquals(source, SelectedHueEditorEntry))
         {
-            HueEditorStatusText = "Source and target hue are the same.";
+            HueEditorStatusText = "源色调和目标色调相同。";
             return;
         }
 
         CopyHueData(source, SelectedHueEditorEntry, keepTargetHueId: true);
 
         SelectedHueEditorColor = SelectedHueEditorEntry.Colors.FirstOrDefault();
-        HueEditorStatusText = "Copied hue " + source.HueId + " into hue " + SelectedHueEditorEntry.HueId + ". Save hues.mul when ready.";
+        HueEditorStatusText = "已将色调 " + source.HueId + " 复制到色调 " + SelectedHueEditorEntry.HueId + "。准备就绪后保存 hues.mul。";
     }
 
     private static void CopyHueData(HueEditorEntry source, HueEditorEntry target, bool keepTargetHueId)
@@ -606,30 +611,30 @@ public partial class MainWindowViewModel
 
             if (!artDataService.Initialize(GetCurrentFolderPath()))
             {
-                HueEditorStatusText = "Art files are not loaded. Open a UO folder first.";
+                HueEditorStatusText = "艺术文件未加载。请先打开 UO 文件夹。";
                 return;
             }
 
             ArtEntry? artEntry = artDataService.GetStaticEntryById(HuePreviewArtId);
             if (artEntry == null)
             {
-                HueEditorStatusText = "Could not find static art 0x" + HuePreviewArtId.ToString("X4") + ".";
+                HueEditorStatusText = "无法找到静态艺术 0x" + HuePreviewArtId.ToString("X4") + "。";
                 return;
             }
 
             WriteableBitmap? source = artDataService.LoadBitmap(artEntry);
             if (source == null)
             {
-                HueEditorStatusText = "Could not load static art 0x" + HuePreviewArtId.ToString("X4") + ".";
+                HueEditorStatusText = "无法加载静态艺术 0x" + HuePreviewArtId.ToString("X4") + "。";
                 return;
             }
 
             HuePreviewBitmap = ApplyHueEditorEntryToBitmap(source, SelectedHueEditorEntry);
-            HueEditorStatusText = "Updated art preview using static 0x" + HuePreviewArtId.ToString("X4") + ".";
+            HueEditorStatusText = "已使用静态艺术 0x" + HuePreviewArtId.ToString("X4") + " 更新艺术预览。";
         }
         catch (Exception exception)
         {
-            HueEditorStatusText = "Preview failed: " + exception.Message;
+            HueEditorStatusText = "预览失败: " + exception.Message;
         }
     }
 
@@ -758,18 +763,18 @@ public partial class MainWindowViewModel
     {
         if (SelectedHueEditorEntry == null)
         {
-            HueEditorStatusText = "Select a hue slot first.";
+            HueEditorStatusText = "请先选择一个色调槽位。";
             return;
         }
 
         Color baseColor = GetPresetBaseColor(SelectedHuePreset);
-        if (SelectedHuePreset == "Cloth" || SelectedHuePreset == "Metal" || SelectedHuePreset == "Glow")
+        if (SelectedHuePreset == "布料" || SelectedHuePreset == "金属" || SelectedHuePreset == "发光")
         {
             baseColor = Color.FromRgb(HueEditorRed, HueEditorGreen, HueEditorBlue);
         }
 
         SelectedHueEditorEntry.Name = string.IsNullOrWhiteSpace(SelectedHueEditorEntry.Name)
-            ? SelectedHuePreset + " Hue " + SelectedHueEditorEntry.HueId
+            ? SelectedHuePreset + " 色调 " + SelectedHueEditorEntry.HueId
             : SelectedHueEditorEntry.Name;
 
         SelectedHueEditorEntry.TableStart = 1;
@@ -787,20 +792,20 @@ public partial class MainWindowViewModel
         SelectedHueEditorColor = SelectedHueEditorEntry.Colors.FirstOrDefault();
         UpdateHueArtPreview();
 
-        HueEditorStatusText = "Applied " + SelectedHuePreset + " preset to hue " + SelectedHueEditorEntry.HueId + ".";
+        HueEditorStatusText = "已将 " + SelectedHuePreset + " 预设应用到色调 " + SelectedHueEditorEntry.HueId + "。";
     }
 
     private static Color GetPresetBaseColor(string preset)
     {
         return preset switch
         {
-            "Fire" => Color.FromRgb(235, 72, 18),
-            "Ice" => Color.FromRgb(90, 190, 255),
-            "Poison" => Color.FromRgb(70, 210, 65),
-            "Shadow" => Color.FromRgb(95, 45, 135),
-            "Gold" => Color.FromRgb(235, 175, 45),
-            "Bone" => Color.FromRgb(210, 195, 150),
-            "Leather" => Color.FromRgb(130, 75, 35),
+            "火焰" => Color.FromRgb(235, 72, 18),
+            "冰冻" => Color.FromRgb(90, 190, 255),
+            "毒素" => Color.FromRgb(70, 210, 65),
+            "阴影" => Color.FromRgb(95, 45, 135),
+            "黄金" => Color.FromRgb(235, 175, 45),
+            "骨头" => Color.FromRgb(210, 195, 150),
+            "皮革" => Color.FromRgb(130, 75, 35),
             _ => Color.FromRgb(160, 160, 160)
         };
     }
@@ -809,18 +814,18 @@ public partial class MainWindowViewModel
     {
         double curve = preset switch
         {
-            "Metal" => Math.Pow(t, 1.35),
-            "Glow" => Math.Pow(t, 0.55),
-            "Shadow" => Math.Pow(t, 1.8),
-            "Bone" => Math.Pow(t, 0.85),
+            "金属" => Math.Pow(t, 1.35),
+            "发光" => Math.Pow(t, 0.55),
+            "阴影" => Math.Pow(t, 1.8),
+            "骨头" => Math.Pow(t, 0.85),
             _ => t
         };
 
         double min = preset switch
         {
-            "Glow" => 0.18,
-            "Shadow" => 0.05,
-            "Metal" => 0.08,
+            "发光" => 0.18,
+            "阴影" => 0.05,
+            "金属" => 0.08,
             _ => 0.10
         };
 
@@ -828,9 +833,9 @@ public partial class MainWindowViewModel
 
         double desaturate = preset switch
         {
-            "Metal" => 0.25 + (t * 0.35),
-            "Bone" => 0.35,
-            "Leather" => 0.10,
+            "金属" => 0.25 + (t * 0.35),
+            "骨头" => 0.35,
+            "皮革" => 0.10,
             _ => 0.0
         };
 
@@ -846,13 +851,13 @@ public partial class MainWindowViewModel
             b = Lerp(b, gray, desaturate);
         }
 
-        if (preset == "Fire" && t > 0.72)
+        if (preset == "火焰" && t > 0.72)
         {
             r = Lerp(r, 255, (t - 0.72) * 1.2);
             g = Lerp(g, 220, (t - 0.72) * 0.8);
         }
 
-        if (preset == "Glow" && t > 0.65)
+        if (preset == "发光" && t > 0.65)
         {
             r = Lerp(r, 255, (t - 0.65) * 0.8);
             g = Lerp(g, 255, (t - 0.65) * 0.8);
