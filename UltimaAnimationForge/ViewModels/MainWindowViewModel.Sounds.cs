@@ -27,7 +27,7 @@ public partial class MainWindowViewModel
     public ObservableCollection<WaveformPeak> SoundWaveformPeaks { get; } = new();
 
     [ObservableProperty]
-    private string selectedMusicInfoText = "No music selected.";
+    private string selectedMusicInfoText = "未选择音乐";
 
     [ObservableProperty]
     private int editableMusicId;
@@ -57,7 +57,7 @@ public partial class MainWindowViewModel
     private MusicEntry? selectedMusicEntry;
 
     [ObservableProperty]
-    private string musicStatusText = "Music not loaded.";
+    private string musicStatusText = "音乐未加载";
 
     private readonly SoundDataService soundDataService = new();
     private SoundPlayer? soundPlayer;
@@ -77,10 +77,10 @@ public partial class MainWindowViewModel
     private bool sortSoundsByName;
 
     [ObservableProperty]
-    private string soundStatusText = "Sound tab not loaded.";
+    private string soundStatusText = "音效标签页未加载";
 
     [ObservableProperty]
-    private string selectedSoundInfoText = "No sound selected.";
+    private string selectedSoundInfoText = "未选择音效";
 
     [RelayCommand]
     private void LoadSounds()
@@ -89,19 +89,19 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(folderPath))
         {
-            SoundStatusText = "Open a UO folder first.";
+            SoundStatusText = "请先打开 UO 文件夹";
             return;
         }
 
         if (!soundDataService.Load(folderPath))
         {
-            SoundStatusText = "Could not load sound.mul / soundidx.mul.";
+            SoundStatusText = "无法加载 sound.mul / soundidx.mul";
             return;
         }
 
         RebuildSoundEntries();
         RebuildSelectedSoundWaveform();
-        SoundStatusText = "Loaded sounds.";
+        SoundStatusText = "已加载音效";
     }
 
     public ObservableCollection<WaveformBar> SoundWaveformBars { get; } = new();
@@ -118,7 +118,7 @@ public partial class MainWindowViewModel
 
         List<WaveformPeak> peaks = soundDataService.BuildSoundWaveform(SelectedSoundEntry.Id, 260);
 
-        SoundStatusText = "Waveform peaks: " + peaks.Count;
+        SoundStatusText = "波形峰值：" + peaks.Count;
 
         if (peaks.Count == 0)
         {
@@ -219,7 +219,7 @@ public partial class MainWindowViewModel
             EditableMusicId = 0;
             EditableMusicFileName = string.Empty;
             EditableMusicLoop = false;
-            SelectedMusicInfoText = "No music selected.";
+            SelectedMusicInfoText = "未选择音乐";
             return;
         }
 
@@ -247,7 +247,7 @@ public partial class MainWindowViewModel
     partial void OnSelectedSoundEntryChanged(SoundEntry? value)
     {
         SelectedSoundInfoText = value == null
-            ? "No sound selected."
+            ? "未选择音效"
             : value.DisplayText + " | " + value.LengthText;
 
         RebuildSelectedSoundWaveform();
@@ -274,7 +274,7 @@ public partial class MainWindowViewModel
         soundPlayer.Play();
 
         RebuildSelectedSoundWaveform();
-        SoundStatusText = "Playing " + SelectedSoundEntry.DisplayText;
+        SoundStatusText = "正在播放 " + SelectedSoundEntry.DisplayText;
     }
 
     [RelayCommand]
@@ -294,7 +294,7 @@ public partial class MainWindowViewModel
         }
 
         soundDataService.Remove(SelectedSoundEntry.Id);
-        SoundStatusText = "Removed " + SelectedSoundEntry.IdHex + ". Click Save Sounds to write changes.";
+        SoundStatusText = "已删除 " + SelectedSoundEntry.IdHex + "。点击保存音效以写入更改";
         SelectedSoundEntry = null;
         RebuildSoundEntries();
         RebuildSelectedSoundWaveform();
@@ -304,7 +304,7 @@ public partial class MainWindowViewModel
     private void SaveSounds()
     {
         soundDataService.Save();
-        SoundStatusText = "Saved sound.mul and soundidx.mul.";
+        SoundStatusText = "已保存 sound.mul 和 soundidx.mul";
     }
 
     [RelayCommand]
@@ -312,7 +312,7 @@ public partial class MainWindowViewModel
     {
         if (SelectedSoundEntry == null)
         {
-            SoundStatusText = "Select a sound slot first.";
+            SoundStatusText = "请先选择一个音效槽位";
             return;
         }
 
@@ -325,11 +325,11 @@ public partial class MainWindowViewModel
         IReadOnlyList<IStorageFile> files = await owner.StorageProvider.OpenFilePickerAsync(
             new FilePickerOpenOptions
             {
-                Title = "Import Audio As UO Sound",
+                Title = "将音频导入为 UO 音效",
                 AllowMultiple = false,
                 FileTypeFilter = new[]
                 {
-new FilePickerFileType("Audio File")
+new FilePickerFileType("音频文件")
 {
     Patterns = new[] { "*.wav", "*.mp3" }
 }
@@ -348,7 +348,7 @@ new FilePickerFileType("Audio File")
         }
 
         soundDataService.AddOrReplace(SelectedSoundEntry.Id, path);
-        SoundStatusText = "Imported sound. Click Save Sounds to write changes.";
+        SoundStatusText = "已导入音效。点击保存音效以写入更改";
         RebuildSoundEntries();
         RebuildSelectedSoundWaveform();
     }
@@ -370,7 +370,7 @@ new FilePickerFileType("Audio File")
         IReadOnlyList<IStorageFolder> folders = await owner.StorageProvider.OpenFolderPickerAsync(
             new FolderPickerOpenOptions
             {
-                Title = "Export Selected Sound",
+                Title = "导出选定的音效",
                 AllowMultiple = false
             });
 
@@ -386,7 +386,7 @@ new FilePickerFileType("Audio File")
         }
 
         soundDataService.ExportSound(SelectedSoundEntry.Id, path);
-        SoundStatusText = "Exported selected sound.";
+        SoundStatusText = "已导出选定的音效";
     }
 
     [RelayCommand]
@@ -401,7 +401,7 @@ new FilePickerFileType("Audio File")
         IReadOnlyList<IStorageFolder> folders = await owner.StorageProvider.OpenFolderPickerAsync(
             new FolderPickerOpenOptions
             {
-                Title = "Export All Sounds",
+                Title = "批量导出音效",
                 AllowMultiple = false
             });
 
@@ -417,7 +417,7 @@ new FilePickerFileType("Audio File")
         }
 
         soundDataService.ExportAll(path, true);
-        SoundStatusText = "Exported all sounds.";
+        SoundStatusText = "已批量导出所有音效";
     }
 
     [RelayCommand]
@@ -427,7 +427,7 @@ new FilePickerFileType("Audio File")
 
         if (string.IsNullOrWhiteSpace(folderPath))
         {
-            MusicStatusText = "Open a UO folder first.";
+            MusicStatusText = "请先打开 UO 文件夹";
             return;
         }
 
@@ -443,7 +443,7 @@ new FilePickerFileType("Audio File")
             MusicEntries.Add(entry);
         }
 
-        MusicStatusText = "Loaded " + MusicEntries.Count + " music entries.";
+        MusicStatusText = "已加载 " + MusicEntries.Count + " 个音乐条目";
     }
 
     [RelayCommand]
@@ -456,7 +456,7 @@ new FilePickerFileType("Audio File")
 
         if (!File.Exists(SelectedMusicEntry.FullPath))
         {
-            MusicStatusText = "MP3 file missing: " + SelectedMusicEntry.FileName;
+            MusicStatusText = "MP3 文件缺失：" + SelectedMusicEntry.FileName;
             return;
         }
 
@@ -467,7 +467,7 @@ new FilePickerFileType("Audio File")
         musicOutput.Init(musicReader);
         musicOutput.Play();
 
-        MusicStatusText = "Playing " + SelectedMusicEntry.DisplayText;
+        MusicStatusText = "正在播放 " + SelectedMusicEntry.DisplayText;
     }
 
     [RelayCommand]
@@ -488,7 +488,7 @@ new FilePickerFileType("Audio File")
 
         if (string.IsNullOrWhiteSpace(folderPath))
         {
-            MusicStatusText = "Open a UO folder first.";
+            MusicStatusText = "请先打开 UO 文件夹";
             return;
         }
 
@@ -501,11 +501,11 @@ new FilePickerFileType("Audio File")
         IReadOnlyList<IStorageFile> files = await owner.StorageProvider.OpenFilePickerAsync(
             new FilePickerOpenOptions
             {
-                Title = "Import MP3 Music",
+                Title = "导入 MP3 音乐",
                 AllowMultiple = false,
                 FileTypeFilter = new[]
                 {
-                new FilePickerFileType("MP3 Music")
+                new FilePickerFileType("MP3 音乐")
                 {
                     Patterns = new[] { "*.mp3" }
                 }
@@ -531,11 +531,11 @@ new FilePickerFileType("Audio File")
 
             SelectedMusicEntry = MusicEntries.FirstOrDefault(x => x.Id == imported.Id);
 
-            MusicStatusText = "Imported music " + imported.FileName + " as ID " + imported.Id + ".";
+            MusicStatusText = "已导入音乐 " + imported.FileName + " 使用 ID " + imported.Id;
         }
         catch (Exception exception)
         {
-            MusicStatusText = "Import music failed: " + exception.Message;
+            MusicStatusText = "导入音乐失败：" + exception.Message;
         }
     }
 
@@ -561,7 +561,7 @@ new FilePickerFileType("Audio File")
     {
         if (SelectedMusicEntry == null)
         {
-            MusicStatusText = "Select a music entry first.";
+            MusicStatusText = "请先选择一个音乐条目";
             return;
         }
 
@@ -569,7 +569,7 @@ new FilePickerFileType("Audio File")
 
         if (string.IsNullOrWhiteSpace(folderPath))
         {
-            MusicStatusText = "Open a UO folder first.";
+            MusicStatusText = "请先打开 UO 文件夹";
             return;
         }
 
@@ -584,12 +584,12 @@ new FilePickerFileType("Audio File")
             LoadMusic();
 
             MusicStatusText = DeleteMusicFileOnRemove
-                ? "Removed config entry and deleted MP3: " + removedName
-                : "Removed config entry only: " + removedName;
+                ? "已删除配置项和 MP3：" + removedName
+                : "仅删除了配置项：" + removedName;
         }
         catch (Exception exception)
         {
-            MusicStatusText = "Remove music failed: " + exception.Message;
+            MusicStatusText = "删除音乐失败：" + exception.Message;
         }
     }
 
@@ -598,7 +598,7 @@ new FilePickerFileType("Audio File")
     {
         if (SelectedMusicEntry == null)
         {
-            MusicStatusText = "Select a music entry first.";
+            MusicStatusText = "请先选择一个音乐条目";
             return;
         }
 
@@ -606,7 +606,7 @@ new FilePickerFileType("Audio File")
 
         if (string.IsNullOrWhiteSpace(folderPath))
         {
-            MusicStatusText = "Open a UO folder first.";
+            MusicStatusText = "请先打开 UO 文件夹";
             return;
         }
 
@@ -625,11 +625,11 @@ new FilePickerFileType("Audio File")
 
             SelectedMusicEntry = MusicEntries.FirstOrDefault(x => x.Id == savedId);
 
-            MusicStatusText = "Updated music config entry.";
+            MusicStatusText = "已更新音乐配置项";
         }
         catch (Exception exception)
         {
-            MusicStatusText = "Update music failed: " + exception.Message;
+            MusicStatusText = "更新音乐失败：" + exception.Message;
         }
     }
 
@@ -638,19 +638,19 @@ new FilePickerFileType("Audio File")
     {
         if (SelectedMusicEntry == null)
         {
-            SoundStatusText = "Select a music entry first.";
+            SoundStatusText = "请先选择一个音乐条目";
             return;
         }
 
         if (!File.Exists(SelectedMusicEntry.FullPath))
         {
-            SoundStatusText = "Music file is missing.";
+            SoundStatusText = "音乐文件缺失";
             return;
         }
 
         if (SelectedSoundEntry == null)
         {
-            SoundStatusText = "Select a target sound slot first.";
+            SoundStatusText = "请先选择目标音效槽位";
             return;
         }
 
@@ -659,16 +659,16 @@ new FilePickerFileType("Audio File")
             soundDataService.AddOrReplace(SelectedSoundEntry.Id, SelectedMusicEntry.FullPath);
 
             SoundStatusText =
-                "Converted " + SelectedMusicEntry.FileName +
-                " into sound slot " + SelectedSoundEntry.IdHex +
-                ". Click Save Sounds to write sound.mul/soundidx.mul.";
+                "已转换 " + SelectedMusicEntry.FileName +
+                " 到音效槽位 " + SelectedSoundEntry.IdHex +
+                "。点击保存音效以写入 sound.mul/soundidx.mul";
 
             RebuildSoundEntries();
             RebuildSelectedSoundWaveform();
         }
         catch (Exception exception)
         {
-            SoundStatusText = "MP3 to sound conversion failed: " + exception.Message;
+            SoundStatusText = "MP3 转音效失败：" + exception.Message;
         }
     }
 
@@ -679,7 +679,7 @@ new FilePickerFileType("Audio File")
 
         if (freeSlot == null)
         {
-            SoundStatusText = "No free sound slots found.";
+            SoundStatusText = "未找到空闲的音效槽位";
             return;
         }
 
@@ -693,6 +693,6 @@ new FilePickerFileType("Audio File")
 
         SelectedSoundEntry = SoundEntries.FirstOrDefault(x => x.Id == freeSlot.Id);
 
-        SoundStatusText = "Selected first free sound slot: " + freeSlot.IdHex;
+        SoundStatusText = "已选择第一个空闲音效槽位：" + freeSlot.IdHex;
     }
 }

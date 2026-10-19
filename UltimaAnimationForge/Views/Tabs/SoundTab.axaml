@@ -21,43 +21,43 @@
                   ColumnSpacing="8">
 
                 <Button Grid.Column="0"
-                        Content="Load Sounds"
+                        Content="加载音效"
                         Command="{Binding LoadSoundsCommand}" />
 
                 <Button Grid.Column="1"
-                        Content="Save Sounds"
+                        Content="保存音效"
                         Command="{Binding SaveSoundsCommand}" />
 
                 <Button Grid.Column="2"
-                        Content="Import Audio"
+                        Content="导入音频"
                         Command="{Binding ImportSelectedSoundCommand}" />
 
                 <Button Grid.Column="3"
-                        Content="Export Selected"
+                        Content="导出选定项"
                         Command="{Binding ExportSelectedSoundCommand}" />
 
                 <Button Grid.Column="4"
-                        Content="Export All"
+                        Content="批量导出"
                         Command="{Binding ExportAllSoundsCommand}" />
 
                 <Button Grid.Column="5"
-                        Content="Find Free"
+                        Content="查找空闲"
                         Command="{Binding FindFirstFreeSoundSlotCommand}" />
 
                 <TextBox Grid.Column="6"
-                         Watermark="Search sound ID, hex, or name..."
+                         Watermark="搜索音效ID、十六进制或名称..."
                          Text="{Binding SoundSearchText, Mode=TwoWay}" />
 
                 <CheckBox Grid.Column="7"
-                          Content="Free"
+                          Content="空闲"
                           IsChecked="{Binding ShowFreeSoundSlots}" />
 
                 <CheckBox Grid.Column="8"
-                          Content="Sort Name"
+                          Content="按名称排序"
                           IsChecked="{Binding SortSoundsByName}" />
 
                 <Button Grid.Column="9"
-                        Content="Remove"
+                        Content="删除"
                         Command="{Binding RemoveSelectedSoundCommand}" />
             </Grid>
         </Border>
@@ -78,7 +78,7 @@
                 <Grid RowDefinitions="Auto,*"
                       RowSpacing="8">
 
-                    <TextBlock Text="Sounds"
+                    <TextBlock Text="音效"
                                FontSize="16"
                                FontWeight="Bold"
                                Foreground="#E4EAF2" />
@@ -87,7 +87,8 @@
                              ItemsSource="{Binding SoundEntries}"
                              SelectedItem="{Binding SelectedSoundEntry}"
                              BorderThickness="0"
-                             Background="Transparent">
+                             Background="#1A1F26"
+                             Foreground="#95A3B3">
 
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -117,7 +118,7 @@
                 <Grid RowDefinitions="Auto,Auto,*,Auto"
                       RowSpacing="8">
 
-                    <TextBlock Text="Music / MP3"
+                    <TextBlock Text="音乐 / MP3"
                                FontSize="16"
                                FontWeight="Bold"
                                Foreground="#E4EAF2" />
@@ -127,11 +128,11 @@
                           ColumnSpacing="8">
 
                         <TextBox Grid.Column="0"
-                                 Watermark="Search music ID or name..."
+                                 Watermark="搜索音乐ID或名称..."
                                  Text="{Binding MusicSearchText, Mode=TwoWay}" />
 
                         <Button Grid.Column="1"
-                                Content="Load"
+                                Content="加载"
                                 Command="{Binding LoadMusicCommand}" />
                     </Grid>
 
@@ -139,7 +140,8 @@
                              ItemsSource="{Binding MusicEntries}"
                              SelectedItem="{Binding SelectedMusicEntry}"
                              BorderThickness="0"
-                             Background="Transparent">
+                             Background="#1A1F26"
+                             Foreground="#95A3B3">
 
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -174,7 +176,7 @@
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel Spacing="12">
 
-                        <TextBlock Text="Audio Tools"
+                        <TextBlock Text="音频工具"
                                    FontSize="18"
                                    FontWeight="Bold"
                                    Foreground="#E4EAF2" />
@@ -187,7 +189,7 @@
                                 Padding="10">
 
                             <StackPanel Spacing="8">
-                                <TextBlock Text="Sound Preview"
+                                <TextBlock Text="音效预览"
                                            FontWeight="Bold"
                                            Foreground="#E4EAF2" />
 
@@ -210,10 +212,10 @@
 
                                 <StackPanel Orientation="Horizontal"
                                             Spacing="8">
-                                    <Button Content="Play Sound"
+                                    <Button Content="播放音效"
                                             Command="{Binding PlaySelectedSoundCommand}" />
 
-                                    <Button Content="Stop"
+                                    <Button Content="停止"
                                             Command="{Binding StopSoundCommand}" />
                                 </StackPanel>
                             </StackPanel>
@@ -226,7 +228,7 @@
                                 CornerRadius="8"
                                 Padding="8">
 
-                            <TextBlock Text="UO Format: PCM WAV  |  Mono  |  22050 Hz  |  16-bit"
+                            <TextBlock Text="UO 格式：PCM WAV  |  单声道  |  22050 Hz  |  16 位"
                                        Foreground="#AAB4C0"/>
                         </Border>
 
@@ -238,37 +240,37 @@
                                 Padding="10">
 
                             <StackPanel Spacing="8">
-                                <TextBlock Text="Music Controls"
+                                <TextBlock Text="音乐控制"
                                            FontWeight="Bold"
                                            Foreground="#E4EAF2" />
 
                                 <WrapPanel>
-                                    <Button Content="Import Music"
+                                    <Button Content="导入音乐"
                                             Margin="0,0,8,8"
                                             Command="{Binding ImportMusicCommand}" />
 
-                                    <CheckBox Content="Loop"
+                                    <CheckBox Content="循环"
                                               Margin="0,0,8,8"
                                               IsChecked="{Binding ImportedMusicShouldLoop}"
                                               Foreground="#C7D1DB" />
 
-                                    <Button Content="Play Music"
+                                    <Button Content="播放音乐"
                                             Margin="0,0,8,8"
                                             Command="{Binding PlaySelectedMusicCommand}" />
 
-                                    <Button Content="Stop Music"
+                                    <Button Content="停止音乐"
                                             Margin="0,0,8,8"
                                             Command="{Binding StopMusicCommand}" />
 
-                                    <Button Content="Music → Sound"
+                                    <Button Content="音乐→音效"
                                             Margin="0,0,8,8"
                                             Command="{Binding ConvertSelectedMusicToSoundCommand}" />
 
-                                    <Button Content="Remove Music"
+                                    <Button Content="删除音乐"
                                             Margin="0,0,8,8"
                                             Command="{Binding RemoveSelectedMusicCommand}" />
 
-                                    <CheckBox Content="Delete MP3"
+                                    <CheckBox Content="删除 MP3"
                                               Margin="0,0,8,8"
                                               IsChecked="{Binding DeleteMusicFileOnRemove}"
                                               Foreground="#C7D1DB" />
@@ -286,7 +288,7 @@
                             <Grid RowDefinitions="Auto,Auto,Auto"
                                   RowSpacing="10">
 
-                                <TextBlock Text="Edit Music Config Entry"
+                                <TextBlock Text="编辑音乐配置项"
                                            FontWeight="Bold"
                                            Foreground="#E4EAF2" />
 
@@ -314,7 +316,7 @@
 
                                     <TextBlock Grid.Row="1"
                                                Grid.Column="0"
-                                               Text="File"
+                                               Text="文件"
                                                VerticalAlignment="Center"
                                                Foreground="#AAB4C0" />
 
@@ -326,12 +328,12 @@
 
                                     <CheckBox Grid.Row="2"
                                               Grid.Column="1"
-                                              Content="Loop"
+                                              Content="循环"
                                               IsChecked="{Binding EditableMusicLoop}" />
                                 </Grid>
 
                                 <Button Grid.Row="2"
-                                        Content="Save Entry"
+                                        Content="保存配置"
                                         HorizontalAlignment="Left"
                                         Command="{Binding SaveSelectedMusicEntryCommand}" />
                             </Grid>
@@ -345,7 +347,7 @@
                                 Padding="10">
 
                             <StackPanel Spacing="8">
-                                <TextBlock Text="Selected Music Info"
+                                <TextBlock Text="已选音乐信息"
                                            FontWeight="Bold"
                                            Foreground="#E4EAF2" />
 
