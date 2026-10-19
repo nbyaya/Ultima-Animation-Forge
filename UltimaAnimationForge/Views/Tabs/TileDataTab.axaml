@@ -14,18 +14,18 @@
                 Padding="12,8">
             <StackPanel Orientation="Horizontal"
                         Spacing="8">
-                <CheckBox Content="Land"
+                <CheckBox Content="地形"
                           IsChecked="{Binding ShowLandTileData}" />
 
-                <CheckBox Content="Items"
+                <CheckBox Content="物品"
                           IsChecked="{Binding ShowItemTileData}" />
 
                 <TextBox Width="220"
-                         Watermark="Search ID / name..."
+                         Watermark="搜索 ID / 名称..."
                          Text="{Binding TileDataSearchText}" />
 
 
-                <Button Content="Save TileData Changes"
+                <Button Content="保存地形数据修改"
                         Command="{Binding SaveTileDataChangesCommand}" />
             </StackPanel>
         </Border>
@@ -70,81 +70,81 @@
 
                         <TextBlock Text="{Binding SelectedTileDataEntry.Flags, StringFormat='Flags: 0x{0:X16}'}"/>
 
-                        <TextBlock Text="Name"/>
+                        <TextBlock Text="名称"/>
                         <TextBox Text="{Binding SelectedTileDataEntry.Name, Mode=TwoWay}"
                                  LostFocus="TileDataEditField_LostFocus"/>
 
-                        <TextBlock Text="Animation/Gump"/>
+                        <TextBlock Text="动画/Gump"/>
                         <NumericUpDown Value="{Binding SelectedTileDataEntry.Animation, Mode=TwoWay}"
                                        Minimum="-32768"
                                        Maximum="32767"
                                        LostFocus="TileDataEditField_LostFocus"
                                        Foreground="#E4EAF2"/>
 
-                        <TextBlock Text="Weight"/>
+                        <TextBlock Text="重量"/>
                         <NumericUpDown Value="{Binding SelectedTileDataEntry.Weight, Mode=TwoWay}"
                                        Minimum="0"
                                        Maximum="255"
                                        LostFocus="TileDataEditField_LostFocus"
                                        Foreground="#E4EAF2"/>
 
-                        <TextBlock Text="Quality/Layer/Light"/>
+                        <TextBlock Text="品质/层/光源"/>
                         <NumericUpDown Value="{Binding SelectedTileDataEntry.Quality, Mode=TwoWay}"
                                        Minimum="0"
                                        Maximum="255"
                                        LostFocus="TileDataEditField_LostFocus"
                                        Foreground="#E4EAF2"/>
 
-                        <TextBlock Text="Quantity"/>
+                        <TextBlock Text="数量"/>
                         <NumericUpDown Value="{Binding SelectedTileDataEntry.Quantity, Mode=TwoWay}"
                                        Minimum="0"
                                        Maximum="255"
                                        LostFocus="TileDataEditField_LostFocus"
                                        Foreground="#E4EAF2"/>
 
-                        <TextBlock Text="Hue"/>
+                        <TextBlock Text="色调"/>
                         <NumericUpDown Value="{Binding SelectedTileDataEntry.Hue, Mode=TwoWay}"
                                        Minimum="0"
                                        Maximum="255"
                                        LostFocus="TileDataEditField_LostFocus"
                                        Foreground="#E4EAF2"/>
 
-                        <TextBlock Text="Stack Offset"/>
+                        <TextBlock Text="堆叠偏移"/>
                         <NumericUpDown Value="{Binding SelectedTileDataEntry.StackingOffset, Mode=TwoWay}"
                                        Minimum="0"
                                        Maximum="255"
                                        LostFocus="TileDataEditField_LostFocus"
                                        Foreground="#E4EAF2"/>
 
-                        <TextBlock Text="Value"/>
+                        <TextBlock Text="价值"/>
                         <NumericUpDown Value="{Binding SelectedTileDataEntry.Value, Mode=TwoWay}"
                                        Minimum="0"
                                        Maximum="255"
                                        LostFocus="TileDataEditField_LostFocus"
                                        Foreground="#E4EAF2"/>
 
-                        <TextBlock Text="Height"/>
+                        <TextBlock Text="高度"/>
                         <NumericUpDown Value="{Binding SelectedTileDataEntry.Height, Mode=TwoWay}"
                                        Minimum="0"
                                        Maximum="255"
                                        LostFocus="TileDataEditField_LostFocus"
                                        Foreground="#E4EAF2"/>
 
-                        <TextBlock Text="MiscData"/>
+                        <TextBlock Text="杂项数据"/>
                         <NumericUpDown Value="{Binding SelectedTileDataEntry.MiscData, Mode=TwoWay}"
                                        Minimum="0"
                                        Maximum="65535"
                                        LostFocus="TileDataEditField_LostFocus"
                                        Foreground="#E4EAF2"/>
 
-                        <TextBlock Text="Unk2"/>
+                        <TextBlock Text="未知2"/>
                         <NumericUpDown Value="{Binding SelectedTileDataEntry.Unknown2, Mode=TwoWay}"
                                        Minimum="0"
                                        Maximum="255"
                                        LostFocus="TileDataEditField_LostFocus"
                                        Foreground="#E4EAF2"/>
 
-                        <TextBlock Text="Unk3"/>
+                        <TextBlock Text="未知3"/>
                         <NumericUpDown Value="{Binding SelectedTileDataEntry.Unknown3, Mode=TwoWay}"
                                        Minimum="0"
                                        Maximum="255"
@@ -163,7 +163,7 @@
                               RowSpacing="8">
 
                             <CheckBox Grid.Row="0"
-                                      Content="Apply flag changes to checked art tiles"
+                                      Content="将标志变更应用到勾选的美术图块"
                                       IsChecked="{Binding ApplyTileDataFlagsToCheckedArt}"
                                       Foreground="#C7D1DB"/>
 

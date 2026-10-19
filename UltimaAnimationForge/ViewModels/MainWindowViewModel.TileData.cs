@@ -83,7 +83,7 @@ public partial class MainWindowViewModel
 
         if (!File.Exists(tileDataPath))
         {
-            StatusText = "tiledata.mul was not found.";
+            StatusText = "未找到 tiledata.mul。";
             return;
         }
 
@@ -95,7 +95,7 @@ public partial class MainWindowViewModel
         }
 
         ApplyTileDataFilter();
-        StatusText = "Loaded tiledata entries: " + TileDataEntries.Count;
+        StatusText = "已加载地形数据条目: " + TileDataEntries.Count;
     }
 
     private void ApplyTileDataFilter()
@@ -249,14 +249,14 @@ public partial class MainWindowViewModel
 
         if (editedEntries.Count == 0)
         {
-            StatusText = "No TileData changes to save.";
+            StatusText = "没有地形数据更改要保存。";
             return;
         }
 
         string folderPath = GetCurrentFolderPath();
         if (string.IsNullOrWhiteSpace(folderPath))
         {
-            StatusText = "Choose a UO folder first.";
+            StatusText = "请先选择 UO 文件夹。";
             return;
         }
 
