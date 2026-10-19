@@ -1,10 +1,10 @@
 {
   "groups": [
     {
-      "name": "Walls",
+      "name": "墙壁",
       "subgroups": [
         {
-          "name": "Log Walls",
+          "name": "原木墙",
           "items": [
             144,
             550,
@@ -56,7 +56,7 @@
           ]
         },
         {
-          "name": "Sandstone Brick Walls",
+          "name": "砂岩砖墙",
           "items": [
             350,
             344,
@@ -123,7 +123,7 @@
           ]
         },
         {
-          "name": "Flat Stone Walls",
+          "name": "平石墙",
           "items": [
             588,
             597,
@@ -144,7 +144,7 @@
           ]
         },
         {
-          "name": "Sandstone and Plaster Walls",
+          "name": "砂岩和灰泥墙",
           "items": [
             971,
             992,
@@ -202,7 +202,7 @@
           ]
         },
         {
-          "name": "Grey Brick Walls",
+          "name": "灰砖墙",
           "items": [
             51,
             69,
@@ -243,7 +243,7 @@
           ]
         },
         {
-          "name": "Light Brick Walls",
+          "name": "浅砖墙",
           "items": [
             89,
             109,
@@ -285,7 +285,7 @@
           ]
         },
         {
-          "name": "Fieldstone Walls",
+          "name": "田间石墙",
           "items": [
             26,
             40,
@@ -325,7 +325,7 @@
           ]
         },
         {
-          "name": "Dark Wood Walls",
+          "name": "深木墙",
           "items": [
             6,
             16,
@@ -348,7 +348,7 @@
           ]
         },
         {
-          "name": "Light Wood Walls",
+          "name": "浅木墙",
           "items": [
             166,
             174,
@@ -389,7 +389,7 @@
           ]
         },
         {
-          "name": "Wood and Plaster Walls",
+          "name": "木材和灰泥墙",
           "items": [
             309,
             295,
@@ -464,7 +464,7 @@
           ]
         },
         {
-          "name": "White Marble Walls",
+          "name": "白大理石墙",
           "items": [
             248,
             254,
@@ -533,7 +533,7 @@
           ]
         },
         {
-          "name": "Blue Marble Walls",
+          "name": "蓝大理石墙",
           "items": [
             669,
             663,
@@ -586,7 +586,7 @@
           ]
         },
         {
-          "name": "Weathered Stone Walls",
+          "name": "风化石墙",
           "items": [
             463,
             469,
@@ -619,7 +619,7 @@
           ]
         },
         {
-          "name": "Weathered Stone Walls Curved",
+          "name": "风化石墙曲线",
           "items": [
             16114,
             16115,
@@ -645,7 +645,7 @@
           ]
         },
         {
-          "name": "Granite Walls",
+          "name": "花岗岩墙",
           "items": [
             199,
             197,
@@ -671,7 +671,7 @@
           ]
         },
         {
-          "name": "Dungeon Walls",
+          "name": "地下城墙",
           "items": [
             579,
             761,
@@ -694,7 +694,7 @@
           ]
         },
         {
-          "name": "Big Block Walls",
+          "name": "大方块墙",
           "items": [
             129,
             140,
@@ -726,7 +726,7 @@
           ]
         },
         {
-          "name": "Woven Walls",
+          "name": "织纹墙",
           "items": [
             421,
             412,
@@ -755,7 +755,7 @@
           ]
         },
         {
-          "name": "Woven Walls Curved",
+          "name": "织纹墙曲线",
           "items": [
             527,
             528,
@@ -772,7 +772,7 @@
           ]
         },
         {
-          "name": "Stretched Hide Walls",
+          "name": "拉伸隐藏墙",
           "items": [
             438,
             440,
@@ -801,7 +801,7 @@
           ]
         },
         {
-          "name": "Dark Plaster Walls",
+          "name": "深灰泥墙",
           "items": [
             10728,
             10732,
@@ -839,7 +839,7 @@
           ]
         },
         {
-          "name": "Laquered Panel Walls",
+          "name": "漆木板墙",
           "items": [
             9349,
             9346,
@@ -856,7 +856,7 @@
           ]
         },
         {
-          "name": "Wood Panel Walls",
+          "name": "木板墙",
           "items": [
             10653,
             10652,
@@ -873,7 +873,7 @@
           ]
         },
         {
-          "name": "Paper  Walls",
+          "name": "纸墙",
           "items": [
             10005,
             10004,
@@ -894,7 +894,7 @@
           ]
         },
         {
-          "name": "Lattice Walls",
+          "name": "格子墙",
           "items": [
             10069,
             10068,
@@ -911,7 +911,7 @@
           ]
         },
         {
-          "name": "Clay Walls",
+          "name": "粘土墙",
           "items": [
             10554,
             10553,
@@ -928,7 +928,7 @@
           ]
         },
         {
-          "name": "Weathered Clay Walls",
+          "name": "风化粘土墙",
           "items": [
             10566,
             10565,
@@ -945,7 +945,7 @@
           ]
         },
         {
-          "name": "Limestone Walls",
+          "name": "石灰岩墙",
           "items": [
             10584,
             10583,
@@ -962,7 +962,7 @@
           ]
         },
         {
-          "name": "Cherrywood Walls",
+          "name": "樱桃木墙",
           "items": [
             9365,
             9361,
@@ -979,7 +979,7 @@
           ]
         },
         {
-          "name": "Plaster Walls",
+          "name": "灰泥墙",
           "items": [
             10800,
             10803,
@@ -1014,7 +1014,7 @@
           ]
         },
         {
-          "name": "Light Plaster Elf Wall",
+          "name": "浅灰泥精灵墙",
           "items": [
             11717,
             11716,
@@ -1042,7 +1042,7 @@
           ]
         },
         {
-          "name": "Dark Plaster Elf Wall",
+          "name": "深灰泥精灵墙",
           "items": [
             11183,
             11182,
@@ -1070,7 +1070,7 @@
           ]
         },
         {
-          "name": "Plaster Elf Wall",
+          "name": "灰泥精灵墙",
           "items": [
             11211,
             11209,
@@ -1096,7 +1096,7 @@
           ]
         },
         {
-          "name": "Carved Wood",
+          "name": "雕刻木材",
           "items": [
             11546,
             11545,
@@ -1122,7 +1122,7 @@
           ]
         },
         {
-          "name": "Archways and Edging",
+          "name": "拱门和边缘",
           "items": [
             11775,
             11776,
@@ -1140,7 +1140,7 @@
           ]
         },
         {
-          "name": "Elven Tall Wood Walls",
+          "name": "精灵高木墙",
           "items": [
             12325,
             12327,
@@ -1153,7 +1153,7 @@
           ]
         },
         {
-          "name": "Dark Grey Walls",
+          "name": "深灰墙",
           "items": [
             12558,
             12562,
@@ -1177,7 +1177,7 @@
           ]
         },
         {
-          "name": "Dark Grey Walls Tall",
+          "name": "深灰高墙",
           "items": [
             12296,
             12304,
@@ -1211,7 +1211,7 @@
           ]
         },
         {
-          "name": "Wall Carvings",
+          "name": "墙壁雕刻",
           "items": [
             4657,
             4658,
@@ -1245,7 +1245,7 @@
           ]
         },
         {
-          "name": "Caves",
+          "name": "洞穴",
           "items": [
             610,
             611,
@@ -1292,7 +1292,7 @@
           ]
         },
         {
-          "name": "Blue Tent",
+          "name": "蓝帐篷",
           "items": [
             496,
             497,
@@ -1307,7 +1307,7 @@
           ]
         },
         {
-          "name": "Green Tent",
+          "name": "绿帐篷",
           "items": [
             560,
             561,
@@ -1322,7 +1322,7 @@
           ]
         },
         {
-          "name": "Grey Blue Tent",
+          "name": "灰蓝帐篷",
           "items": [
             734,
             735,
@@ -1342,7 +1342,7 @@
           ]
         },
         {
-          "name": "Light Grey Tent",
+          "name": "浅灰帐篷",
           "items": [
             872,
             873,
@@ -1359,10 +1359,10 @@
       ]
     },
     {
-      "name": "Roofs",
+      "name": "屋顶",
       "subgroups": [
         {
-          "name": "Palm Frond Roof",
+          "name": "棕榈树枝屋顶",
           "items": [
             1424,
             1414,
@@ -1382,7 +1382,7 @@
           ]
         },
         {
-          "name": "Stone Roof",
+          "name": "石头屋顶",
           "items": [
             1429,
             1430,
@@ -1402,7 +1402,7 @@
           ]
         },
         {
-          "name": "Thatch Roof",
+          "name": "茅草屋顶",
           "items": [
             1445,
             1444,
@@ -1422,7 +1422,7 @@
           ]
         },
         {
-          "name": "Tile Roof",
+          "name": "瓦片屋顶",
           "items": [
             1459,
             1460,
@@ -1442,7 +1442,7 @@
           ]
         },
         {
-          "name": "Wood Shingle Roof",
+          "name": "木瓦屋顶",
           "items": [
             1474,
             1475,
@@ -1462,7 +1462,7 @@
           ]
         },
         {
-          "name": "Log Roof",
+          "name": "原木屋顶",
           "items": [
             1520,
             1521,
@@ -1482,7 +1482,7 @@
           ]
         },
         {
-          "name": "Blue Tent Roof",
+          "name": "蓝帐篷屋顶",
           "items": [
             1612,
             1613,
@@ -1514,7 +1514,7 @@
           ]
         },
         {
-          "name": "Green Tent Roof",
+          "name": "绿帐篷屋顶",
           "items": [
             1615,
             1616,
@@ -1546,7 +1546,7 @@
           ]
         },
         {
-          "name": "Grey Tent Roof",
+          "name": "灰帐篷屋顶",
           "items": [
             1608,
             1609,
@@ -1577,7 +1577,7 @@
           ]
         },
         {
-          "name": "Stone Red Roof",
+          "name": "红石屋顶",
           "items": [
             1372,
             1373,
@@ -1599,7 +1599,7 @@
           ]
         },
         {
-          "name": "Stone White Roof",
+          "name": "白色石头屋顶",
           "items": [
             1396,
             1397,
@@ -1621,7 +1621,7 @@
           ]
         },
         {
-          "name": "Ceramic Roof Dark Blue",
+          "name": "深蓝陶瓷屋顶",
           "items": [
             9150,
             9151,
@@ -1648,7 +1648,7 @@
           ]
         },
         {
-          "name": "Ceramic Roof Red",
+          "name": "红色陶瓷屋顶",
           "items": [
             9172,
             9173,
@@ -1675,7 +1675,7 @@
           ]
         },
         {
-          "name": "Ceramic Roof Green",
+          "name": "绿色陶瓷屋顶",
           "items": [
             9194,
             9195,
@@ -1702,7 +1702,7 @@
           ]
         },
         {
-          "name": "Ceramic Roof Bronze",
+          "name": "青铜色陶瓷屋顶",
           "items": [
             10480,
             10481,
@@ -1729,7 +1729,7 @@
           ]
         },
         {
-          "name": "Ceramic Roof White",
+          "name": "白色陶瓷屋顶",
           "items": [
             10502,
             10503,
@@ -1756,7 +1756,7 @@
           ]
         },
         {
-          "name": "Ceramic Roof Orange",
+          "name": "橙色陶瓷屋顶",
           "items": [
             10528,
             10529,
@@ -1783,7 +1783,7 @@
           ]
         },
         {
-          "name": "Straw Roof",
+          "name": "茅草屋顶",
           "items": [
             9946,
             9947,
@@ -1807,7 +1807,7 @@
           ]
         },
         {
-          "name": "Bark Roof",
+          "name": "树皮屋顶",
           "items": [
             9976,
             9977,
@@ -1833,7 +1833,7 @@
           ]
         },
         {
-          "name": "Stone Roofing",
+          "name": "石头屋顶铺装",
           "items": [
             10418,
             10416,
@@ -1868,7 +1868,7 @@
           ]
         },
         {
-          "name": "Wood Slat Roofing",
+          "name": "木板屋顶",
           "items": [
             10440,
             10438,
@@ -1902,7 +1902,7 @@
           ]
         },
         {
-          "name": "Elven Scaled Roof",
+          "name": "精灵鳞片屋顶",
           "items": [
             11138,
             11139,
@@ -1930,7 +1930,7 @@
           ]
         },
         {
-          "name": "Elven Natural Roof",
+          "name": "精灵自然屋顶",
           "items": [
             11156,
             11157,
@@ -1963,10 +1963,10 @@
       ]
     },
     {
-      "name": "Doors",
+      "name": "门",
       "subgroups": [
         {
-          "name": "Metal Doors",
+          "name": "金属门",
           "items": [
             1653,
             1655,
@@ -1975,7 +1975,7 @@
           ]
         },
         {
-          "name": "Dark Wood Door",
+          "name": "深木门",
           "items": [
             1701,
             1703,
@@ -1984,7 +1984,7 @@
           ]
         },
         {
-          "name": "Barred Metal Doors",
+          "name": "有栅栏的金属门",
           "items": [
             1669,
             1671,
@@ -1993,7 +1993,7 @@
           ]
         },
         {
-          "name": "Rattan Doors",
+          "name": "藤条门",
           "items": [
             1685,
             1687,
@@ -2002,7 +2002,7 @@
           ]
         },
         {
-          "name": "Light Wooden Doors",
+          "name": "浅木门",
           "items": [
             1749,
             1751,
@@ -2011,7 +2011,7 @@
           ]
         },
         {
-          "name": "Wood and Metal Doors",
+          "name": "木制和金属门",
           "items": [
             1765,
             1767,
@@ -2020,7 +2020,7 @@
           ]
         },
         {
-          "name": "Hide Door",
+          "name": "隐藏门",
           "items": [
             556,
             557,
@@ -2029,7 +2029,7 @@
           ]
         },
         {
-          "name": "Dark Wooden Gate",
+          "name": "深木大门",
           "items": [
             2150,
             2152,
@@ -2042,7 +2042,7 @@
           ]
         },
         {
-          "name": "Light Wooden Gate",
+          "name": "浅木大门",
           "items": [
             2105,
             2107,
@@ -2055,7 +2055,7 @@
           ]
         },
         {
-          "name": "Secret Doors",
+          "name": "秘密门",
           "items": [
             831,
             847,
@@ -2070,7 +2070,7 @@
           ]
         },
         {
-          "name": "Japanese Doors",
+          "name": "日式门",
           "items": [
             9248,
             9247,
@@ -2089,7 +2089,7 @@
           ]
         },
         {
-          "name": "Elven Door's",
+          "name": "精灵门",
           "items": [
             12718,
             12716,
@@ -2116,16 +2116,16 @@
       ]
     },
     {
-      "name": "Floors",
+      "name": "地板",
       "subgroups": [
         {
-          "name": "Building Generical",
+          "name": "通用建筑",
           "items": [
             1
           ]
         },
         {
-          "name": "Combos",
+          "name": "组合",
           "items": [
             1180,
             1173,
@@ -2267,7 +2267,7 @@
           ]
         },
         {
-          "name": "Dark Wood Floor",
+          "name": "深木地板",
           "items": [
             1197,
             1198,
@@ -2288,7 +2288,7 @@
           ]
         },
         {
-          "name": "Light Wood Floor",
+          "name": "浅木地板",
           "items": [
             1232,
             1233,
@@ -2309,7 +2309,7 @@
           ]
         },
         {
-          "name": "Dirt to Cave",
+          "name": "从土地到洞穴",
           "items": [
             1035,
             1036,
@@ -2330,7 +2330,7 @@
           ]
         },
         {
-          "name": "Odds",
+          "name": "杂项",
           "items": [
             1169,
             1170,
@@ -2382,7 +2382,7 @@
           ]
         },
         {
-          "name": "Odds Two",
+          "name": "杂项二",
           "items": [
             6045,
             6046,
@@ -2449,7 +2449,7 @@
           ]
         },
         {
-          "name": "Red Brick",
+          "name": "红砖",
           "items": [
             1250,
             1252,
@@ -2462,7 +2462,7 @@
           ]
         },
         {
-          "name": "Blue Tile",
+          "name": "蓝瓷砖",
           "items": [
             1258,
             1259,
@@ -2477,7 +2477,7 @@
           ]
         },
         {
-          "name": "Red Tile",
+          "name": "红瓷砖",
           "items": [
             1269,
             1270,
@@ -2491,7 +2491,7 @@
           ]
         },
         {
-          "name": "Damaged Rugs",
+          "name": "损坏的地毯",
           "items": [
             7635,
             7636,
@@ -2538,7 +2538,7 @@
           ]
         },
         {
-          "name": "Palm Logs",
+          "name": "棕榈原木",
           "items": [
             1288,
             1285,
@@ -2557,7 +2557,7 @@
           ]
         },
         {
-          "name": "Celtic Symbols",
+          "name": "凯尔特符号",
           "items": [
             6095,
             6096,
@@ -2580,7 +2580,7 @@
           ]
         },
         {
-          "name": "Celtic Symbols",
+          "name": "凯尔特符号",
           "items": [
             6113,
             6114,
@@ -2603,7 +2603,7 @@
           ]
         },
         {
-          "name": "Celtic Symbols",
+          "name": "凯尔特符号",
           "items": [
             6140,
             6141,
@@ -2626,7 +2626,7 @@
           ]
         },
         {
-          "name": "Teleporters",
+          "name": "传送器",
           "items": [
             6173,
             6174,
@@ -2643,7 +2643,7 @@
           ]
         },
         {
-          "name": "Honesty",
+          "name": "诚实",
           "items": [
             5279,
             5280,
@@ -2656,7 +2656,7 @@
           ]
         },
         {
-          "name": "Compassion",
+          "name": "同情心",
           "items": [
             5287,
             5288,
@@ -2669,7 +2669,7 @@
           ]
         },
         {
-          "name": "Justice",
+          "name": "正义",
           "items": [
             5295,
             5296,
@@ -2682,7 +2682,7 @@
           ]
         },
         {
-          "name": "Valor",
+          "name": "勇气",
           "items": [
             5303,
             5304,
@@ -2695,7 +2695,7 @@
           ]
         },
         {
-          "name": "Spirituality",
+          "name": "灵性",
           "items": [
             5311,
             5312,
@@ -2708,7 +2708,7 @@
           ]
         },
         {
-          "name": "Honor",
+          "name": "荣誉",
           "items": [
             5319,
             5320,
@@ -2721,7 +2721,7 @@
           ]
         },
         {
-          "name": "Humility",
+          "name": "谦虚",
           "items": [
             5327,
             5328,
@@ -2734,7 +2734,7 @@
           ]
         },
         {
-          "name": "Sacrifice",
+          "name": "牺牲",
           "items": [
             5386,
             5387,
@@ -2747,7 +2747,7 @@
           ]
         },
         {
-          "name": "Choas",
+          "name": "混沌",
           "items": [
             5347,
             5348,
@@ -2756,7 +2756,7 @@
           ]
         },
         {
-          "name": "Brown Rug",
+          "name": "棕色地毯",
           "items": [
             2729,
             2730,
@@ -2771,7 +2771,7 @@
           ]
         },
         {
-          "name": "Grey Rug",
+          "name": "灰色地毯",
           "items": [
             2739,
             2740,
@@ -2786,7 +2786,7 @@
           ]
         },
         {
-          "name": "Blue Carpet",
+          "name": "蓝地毯",
           "items": [
             2749,
             2750,
@@ -2804,7 +2804,7 @@
           ]
         },
         {
-          "name": "Red Carpet",
+          "name": "红地毯",
           "items": [
             2758,
             2759,
@@ -2820,7 +2820,7 @@
           ]
         },
         {
-          "name": "Fancy Carpet Blue",
+          "name": "花哨蓝色地毯",
           "items": [
             2769,
             2770,
@@ -2834,7 +2834,7 @@
           ]
         },
         {
-          "name": "Fancy Carpet Gold",
+          "name": "花哨金色地毯",
           "items": [
             2778,
             2779,
@@ -2848,7 +2848,7 @@
           ]
         },
         {
-          "name": "Fancy Carpet Red",
+          "name": "花哨红色地毯",
           "items": [
             2795,
             2787,
@@ -2862,7 +2862,7 @@
           ]
         },
         {
-          "name": "Fancy Carpet Red Blue",
+          "name": "花哨红蓝地毯",
           "items": [
             2796,
             2797,
@@ -2877,7 +2877,7 @@
           ]
         },
         {
-          "name": "Brown Bear Rug S",
+          "name": "棕熊地毯S",
           "items": [
             7734,
             7735,
@@ -2891,7 +2891,7 @@
           ]
         },
         {
-          "name": "Brown Bear Rug E",
+          "name": "棕熊地毯E",
           "items": [
             7744,
             7745,
@@ -2905,7 +2905,7 @@
           ]
         },
         {
-          "name": "Polar Bear Rug S",
+          "name": "北极熊地毯S",
           "items": [
             7753,
             7754,
@@ -2919,7 +2919,7 @@
           ]
         },
         {
-          "name": "Polar Bear Rug E",
+          "name": "北极熊地毯E",
           "items": [
             7763,
             7764,
@@ -2933,7 +2933,7 @@
           ]
         },
         {
-          "name": "Tatami Floor 1",
+          "name": "榻榻米地板1",
           "items": [
             10688,
             10689,
@@ -2954,7 +2954,7 @@
           ]
         },
         {
-          "name": "Tatami Floor 2",
+          "name": "榻榻米地板2",
           "items": [
             10812,
             10813,
@@ -2971,7 +2971,7 @@
           ]
         },
         {
-          "name": "Tatami Floor 3",
+          "name": "榻榻米地板3",
           "items": [
             9269,
             9270,
@@ -2996,7 +2996,7 @@
           ]
         },
         {
-          "name": "Pond",
+          "name": "池塘",
           "items": [
             9309,
             9301,
@@ -3012,7 +3012,7 @@
           ]
         },
         {
-          "name": "Gravel",
+          "name": "砾石",
           "items": [
             9310,
             9311,
@@ -3031,7 +3031,7 @@
           ]
         },
         {
-          "name": "Wood Floor 1",
+          "name": "木地板1",
           "items": [
             9275,
             9276,
@@ -3048,7 +3048,7 @@
           ]
         },
         {
-          "name": "Wood Floor 2",
+          "name": "木地板2",
           "items": [
             9287,
             9288,
@@ -3065,7 +3065,7 @@
           ]
         },
         {
-          "name": "Wood Floor 3",
+          "name": "木地板3",
           "items": [
             10592,
             10593,
@@ -3082,7 +3082,7 @@
           ]
         },
         {
-          "name": "Wood Floor 4",
+          "name": "木地板4",
           "items": [
             10605,
             10606,
@@ -3099,7 +3099,7 @@
           ]
         },
         {
-          "name": "Wood Floor 5",
+          "name": "木地板5",
           "items": [
             10018,
             10019,
@@ -3116,7 +3116,7 @@
           ]
         },
         {
-          "name": "Wood Floor 6",
+          "name": "木地板6",
           "items": [
             10030,
             10031,
@@ -3133,7 +3133,7 @@
           ]
         },
         {
-          "name": "Wood Floor 7",
+          "name": "木地板7",
           "items": [
             10042,
             10043,
@@ -3150,7 +3150,7 @@
           ]
         },
         {
-          "name": "Wood Floor 8",
+          "name": "木地板8",
           "items": [
             10054,
             10055,
@@ -3167,7 +3167,7 @@
           ]
         },
         {
-          "name": "Wood Floor 9",
+          "name": "木地板9",
           "items": [
             10616,
             10617,
@@ -3184,7 +3184,7 @@
           ]
         },
         {
-          "name": "Wood Floor 10",
+          "name": "木地板10",
           "items": [
             10628,
             10629,
@@ -3201,7 +3201,7 @@
           ]
         },
         {
-          "name": "Elven Floor's",
+          "name": "精灵地板",
           "items": [
             11189,
             11190,
@@ -3226,7 +3226,7 @@
           ]
         },
         {
-          "name": "Dark Floor's",
+          "name": "深色地板",
           "items": [
             15126,
             15127,
@@ -3265,7 +3265,7 @@
           ]
         },
         {
-          "name": "Sinkhole",
+          "name": "陷阱洞",
           "items": [
             12519,
             12520,
@@ -3308,10 +3308,10 @@
       ]
     },
     {
-      "name": "Steps",
+      "name": "台阶",
       "subgroups": [
         {
-          "name": "Stone Steps",
+          "name": "石头台阶",
           "items": [
             1007,
             1008,
@@ -3337,7 +3337,7 @@
           ]
         },
         {
-          "name": "Marble Steps",
+          "name": "大理石台阶",
           "items": [
             1802,
             1803,
@@ -3363,7 +3363,7 @@
           ]
         },
         {
-          "name": "Light Wooden Steps",
+          "name": "浅木台阶",
           "items": [
             1826,
             1827,
@@ -3389,7 +3389,7 @@
           ]
         },
         {
-          "name": "Dark Wooden Steps",
+          "name": "深木台阶",
           "items": [
             1849,
             1850,
@@ -3411,7 +3411,7 @@
           ]
         },
         {
-          "name": "Blue Stone Steps",
+          "name": "蓝石台阶",
           "items": [
             1823,
             1846,
@@ -3437,7 +3437,7 @@
           ]
         },
         {
-          "name": "Stone Steps",
+          "name": "石头台阶",
           "items": [
             1873,
             1874,
@@ -3463,7 +3463,7 @@
           ]
         },
         {
-          "name": "SandStone Steps",
+          "name": "砂岩台阶",
           "items": [
             1901,
             1902,
@@ -3489,7 +3489,7 @@
           ]
         },
         {
-          "name": "Dark Stone Steps",
+          "name": "深色石头台阶",
           "items": [
             1929,
             1930,
@@ -3515,7 +3515,7 @@
           ]
         },
         {
-          "name": "Cave Steps",
+          "name": "洞穴台阶",
           "items": [
             1949,
             1950,
@@ -3529,7 +3529,7 @@
           ]
         },
         {
-          "name": "Red Steps",
+          "name": "红色台阶",
           "items": [
             1979,
             1978,
@@ -3538,7 +3538,7 @@
           ]
         },
         {
-          "name": "Platforms",
+          "name": "平台",
           "items": [
             1981,
             1982,
@@ -3563,10 +3563,10 @@
       ]
     },
     {
-      "name": "Building Items",
+      "name": "建筑物品",
       "subgroups": [
         {
-          "name": "Japanese Gates",
+          "name": "日式大门",
           "items": [
             9393,
             9392,
@@ -3585,7 +3585,7 @@
           ]
         },
         {
-          "name": "Battlements",
+          "name": "城垛",
           "items": [
             379,
             420,
@@ -3624,7 +3624,7 @@
           ]
         },
         {
-          "name": "Iron Fence",
+          "name": "铁栅栏",
           "items": [
             2082,
             2081,
@@ -3643,7 +3643,7 @@
           ]
         },
         {
-          "name": "Ramps",
+          "name": "坡道",
           "items": [
             2170,
             2171,
@@ -3656,7 +3656,7 @@
           ]
         },
         {
-          "name": "Docks and Piers",
+          "name": "码头和栈桥",
           "items": [
             5369,
             5370,
@@ -3681,7 +3681,7 @@
           ]
         },
         {
-          "name": "Waves",
+          "name": "波浪",
           "items": [
             13549,
             13556,
@@ -3696,7 +3696,7 @@
           ]
         },
         {
-          "name": "Ladders",
+          "name": "梯子",
           "items": [
             2210,
             2211,
@@ -3715,7 +3715,7 @@
           ]
         },
         {
-          "name": "Wood Railings",
+          "name": "木栏杆",
           "items": [
             2176,
             2177,
@@ -3732,7 +3732,7 @@
           ]
         },
         {
-          "name": "Stone Railing",
+          "name": "石头栏杆",
           "items": [
             2007,
             2008,
@@ -3757,7 +3757,7 @@
           ]
         },
         {
-          "name": "Suspension Bridge",
+          "name": "吊桥",
           "items": [
             2018,
             2019,
@@ -3818,7 +3818,7 @@
           ]
         },
         {
-          "name": "Edging",
+          "name": "边缘",
           "items": [
             2253,
             2251,
@@ -3827,7 +3827,7 @@
           ]
         },
         {
-          "name": "Banister",
+          "name": "栏杆",
           "items": [
             2222,
             2223,
@@ -3861,7 +3861,7 @@
           ]
         },
         {
-          "name": "Wood Fences",
+          "name": "木栅栏",
           "items": [
             2140,
             2141,
@@ -3880,7 +3880,7 @@
           ]
         },
         {
-          "name": "House Signs and Hangers",
+          "name": "房屋标志和挂件",
           "items": [
             2967,
             2968,
@@ -4009,7 +4009,7 @@
           ]
         },
         {
-          "name": "Display Cases",
+          "name": "展示柜",
           "items": [
             2827,
             2828,
@@ -4049,7 +4049,7 @@
           ]
         },
         {
-          "name": "Curtains",
+          "name": "窗帘",
           "items": [
             2432,
             2433,
@@ -4090,7 +4090,7 @@
           ]
         },
         {
-          "name": "Bars",
+          "name": "栏杆",
           "items": [
             6424,
             6425,
@@ -4109,7 +4109,7 @@
           ]
         },
         {
-          "name": "Sign Posts",
+          "name": "路标",
           "items": [
             4758,
             4759,
@@ -4123,7 +4123,7 @@
           ]
         },
         {
-          "name": "Empty Vat",
+          "name": "空桶",
           "items": [
             5336,
             5335,
@@ -4137,7 +4137,7 @@
           ]
         },
         {
-          "name": "Empty Vat Ladder Left",
+          "name": "空桶梯子左",
           "items": [
             5345,
             5335,
@@ -4151,7 +4151,7 @@
           ]
         },
         {
-          "name": "Empty Vat Ladder Right",
+          "name": "空桶梯子右",
           "items": [
             5336,
             5335,
@@ -4165,7 +4165,7 @@
           ]
         },
         {
-          "name": "Grape Vat",
+          "name": "葡萄桶",
           "items": [
             5407,
             5335,
@@ -4179,7 +4179,7 @@
           ]
         },
         {
-          "name": "Grape Vat Ladder Left",
+          "name": "葡萄桶梯子左",
           "items": [
             5408,
             5335,
@@ -4193,7 +4193,7 @@
           ]
         },
         {
-          "name": "Grape Vat Ladder Right",
+          "name": "葡萄桶梯子右",
           "items": [
             5407,
             5335,
@@ -4207,7 +4207,7 @@
           ]
         },
         {
-          "name": "Water Vat",
+          "name": "水桶",
           "items": [
             5456,
             5335,
@@ -4221,7 +4221,7 @@
           ]
         },
         {
-          "name": "Water Vat Ladder Left",
+          "name": "水桶梯子左",
           "items": [
             5457,
             5335,
@@ -4235,7 +4235,7 @@
           ]
         },
         {
-          "name": "Water Vat Ladder Right",
+          "name": "水桶梯子右",
           "items": [
             5456,
             5335,
@@ -4249,7 +4249,7 @@
           ]
         },
         {
-          "name": "Serpent Pillar",
+          "name": "蛇形柱子",
           "items": [
             9020,
             9021,
@@ -4271,10 +4271,10 @@
       ]
     },
     {
-      "name": "House Add Ons",
+      "name": "房屋附加组件",
       "subgroups": [
         {
-          "name": "Trophies",
+          "name": "奖杯",
           "items": [
             16382,
             7776,
@@ -4326,7 +4326,7 @@
           ]
         },
         {
-          "name": "Aquarium Items",
+          "name": "水族箱物品",
           "items": [
             12385,
             12384,
@@ -4364,7 +4364,7 @@
           ]
         },
         {
-          "name": "Plants And Lights",
+          "name": "植物和灯",
           "items": [
             12320,
             12321,
@@ -4408,7 +4408,7 @@
           ]
         },
         {
-          "name": "Lighthouse",
+          "name": "灯塔",
           "items": [
             6820,
             6821,
@@ -4460,7 +4460,7 @@
           ]
         },
         {
-          "name": "Telescope",
+          "name": "望远镜",
           "items": [
             5209,
             5210,
@@ -4530,7 +4530,7 @@
           ]
         },
         {
-          "name": "Lava Flow",
+          "name": "岩浆流",
           "items": [
             6681,
             6682,
@@ -4637,7 +4637,7 @@
           ]
         },
         {
-          "name": "Catapult South",
+          "name": "攻城锤南",
           "items": [
             5721,
             5716,
@@ -4654,7 +4654,7 @@
           ]
         },
         {
-          "name": "Catapult North",
+          "name": "攻城锤北",
           "items": [
             5789,
             5794,
@@ -4673,7 +4673,7 @@
           ]
         },
         {
-          "name": "Catapult East",
+          "name": "攻城锤东",
           "items": [
             5753,
             5768,
@@ -4690,7 +4690,7 @@
           ]
         },
         {
-          "name": "Catapult West",
+          "name": "攻城锤西",
           "items": [
             5826,
             5831,
@@ -4709,7 +4709,7 @@
           ]
         },
         {
-          "name": "Ballista East One",
+          "name": "弩车东1",
           "items": [
             6388,
             16221,
@@ -4729,7 +4729,7 @@
           ]
         },
         {
-          "name": "Ballista East Two",
+          "name": "弩车东2",
           "items": [
             6397,
             6398,
@@ -4748,7 +4748,7 @@
           ]
         },
         {
-          "name": "Ballista West One",
+          "name": "弩车西1",
           "items": [
             16272,
             16311,
@@ -4766,7 +4766,7 @@
           ]
         },
         {
-          "name": "Ballista West Two",
+          "name": "弩车西2",
           "items": [
             16272,
             16311,
@@ -4787,7 +4787,7 @@
           ]
         },
         {
-          "name": "Ballista North One",
+          "name": "弩车北1",
           "items": [
             5882,
             16354,
@@ -4805,7 +4805,7 @@
           ]
         },
         {
-          "name": "Ballista North Two",
+          "name": "弩车北2",
           "items": [
             5882,
             16354,
@@ -4826,7 +4826,7 @@
           ]
         },
         {
-          "name": "Ballista South One",
+          "name": "弩车南1",
           "items": [
             6316,
             6303,
@@ -4844,7 +4844,7 @@
           ]
         },
         {
-          "name": "Ballista South Two",
+          "name": "弩车南2",
           "items": [
             6316,
             6303,
@@ -4864,7 +4864,7 @@
           ]
         },
         {
-          "name": "Massage Table",
+          "name": "按摩台",
           "items": [
             6420,
             6421,
@@ -4873,7 +4873,7 @@
           ]
         },
         {
-          "name": "Flour Mill",
+          "name": "磨坊",
           "items": [
             6432,
             6434,
@@ -4888,7 +4888,7 @@
           ]
         },
         {
-          "name": "Wall Floor Cracks",
+          "name": "墙和地板裂纹",
           "items": [
             6913,
             6914,
@@ -4911,7 +4911,7 @@
           ]
         },
         {
-          "name": "Leaves Garbage",
+          "name": "叶子和垃圾",
           "items": [
             6943,
             6944,
@@ -4981,7 +4981,7 @@
           ]
         },
         {
-          "name": "Crystals Skulls",
+          "name": "晶体骷髅",
           "items": [
             8700,
             8707,
@@ -5037,7 +5037,7 @@
           ]
         },
         {
-          "name": "Broken Items",
+          "name": "破损物品",
           "items": [
             3090,
             3093,
@@ -5068,7 +5068,7 @@
           ]
         },
         {
-          "name": "Paintings Tapestries",
+          "name": "画和挂毯",
           "items": [
             3744,
             3743,
@@ -5125,7 +5125,7 @@
           ]
         },
         {
-          "name": "Wood Piles Arrows",
+          "name": "木堆和箭",
           "items": [
             7129,
             7128,
@@ -5153,7 +5153,7 @@
           ]
         },
         {
-          "name": "Gold Piles",
+          "name": "金堆",
           "items": [
             6975,
             6976,
@@ -5200,7 +5200,7 @@
           ]
         },
         {
-          "name": "Temple and Healers",
+          "name": "寺庙和治疗者",
           "items": [
             2,
             3,
@@ -5269,7 +5269,7 @@
           ]
         },
         {
-          "name": "Bottles Reagents Wax",
+          "name": "瓶子、试剂、蜡",
           "items": [
             3620,
             3621,
@@ -5392,7 +5392,7 @@
           ]
         },
         {
-          "name": "Flasks Kegs Jars Gems",
+          "name": "烧瓶、桶、罐子、宝石",
           "items": [
             6186,
             6187,
@@ -5485,7 +5485,7 @@
           ]
         },
         {
-          "name": "Mugs Glasses Bottles Pitchers",
+          "name": "杯子、玻璃杯、瓶子、水罐",
           "items": [
             2455,
             2456,
@@ -5530,7 +5530,7 @@
           ]
         },
         {
-          "name": "Stretched Hides Furs",
+          "name": "拉伸的皮革和毛皮",
           "items": [
             4203,
             4201,
@@ -5547,7 +5547,7 @@
           ]
         },
         {
-          "name": "Stand Up Armour",
+          "name": "直立护甲",
           "items": [
             5394,
             5395,
@@ -5560,7 +5560,7 @@
           ]
         },
         {
-          "name": "Street Lights Fires",
+          "name": "路灯和火焰",
           "items": [
             2848,
             2850,
@@ -5606,7 +5606,7 @@
           ]
         },
         {
-          "name": "Books",
+          "name": "书",
           "items": [
             3094,
             7712,
@@ -5635,7 +5635,7 @@
           ]
         },
         {
-          "name": "Scrolls",
+          "name": "卷轴",
           "items": [
             7981,
             7982,
@@ -5739,7 +5739,7 @@
           ]
         },
         {
-          "name": "Chairs Benches Stools",
+          "name": "椅子、长椅、凳子",
           "items": [
             2602,
             2603,
@@ -5793,7 +5793,7 @@
           ]
         },
         {
-          "name": "Dressers Bookcases",
+          "name": "梳妆台、书柜",
           "items": [
             2604,
             2608,
@@ -5818,7 +5818,7 @@
           ]
         },
         {
-          "name": "Blankets Pillows Bedrolls",
+          "name": "毛毯、枕头、睡袋",
           "items": [
             2668,
             2669,
@@ -5847,7 +5847,7 @@
           ]
         },
         {
-          "name": "Small Beds",
+          "name": "小床",
           "items": [
             2650,
             2651,
@@ -5882,7 +5882,7 @@
           ]
         },
         {
-          "name": "Large Beds",
+          "name": "大床",
           "items": [
             2672,
             2675,
@@ -5927,7 +5927,7 @@
           ]
         },
         {
-          "name": "Elven Furniture",
+          "name": "精灵家具",
           "items": [
             12278,
             12281,
@@ -5984,7 +5984,7 @@
           ]
         },
         {
-          "name": "Tables",
+          "name": "桌子",
           "items": [
             2868,
             2869,
@@ -6052,7 +6052,7 @@
           ]
         },
         {
-          "name": "Covered Table Chairs",
+          "name": "有盖的桌子和椅子",
           "items": [
             3096,
             3095,
@@ -6065,7 +6065,7 @@
           ]
         },
         {
-          "name": "Statues",
+          "name": "雕像",
           "items": [
             4644,
             4645,
@@ -6101,7 +6101,7 @@
           ]
         },
         {
-          "name": "Elven Statues",
+          "name": "精灵雕像",
           "items": [
             12379,
             12378,
@@ -6133,7 +6133,7 @@
           ]
         },
         {
-          "name": "Miscellaneous",
+          "name": "杂项",
           "items": [
             2330,
             2331,
@@ -6179,7 +6179,7 @@
           ]
         },
         {
-          "name": "Music",
+          "name": "音乐",
           "items": [
             3740,
             3741,
@@ -6203,7 +6203,7 @@
           ]
         },
         {
-          "name": "Canvases",
+          "name": "画布",
           "items": [
             3942,
             3941,
@@ -6220,7 +6220,7 @@
           ]
         },
         {
-          "name": "Thieves",
+          "name": "盗贼",
           "items": [
             5373,
             5374,
@@ -6229,7 +6229,7 @@
           ]
         },
         {
-          "name": "Blacksmith",
+          "name": "铁匠",
           "items": [
             4015,
             4016,
@@ -6293,7 +6293,7 @@
           ]
         },
         {
-          "name": "Ingame Games",
+          "name": "游戏内游戏",
           "items": [
             4008,
             3602,
@@ -6326,7 +6326,7 @@
           ]
         },
         {
-          "name": "Foods Utensils",
+          "name": "食物和餐具",
           "items": [
             2422,
             2423,
@@ -6494,7 +6494,7 @@
           ]
         },
         {
-          "name": "Containers",
+          "name": "容器",
           "items": [
             2473,
             3710,
@@ -6567,7 +6567,7 @@
           ]
         },
         {
-          "name": "Tailoring",
+          "name": "裁缝",
           "items": [
             3997,
             3989,
@@ -6607,7 +6607,7 @@
           ]
         },
         {
-          "name": "Training",
+          "name": "训练",
           "items": [
             4208,
             4212,
@@ -6620,7 +6620,7 @@
           ]
         },
         {
-          "name": "Carpentry Tinkering",
+          "name": "木工和修补",
           "items": [
             6644,
             6641,
@@ -6732,7 +6732,7 @@
           ]
         },
         {
-          "name": "Fishing Maps",
+          "name": "钓鱼地图",
           "items": [
             3519,
             3520,
@@ -6798,7 +6798,7 @@
           ]
         },
         {
-          "name": "Stable",
+          "name": "马厩",
           "items": [
             3895,
             3896,
@@ -6826,7 +6826,7 @@
           ]
         },
         {
-          "name": "Bamboo",
+          "name": "竹子",
           "items": [
             4566,
             4568,
@@ -6862,7 +6862,7 @@
           ]
         },
         {
-          "name": "Chimnys",
+          "name": "烟囱",
           "items": [
             2255,
             2256,
@@ -6899,7 +6899,7 @@
           ]
         },
         {
-          "name": "Cooking Baking",
+          "name": "烹饪和烘焙",
           "items": [
             1117,
             1118,
@@ -6944,7 +6944,7 @@
           ]
         },
         {
-          "name": "Cannons",
+          "name": "大炮",
           "items": [
             3700,
             3699,
@@ -6959,7 +6959,7 @@
           ]
         },
         {
-          "name": "Banners",
+          "name": "旗帜",
           "items": [
             5647,
             5648,
@@ -7081,7 +7081,7 @@
           ]
         },
         {
-          "name": "Shell Necklaces",
+          "name": "贝壳项链",
           "items": [
             4045,
             4046,
@@ -7094,7 +7094,7 @@
           ]
         },
         {
-          "name": "Torture",
+          "name": "刑讯",
           "items": [
             4677,
             4678,
@@ -7169,7 +7169,7 @@
           ]
         },
         {
-          "name": "UOSE Home Decor",
+          "name": "UOSE家庭装饰",
           "items": [
             9241,
             9242,
@@ -7259,7 +7259,7 @@
           ]
         },
         {
-          "name": "UOSE Sword Stands",
+          "name": "UOSE剑架",
           "items": [
             10321,
             10322,
@@ -7288,10 +7288,10 @@
       ]
     },
     {
-      "name": "Weapons Armour Clothing",
+      "name": "武器护甲服装",
       "subgroups": [
         {
-          "name": "Leather Armour",
+          "name": "皮甲护甲",
           "items": [
             5068,
             5075,
@@ -7305,7 +7305,7 @@
           ]
         },
         {
-          "name": "Studded Leather Armour",
+          "name": "镶钉皮甲护甲",
           "items": [
             5083,
             5090,
@@ -7319,7 +7319,7 @@
           ]
         },
         {
-          "name": "Ringmail Armour",
+          "name": "环甲护甲",
           "items": [
             5100,
             5101,
@@ -7332,7 +7332,7 @@
           ]
         },
         {
-          "name": "Chainmail Armour",
+          "name": "链甲护甲",
           "items": [
             5055,
             5060,
@@ -7343,7 +7343,7 @@
           ]
         },
         {
-          "name": "Platemail Armour",
+          "name": "板甲护甲",
           "items": [
             5141,
             5142,
@@ -7357,7 +7357,7 @@
           ]
         },
         {
-          "name": "Bone Armour",
+          "name": "骨甲护甲",
           "items": [
             5199,
             5204,
@@ -7372,7 +7372,7 @@
           ]
         },
         {
-          "name": "Female Armour",
+          "name": "女性护甲",
           "items": [
             7168,
             7169,
@@ -7391,7 +7391,7 @@
           ]
         },
         {
-          "name": "Amazon Armour",
+          "name": "亚马逊护甲",
           "items": [
             9817,
             9818,
@@ -7402,7 +7402,7 @@
           ]
         },
         {
-          "name": "Odd Armour",
+          "name": "奇怪的护甲",
           "items": [
             9801,
             9802,
@@ -7472,7 +7472,7 @@
           ]
         },
         {
-          "name": "Arcane Cloths",
+          "name": "奥秘布料",
           "items": [
             9901,
             9902,
@@ -7481,7 +7481,7 @@
           ]
         },
         {
-          "name": "Dragon Armour",
+          "name": "龙甲护甲",
           "items": [
             9793,
             9794,
@@ -7494,7 +7494,7 @@
           ]
         },
         {
-          "name": "Helmets Masks",
+          "name": "头盔和面具",
           "items": [
             5128,
             5129,
@@ -7521,7 +7521,7 @@
           ]
         },
         {
-          "name": "Shields",
+          "name": "盾牌",
           "items": [
             7028,
             7029,
@@ -7541,7 +7541,7 @@
           ]
         },
         {
-          "name": "Cloths",
+          "name": "布料",
           "items": [
             5397,
             5398,
@@ -7601,7 +7601,7 @@
           ]
         },
         {
-          "name": "Hanging Armor",
+          "name": "悬挂的护甲",
           "items": [
             5052,
             5053,
@@ -7628,7 +7628,7 @@
           ]
         },
         {
-          "name": "Hanging Shields",
+          "name": "悬挂的盾牌",
           "items": [
             5484,
             5485,
@@ -7677,7 +7677,7 @@
           ]
         },
         {
-          "name": "UO Weapons",
+          "name": "UO武器",
           "items": [
             3568,
             3569,
@@ -7784,7 +7784,7 @@
           ]
         },
         {
-          "name": "UOSE Armour",
+          "name": "UOSE护甲",
           "items": [
             9068,
             9069,
@@ -7874,7 +7874,7 @@
           ]
         },
         {
-          "name": "UOSE Weapons",
+          "name": "UOSE武器",
           "items": [
             10146,
             10221,
@@ -7912,7 +7912,7 @@
           ]
         },
         {
-          "name": "Elven Clothing",
+          "name": "精灵服装",
           "items": [
             12645,
             11118,
@@ -7981,7 +7981,7 @@
           ]
         },
         {
-          "name": "Elven Weapons",
+          "name": "精灵武器",
           "items": [
             11550,
             11562,
@@ -8013,10 +8013,10 @@
       ]
     },
     {
-      "name": "Dead Things",
+      "name": "死物",
       "subgroups": [
         {
-          "name": "Blood",
+          "name": "血液",
           "items": [
             4650,
             4651,
@@ -8086,7 +8086,7 @@
           ]
         },
         {
-          "name": "Spiderwebs Standards",
+          "name": "蜘蛛网标准",
           "items": [
             3811,
             3812,
@@ -8099,7 +8099,7 @@
           ]
         },
         {
-          "name": "Gore",
+          "name": "鲜血",
           "items": [
             6941,
             6942,
@@ -8120,7 +8120,7 @@
           ]
         },
         {
-          "name": "Body Parts",
+          "name": "身体部分",
           "items": [
             7390,
             7392,
@@ -8157,7 +8157,7 @@
           ]
         },
         {
-          "name": "Bones",
+          "name": "骨头",
           "items": [
             3786,
             3787,
@@ -8191,7 +8191,7 @@
           ]
         },
         {
-          "name": "Pile of Skulls",
+          "name": "骷髅堆",
           "items": [
             6875,
             6877,
@@ -8209,7 +8209,7 @@
           ]
         },
         {
-          "name": "Graves",
+          "name": "坟墓",
           "items": [
             3795,
             3809,
@@ -8218,7 +8218,7 @@
           ]
         },
         {
-          "name": "Gravestones",
+          "name": "墓碑",
           "items": [
             3796,
             3797,
@@ -8271,7 +8271,7 @@
           ]
         },
         {
-          "name": "Wood Coffins",
+          "name": "木棺",
           "items": [
             7204,
             7203,
@@ -8338,7 +8338,7 @@
           ]
         },
         {
-          "name": "Stone Coffins",
+          "name": "石棺",
           "items": [
             7266,
             7265,
@@ -8439,7 +8439,7 @@
           ]
         },
         {
-          "name": "Mummies WE",
+          "name": "木乃伊WE",
           "items": [
             7445,
             7444,
@@ -8489,7 +8489,7 @@
           ]
         },
         {
-          "name": "Mummies NS",
+          "name": "木乃伊NS",
           "items": [
             7472,
             7473,
@@ -8539,7 +8539,7 @@
           ]
         },
         {
-          "name": "Skeleton WE",
+          "name": "骷髅WE",
           "items": [
             7502,
             7501,
@@ -8589,7 +8589,7 @@
           ]
         },
         {
-          "name": "Skeleton NS",
+          "name": "骷髅NS",
           "items": [
             7224,
             7535,
@@ -8639,7 +8639,7 @@
           ]
         },
         {
-          "name": "Bodies",
+          "name": "尸体",
           "items": [
             7562,
             7563,
@@ -8654,10 +8654,10 @@
       ]
     },
     {
-      "name": "Garden Items",
+      "name": "花园物品",
       "subgroups": [
         {
-          "name": "Flowers 1",
+          "name": "花1",
           "items": [
             3203,
             3204,
@@ -8694,7 +8694,7 @@
           ]
         },
         {
-          "name": "Flowers 2",
+          "name": "花2",
           "items": [
             3235,
             3236,
@@ -8746,7 +8746,7 @@
           ]
         },
         {
-          "name": "Trees",
+          "name": "树",
           "items": [
             3272,
             3273,
@@ -8778,7 +8778,7 @@
           ]
         },
         {
-          "name": "Trees 2",
+          "name": "树2",
           "items": [
             3299,
             3300,
@@ -8808,7 +8808,7 @@
           ]
         },
         {
-          "name": "Trees 3",
+          "name": "树3",
           "items": [
             3370,
             3371,
@@ -8845,7 +8845,7 @@
           ]
         },
         {
-          "name": "Trees 4",
+          "name": "树4",
           "items": [
             3405,
             3406,
@@ -8879,7 +8879,7 @@
           ]
         },
         {
-          "name": "Trees 5",
+          "name": "树5",
           "items": [
             3434,
             3435,
@@ -8913,7 +8913,7 @@
           ]
         },
         {
-          "name": "Trees 6",
+          "name": "树6",
           "items": [
             3463,
             3464,
@@ -8950,7 +8950,7 @@
           ]
         },
         {
-          "name": "Trees 7",
+          "name": "树7",
           "items": [
             3495,
             3496,
@@ -8968,7 +8968,7 @@
           ]
         },
         {
-          "name": "UOSE Trees",
+          "name": "UOSE树",
           "items": [
             9324,
             9325,
@@ -8992,7 +8992,7 @@
           ]
         },
         {
-          "name": "Mushrooms Vines",
+          "name": "蘑菇和藤蔓",
           "items": [
             3340,
             3341,
@@ -9029,7 +9029,7 @@
           ]
         },
         {
-          "name": "Dried Flowers Vines",
+          "name": "干花和藤蔓",
           "items": [
             3131,
             3132,
@@ -9051,7 +9051,7 @@
           ]
         },
         {
-          "name": "Vases Pots Plants",
+          "name": "花瓶、罐子、植物",
           "items": [
             2885,
             2886,
@@ -9073,7 +9073,7 @@
           ]
         },
         {
-          "name": "Rocks and Stones",
+          "name": "岩石和石头",
           "items": [
             6001,
             6002,
@@ -9121,7 +9121,7 @@
           ]
         },
         {
-          "name": "Fountain White Stone",
+          "name": "白石喷泉",
           "items": [
             5937,
             5938,
@@ -9141,7 +9141,7 @@
           ]
         },
         {
-          "name": "Fountain Sand Stone",
+          "name": "砂岩喷泉",
           "items": [
             6595,
             6596,
@@ -9163,10 +9163,10 @@
       ]
     },
     {
-      "name": "Mini Monsters And Other Decor",
+      "name": "迷你怪物和其他装饰",
       "subgroups": [
         {
-          "name": "Mini House's",
+          "name": "迷你房屋",
           "items": [
             8900,
             8905,
@@ -9239,7 +9239,7 @@
           ]
         },
         {
-          "name": "Mini Monsters UO",
+          "name": "迷你怪物UO",
           "items": [
             8399,
             8400,
@@ -9303,7 +9303,7 @@
           ]
         },
         {
-          "name": "Mini Monsters UOLBR",
+          "name": "迷你怪物UOLBR",
           "items": [
             9600,
             9601,
@@ -9402,7 +9402,7 @@
           ]
         },
         {
-          "name": "Mini Monsters AOS",
+          "name": "迷你怪物AOS",
           "items": [
             9720,
             9721,
@@ -9462,7 +9462,7 @@
           ]
         },
         {
-          "name": "Mini Monsters UOSE",
+          "name": "迷你怪物UOSE",
           "items": [
             10083,
             10084,
@@ -9486,7 +9486,7 @@
           ]
         },
         {
-          "name": "Mini Monsters UOML",
+          "name": "迷你怪物UOML",
           "items": [
             11650,
             11651,
@@ -9512,7 +9512,7 @@
           ]
         },
         {
-          "name": "Evil Decor",
+          "name": "邪恶装饰",
           "items": [
             10840,
             10841,
@@ -9583,7 +9583,7 @@
           ]
         },
         {
-          "name": "7th Anniversary Items",
+          "name": "7周年物品",
           "items": [
             9037,
             9038,
@@ -9609,7 +9609,7 @@
           ]
         },
         {
-          "name": "8th Anniversary Items",
+          "name": "8周年物品",
           "items": [
             10944,
             10947,
@@ -9640,7 +9640,7 @@
           ]
         },
         {
-          "name": "9th Anniversary Items",
+          "name": "9周年物品",
           "items": [
             13944,
             13945,
@@ -9682,7 +9682,7 @@
           ]
         },
         {
-          "name": "Spring Decor",
+          "name": "春季装饰",
           "items": [
             6468,
             6469,
@@ -9705,7 +9705,7 @@
           ]
         },
         {
-          "name": "Tokens And Fragments",
+          "name": "代币和碎片",
           "items": [
             10913,
             10914,
@@ -9720,7 +9720,7 @@
           ]
         },
         {
-          "name": "Santa Reindeer",
+          "name": "圣诞老人驯鹿",
           "items": [
             14933,
             14934,
@@ -9749,7 +9749,7 @@
           ]
         },
         {
-          "name": "Santa Sleigh",
+          "name": "圣诞老人雪橇",
           "items": [
             14964,
             14963,
@@ -9774,7 +9774,7 @@
           ]
         },
         {
-          "name": "X-Mas 2006 Gifts",
+          "name": "圣诞2006礼物",
           "items": [
             11225,
             11226,
@@ -9794,7 +9794,7 @@
           ]
         },
         {
-          "name": "Soul Stone Blocks Tool",
+          "name": "灵魂石块工具",
           "items": [
             13040,
             13042,
@@ -9807,7 +9807,7 @@
           ]
         },
         {
-          "name": "New Items",
+          "name": "新物品",
           "items": [
             3760,
             7185,
@@ -9821,10 +9821,10 @@
       ]
     },
     {
-      "name": "Crystal and Shadow Items",
+      "name": "水晶和阴影物品",
       "subgroups": [
         {
-          "name": "Crystal Walls",
+          "name": "水晶墙",
           "items": [
             13785,
             13784,
@@ -9851,7 +9851,7 @@
           ]
         },
         {
-          "name": "Shadow Walls",
+          "name": "阴影墙",
           "items": [
             13846,
             13843,
@@ -9879,7 +9879,7 @@
           ]
         },
         {
-          "name": "Floors",
+          "name": "地板",
           "items": [
             13746,
             13747,
@@ -9905,7 +9905,7 @@
           ]
         },
         {
-          "name": "Stairs",
+          "name": "楼梯",
           "items": [
             13778,
             13779,
@@ -9920,7 +9920,7 @@
           ]
         },
         {
-          "name": "Doors",
+          "name": "门",
           "items": [
             13947,
             13949,
@@ -9933,7 +9933,7 @@
           ]
         },
         {
-          "name": "Crystal Roofs",
+          "name": "水晶屋顶",
           "items": [
             13758,
             13759,
@@ -9958,7 +9958,7 @@
           ]
         },
         {
-          "name": "Shadow Roofs",
+          "name": "阴影屋顶",
           "items": [
             13859,
             13860,
@@ -9982,7 +9982,7 @@
           ]
         },
         {
-          "name": "Crystal Decor",
+          "name": "水晶装饰",
           "items": [
             13801,
             13802,
@@ -10010,7 +10010,7 @@
           ]
         },
         {
-          "name": "Shadow Decor",
+          "name": "阴影装饰",
           "items": [
             13897,
             13895,
@@ -10047,10 +10047,10 @@
       ]
     },
     {
-      "name": "Ship parts",
+      "name": "船舶部分",
       "subgroups": [
         {
-          "name": "Regular ship parts",
+          "name": "常规船舶部分",
           "items": [
             15935,
             15936,
@@ -10221,3 +10221,7 @@
     }
   ]
 }
+
+
+
+

@@ -11,6 +11,7 @@
         MinHeight="650"
         Title="多重编辑器"
         Background="#0B0F14"
+        Foreground="#95A3B3"
         KeyDown="MultiEditorWindow_OnKeyDown">
 
     <Window.Resources>
@@ -31,14 +32,14 @@
                 <StackPanel Orientation="Horizontal"
                             Spacing="8">
 
-                    <Button Content="选择" Command="{Binding UseSelectToolCommand}"/>
-                    <Button Content="绘制" Command="{Binding UseDrawToolCommand}"/>
-                    <Button Content="删除" Command="{Binding UseRemoveToolCommand}"/>
-                    <Button Content="吸管" Command="{Binding UsePipetteToolCommand}"/>
+                    <Button Content="选择" Command="{Binding UseSelectToolCommand}" Foreground="#95A3B3"/>
+                    <Button Content="绘制" Command="{Binding UseDrawToolCommand}" Foreground="#95A3B3"/>
+                    <Button Content="删除" Command="{Binding UseRemoveToolCommand}" Foreground="#95A3B3"/>
+                    <Button Content="吸管" Command="{Binding UsePipetteToolCommand}" Foreground="#95A3B3"/>
 
 
-                    <Button Content="撤销" Command="{Binding UndoCommand}"/>
-                    <Button Content="重做" Command="{Binding RedoCommand}"/>
+                    <Button Content="撤销" Command="{Binding UndoCommand}" Foreground="#95A3B3"/>
+                    <Button Content="重做" Command="{Binding RedoCommand}" Foreground="#95A3B3"/>
 
 
                     <CheckBox Content="虚拟地板"
@@ -62,14 +63,14 @@
                                    FormatString="0"
                                    Value="{Binding DrawZ, Mode=TwoWay}"/>
 
-                    <Button Content="Z -" Command="{Binding DrawZDownCommand}"/>
-                    <Button Content="Z +" Command="{Binding DrawZUpCommand}"/>
-                    <Button Content="地板 -5" Command="{Binding FloorZDownCommand}"/>
-                    <Button Content="地板 +5" Command="{Binding FloorZUpCommand}"/>
+                    <Button Content="Z -" Command="{Binding DrawZDownCommand}" Foreground="#95A3B3"/>
+                    <Button Content="Z +" Command="{Binding DrawZUpCommand}" Foreground="#95A3B3"/>
+                    <Button Content="地板 -5" Command="{Binding FloorZDownCommand}" Foreground="#95A3B3"/>
+                    <Button Content="地板 +5" Command="{Binding FloorZUpCommand}" Foreground="#95A3B3"/>
 
-                    <Button Content="添加图块" Command="{Binding AddTileCommand}"/>
-                    <Button Content="矩形填充" Command="{Binding UseRectFillToolCommand}"/>
-                    <Button Content="删除所选" Command="{Binding RemoveSelectedCommand}"/>
+                    <Button Content="添加图块" Command="{Binding AddTileCommand}" Foreground="#95A3B3"/>
+                    <Button Content="矩形填充" Command="{Binding UseRectFillToolCommand}" Foreground="#95A3B3"/>
+                    <Button Content="删除所选" Command="{Binding RemoveSelectedCommand}" Foreground="#95A3B3"/>
 
                     <TextBlock Text="{Binding SelectedTool}"
                                VerticalAlignment="Center"
@@ -88,26 +89,31 @@
                     BorderThickness="0,0,1,0"
                     Padding="8">
 
-                <TabControl>
-                    <TabItem Header="图块">
+                <TabControl Foreground="#95A3B3">
+                    <TabItem Header="图块" Foreground="#95A3B3">
                         <Grid RowDefinitions="Auto,Auto,Auto,*"
                               RowSpacing="8"
                               Margin="4">
 
                             <ComboBox Grid.Row="0"
                                       ItemsSource="{Binding TileGroups}"
-                                      SelectedItem="{Binding SelectedTileGroup}"/>
+                                      SelectedItem="{Binding SelectedTileGroup}"
+                                      Foreground="#95A3B3"/>
 
                             <ComboBox Grid.Row="1"
                                       ItemsSource="{Binding TileSubgroups}"
-                                      SelectedItem="{Binding SelectedTileSubgroup}"/>
+                                      SelectedItem="{Binding SelectedTileSubgroup}"
+                                      Foreground="#95A3B3"/>
 
                             <TextBox Grid.Row="2"
                                      Watermark="搜索图块ID/名称"
-                                     Text="{Binding TilePickerSearchText, Mode=TwoWay}"/>
+                                     Text="{Binding TilePickerSearchText, Mode=TwoWay}"
+                                     Foreground="#E8EDF2"/>
 
                             <ListBox Grid.Row="3"
-                                     ItemsSource="{Binding TilePickerItems}">
+                                     ItemsSource="{Binding TilePickerItems}"
+                                     Background="#1A1F26"
+                                     Foreground="#95A3B3">
                                 <ScrollViewer Grid.Row="2"
                                               VerticalScrollBarVisibility="Auto">
 
@@ -117,7 +123,8 @@
                                                 <Button Command="{Binding $parent[Window].DataContext.SelectPickerTileCommand}"
                                                         CommandParameter="{Binding}"
                                                         Padding="4"
-                                                        HorizontalAlignment="Stretch">
+                                                        HorizontalAlignment="Stretch"
+                                                        Foreground="#95A3B3">
 
                                                     <StackPanel Orientation="Horizontal"
                                                                 Spacing="6">
@@ -140,9 +147,11 @@
                         </Grid>
                     </TabItem>
 
-                    <TabItem Header="组件">
+                    <TabItem Header="组件" Foreground="#95A3B3">
                         <ListBox ItemsSource="{Binding Components}"
-                                 SelectedItem="{Binding SelectedComponent}">
+                                 SelectedItem="{Binding SelectedComponent}"
+                                 Background="#1A1F26"
+                                 Foreground="#95A3B3">
                             <ListBox.ItemTemplate>
                                 <DataTemplate x:DataType="models:MultiEditorTile">
                                     <TextBlock Text="{Binding DisplayText}"
@@ -151,6 +160,11 @@
                                                Foreground="#E8EDF2"/>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
+                            <ListBox.Styles>
+                                <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+                                    <Setter Property="Background" Value="#2A3140"/>
+                                </Style>
+                            </ListBox.Styles>
                         </ListBox>
                     </TabItem>
                 </TabControl>
@@ -233,7 +247,8 @@
                                        Value="{Binding SelectedComponent.Z}"/>
 
                         <Button Content="应用到多重组件"
-                                Command="{Binding ApplyCommand}"/>
+                                Command="{Binding ApplyCommand}"
+                                Foreground="#95A3B3"/>
 
                         <TextBlock Text="移动"
                                    Margin="0,10,0,0"
@@ -248,32 +263,38 @@
                             <Button Grid.Row="0"
                                     Grid.Column="1"
                                     Content="Y -"
-                                    Command="{Binding MoveSelectedUpCommand}"/>
+                                    Command="{Binding MoveSelectedUpCommand}"
+                                    Foreground="#95A3B3"/>
 
                             <Button Grid.Row="1"
                                     Grid.Column="0"
                                     Content="X -"
-                                    Command="{Binding MoveSelectedLeftCommand}"/>
+                                    Command="{Binding MoveSelectedLeftCommand}"
+                                    Foreground="#95A3B3"/>
 
                             <Button Grid.Row="1"
                                     Grid.Column="1"
                                     Content="X +"
-                                    Command="{Binding MoveSelectedRightCommand}"/>
+                                    Command="{Binding MoveSelectedRightCommand}"
+                                    Foreground="#95A3B3"/>
 
                             <Button Grid.Row="1"
                                     Grid.Column="2"
                                     Content="Y +"
-                                    Command="{Binding MoveSelectedDownCommand}"/>
+                                    Command="{Binding MoveSelectedDownCommand}"
+                                    Foreground="#95A3B3"/>
 
                             <Button Grid.Row="2"
                                     Grid.Column="0"
                                     Content="Z -"
-                                    Command="{Binding MoveSelectedZDownCommand}"/>
+                                    Command="{Binding MoveSelectedZDownCommand}"
+                                    Foreground="#95A3B3"/>
 
                             <Button Grid.Row="2"
                                     Grid.Column="2"
                                     Content="Z +"
-                                    Command="{Binding MoveSelectedZUpCommand}"/>
+                                    Command="{Binding MoveSelectedZUpCommand}"
+                                    Foreground="#95A3B3"/>
                         </Grid>
 
                         <TextBlock Text="Z 可见性"
@@ -292,7 +313,8 @@
                                        Value="{Binding VisibleMaxZ, Mode=TwoWay}"/>
 
                         <Button Content="显示全部Z"
-                                Command="{Binding ShowAllZCommand}"/>
+                                Command="{Binding ShowAllZCommand}"
+                                Foreground="#95A3B3"/>
 
                         <TextBlock Text="自动屋顶"
                                    Margin="0,14,0,0"
@@ -303,7 +325,8 @@
                                    Foreground="#C7D1DB"/>
 
                         <ComboBox ItemsSource="{Binding RoofProfiles}"
-                                  SelectedItem="{Binding SelectedRoofProfile}"/>
+                                  SelectedItem="{Binding SelectedRoofProfile}"
+                                  Foreground="#95A3B3"/>
 
                         <Grid ColumnDefinitions="*,*"
                               ColumnSpacing="6">
@@ -339,22 +362,27 @@
                                        Value="{Binding RoofBaseZ, Mode=TwoWay}"/>
 
                         <Button Content="构建屋顶"
-                                Command="{Binding BuildRoofCommand}"/>
+                                Command="{Binding BuildRoofCommand}"
+                                Foreground="#95A3B3"/>
 
                         <Button Content="从点击放置屋顶"
-                                Command="{Binding PlaceRoofFromClickCommand}"/>
+                                Command="{Binding PlaceRoofFromClickCommand}"
+                                Foreground="#95A3B3"/>
 
                         <TextBlock Text="方向"
                                    Foreground="#C7D1DB"/>
 
                         <ComboBox ItemsSource="{Binding RoofDirections}"
-                                  SelectedItem="{Binding SelectedRoofDirection}"/>
+                                  SelectedItem="{Binding SelectedRoofDirection}"
+                                  Foreground="#95A3B3"/>
 
                         <Button Content="清除屋顶区域"
-                                Command="{Binding ClearRoofAreaCommand}"/>
+                                Command="{Binding ClearRoofAreaCommand}"
+                                Foreground="#95A3B3"/>
 
                         <Button Content="从点击清除屋顶"
-                                Command="{Binding ClearRoofFromClickCommand}"/>
+                                Command="{Binding ClearRoofFromClickCommand}"
+                                Foreground="#95A3B3"/>
                     </StackPanel>
                 </ScrollViewer>
             </Border>
