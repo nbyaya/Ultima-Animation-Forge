@@ -199,7 +199,7 @@ public partial class MainWindowViewModel
         int duplicateCount = ClilocEntries.Count(x => x.IsDuplicate);
         int emptyCount = ClilocEntries.Count(x => string.IsNullOrWhiteSpace(x.Text));
 
-        StatusText = "Duplicate IDs: " + duplicateCount + " | Empty text: " + emptyCount + ".";
+        StatusText = "重复 ID: " + duplicateCount + " | 空文本: " + emptyCount + "。";
 
         OnPropertyChanged(nameof(FilteredClilocEntries));
     }
@@ -262,7 +262,7 @@ public partial class MainWindowViewModel
         {
             Number = number,
             Flag = 0,
-            Text = "New cliloc entry",
+            Text = "新 Cliloc 条目",
             Category = string.IsNullOrWhiteSpace(SelectedUoxDictionaryCategory) ||
                        SelectedUoxDictionaryCategory == "All"
                 ? "DICTIONARY"
@@ -365,7 +365,7 @@ public partial class MainWindowViewModel
         {
             Number = nextNumber,
             Flag = 0,
-            Text = "New cliloc entry",
+            Text = "新 Cliloc 条目",
             IsDirty = true
         };
 
