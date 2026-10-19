@@ -21,17 +21,17 @@
                   RowSpacing="8">
 
                 <WrapPanel Grid.Row="0">
-                    <Button Content="Load"
+                    <Button Content="加载"
                             Command="{Binding LoadRadarColCommand}"
                             MinWidth="70"
                             Margin="0,0,6,6"/>
 
-                    <Button Content="Reload"
+                    <Button Content="重新加载"
                             Command="{Binding RebuildRadarColEntriesCommand}"
                             MinWidth="70"
                             Margin="0,0,6,6"/>
 
-                    <Button Content="Save"
+                    <Button Content="保存"
                             Command="{Binding SaveRadarColCommand}"
                             MinWidth="70"
                             Margin="0,0,6,6"/>
@@ -40,19 +40,19 @@
                 <StackPanel Grid.Row="1"
                             Spacing="8">
 
-                    <TextBox Watermark="Search ID..."
+                    <TextBox Watermark="搜索 ID..."
                              Text="{Binding RadarColSearchText, Mode=TwoWay}"/>
 
                     <WrapPanel>
-                        <CheckBox Content="Land"
+                        <CheckBox Content="陆地"
                                   IsChecked="{Binding ShowRadarColLand}"
                                   Margin="0,0,10,0"/>
 
-                        <CheckBox Content="Statics"
+                        <CheckBox Content="静态物品"
                                   IsChecked="{Binding ShowRadarColStatics}"
                                   Margin="0,0,10,0"/>
 
-                        <CheckBox Content="Different Only"
+                        <CheckBox Content="仅显示不同"
                                   IsChecked="{Binding ShowRadarColDifferentOnly}"/>
                     </WrapPanel>
                 </StackPanel>
@@ -145,7 +145,7 @@
                             CornerRadius="6"
                             Padding="10">
                         <StackPanel Spacing="6">
-                            <TextBlock Text="Current"
+                            <TextBlock Text="当前"
                                        FontWeight="SemiBold"/>
                             <Border Height="34"
                                     Background="{Binding SelectedRadarColEntry.CurrentColorBrush}"
@@ -163,7 +163,7 @@
                             CornerRadius="6"
                             Padding="10">
                         <StackPanel Spacing="6">
-                            <TextBlock Text="Generated"
+                            <TextBlock Text="生成"
                                        FontWeight="SemiBold"/>
                             <Border Height="34"
                                     Background="{Binding SelectedRadarColEntry.GeneratedColorBrush}"
@@ -181,7 +181,7 @@
                             CornerRadius="6"
                             Padding="10">
                         <StackPanel Spacing="6">
-                            <TextBlock Text="Match"
+                            <TextBlock Text="匹配"
                                        FontWeight="SemiBold"/>
                             <TextBlock Text="{Binding SelectedRadarColEntry.MatchText}"
                                        FontSize="16"
@@ -204,7 +204,7 @@
 
             <StackPanel Spacing="12">
 
-                <TextBlock Text="RadarCol Tools"
+                <TextBlock Text="雷达颜色工具"
                            FontSize="16"
                            FontWeight="SemiBold"/>
 
@@ -214,7 +214,7 @@
                         CornerRadius="6"
                         Padding="8">
                     <StackPanel Spacing="8">
-                        <TextBlock Text="Generated Color"
+                        <TextBlock Text="生成颜色"
                                    FontWeight="SemiBold"/>
 
                         <Border Background="#151A20"
@@ -223,27 +223,27 @@
                                 CornerRadius="6"
                                 Padding="8">
                             <StackPanel Spacing="8">
-                                <TextBlock Text="Average Checked Tiles"
+                                <TextBlock Text="平均检查的图块"
                                            FontWeight="SemiBold"/>
 
-                                <Button Content="Average to Selected"
+                                <Button Content="平均应用到选中项"
                                         Command="{Binding ApplyCheckedAverageRadarColToSelectedCommand}"/>
 
-                                <Button Content="Average to Checked"
+                                <Button Content="平均应用到检查项"
                                         Command="{Binding ApplyCheckedAverageRadarColToCheckedCommand}"/>
                             </StackPanel>
                         </Border>
 
-                        <Button Content="Apply to Selected"
+                        <Button Content="应用到选中项"
                                 Command="{Binding ApplyGeneratedRadarColToSelectedCommand}"/>
 
-                        <Button Content="Apply to Checked"
+                        <Button Content="应用到检查项"
                                 Command="{Binding ApplyGeneratedRadarColToCheckedCommand}"/>
 
-                        <Button Content="Revert Selected"
+                        <Button Content="恢复选中项"
                                 Command="{Binding RevertSelectedRadarColCommand}"/>
 
-                        <Button Content="Revert All"
+                        <Button Content="全部恢复"
                                 Command="{Binding RevertAllRadarColCommand}"/>
                     </StackPanel>
 
@@ -255,7 +255,7 @@
                         CornerRadius="6"
                         Padding="8">
                     <StackPanel Spacing="8">
-                        <TextBlock Text="Manual RGB"
+                        <TextBlock Text="手动 RGB"
                                    FontWeight="SemiBold"/>
 
                         <Grid ColumnDefinitions="Auto,*"
@@ -281,7 +281,7 @@
                                            Value="{Binding RadarColBlue, Mode=TwoWay}"/>
                         </Grid>
 
-                        <Button Content="Apply RGB to Selected"
+                        <Button Content="将 RGB 应用到选中项"
                                 Command="{Binding ApplyManualRadarColToSelectedCommand}"/>
                     </StackPanel>
                 </Border>
@@ -292,7 +292,7 @@
                         CornerRadius="6"
                         Padding="8">
                     <StackPanel Spacing="8">
-                        <TextBlock Text="Range Apply"
+                        <TextBlock Text="范围应用"
                                    FontWeight="SemiBold"/>
 
                         <Grid ColumnDefinitions="*,Auto,*"
@@ -305,7 +305,7 @@
                                            Value="{Binding RadarColRangeFrom, Mode=TwoWay}"/>
 
                             <TextBlock Grid.Column="1"
-                                       Text="to"
+                                       Text="到"
                                        VerticalAlignment="Center"/>
 
                             <NumericUpDown Grid.Column="2"
@@ -316,7 +316,7 @@
                                            Value="{Binding RadarColRangeTo, Mode=TwoWay}"/>
                         </Grid>
 
-                        <Button Content="Apply Generated to Range"
+                        <Button Content="将生成颜色应用到范围"
                                 Command="{Binding ApplyGeneratedRadarColToRangeCommand}"/>
                     </StackPanel>
                 </Border>

@@ -23,7 +23,7 @@ public partial class RadarColEntry : ObservableObject
 
     public WriteableBitmap? Thumbnail { get; set; }
 
-    public string TypeText => IsLand ? "Land" : "Static";
+    public string TypeText => IsLand ? "陆地" : "静态物品";
 
     public string IdText => "0x" + ArtId.ToString("X4") + " (" + ArtId + ")";
 
@@ -41,8 +41,8 @@ public partial class RadarColEntry : ObservableObject
 
     public string MatchText =>
         CurrentColorValue == GeneratedColorValue
-            ? "Exact"
-            : "Different";
+            ? "完全匹配"
+            : "不同";
 }
 
 public sealed class RadarColCacheData

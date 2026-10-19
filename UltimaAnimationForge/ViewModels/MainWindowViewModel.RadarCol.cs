@@ -89,7 +89,7 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(folderPath) || !Directory.Exists(folderPath))
         {
-            ArtStatusText = "Open a UO folder before using RadarCol.";
+            ArtStatusText = "在使用雷达颜色前请打开 UO 文件夹。";
             return;
         }
 
@@ -97,7 +97,7 @@ public partial class MainWindowViewModel
 
         if (!artLoaded)
         {
-            ArtStatusText = "Could not initialize art data for RadarCol.";
+            ArtStatusText = "无法为雷达颜色初始化美术资源数据。";
             return;
         }
 
@@ -114,7 +114,7 @@ public partial class MainWindowViewModel
 
         if (!radarColService.IsLoaded)
         {
-            ArtStatusText = "radarcol.mul is not loaded.";
+            ArtStatusText = "radarcol.mul 未加载。";
             return;
         }
 
@@ -168,7 +168,7 @@ public partial class MainWindowViewModel
             ? RadarColEntries[0]
             : null;
 
-        ArtStatusText = "Loaded " + RadarColEntries.Count + " RadarCol entries.";
+        ArtStatusText = "已加载 " + RadarColEntries.Count + " 个雷达颜色条目。";
     }
 
     private List<CachedRadarColEntry> LoadCachedOrBuildRadarColEntries(string folderPath)
@@ -238,7 +238,7 @@ public partial class MainWindowViewModel
     {
         if (SelectedRadarColEntry == null)
         {
-            ArtStatusText = "No RadarCol entry selected.";
+            ArtStatusText = "未选中任何雷达颜色条目。";
             return;
         }
 
@@ -292,11 +292,11 @@ public partial class MainWindowViewModel
         RefreshSelectedArtRadarColInfo();
 
         ArtStatusText =
-            "Applied generated RadarCol colors. Applied " +
+            "已应用生成的雷达颜色。应用 " +
             applied +
-            ", failed " +
+            " 项，失败 " +
             failed +
-            (string.IsNullOrWhiteSpace(lastError) ? "." : ". Last error: " + lastError);
+            (string.IsNullOrWhiteSpace(lastError) ? "。" : "。最后一个错误：" + lastError);
     }
 
     [RelayCommand]
@@ -304,7 +304,7 @@ public partial class MainWindowViewModel
     {
         if (SelectedRadarColEntry == null)
         {
-            ArtStatusText = "No RadarCol entry selected.";
+            ArtStatusText = "未选中任何雷达颜色条目。";
             return;
         }
 
@@ -350,7 +350,7 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(folderPath) || !Directory.Exists(folderPath))
         {
-            ArtStatusText = "Open a UO folder before loading radarcol.mul.";
+            ArtStatusText = "在加载 radarcol.mul 前请打开 UO 文件夹。";
             return;
         }
 
@@ -359,7 +359,7 @@ public partial class MainWindowViewModel
 
         if (!artLoaded)
         {
-            ArtStatusText = "Could not initialize art data for RadarCol.";
+            ArtStatusText = "无法为雷达颜色初始化美术资源数据。";
             return;
         }
 
@@ -378,7 +378,7 @@ public partial class MainWindowViewModel
     {
         if (SelectedRadarColEntry == null)
         {
-            ArtStatusText = "No RadarCol entry selected.";
+            ArtStatusText = "未选中任何雷达颜色条目。";
             return;
         }
 
@@ -434,11 +434,11 @@ public partial class MainWindowViewModel
         RefreshSelectedArtRadarColInfo();
 
         ArtStatusText =
-            "Applied generated RadarCol colors to range " +
+            "已应用生成的雷达颜色到范围 " +
             from + "-" + to +
-            ". Applied " + applied +
-            ", failed " + failed +
-            (string.IsNullOrWhiteSpace(lastError) ? "." : ". Last error: " + lastError);
+            "。应用 " + applied +
+            " 项，失败 " + failed +
+            (string.IsNullOrWhiteSpace(lastError) ? "。" : "。最后一个错误：" + lastError);
     }
 
     [RelayCommand]
@@ -464,7 +464,7 @@ public partial class MainWindowViewModel
 
         if (checkedEntries.Count == 0)
         {
-            message = "No checked RadarCol entries.";
+            message = "未选中任何雷达颜色条目。";
             return false;
         }
 
@@ -487,7 +487,7 @@ public partial class MainWindowViewModel
             (byte)(totalB / checkedEntries.Count));
 
         averageColor = artRadarColorService.ConvertColorToUoColor(averageColorRgb);
-        message = "Average generated color calculated from " + checkedEntries.Count + " checked entries.";
+        message = "已从 " + checkedEntries.Count + " 个选中条目计算平均生成颜色。";
         return true;
     }
 
@@ -496,7 +496,7 @@ public partial class MainWindowViewModel
     {
         if (SelectedRadarColEntry == null)
         {
-            ArtStatusText = "No RadarCol entry selected.";
+            ArtStatusText = "未选中任何雷达颜色条目。";
             return;
         }
 
@@ -514,7 +514,7 @@ public partial class MainWindowViewModel
             out string message);
 
         ArtStatusText = success
-            ? "Applied checked average to selected. " + averageMessage
+            ? "已应用选中平均颜色到选中项。" + averageMessage
             : message;
 
         if (success)
@@ -565,12 +565,12 @@ public partial class MainWindowViewModel
         RefreshSelectedArtRadarColInfo();
 
         ArtStatusText =
-            "Applied checked average color. Applied " +
+            "已应用选中平均颜色。应用 " +
             applied +
-            ", failed " +
+            " 项，失败 " +
             failed +
-            ". " +
+            "。" +
             averageMessage +
-            (string.IsNullOrWhiteSpace(lastError) ? string.Empty : " Last error: " + lastError);
+            (string.IsNullOrWhiteSpace(lastError) ? string.Empty : " 最后一个错误：" + lastError);
     }
 }
