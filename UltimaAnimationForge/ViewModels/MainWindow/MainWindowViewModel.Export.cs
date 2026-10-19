@@ -345,14 +345,14 @@ public partial class MainWindowViewModel
     {
         if (PreviewBitmap == null)
         {
-            StatusText = "No current frame to export.";
+            StatusText = "没有当前帧可导出。";
             return;
         }
 
         Window? mainWindow = GetMainWindow();
         if (mainWindow is null)
         {
-            StatusText = "Could not locate main window.";
+            StatusText = "找不到主窗口。";
             return;
         }
 
@@ -382,14 +382,14 @@ public partial class MainWindowViewModel
 
         if (file == null)
         {
-            StatusText = "Export current frame cancelled.";
+            StatusText = "导出当前帧已取消。";
             return;
         }
 
         string? localPath = file.TryGetLocalPath();
         if (string.IsNullOrWhiteSpace(localPath))
         {
-            StatusText = "Selected export file does not have a local path.";
+            StatusText = "所选导出文件没有本地路径。";
             return;
         }
 
@@ -399,7 +399,7 @@ public partial class MainWindowViewModel
 
         if (exportRequest == null)
         {
-            StatusText = "Export current frame cancelled.";
+            StatusText = "导出当前帧已取消。";
             return;
         }
 
@@ -412,14 +412,14 @@ public partial class MainWindowViewModel
         VdHueDialogResult? hueDialogResult = await ShowVdHueDialogAsync(mainWindow);
         if (hueDialogResult == null || !hueDialogResult.Confirmed)
         {
-            StatusText = "Export current frame cancelled.";
+            StatusText = "导出当前帧已取消。";
             return;
         }
 
         VdEnhancementDialogResult? enhancementDialogResult = await ShowVdEnhancementDialogAsync(mainWindow, hueDialogResult);
         if (enhancementDialogResult == null || !enhancementDialogResult.Confirmed)
         {
-            StatusText = "Export current frame cancelled.";
+            StatusText = "导出当前帧已取消。";
             return;
         }
 
@@ -475,50 +475,51 @@ public partial class MainWindowViewModel
         }
         catch (UnauthorizedAccessException)
         {
-            StatusText = "Access denied writing the selected file.";
+            StatusText = "写入所选文件时被拒绝访问。";
             return;
         }
         catch (Exception exception)
         {
-            StatusText = "Failed to export current frame: " + exception.Message;
+            StatusText = "导出当前帧失败：" + exception.Message;
             return;
         }
 
-        StatusText = "Exported current frame to " + Path.GetFileName(localPath) + ".";
+        StatusText = "已将当前帧导出至 " + Path.GetFileName(localPath) + "。";
+
     }
 
     private async Task ExportFramesAsync()
     {
         if (ShowMulSlotView)
         {
-            StatusText = "Frame export is only available for loaded animations, not free MUL body slots.";
+            StatusText = "帧导出仅对已加载的动画可用，空闲 MUL 身体槽位不可用。";
             return;
         }
 
         if (SelectedAnimation == null)
         {
-            StatusText = "No animation selected.";
+            StatusText = "未选择动画。";
             return;
         }
 
         int bodyId = GetEffectiveSelectedBodyId(SelectedAnimation);
         if (bodyId < 0)
         {
-            StatusText = "Could not determine selected body ID.";
+            StatusText = "无法确定所选身体 ID。";
             return;
         }
 
         IAnimationDataSource? dataSource = GetDataSourceForEntry(SelectedAnimation);
         if (dataSource == null)
         {
-            StatusText = "No animation data source is available for the selected entry.";
+            StatusText = "所选项目没有可用的动画数据源。";
             return;
         }
 
         Window? mainWindow = GetMainWindow();
         if (mainWindow == null)
         {
-            StatusText = "Could not locate main window.";
+            StatusText = "找不到主窗口。";
             return;
         }
 
@@ -526,21 +527,21 @@ public partial class MainWindowViewModel
 
         if (exportRequest == null)
         {
-            StatusText = "Export cancelled.";
+            StatusText = "导出已取消。";
             return;
         }
 
         VdHueDialogResult? hueDialogResult = await ShowVdHueDialogAsync(mainWindow);
         if (hueDialogResult == null || !hueDialogResult.Confirmed)
         {
-            StatusText = "Export cancelled.";
+            StatusText = "导出已取消。";
             return;
         }
 
         VdEnhancementDialogResult? enhancementDialogResult = await ShowVdEnhancementDialogAsync(mainWindow, hueDialogResult);
         if (enhancementDialogResult == null || !enhancementDialogResult.Confirmed)
         {
-            StatusText = "Export cancelled.";
+            StatusText = "导出已取消。";
             return;
         }
 
@@ -578,7 +579,7 @@ public partial class MainWindowViewModel
         string? folderPath = folders[0].TryGetLocalPath();
         if (string.IsNullOrWhiteSpace(folderPath))
         {
-            StatusText = "Selected export folder does not have a local path.";
+            StatusText = "所选导出文件夹没有本地路径。";
             return;
         }
 
@@ -717,7 +718,7 @@ public partial class MainWindowViewModel
 
         if (totalExportCount == 0)
         {
-            StatusText = "No frames were exported for the selected animation.";
+            StatusText = "未为所选动画导出任何帧。";
             return;
         }
 
@@ -1133,27 +1134,27 @@ public partial class MainWindowViewModel
     {
         if (ShowMulSlotView)
         {
-            StatusText = "VD export is only available for loaded animations.";
+            StatusText = "VD 导出仅对已加载的动画可用。";
             return;
         }
 
         if (SelectedAnimation == null)
         {
-            StatusText = "No animation selected.";
+            StatusText = "未选择动画。";
             return;
         }
 
         int bodyId = GetEffectiveSelectedBodyId(SelectedAnimation);
         if (bodyId < 0)
         {
-            StatusText = "Could not determine selected body ID.";
+            StatusText = "无法确定所选身体 ID。";
             return;
         }
 
         IAnimationDataSource? dataSource = GetDataSourceForEntry(SelectedAnimation);
         if (dataSource == null)
         {
-            StatusText = "No animation data source is available for the selected entry.";
+            StatusText = "所选项目没有可用的动画数据源。";
             return;
         }
 
@@ -1168,7 +1169,7 @@ public partial class MainWindowViewModel
 
         if (scaleDialogResult == null || !scaleDialogResult.Confirmed)
         {
-            StatusText = "VD export cancelled.";
+            StatusText = "VD 导出已取消。";
             return;
         }
 
@@ -1180,7 +1181,7 @@ public partial class MainWindowViewModel
 
         if (hueDialogResult == null || !hueDialogResult.Confirmed)
         {
-            StatusText = "VD export cancelled.";
+            StatusText = "VD 导出已取消。";
             return;
         }
 
@@ -1188,7 +1189,7 @@ public partial class MainWindowViewModel
 
         if (enhancementDialogResult == null || !enhancementDialogResult.Confirmed)
         {
-            StatusText = "VD export cancelled.";
+            StatusText = "VD 导出已取消。";
             return;
         }
 
@@ -1203,7 +1204,7 @@ public partial class MainWindowViewModel
 
             if (vdTargetDialogResult == null || !vdTargetDialogResult.Confirmed)
             {
-                StatusText = "VD export cancelled.";
+                StatusText = "VD 导出已取消。";
                 return;
             }
 
@@ -1214,7 +1215,7 @@ public partial class MainWindowViewModel
 
             if (vdRemapDialogResult == null || !vdRemapDialogResult.Confirmed)
             {
-                StatusText = "VD export cancelled.";
+                StatusText = "VD 导出已取消。";
                 return;
             }
 
@@ -1240,14 +1241,14 @@ public partial class MainWindowViewModel
         IStorageFile? file = await mainWindow.StorageProvider.SaveFilePickerAsync(saveOptions);
         if (file == null)
         {
-            StatusText = "VD export cancelled.";
+            StatusText = "VD 导出已取消。";
             return;
         }
 
         string? filePath = file.TryGetLocalPath();
         if (string.IsNullOrWhiteSpace(filePath))
         {
-            StatusText = "Selected VD export file does not have a local path.";
+            StatusText = "所选 VD 导出文件没有本地路径。";
             return;
         }
 
@@ -1270,7 +1271,7 @@ public partial class MainWindowViewModel
 
         if (vdActionCount != 13 && vdActionCount != 22 && vdActionCount != 32 && vdActionCount != 35)
         {
-            StatusText = "Unsupported VD action count: " + vdActionCount + ".";
+            StatusText = "不支持的 VD 动作数量：" + vdActionCount + "。";
             return;
         }
 
@@ -1329,7 +1330,7 @@ public partial class MainWindowViewModel
 
         if (exportData.Count == 0)
         {
-            StatusText = "No animation data available to export as VD.";
+            StatusText = "没有可用的动画数据导出为 VD。";
             return;
         }
 
@@ -1347,7 +1348,7 @@ public partial class MainWindowViewModel
 
             if (finalExportData.Count == 0)
             {
-                StatusText = "No animation data was available for the selected VD export target type.";
+                StatusText = "所选 VD 导出目标类型没有可用的动画数据。";
                 return;
             }
 
@@ -1359,7 +1360,7 @@ public partial class MainWindowViewModel
 
             if (finalExportData.Count == 0)
             {
-                StatusText = "No animation data was available to export as VD.";
+                StatusText = "没有可用的动画数据导出为 VD。";
                 return;
             }
 
@@ -1425,7 +1426,7 @@ public partial class MainWindowViewModel
         }
         catch (Exception exception)
         {
-            StatusText = "Failed to export VD: " + exception.Message;
+            StatusText = "VD 导出失败：" + exception.Message;
         }
     }
 

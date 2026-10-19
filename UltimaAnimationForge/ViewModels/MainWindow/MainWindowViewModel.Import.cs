@@ -68,13 +68,13 @@ public partial class MainWindowViewModel
     {
         if (!ShowMulSlotView)
         {
-            StatusText = "VD import is only available in free MUL slot view.";
+            StatusText = "VD 导入仅在空闲 MUL 槽位视图中可用。";
             return;
         }
 
         if (SelectedMulSlot == null)
         {
-            StatusText = "Select a free MUL slot first.";
+            StatusText = "先选择一个空闲的 MUL 槽位。";
             return;
         }
 
@@ -82,25 +82,25 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(currentFolderPath) || !Directory.Exists(currentFolderPath))
         {
-            StatusText = "Open a valid UO folder first.";
+            StatusText = "先打开有效的 UO 文件夹。";
             return;
         }
 
         Window? mainWindow = GetMainWindow();
         if (mainWindow == null)
         {
-            StatusText = "Could not locate main window.";
+            StatusText = "找不到主窗口。";
             return;
         }
 
         IReadOnlyList<IStorageFile> files = await mainWindow.StorageProvider.OpenFilePickerAsync(
             new FilePickerOpenOptions
             {
-                Title = "Choose VD File",
+                Title = "选择 VD 文件",
                 AllowMultiple = false,
                 FileTypeFilter = new[]
                 {
-                    new FilePickerFileType("VD files")
+                    new FilePickerFileType("VD 文件")
                     {
                         Patterns = new[] { "*.vd" }
                     }
@@ -109,14 +109,14 @@ public partial class MainWindowViewModel
 
         if (files.Count == 0)
         {
-            StatusText = "VD import cancelled.";
+            StatusText = "VD 导入已取消。";
             return;
         }
 
         string? vdPath = files[0].TryGetLocalPath();
         if (string.IsNullOrWhiteSpace(vdPath))
         {
-            StatusText = "Selected VD file does not have a local path.";
+            StatusText = "所选 VD 文件没有本地路径。";
             return;
         }
 
@@ -127,19 +127,19 @@ public partial class MainWindowViewModel
     {
         if (!ShowMulSlotView)
         {
-            StatusText = "Switch to slot/target view first.";
+            StatusText = "先切换到槽位/目标视图。";
             return;
         }
 
         if (!IsSelectedAnimationFileUop())
         {
-            StatusText = "Select a UOP animation file first.";
+            StatusText = "先选择一个 UOP 动画文件。";
             return;
         }
 
         if (SelectedUopBodySlot == null)
         {
-            StatusText = "Select a UOP body target first.";
+            StatusText = "先选择一个 UOP 身体目标。";
             return;
         }
 
@@ -147,7 +147,7 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(currentFolderPath) || !Directory.Exists(currentFolderPath))
         {
-            StatusText = "Open a valid UO folder first.";
+            StatusText = "先打开有效的 UO 文件夹。";
             return;
         }
 

@@ -10,7 +10,7 @@ public partial class MainWindowViewModel
     {
         if (decodedFrames.Count == 0)
         {
-            StatusText = "No decoded frames to play.";
+            StatusText = "没有可播放的已解码帧。";
             return;
         }
 
@@ -29,7 +29,7 @@ public partial class MainWindowViewModel
         playbackTimer.Interval = TimeSpan.FromMilliseconds(1000.0 / framesPerSecond);
         playbackTimer.Start();
 
-        StatusText = "Playback started.";
+        StatusText = "播放已启动。";
     }
 
     private void PausePreview()
@@ -39,14 +39,14 @@ public partial class MainWindowViewModel
             playbackTimer.Stop();
         }
 
-        StatusText = "Playback paused.";
+        StatusText = "播放已暂停。";
     }
 
     private void PreviousFrame()
     {
         if (decodedFrames.Count == 0)
         {
-            StatusText = "No decoded frames loaded.";
+            StatusText = "没有已加载的已解码帧。";
             return;
         }
 
@@ -60,14 +60,14 @@ public partial class MainWindowViewModel
         CaptureLivePreviewSourceFromCurrentFrame();
         RefreshLivePreviewImage();
         SyncSelectedThumbnailToCurrentFrame();
-        StatusText = "Showing frame " + (currentFrameIndex + 1) + " of " + decodedFrames.Count + ".";
+        StatusText = "显示帧 " + (currentFrameIndex + 1) + " / " + decodedFrames.Count + "。";
     }
 
     private void NextFrame()
     {
         if (decodedFrames.Count == 0)
         {
-            StatusText = "No decoded frames loaded.";
+            StatusText = "没有已加载的已解码帧。";
             return;
         }
 
@@ -81,7 +81,7 @@ public partial class MainWindowViewModel
         CaptureLivePreviewSourceFromCurrentFrame();
         RefreshLivePreviewImage();
         SyncSelectedThumbnailToCurrentFrame();
-        StatusText = "Showing frame " + (currentFrameIndex + 1) + " of " + decodedFrames.Count + ".";
+        StatusText = "显示帧 " + (currentFrameIndex + 1) + " / " + decodedFrames.Count + "。";
     }
 
     private void PlaybackTimer_Tick(object? sender, EventArgs eventArgs)
@@ -111,7 +111,7 @@ public partial class MainWindowViewModel
                 CaptureLivePreviewSourceFromCurrentFrame();
                 RefreshLivePreviewImage();
                 SyncSelectedThumbnailToCurrentFrame();
-                StatusText = "Playback finished.";
+                StatusText = "播放已完成。";
                 return;
             }
         }

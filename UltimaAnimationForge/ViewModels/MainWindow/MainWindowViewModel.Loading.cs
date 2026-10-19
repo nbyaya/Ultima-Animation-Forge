@@ -223,9 +223,9 @@ public partial class MainWindowViewModel
             await ReportLoadingProgressAsync(100, "加载的缓存动画数据。");
 
             StatusText =
-                "Loaded " + allAnimationEntries.Count +
-                " animation entries using cached data for profile " +
-                (activeProfile?.ProfileName ?? "Default") + ".";
+                "已加载 " + allAnimationEntries.Count +
+                " 个动画条目（使用配置文件 " +
+                (activeProfile?.ProfileName ?? "Default") + " 的缓存数据）。";
 
             IsLoading = false;
             OnPropertyChanged(nameof(IsLoading));
@@ -377,9 +377,9 @@ public partial class MainWindowViewModel
             }
 
             StatusText =
-                "Loaded " + allAnimationEntries.Count +
-                " animation entries from " +
-                string.Join(", ", loadedSources) + ".";
+                "已加载 " + allAnimationEntries.Count +
+                " 个动画条目，来自 " +
+                string.Join("、", loadedSources) + "。";
         }
         catch (Exception exception)
         {

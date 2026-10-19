@@ -38,7 +38,7 @@ public partial class MainWindowViewModel
 
         if (currentResolvedAnimationBlock == null)
         {
-            StatusText = "No resolved animation block is selected.";
+            StatusText = "未选择已解析的动画块。";
             return;
         }
 
@@ -46,12 +46,12 @@ public partial class MainWindowViewModel
 
         if (blockData.Length == 0)
         {
-            StatusText = "Failed to read animation block.";
+            StatusText = "读取动画块失败。";
             return;
         }
 
         string bodyConvDebugText = currentResolvedAnimationBlock.DebugText;
-        SelectedBlockSizeText = blockData.Length.ToString() + " bytes";
+        SelectedBlockSizeText = blockData.Length.ToString() + " 字节";
 
         if (currentResolvedAnimationBlock.IsUop)
         {
@@ -61,7 +61,7 @@ public partial class MainWindowViewModel
 
         if (blockData.Length < 516)
         {
-            StatusText = "Animation block too small.";
+            StatusText = "动画块过小。";
             return;
         }
 
@@ -124,7 +124,7 @@ public partial class MainWindowViewModel
 
             if (offsetPosition + 4 > blockData.Length)
             {
-                StatusText = "Frame offset table exceeds block size.";
+                StatusText = "帧偏移表超出块大小。";
                 return;
             }
 
@@ -271,15 +271,15 @@ public partial class MainWindowViewModel
 
         if (SelectedAnimation != null && currentResolvedAnimationBlock != null)
         {
-            StatusText = "Read animation block for index " + SelectedAnimation.IndexNumber + " from " + currentResolvedAnimationBlock.SourceFileName + ".";
+            StatusText = "从 " + currentResolvedAnimationBlock.SourceFileName + " 读取索引 " + SelectedAnimation.IndexNumber + " 的动画块。";
         }
         else if (SelectedMulSlot != null)
         {
-            StatusText = "Selected free MUL body slot " + SelectedMulSlot.BodyIndex + " from " + SelectedMulSlot.FileName + ".";
+            StatusText = "从 " + SelectedMulSlot.FileName + " 选择了空闲 MUL 身体槽位 " + SelectedMulSlot.BodyIndex + "。";
         }
         else
         {
-            StatusText = "Read animation block.";
+            StatusText = "读取动画块。";
         }
     }
 

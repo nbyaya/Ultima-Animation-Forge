@@ -2801,7 +2801,7 @@ VdHueDialogResult? hueDialogResult)
         List<HueDataService.HueEntry> loadedEntries = hueDataService.LoadHueEntries(hueFilePath);
         if (loadedEntries.Count == 0)
         {
-            StatusText = "Could not load any hues from hues.mul.";
+            StatusText = "无法从 hues.mul 加载任何色调。";
             return null;
         }
 
@@ -2885,7 +2885,7 @@ VdHueDialogResult? hueDialogResult)
         Window? owner = GetMainWindow();
         if (owner == null)
         {
-            StatusText = "Could not locate main window.";
+            StatusText = "找不到主窗口。";
             return;
         }
 
@@ -2986,7 +2986,7 @@ VdHueDialogResult? hueDialogResult)
         Window? owner = GetMainWindow();
         if (owner == null)
         {
-            StatusText = "Could not locate main window.";
+            StatusText = "找不到主窗口。";
             return;
         }
 
@@ -3021,7 +3021,7 @@ VdHueDialogResult? hueDialogResult)
         Window? owner = GetMainWindow();
         if (owner == null)
         {
-            StatusText = "Could not locate main window.";
+            StatusText = "找不到主窗口。";
             return;
         }
 

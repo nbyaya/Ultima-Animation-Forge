@@ -585,13 +585,13 @@ public partial class MainWindowViewModel
 
         if (dataSource == null)
         {
-            StatusText = "No animation data source is available for the selected entry.";
+            StatusText = "所选项目没有可用的动画数据源。";
             return false;
         }
 
         if (!dataSource.TryResolveAnimationBlock(originalBodyId, actionIndex, directionIndex, out ResolvedAnimationBlock resolvedBlock))
         {
-            StatusText = "No animation data for body " + originalBodyId + ", action " + actionIndex + ", direction " + directionIndex + ".";
+            StatusText = "身体 " + originalBodyId + "、动作 " + actionIndex + "、方向 " + directionIndex + " 无动画数据。";
             return false;
         }
 
