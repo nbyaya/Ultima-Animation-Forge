@@ -20,12 +20,12 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel Spacing="10">
 
-                    <TextBlock Text="Map Viewer"
+                    <TextBlock Text="地图查看器"
                                FontSize="16"
                                FontWeight="Bold"
                                Foreground="#E4EAF2"/>
 
-                    <TextBlock Text="Map" Foreground="#AAB4C0"/>
+                    <TextBlock Text="地图" Foreground="#AAB4C0"/>
                     <ComboBox ItemsSource="{Binding MapOptions}"
                               SelectedItem="{Binding SelectedMapOption}"
                               DisplayMemberBinding="{Binding DisplayText}"/>
@@ -34,7 +34,7 @@
                           ColumnSpacing="10">
 
                         <StackPanel Grid.Column="0" Spacing="3">
-                            <TextBlock Text="X" Foreground="#AAB4C0"/>
+                            <TextBlock Text="X 坐标" Foreground="#AAB4C0"/>
                             <NumericUpDown Width="130"
                                            Value="{Binding MapViewX, Mode=TwoWay}"
                                            Minimum="0"
@@ -44,7 +44,7 @@
                         </StackPanel>
 
                         <StackPanel Grid.Column="1" Spacing="3">
-                            <TextBlock Text="Y" Foreground="#AAB4C0"/>
+                            <TextBlock Text="Y 坐标" Foreground="#AAB4C0"/>
                             <NumericUpDown Width="130"
                                            Value="{Binding MapViewY, Mode=TwoWay}"
                                            Minimum="0"
@@ -54,7 +54,7 @@
                         </StackPanel>
                     </Grid>
 
-                    <TextBlock Text="Zoom" Foreground="#AAB4C0"/>
+                    <TextBlock Text="缩放" Foreground="#AAB4C0"/>
                     <NumericUpDown Value="{Binding MapZoom, Mode=TwoWay}"
                                    Minimum="0.125"
                                    Maximum="4"
@@ -76,28 +76,28 @@
 
                     <Separator/>
 
-                    <TextBlock Text="Altitude Mode" Foreground="#AAB4C0"/>
+                    <TextBlock Text="高度模式" Foreground="#AAB4C0"/>
                     <ComboBox ItemsSource="{Binding MapAltitudeModes}"
                               SelectedItem="{Binding SelectedMapAltitudeMode}"/>
 
-                    <TextBlock Text="Altitude Preset" Foreground="#AAB4C0"/>
+                    <TextBlock Text="高度预设" Foreground="#AAB4C0"/>
                     <ComboBox ItemsSource="{Binding MapAltitudePresets}"
                               SelectedItem="{Binding SelectedMapAltitudePreset}"/>
 
-                    <TextBlock Text="Intensity" Foreground="#AAB4C0"/>
+                    <TextBlock Text="强度" Foreground="#AAB4C0"/>
                     <NumericUpDown Value="{Binding MapAltitudeIntensity, Mode=TwoWay}"
                                    Minimum="1"
                                    Maximum="20"
                                    Increment="1"
                                    FormatString="0"/>
 
-                    <CheckBox Content="Show statics"
+                    <CheckBox Content="显示静态物品"
                               IsChecked="{Binding MapShowStatics}"/>
 
-                    <CheckBox Content="Center cross"
+                    <CheckBox Content="中心十字"
                               IsChecked="{Binding MapShowCenterCross}"/>
 
-                    <CheckBox Content="Client cross"
+                    <CheckBox Content="客户端十字"
                               IsChecked="{Binding MapShowClientCross}"/>
 
                     <Grid ColumnDefinitions="*,*"
@@ -105,7 +105,7 @@
                           IsVisible="{Binding MapShowClientCross}">
 
                         <StackPanel Grid.Column="0">
-                            <TextBlock Text="Client X"
+                            <TextBlock Text="客户端 X"
                                        Foreground="#AAB4C0"/>
                             <NumericUpDown Value="{Binding MapClientX, Mode=TwoWay}"
                                            Minimum="0"
@@ -115,7 +115,7 @@
                         </StackPanel>
 
                         <StackPanel Grid.Column="1">
-                            <TextBlock Text="Client Y"
+                            <TextBlock Text="客户端 Y"
                                        Foreground="#AAB4C0"/>
                             <NumericUpDown Value="{Binding MapClientY, Mode=TwoWay}"
                                            Minimum="0"
@@ -125,7 +125,7 @@
                         </StackPanel>
                     </Grid>
 
-                    <Button Content="Refresh Map"
+                    <Button Content="刷新地图"
                             Command="{Binding RefreshMapPreviewCommand}"/>
                 </StackPanel>
             </ScrollViewer>
@@ -183,7 +183,7 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel Spacing="10">
 
-                    <TextBlock Text="View Tools"
+                    <TextBlock Text="查看工具"
                                FontSize="16"
                                FontWeight="Bold"
                                Foreground="#E4EAF2"/>
@@ -194,25 +194,25 @@
                           RowSpacing="8">
 
                         <Button Grid.Row="0" Grid.Column="0"
-                                Content="Zoom Full"
+                                Content="完全缩放"
                                 Command="{Binding MapZoomFullCommand}"/>
 
                         <Button Grid.Row="0" Grid.Column="1"
-                                Content="Zoom 50%"
+                                Content="缩放 50%"
                                 Command="{Binding MapZoomHalfCommand}"/>
 
                         <Button Grid.Row="1" Grid.Column="0"
-                                Content="Zoom 100%"
+                                Content="缩放 100%"
                                 Command="{Binding MapZoomOneCommand}"/>
 
                         <Button Grid.Row="1" Grid.Column="1"
-                                Content="Origin"
+                                Content="原点"
                                 Command="{Binding MapGoOriginCommand}"/>
                     </Grid>
 
                     <Separator/>
 
-                    <TextBlock Text="Tile Inspector"
+                    <TextBlock Text="图块检查器"
                                FontWeight="Bold"
                                Foreground="#E4EAF2"/>
 
@@ -229,12 +229,12 @@
 
                     <Separator/>
 
-                    <TextBlock Text="Markers"
+                    <TextBlock Text="标记"
                                FontWeight="Bold"
                                Foreground="#E4EAF2"/>
 
                     <TextBox Text="{Binding NewMapMarkerLabel, Mode=TwoWay}"
-                             Watermark="Marker label"/>
+                             Watermark="标记标签"/>
 
                     <TextBlock Text="{Binding PendingMapMarkerText}"
                                TextWrapping="Wrap"
@@ -246,25 +246,27 @@
                           RowSpacing="8">
 
                         <Button Grid.Row="0" Grid.Column="0"
-                                Content="Pick Spot"
+                                Content="选择位置"
                                 Command="{Binding StartPlaceMapMarkerCommand}"/>
 
                         <Button Grid.Row="0" Grid.Column="1"
-                                Content="Add"
+                                Content="添加"
                                 Command="{Binding AddMapMarkerCommand}"/>
 
                         <Button Grid.Row="1" Grid.Column="0"
-                                Content="Go To"
+                                Content="转到"
                                 Command="{Binding GoToMapMarkerCommand}"/>
 
                         <Button Grid.Row="1" Grid.Column="1"
-                                Content="Remove"
+                                Content="移除"
                                 Command="{Binding RemoveMapMarkerCommand}"/>
                     </Grid>
 
                     <ListBox ItemsSource="{Binding MapMarkers}"
                              SelectedItem="{Binding SelectedMapMarker}"
-                             MinHeight="180">
+                             MinHeight="180"
+                             Background="#1A1F26"
+                             Foreground="#95A3B3">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding DisplayText}"
@@ -275,7 +277,7 @@
 
                     <Separator/>
 
-                    <TextBlock Text="Goto"
+                    <TextBlock Text="前往"
                                FontWeight="Bold"
                                Foreground="#E4EAF2"/>
 
@@ -283,10 +285,10 @@
                               SelectedItem="{Binding SelectedMapGotoLocation}"
                               DisplayMemberBinding="{Binding DisplayText}"/>
 
-                    <Button Content="Go"
+                    <Button Content="前往"
                             Command="{Binding GoToMapLocationCommand}"/>
 
-                    <CheckBox Content="Town markers"
+                    <CheckBox Content="城镇标记"
                               IsChecked="{Binding MapShowTownMarkers}"/>
 
                     <Separator/>

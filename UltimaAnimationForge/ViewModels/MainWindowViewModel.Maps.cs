@@ -42,7 +42,7 @@ public partial class MainWindowViewModel
     private int pendingMapMarkerY;
 
     [ObservableProperty]
-    private string pendingMapMarkerText = "No marker spot selected.";
+    private string pendingMapMarkerText = "未选择标记位置。";
 
     [ObservableProperty]
     private bool isPlacingMapMarker;
@@ -53,7 +53,7 @@ public partial class MainWindowViewModel
     private UoMapMarker? selectedMapMarker;
 
     [ObservableProperty]
-    private string newMapMarkerLabel = "Marker";
+    private string newMapMarkerLabel = "标记";
 
     public IRelayCommand AddMapMarkerCommand { get; private set; } = null!;
     public IRelayCommand RemoveMapMarkerCommand { get; private set; } = null!;
@@ -61,7 +61,7 @@ public partial class MainWindowViewModel
     public IRelayCommand StartPlaceMapMarkerCommand { get; private set; } = null!;
 
     [ObservableProperty]
-    private string mapTileDetailsText = "Hover or click the map to inspect a tile.";
+    private string mapTileDetailsText = "将鼠标悬停或点击地图以检查图块。";
 
     [ObservableProperty]
     private bool mapShowStatics = true;
@@ -83,7 +83,7 @@ public partial class MainWindowViewModel
     private WriteableBitmap? mapPreviewBitmap;
 
     [ObservableProperty]
-    private string mapStatusText = "Open a UO folder, then load a map.";
+    private string mapStatusText = "打开 UO 文件夹，然后加载地图。";
 
     [ObservableProperty]
     private int mapViewX;
@@ -94,14 +94,14 @@ public partial class MainWindowViewModel
     [ObservableProperty]
     private double mapZoom = 1.0;
 
-    public ObservableCollection<UoMapAltitudeMode> MapAltitudeModes { get; } = new();
-    public ObservableCollection<UoMapAltitudePreset> MapAltitudePresets { get; } = new();
+    public ObservableCollection<UoMapAltitudeModeItem> MapAltitudeModes { get; } = new();
+    public ObservableCollection<UoMapAltitudePresetItem> MapAltitudePresets { get; } = new();
 
     [ObservableProperty]
-    private UoMapAltitudeMode selectedMapAltitudeMode = UoMapAltitudeMode.NormalWithAltitude;
+    private UoMapAltitudeModeItem? selectedMapAltitudeMode = new(UoMapAltitudeMode.NormalWithAltitude, "高度显示");
 
     [ObservableProperty]
-    private UoMapAltitudePreset selectedMapAltitudePreset = UoMapAltitudePreset.Normal;
+    private UoMapAltitudePresetItem? selectedMapAltitudePreset = new(UoMapAltitudePreset.Normal, "正常");
 
     [ObservableProperty]
     private int mapAltitudeIntensity = 20;
@@ -157,14 +157,14 @@ public partial class MainWindowViewModel
         });
 
         MapAltitudeModes.Clear();
-        MapAltitudeModes.Add(UoMapAltitudeMode.Normal);
-        MapAltitudeModes.Add(UoMapAltitudeMode.NormalWithAltitude);
-        MapAltitudeModes.Add(UoMapAltitudeMode.AltitudeMap);
+        MapAltitudeModes.Add(new UoMapAltitudeModeItem(UoMapAltitudeMode.Normal, "正常"));
+        MapAltitudeModes.Add(new UoMapAltitudeModeItem(UoMapAltitudeMode.NormalWithAltitude, "高度显示"));
+        MapAltitudeModes.Add(new UoMapAltitudeModeItem(UoMapAltitudeMode.AltitudeMap, "高度地图"));
 
         MapAltitudePresets.Clear();
-        MapAltitudePresets.Add(UoMapAltitudePreset.Sharp);
-        MapAltitudePresets.Add(UoMapAltitudePreset.Normal);
-        MapAltitudePresets.Add(UoMapAltitudePreset.Soft);
+        MapAltitudePresets.Add(new UoMapAltitudePresetItem(UoMapAltitudePreset.Sharp, "锐利"));
+        MapAltitudePresets.Add(new UoMapAltitudePresetItem(UoMapAltitudePreset.Normal, "正常"));
+        MapAltitudePresets.Add(new UoMapAltitudePresetItem(UoMapAltitudePreset.Soft, "柔和"));
 
         AddMapMarkerCommand = new RelayCommand(AddMapMarker);
         RemoveMapMarkerCommand = new RelayCommand(RemoveMapMarker);
@@ -173,7 +173,7 @@ public partial class MainWindowViewModel
         StartPlaceMapMarkerCommand = new RelayCommand(() =>
         {
             IsPlacingMapMarker = true;
-            PendingMapMarkerText = "Click a spot on the map for the marker.";
+            PendingMapMarkerText = "在地图上点击一个位置放置标记。";
         });
 
         GoToMapLocationCommand = new RelayCommand(GoToMapLocation);
@@ -182,12 +182,12 @@ public partial class MainWindowViewModel
         BuildMapOptions();
     }
 
-    partial void OnSelectedMapAltitudeModeChanged(UoMapAltitudeMode value)
+    partial void OnSelectedMapAltitudeModeChanged(UoMapAltitudeModeItem? value)
     {
         RefreshMapPreview();
     }
 
-    partial void OnSelectedMapAltitudePresetChanged(UoMapAltitudePreset value)
+    partial void OnSelectedMapAltitudePresetChanged(UoMapAltitudePresetItem? value)
     {
         RefreshMapPreview();
     }
@@ -201,12 +201,12 @@ public partial class MainWindowViewModel
     {
         MapOptions.Clear();
 
-        MapOptions.Add(new UoMapOption { Name = "Felucca", FileIndex = 0, MapId = 0, Width = 6144, Height = 4096 });
-        MapOptions.Add(new UoMapOption { Name = "Trammel", FileIndex = 1, MapId = 1, Width = 6144, Height = 4096 });
-        MapOptions.Add(new UoMapOption { Name = "Ilshenar", FileIndex = 2, MapId = 2, Width = 2304, Height = 1600 });
-        MapOptions.Add(new UoMapOption { Name = "Malas", FileIndex = 3, MapId = 3, Width = 2560, Height = 2048 });
-        MapOptions.Add(new UoMapOption { Name = "Tokuno", FileIndex = 4, MapId = 4, Width = 1448, Height = 1448 });
-        MapOptions.Add(new UoMapOption { Name = "Ter Mur", FileIndex = 5, MapId = 5, Width = 1280, Height = 4096 });
+        MapOptions.Add(new UoMapOption { Name = "斐卢卡", FileIndex = 0, MapId = 0, Width = 6144, Height = 4096 });
+        MapOptions.Add(new UoMapOption { Name = "崔美尔", FileIndex = 1, MapId = 1, Width = 6144, Height = 4096 });
+        MapOptions.Add(new UoMapOption { Name = "伊丝娜", FileIndex = 2, MapId = 2, Width = 2304, Height = 1600 });
+        MapOptions.Add(new UoMapOption { Name = "马拉斯", FileIndex = 3, MapId = 3, Width = 2560, Height = 2048 });
+        MapOptions.Add(new UoMapOption { Name = "德野島", FileIndex = 4, MapId = 4, Width = 1448, Height = 1448 });
+        MapOptions.Add(new UoMapOption { Name = "特穆尔", FileIndex = 5, MapId = 5, Width = 1280, Height = 4096 });
 
         SelectedMapOption = MapOptions.Count > 0 ? MapOptions[0] : null;
     }
@@ -236,7 +236,7 @@ public partial class MainWindowViewModel
         if (SelectedMapOption == null)
         {
             MapPreviewBitmap = null;
-            MapStatusText = "No map selected.";
+            MapStatusText = "未选择地图。";
             return;
         }
 
@@ -245,7 +245,7 @@ public partial class MainWindowViewModel
         if (string.IsNullOrWhiteSpace(folderPath) || !Directory.Exists(folderPath))
         {
             MapPreviewBitmap = null;
-            MapStatusText = "Open a valid UO folder first.";
+            MapStatusText = "请先打开有效的 UO 文件夹。";
             return;
         }
 
@@ -266,16 +266,16 @@ public partial class MainWindowViewModel
             worldHeight,
             outputWidth,
             outputHeight,
-SelectedMapAltitudeMode,
-SelectedMapAltitudePreset,
-MapAltitudeIntensity,
-MapShowStatics,
-MapMarkers.Where(x => x.MapId == SelectedMapOption.MapId).ToList(),
-MapShowCenterCross,
-MapShowClientCross,
-MapClientX,
-MapClientY,
-MapShowTownMarkers
+            SelectedMapAltitudeMode?.Mode ?? UoMapAltitudeMode.NormalWithAltitude,
+            SelectedMapAltitudePreset?.Preset ?? UoMapAltitudePreset.Normal,
+            MapAltitudeIntensity,
+            MapShowStatics,
+            MapMarkers.Where(x => x.MapId == SelectedMapOption.MapId).ToList(),
+            MapShowCenterCross,
+            MapShowClientCross,
+            MapClientX,
+            MapClientY,
+            MapShowTownMarkers
     ? MapGotoLocations.Where(x => x.MapId == SelectedMapOption.MapId).ToList()
     : null);
 
@@ -395,7 +395,7 @@ MapShowTownMarkers
 
         if (string.IsNullOrWhiteSpace(folderPath) || !Directory.Exists(folderPath))
         {
-            MapTileDetailsText = "Open a valid UO folder first.";
+            MapTileDetailsText = "请先打开有效的 UO 文件夹。";
             return;
         }
 
@@ -424,7 +424,7 @@ MapShowTownMarkers
 
         if (details == null)
         {
-            MapTileDetailsText = $"X: {worldX}\nY: {worldY}\nNo tile details found.";
+            MapTileDetailsText = $"X: {worldX}\nY: {worldY}\n未找到图块详情。";
             return;
         }
 
@@ -432,7 +432,7 @@ MapShowTownMarkers
 
         if (details.Statics.Count > 0)
         {
-            text += "\n\nStatics:";
+            text += "\n\n静态物品：";
             foreach (UoMapStaticDetails staticTile in details.Statics.Take(12))
             {
                 text += "\n" + staticTile.DisplayText;
@@ -451,7 +451,7 @@ MapShowTownMarkers
 
         UoMapMarker marker = new()
         {
-            Label = string.IsNullOrWhiteSpace(NewMapMarkerLabel) ? "Marker" : NewMapMarkerLabel.Trim(),
+            Label = string.IsNullOrWhiteSpace(NewMapMarkerLabel) ? "标记" : NewMapMarkerLabel.Trim(),
             X = PendingMapMarkerX,
             Y = PendingMapMarkerY,
             MapId = SelectedMapOption.MapId
@@ -460,9 +460,9 @@ MapShowTownMarkers
         MapMarkers.Add(marker);
         SelectedMapMarker = marker;
 
-        NewMapMarkerLabel = "Marker";
+        NewMapMarkerLabel = "标记";
         IsPlacingMapMarker = false;
-        PendingMapMarkerText = $"Selected marker spot: {PendingMapMarkerX}, {PendingMapMarkerY}";
+        PendingMapMarkerText = $"已选择标记位置：{PendingMapMarkerX}, {PendingMapMarkerY}";
 
         RefreshMapPreview();
     }
@@ -495,7 +495,7 @@ MapShowTownMarkers
         PendingMapMarkerX = Math.Clamp(worldX, 0, SelectedMapOption.Width - 1);
         PendingMapMarkerY = Math.Clamp(worldY, 0, SelectedMapOption.Height - 1);
 
-        PendingMapMarkerText = $"Selected marker spot: {PendingMapMarkerX}, {PendingMapMarkerY}";
+        PendingMapMarkerText = $"已选择标记位置：{PendingMapMarkerX}, {PendingMapMarkerY}";
         IsPlacingMapMarker = false;
     }
 
@@ -564,57 +564,57 @@ MapShowTownMarkers
     {
         MapGotoLocations.Clear();
 
-        // Felucca / Trammel common towns
-        AddGoto("Britain", 0, 1495, 1629);
-        AddGoto("Moonglow", 0, 4442, 1172);
-        AddGoto("Minoc", 0, 2477, 407);
-        AddGoto("Vesper", 0, 2899, 676);
-        AddGoto("Yew", 0, 548, 979);
-        AddGoto("Skara Brae", 0, 639, 2236);
-        AddGoto("Trinsic", 0, 1828, 2948);
-        AddGoto("Jhelom", 0, 1414, 3826);
-        AddGoto("Cove", 0, 2239, 1206);
-        AddGoto("Buccaneer's Den", 0, 2716, 2194);
-        AddGoto("Serpent's Hold", 0, 3006, 3374);
-        AddGoto("Nujel'm", 0, 3768, 1313);
-        AddGoto("Magincia", 0, 3728, 2164);
-        AddGoto("Occlo / Haven", 0, 3623, 2621);
+        // 斐卢卡 / 崔美尔 通用城镇
+        AddGoto("不列顛城", 0, 1495, 1629);
+        AddGoto("昇月城", 0, 4442, 1172);
+        AddGoto("米诺克城", 0, 2477, 407);
+        AddGoto("维斯帕城", 0, 2899, 676);
+        AddGoto("紫杉城", 0, 548, 979);
+        AddGoto("史卡拉坡城", 0, 639, 2236);
+        AddGoto("特林希克城", 0, 1828, 2948);
+        AddGoto("杰伦城", 0, 1414, 3826);
+        AddGoto("科夫镇", 0, 2239, 1206);
+        AddGoto("海盗巢穴", 0, 2716, 2194);
+        AddGoto("蛇堡", 0, 3006, 3374);
+        AddGoto("努杰姆城", 0, 3768, 1313);
+        AddGoto("美琴西亚城", 0, 3728, 2164);
+        AddGoto("奥克洛城", 0, 3623, 2621);
 
-        AddGoto("Britain", 1, 1495, 1629);
-        AddGoto("Moonglow", 1, 4442, 1172);
-        AddGoto("Minoc", 1, 2477, 407);
-        AddGoto("Vesper", 1, 2899, 676);
-        AddGoto("Yew", 1, 548, 979);
-        AddGoto("Skara Brae", 1, 639, 2236);
-        AddGoto("Trinsic", 1, 1828, 2948);
-        AddGoto("Jhelom", 1, 1414, 3826);
-        AddGoto("Cove", 1, 2239, 1206);
-        AddGoto("Buccaneer's Den", 1, 2716, 2194);
-        AddGoto("Serpent's Hold", 1, 3006, 3374);
-        AddGoto("Nujel'm", 1, 3768, 1313);
-        AddGoto("Magincia", 1, 3728, 2164);
-        AddGoto("New Haven", 1, 3503, 2574);
+        AddGoto("不列顛城", 1, 1495, 1629);
+        AddGoto("昇月城", 1, 4442, 1172);
+        AddGoto("米诺克城", 1, 2477, 407);
+        AddGoto("维斯帕城", 1, 2899, 676);
+        AddGoto("紫杉城", 1, 548, 979);
+        AddGoto("史卡拉坡城", 1, 639, 2236);
+        AddGoto("特林希克城", 1, 1828, 2948);
+        AddGoto("杰伦城", 1, 1414, 3826);
+        AddGoto("科夫镇", 1, 2239, 1206);
+        AddGoto("海盗巢穴", 1, 2716, 2194);
+        AddGoto("蛇堡", 1, 3006, 3374);
+        AddGoto("努杰姆城", 1, 3768, 1313);
+        AddGoto("美琴西亚城", 1, 3728, 2164);
+        AddGoto("新海文", 1, 3503, 2574);
 
-        // Ilshenar
-        AddGoto("Lakeshire", 2, 1203, 1124);
-        AddGoto("Gargoyle City", 2, 852, 602);
-        AddGoto("Mistas", 2, 819, 1130);
+        // 伊丝娜
+        AddGoto("湖岸镇", 2, 1203, 1124);
+        AddGoto("石像鬼之城", 2, 852, 602);
+        AddGoto("雾城", 2, 819, 1130);
 
-        // Malas
-        AddGoto("Luna", 3, 1015, 527);
-        AddGoto("Umbra", 3, 1997, 1386);
-        AddGoto("Doom", 3, 2368, 1267);
+        // 马拉斯
+        AddGoto("月城", 3, 1015, 527);
+        AddGoto("暗影城", 3, 1997, 1386);
+        AddGoto("末日", 3, 2368, 1267);
 
-        // Tokuno
-        AddGoto("Zento", 4, 736, 1260);
-        AddGoto("Makoto-Jima", 4, 800, 1200);
-        AddGoto("Homare-Jima", 4, 250, 650);
-        AddGoto("Isamu-Jima", 4, 1160, 1000);
+        // 德野島
+        AddGoto("禅都", 4, 736, 1260);
+        AddGoto("诚岛", 4, 800, 1200);
+        AddGoto("誉岛", 4, 250, 650);
+        AddGoto("勇岛", 4, 1160, 1000);
 
-        // Ter Mur
-        AddGoto("Royal City", 5, 852, 3527);
-        AddGoto("Holy City", 5, 997, 3895);
-        AddGoto("Tomb of Kings", 5, 997, 3840);
+        // 特穆尔
+        AddGoto("皇家城", 5, 852, 3527);
+        AddGoto("圣城", 5, 997, 3895);
+        AddGoto("帝王陵墓", 5, 997, 3840);
     }
 
     private void AddGoto(string name, int mapId, int x, int y)
