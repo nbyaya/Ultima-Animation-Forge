@@ -24,8 +24,8 @@ public partial class MainWindowViewModel
 
     public ObservableCollection<string> MultiPreviewModes { get; } = new()
 {
-    "Component Map",
-    "Rendered Tiles"
+    "组件映射",
+    "渲染图块"
 };
 
     public ObservableCollection<string> MultiSourceOptions { get; } = new()
@@ -38,13 +38,13 @@ public partial class MainWindowViewModel
     private string multiSearchText = string.Empty;
 
     [ObservableProperty]
-    private string selectedMultiFilter = "All";
+    private string selectedMultiFilter = "全部";
 
     public ObservableCollection<string> MultiFilterOptions { get; } = new()
 {
-    "All",
-    "Used Only",
-    "Free Only"
+    "全部",
+    "仅已使用",
+    "仅空闲"
 };
 
     private readonly List<MultiEntry> allMultiEntries = new();
@@ -53,7 +53,7 @@ public partial class MainWindowViewModel
     private string selectedMultiSource = "multi.mul / multi.idx";
 
     [ObservableProperty]
-    private string selectedMultiPreviewMode = "Component Map";
+    private string selectedMultiPreviewMode = "组件映射";
 
     [ObservableProperty]
     private MultiEntry? selectedMulti;
@@ -65,7 +65,7 @@ public partial class MainWindowViewModel
     private string selectedMultiComponentsText = string.Empty;
 
     [ObservableProperty]
-    private string multiStatusText = "Load multis to begin.";
+    private string multiStatusText = "加载多重组件开始。";
 
     [ObservableProperty]
     private bool showMultiFreeSlots;
@@ -113,7 +113,7 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(folderPath) || !Directory.Exists(folderPath))
         {
-            MultiStatusText = "Open a valid UO folder first.";
+            MultiStatusText = "先打开有效的 UO 文件夹。";
             return;
         }
 
@@ -175,14 +175,14 @@ public partial class MainWindowViewModel
 
         if (components.Count == 0)
         {
-            MultiStatusText = $"Multi {SelectedMulti.Id} ({SelectedMulti.IdHex}) is empty.";
+            MultiStatusText = $"多重组件 {SelectedMulti.Id} ({SelectedMulti.IdHex}) 为空。";
             return;
         }
 
         BuildMultiComponentsText(components);
         RefreshSelectedMultiPreview();
 
-        MultiStatusText = $"Multi {SelectedMulti.Id} ({SelectedMulti.IdHex}) loaded. Components: {components.Count}.";
+        MultiStatusText = $"已加载多重组件 {SelectedMulti.Id} ({SelectedMulti.IdHex})。组件数：{components.Count}。";
     }
 
     private void RefreshSelectedMultiPreview()
@@ -195,7 +195,7 @@ public partial class MainWindowViewModel
 
         var components = multiDataService.GetComponents(SelectedMulti.Id);
 
-        if (SelectedMultiPreviewMode == "Rendered Tiles")
+        if (SelectedMultiPreviewMode == "渲染图块")
         {
             SelectedMultiPreview = multiDataService.BuildRenderedPreview(
      components,
@@ -214,7 +214,7 @@ public partial class MainWindowViewModel
     {
         StringBuilder builder = new();
 
-        builder.AppendLine("ItemID   X    Y    Z   Flags      Unknown");
+        builder.AppendLine("物品ID   X    Y    Z   标志       未知");
         builder.AppendLine("------------------------------------------");
 
         foreach (MultiComponentEntry part in components)
@@ -265,7 +265,7 @@ public partial class MainWindowViewModel
     {
         if (SelectedMulti == null)
         {
-            MultiStatusText = "No multi selected.";
+            MultiStatusText = "未选中任何多重组件。";
             return;
         }
 
@@ -273,7 +273,7 @@ public partial class MainWindowViewModel
 
         if (components.Count == 0)
         {
-            MultiStatusText = "Selected multi is empty.";
+            MultiStatusText = "选中的多重组件为空。";
             return;
         }
 
@@ -281,7 +281,7 @@ public partial class MainWindowViewModel
 
         if (mainWindow == null)
         {
-            MultiStatusText = "Could not locate main window.";
+            MultiStatusText = "无法定位主窗口。";
             return;
         }
 
@@ -290,7 +290,7 @@ public partial class MainWindowViewModel
         IStorageFile? file = await mainWindow.StorageProvider.SaveFilePickerAsync(
             new FilePickerSaveOptions
             {
-                Title = "Export Multi as UOX3 DFN",
+                Title = "导出多重组件为 UOX3 DFN",
                 SuggestedFileName = suggestedName,
                 FileTypeChoices = new[]
                 {
@@ -303,7 +303,7 @@ public partial class MainWindowViewModel
 
         if (file == null)
         {
-            MultiStatusText = "Export cancelled.";
+            MultiStatusText = "导出已取消。";
             return;
         }
 
@@ -311,13 +311,13 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(path))
         {
-            MultiStatusText = "Selected export path is invalid.";
+            MultiStatusText = "选中的导出路径无效。";
             return;
         }
 
         multiDataService.ExportUox3(path, SelectedMulti.Id, components);
 
-        MultiStatusText = "Exported multi " + SelectedMulti.IdHex + " to UOX3 DFN.";
+        MultiStatusText = "已导出多重组件 " + SelectedMulti.IdHex + " 为 UOX3 DFN。";
     }
 
     [RelayCommand]
@@ -325,13 +325,13 @@ public partial class MainWindowViewModel
     {
         if (SelectedMulti == null)
         {
-            MultiStatusText = "No multi selected.";
+            MultiStatusText = "未选中任何多重组件。";
             return;
         }
 
         if (SelectedMultiPreview == null)
         {
-            MultiStatusText = "No preview image to export.";
+            MultiStatusText = "没有预览图像可导出。";
             return;
         }
 
@@ -339,7 +339,7 @@ public partial class MainWindowViewModel
 
         if (mainWindow == null)
         {
-            MultiStatusText = "Could not locate main window.";
+            MultiStatusText = "无法定位主窗口。";
             return;
         }
 
@@ -348,11 +348,11 @@ public partial class MainWindowViewModel
         IStorageFile? file = await mainWindow.StorageProvider.SaveFilePickerAsync(
             new FilePickerSaveOptions
             {
-                Title = "Export Multi Preview PNG",
+                Title = "导出多重组件预览 PNG",
                 SuggestedFileName = suggestedName,
                 FileTypeChoices = new[]
                 {
-                new FilePickerFileType("PNG Image")
+                new FilePickerFileType("PNG 图像")
                 {
                     Patterns = new[] { "*.png" }
                 }
@@ -361,7 +361,7 @@ public partial class MainWindowViewModel
 
         if (file == null)
         {
-            MultiStatusText = "PNG export cancelled.";
+            MultiStatusText = "PNG 导出已取消。";
             return;
         }
 
@@ -369,14 +369,14 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(path))
         {
-            MultiStatusText = "Selected export path is invalid.";
+            MultiStatusText = "选中的导出路径无效。";
             return;
         }
 
         await using FileStream stream = new(path, FileMode.Create, FileAccess.Write, FileShare.None);
         SelectedMultiPreview.Save(stream);
 
-        MultiStatusText = "Exported preview PNG for multi " + SelectedMulti.IdHex + ".";
+        MultiStatusText = "已为多重组件 " + SelectedMulti.IdHex + " 导出预览 PNG。";
     }
 
     [RelayCommand]
@@ -395,7 +395,7 @@ public partial class MainWindowViewModel
     {
         if (SelectedMulti == null)
         {
-            MultiStatusText = "No multi selected.";
+            MultiStatusText = "未选中任何多重组件。";
             return;
         }
 
@@ -403,7 +403,7 @@ public partial class MainWindowViewModel
 
         if (components.Count == 0)
         {
-            MultiStatusText = "Selected multi is empty.";
+            MultiStatusText = "选中的多重组件为空。";
             return;
         }
 
@@ -411,7 +411,7 @@ public partial class MainWindowViewModel
 
         if (mainWindow == null)
         {
-            MultiStatusText = "Could not locate main window.";
+            MultiStatusText = "无法定位主窗口。";
             return;
         }
 
@@ -421,11 +421,11 @@ public partial class MainWindowViewModel
         IStorageFile? file = await mainWindow.StorageProvider.SaveFilePickerAsync(
             new FilePickerSaveOptions
             {
-                Title = "Export Multi " + format,
+                Title = "导出多重组件 " + format,
                 SuggestedFileName = suggestedName,
                 FileTypeChoices = new[]
                 {
-                new FilePickerFileType(format + " File")
+                new FilePickerFileType(format + " 文件")
                 {
                     Patterns = new[] { pattern }
                 }
@@ -434,7 +434,7 @@ public partial class MainWindowViewModel
 
         if (file == null)
         {
-            MultiStatusText = format + " export cancelled.";
+            MultiStatusText = format + " 导出已取消。";
             return;
         }
 
@@ -442,7 +442,7 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(path))
         {
-            MultiStatusText = "Selected export path is invalid.";
+            MultiStatusText = "选中的导出路径无效。";
             return;
         }
 
@@ -455,7 +455,7 @@ public partial class MainWindowViewModel
             multiDataService.ExportText(path, components);
         }
 
-        MultiStatusText = "Exported multi " + SelectedMulti.IdHex + " as " + format + ".";
+        MultiStatusText = "已导出多重组件 " + SelectedMulti.IdHex + " 为 " + format + "。";
     }
 
     private void ApplyMultiFilter()
@@ -464,11 +464,11 @@ public partial class MainWindowViewModel
 
         IEnumerable<MultiEntry> query = allMultiEntries;
 
-        if (SelectedMultiFilter == "Used Only")
+        if (SelectedMultiFilter == "仅已使用")
         {
             query = query.Where(x => !x.IsEmpty);
         }
-        else if (SelectedMultiFilter == "Free Only")
+        else if (SelectedMultiFilter == "仅空闲")
         {
             query = query.Where(x => x.IsEmpty);
         }
@@ -489,7 +489,7 @@ public partial class MainWindowViewModel
 
         SelectedMulti = MultiEntries.FirstOrDefault();
 
-        MultiStatusText = "Showing " + MultiEntries.Count + " of " + allMultiEntries.Count + " multis.";
+        MultiStatusText = "显示 " + MultiEntries.Count + " 个，共 " + allMultiEntries.Count + " 个多重组件。";
     }
 
     [RelayCommand]
@@ -497,7 +497,7 @@ public partial class MainWindowViewModel
     {
         if (SelectedMulti == null)
         {
-            MultiStatusText = "Select a multi slot first.";
+            MultiStatusText = "先选择一个多重组件槽位。";
             return;
         }
 
@@ -505,18 +505,18 @@ public partial class MainWindowViewModel
 
         if (mainWindow == null)
         {
-            MultiStatusText = "Could not locate main window.";
+            MultiStatusText = "无法定位主窗口。";
             return;
         }
 
         IReadOnlyList<IStorageFile> files = await mainWindow.StorageProvider.OpenFilePickerAsync(
             new FilePickerOpenOptions
             {
-                Title = "Import Multi",
+                Title = "导入多重组件",
                 AllowMultiple = false,
                 FileTypeFilter = new[]
                 {
-                new FilePickerFileType("Multi files")
+                new FilePickerFileType("多重组件文件")
                 {
                     Patterns = new[] { "*.txt", "*.csv", "*.dfn" }
                 }
@@ -525,7 +525,7 @@ public partial class MainWindowViewModel
 
         if (files.Count == 0)
         {
-            MultiStatusText = "Import cancelled.";
+            MultiStatusText = "导入已取消。";
             return;
         }
 
@@ -533,7 +533,7 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(path))
         {
-            MultiStatusText = "Selected import file has no local path.";
+            MultiStatusText = "选中的导入文件没有本地路径。";
             return;
         }
 
@@ -553,7 +553,7 @@ public partial class MainWindowViewModel
         BuildMultiComponentsText(components);
         RefreshSelectedMultiPreview();
 
-        MultiStatusText = "Imported into multi " + SelectedMulti.IdHex + ". " + message;
+        MultiStatusText = "已导入到多重组件 " + SelectedMulti.IdHex + "。" + message;
     }
 
     [RelayCommand]
@@ -561,7 +561,7 @@ public partial class MainWindowViewModel
     {
         if (SelectedMultiSource == "multicollection.uop")
         {
-            MultiStatusText = "Saving multicollection.uop is not supported yet. Switch to multi.mul / multi.idx.";
+            MultiStatusText = "尚不支持保存 multicollection.uop。切换到 multi.mul / multi.idx。";
             return;
         }
 
@@ -577,7 +577,7 @@ public partial class MainWindowViewModel
     {
         if (SelectedMulti == null)
         {
-            MultiStatusText = "Select a multi first.";
+            MultiStatusText = "先选择一个多重组件。";
             return;
         }
 
@@ -587,7 +587,7 @@ public partial class MainWindowViewModel
 
         if (owner == null)
         {
-            MultiStatusText = "Could not locate main window.";
+            MultiStatusText = "无法定位主窗口。";
             return;
         }
 
@@ -613,7 +613,7 @@ public partial class MainWindowViewModel
             BuildMultiComponentsText(editor.ToComponents());
             RefreshSelectedMultiPreview();
 
-            MultiStatusText = "Applied editor changes to multi " + SelectedMulti.IdHex + ". Save Multis to write changes.";
+            MultiStatusText = "已应用对多重组件 " + SelectedMulti.IdHex + " 的编辑器更改。保存多重组件以写入更改。";
         }
     }
 }

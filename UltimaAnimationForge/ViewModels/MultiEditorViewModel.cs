@@ -21,12 +21,12 @@ public partial class MultiEditorViewModel : ObservableObject
 
     public ObservableCollection<string> RoofDirections { get; } = new()
 {
-    "East/West Gable",
-    "North/South Gable"
+    "东/西屋脊",
+    "北/南屋脊"
 };
 
     [ObservableProperty]
-    private string selectedRoofDirection = "East/West Gable";
+    private string selectedRoofDirection = "东/西屋脊";
 
     private readonly MultiEditorRoofProfileService roofProfileService = new();
 
@@ -204,7 +204,7 @@ public partial class MultiEditorViewModel : ObservableObject
     private MultiEditorTile? selectedComponent;
 
     [ObservableProperty]
-    private string statusText = "Multi editor ready.";
+    private string statusText = "多重编辑器已就绪。";
 
     [ObservableProperty]
     private int drawItemId;
@@ -216,7 +216,7 @@ public partial class MultiEditorViewModel : ObservableObject
     private int floorZ;
 
     [ObservableProperty]
-    private string selectedTool = "Select";
+    private string selectedTool = "选择";
 
     public bool WasApplied { get; private set; }
 
@@ -251,7 +251,7 @@ public partial class MultiEditorViewModel : ObservableObject
 
         RecalculateScreenPositions();
 
-        StatusText = "Loaded multi 0x" + multiId.ToString("X4") + " components: " + Components.Count;
+        StatusText = "已加载多重组件 0x" + multiId.ToString("X4") + " 组件数：" + Components.Count;
     }
 
     public List<MultiComponentEntry> ToComponents()
@@ -301,19 +301,19 @@ public partial class MultiEditorViewModel : ObservableObject
     [RelayCommand]
     private void UseSelectTool()
     {
-        SelectedTool = "Select";
+        SelectedTool = "选择";
     }
 
     [RelayCommand]
     private void UseDrawTool()
     {
-        SelectedTool = "Draw";
+        SelectedTool = "绘制";
     }
 
     [RelayCommand]
     private void UseRemoveTool()
     {
-        SelectedTool = "Remove";
+        SelectedTool = "删除";
     }
 
     [RelayCommand]
@@ -321,7 +321,7 @@ public partial class MultiEditorViewModel : ObservableObject
     {
         if (DrawItemId <= 0)
         {
-            StatusText = "Enter an item ID first.";
+            StatusText = "先输入物品 ID。";
             return;
         }
         PushUndoSnapshot();
@@ -338,7 +338,7 @@ public partial class MultiEditorViewModel : ObservableObject
 
         RecalculateScreenPositions();
 
-        StatusText = "Added tile 0x" + DrawItemId.ToString("X4") + ".";
+        StatusText = "已添加图块 0x" + DrawItemId.ToString("X4") + "。";
     }
 
     [RelayCommand]
@@ -356,14 +356,14 @@ public partial class MultiEditorViewModel : ObservableObject
 
         RecalculateScreenPositions();
 
-        StatusText = "Removed selected tile.";
+        StatusText = "已删除所选图块。";
     }
 
     [RelayCommand]
     private void Apply()
     {
         WasApplied = true;
-        StatusText = "Applied changes.";
+        StatusText = "已应用更改。";
     }
 
     partial void OnDrawVirtualFloorChanged(bool value)
@@ -427,11 +427,11 @@ public partial class MultiEditorViewModel : ObservableObject
 
         tile.IsSelected = true;
         SelectedComponent = tile;
-        SelectedTool = "Select";
-        StatusText = "Selected tile 0x" + tile.ItemId.ToString("X4") +
+        SelectedTool = "选择";
+        StatusText = "已选中图块 0x" + tile.ItemId.ToString("X4") +
                      " X:" + tile.X +
                      " Y:" + tile.Y +
-                     " Z:" + tile.Z + ".";
+                     " Z:" + tile.Z + "。";
     }
 
     public void HandleTileCanvasClick(MultiEditorTile tile)
@@ -456,7 +456,7 @@ public partial class MultiEditorViewModel : ObservableObject
             return;
         }
 
-        if (SelectedTool == "Draw")
+        if (SelectedTool == "绘制")
         {
             PushUndoSnapshot();
 
@@ -472,14 +472,13 @@ public partial class MultiEditorViewModel : ObservableObject
 
             RecalculateScreenPositions();
 
-            StatusText = "Drew tile 0x" + DrawItemId.ToString("X4") +
-                         " on X:" + tile.X +
+            StatusText = "已在 X:" + tile.X +
                          " Y:" + tile.Y +
-                         " Z:" + FloorZ + ".";
+                         " Z:" + FloorZ + " 绘制图块 0x" + DrawItemId.ToString("X4") + "。";
             return;
         }
 
-        if (SelectedTool == "Remove")
+        if (SelectedTool == "删除")
         {
             PushUndoSnapshot();
 
@@ -492,17 +491,17 @@ public partial class MultiEditorViewModel : ObservableObject
 
             RecalculateScreenPositions();
 
-            StatusText = "Removed tile 0x" + tile.ItemId.ToString("X4") + ".";
+            StatusText = "已删除图块 0x" + tile.ItemId.ToString("X4") + "。";
             return;
         }
 
-        if (SelectedTool == "Pipette")
+        if (SelectedTool == "吸管")
         {
             DrawItemId = tile.ItemId;
             DrawZ = tile.Z;
-            SelectedTool = "Draw";
+            SelectedTool = "绘制";
 
-            StatusText = "Picked tile 0x" + tile.ItemId.ToString("X4") + ".";
+            StatusText = "已拾取图块 0x" + tile.ItemId.ToString("X4") + "。";
             return;
         }
 
@@ -511,7 +510,7 @@ public partial class MultiEditorViewModel : ObservableObject
 
     public void HandleCanvasClick(double screenX, double screenY)
     {
-        if (isClearRoofPlacementMode || SelectedTool == "Clear Roof")
+        if (isClearRoofPlacementMode || SelectedTool == "清除屋顶")
         {
             var clearTile = ScreenToMultiTile(screenX, screenY, FloorZ);
             ClearRoofAreaAt(clearTile.X, clearTile.Y);
@@ -527,11 +526,11 @@ public partial class MultiEditorViewModel : ObservableObject
             return;
         }
 
-        if (SelectedTool == "Rect Fill")
+        if (SelectedTool == "矩形填充")
         {
             if (DrawItemId <= 0)
             {
-                StatusText = "Enter an item ID first.";
+                StatusText = "先输入物品 ID。";
                 return;
             }
 
@@ -545,11 +544,11 @@ public partial class MultiEditorViewModel : ObservableObject
                 rectStartY = rectTileY;
                 isRectFillStarted = true;
 
-                StatusText = "Rect Fill: first corner X:" +
+                StatusText = "矩形填充：第一个角 X:" +
                              rectTileX +
                              " Y:" +
                              rectTileY +
-                             ". Click second corner.";
+                             "。点击第二个角。";
                 return;
             }
 
@@ -579,20 +578,20 @@ public partial class MultiEditorViewModel : ObservableObject
             isRectFillStarted = false;
             RecalculateScreenPositions();
 
-            StatusText = "Rect filled X:" + minX + "-" + maxX +
+            StatusText = "矩形填充 X:" + minX + "-" + maxX +
                          " Y:" + minY + "-" + maxY +
-                         " Z:" + FloorZ + ".";
+                         " Z:" + FloorZ + "。";
             return;
         }
 
-        if (SelectedTool != "Draw")
+        if (SelectedTool != "绘制")
         {
             return;
         }
 
         if (DrawItemId <= 0)
         {
-            StatusText = "Enter an item ID first.";
+            StatusText = "先输入物品 ID。";
             return;
         }
 
@@ -623,7 +622,7 @@ public partial class MultiEditorViewModel : ObservableObject
     [RelayCommand]
     private void UsePipetteTool()
     {
-        SelectedTool = "Pipette";
+        SelectedTool = "吸管";
     }
 
     private (int X, int Y) ScreenToMultiTile(double screenX, double screenY, int z)
@@ -688,7 +687,7 @@ public partial class MultiEditorViewModel : ObservableObject
     {
         if (SelectedComponent == null)
         {
-            StatusText = "No tile selected.";
+            StatusText = "未选中任何图块。";
             return;
         }
 
@@ -699,10 +698,10 @@ public partial class MultiEditorViewModel : ObservableObject
         RecalculateScreenPositions();
 
         StatusText =
-            "Moved tile 0x" + SelectedComponent.ItemId.ToString("X4") +
-            " to X:" + SelectedComponent.X +
+            "已将图块 0x" + SelectedComponent.ItemId.ToString("X4") +
+            " 移动到 X:" + SelectedComponent.X +
             " Y:" + SelectedComponent.Y +
-            " Z:" + SelectedComponent.Z + ".";
+            " Z:" + SelectedComponent.Z + "。";
     }
 
     [RelayCommand]
@@ -710,7 +709,7 @@ public partial class MultiEditorViewModel : ObservableObject
     {
         if (undoStack.Count == 0)
         {
-            StatusText = "Nothing to undo.";
+            StatusText = "没有可撤销的操作。";
             return;
         }
 
@@ -719,7 +718,7 @@ public partial class MultiEditorViewModel : ObservableObject
         List<MultiComponentEntry> snapshot = undoStack.Pop();
         RestoreSnapshot(snapshot);
 
-        StatusText = "Undo.";
+        StatusText = "撤销。";
     }
 
     [RelayCommand]
@@ -727,7 +726,7 @@ public partial class MultiEditorViewModel : ObservableObject
     {
         if (redoStack.Count == 0)
         {
-            StatusText = "Nothing to redo.";
+            StatusText = "没有可重做的操作。";
             return;
         }
 
@@ -736,7 +735,7 @@ public partial class MultiEditorViewModel : ObservableObject
         List<MultiComponentEntry> snapshot = redoStack.Pop();
         RestoreSnapshot(snapshot);
 
-        StatusText = "Redo.";
+        StatusText = "重做。";
     }
 
     private void PushUndoSnapshot()
@@ -870,8 +869,8 @@ public partial class MultiEditorViewModel : ObservableObject
         }
 
         DrawItemId = entry.ArtId;
-        SelectedTool = "Draw";
-        StatusText = "Selected draw tile 0x" + entry.ArtId.ToString("X4") + ".";
+        SelectedTool = "绘制";
+        StatusText = "已选中绘制图块 0x" + entry.ArtId.ToString("X4") + "。";
     }
 
     [RelayCommand]
@@ -879,7 +878,7 @@ public partial class MultiEditorViewModel : ObservableObject
     {
         DrawZ--;
         RecalculateScreenPositions();
-        StatusText = "Draw Z: " + DrawZ;
+        StatusText = "绘制 Z：" + DrawZ;
     }
 
     [RelayCommand]
@@ -887,7 +886,7 @@ public partial class MultiEditorViewModel : ObservableObject
     {
         DrawZ++;
         RecalculateScreenPositions();
-        StatusText = "Draw Z: " + DrawZ;
+        StatusText = "绘制 Z：" + DrawZ;
     }
 
     [RelayCommand]
@@ -896,7 +895,7 @@ public partial class MultiEditorViewModel : ObservableObject
         FloorZ -= 5;
         DrawZ = FloorZ;
         RecalculateScreenPositions();
-        StatusText = "Virtual floor Z: " + FloorZ;
+        StatusText = "虚拟地板 Z：" + FloorZ;
     }
 
     [RelayCommand]
@@ -905,7 +904,7 @@ public partial class MultiEditorViewModel : ObservableObject
         FloorZ += 5;
         DrawZ = FloorZ;
         RecalculateScreenPositions();
-        StatusText = "Virtual floor Z: " + FloorZ;
+        StatusText = "虚拟地板 Z：" + FloorZ;
     }
 
     private void RebuildGridTiles()
@@ -991,9 +990,9 @@ public partial class MultiEditorViewModel : ObservableObject
     [RelayCommand]
     private void UseRectFillTool()
     {
-        SelectedTool = "Rect Fill";
+        SelectedTool = "矩形填充";
         isRectFillStarted = false;
-        StatusText = "Rect Fill: click first corner.";
+        StatusText = "矩形填充：点击第一个角。";
     }
 
     [RelayCommand]
@@ -1001,13 +1000,13 @@ public partial class MultiEditorViewModel : ObservableObject
     {
         VisibleMaxZ = 127;
         RecalculateScreenPositions();
-        StatusText = "Showing all Z levels.";
+        StatusText = "显示所有 Z 级别。";
     }
 
     partial void OnVisibleMaxZChanged(int value)
     {
         RebuildRenderedComponents();
-        StatusText = "Showing tiles up to Z: " + VisibleMaxZ;
+        StatusText = "显示到 Z：" + VisibleMaxZ + " 的图块";
     }
 
     private void LoadRoofProfiles()
@@ -1027,7 +1026,7 @@ public partial class MultiEditorViewModel : ObservableObject
 
         if (SelectedRoofProfile != null)
         {
-            StatusText = "Loaded roof profiles: " + RoofProfiles.Count;
+            StatusText = "已加载屋顶配置文件：" + RoofProfiles.Count;
         }
     }
 
@@ -1042,26 +1041,26 @@ public partial class MultiEditorViewModel : ObservableObject
     {
         if (SelectedRoofProfile == null)
         {
-            StatusText = "Select a roof profile first.";
+            StatusText = "先选择屋顶配置文件。";
             return;
         }
 
         isRoofPlacementMode = true;
-        SelectedTool = "Roof";
-        StatusText = "Roof placement: click the starting tile.";
+        SelectedTool = "屋顶";
+        StatusText = "屋顶放置：点击起始图块。";
     }
 
     private void BuildRoofAt(int startX, int startY)
     {
         if (SelectedRoofProfile == null)
         {
-            StatusText = "Select a roof profile first.";
+            StatusText = "先选择屋顶配置文件。";
             return;
         }
 
         if (RoofWidth <= 0 || RoofLength <= 0)
         {
-            StatusText = "Roof width and length must be greater than 0.";
+            StatusText = "屋顶宽度和长度必须大于 0。";
             return;
         }
 
@@ -1133,17 +1132,17 @@ public partial class MultiEditorViewModel : ObservableObject
         }
 
         isRoofPlacementMode = false;
-        SelectedTool = "Select";
+        SelectedTool = "选择";
 
         RecalculateScreenPositions();
 
-        StatusText = "Built roof " + SelectedRoofProfile.Name +
+        StatusText = "已建造屋顶 " + SelectedRoofProfile.Name +
                      " " + SelectedRoofDirection +
-                     " at X:" + startX +
+                     " 于 X:" + startX +
                      " Y:" + startY +
-                     " Size:" + RoofWidth +
+                     " 尺寸:" + RoofWidth +
                      "x" + RoofLength +
-                     " Z:" + RoofBaseZ + ".";
+                     " Z:" + RoofBaseZ + "。";
     }
 
     [RelayCommand]
@@ -1156,7 +1155,7 @@ public partial class MultiEditorViewModel : ObservableObject
     {
         if (RoofWidth <= 0 || RoofLength <= 0)
         {
-            StatusText = "Roof width and length must be greater than 0.";
+            StatusText = "屋顶宽度和长度必须大于 0。";
             return;
         }
 
@@ -1206,14 +1205,14 @@ public partial class MultiEditorViewModel : ObservableObject
 
         RecalculateScreenPositions();
 
-        StatusText = "Cleared roof area. Removed: " + removed + ".";
+        StatusText = "已清除屋顶区域。已移除：" + removed + "。";
     }
 
     [RelayCommand]
     private void ClearRoofFromClick()
     {
         isClearRoofPlacementMode = true;
-        SelectedTool = "Clear Roof";
-        StatusText = "Clear Roof: click starting tile.";
+        SelectedTool = "清除屋顶";
+        StatusText = "清除屋顶：点击起始图块。";
     }
 }

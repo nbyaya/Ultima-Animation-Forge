@@ -22,16 +22,16 @@
             <StackPanel Orientation="Horizontal"
                         Spacing="8">
 
-                <Button Content="Load Multis"
+                <Button Content="加载多重组件"
                         Command="{Binding LoadMultisCommand}"/>
 
-                <Button Content="Save Multis"
+                <Button Content="保存多重组件"
                         Command="{Binding SaveMultisCommand}"/>
 
-                <Button Content="Open Editor"
+                <Button Content="打开编辑器"
                         Command="{Binding OpenMultiEditorCommand}"/>
 
-                <Button Content="Free Slots"
+                <Button Content="空闲槽位"
                         Command="{Binding ToggleMultiFreeSlotsCommand}"/>
 
                 <SplitButton Content="导出">
@@ -49,12 +49,12 @@
                     </SplitButton.Flyout>
                 </SplitButton>
 
-                <Button Content="Import"
+                <Button Content="导入"
                         Command="{Binding ImportSelectedMultiCommand}"/>
 
                 <Separator Width="1"/>
 
-                <TextBlock Text="Source"
+                <TextBlock Text="源"
                            VerticalAlignment="Center"
                            Foreground="#C7D1DB"/>
 
@@ -62,12 +62,12 @@
                           ItemsSource="{Binding MultiSourceOptions}"
                           SelectedItem="{Binding SelectedMultiSource}"/>
 
-                <CheckBox Content="UOHSA 16-byte format"
+                <CheckBox Content="UOHSA 16字节格式"
                           IsChecked="{Binding UseUohsaMultiFormat}"
                           VerticalAlignment="Center"
                           IsEnabled="{Binding SelectedMultiSource, Converter={StaticResource IsMulMultiSourceConverter}}"/>
 
-                <TextBlock Text="Height Cut"
+                <TextBlock Text="高度切割"
                            VerticalAlignment="Center"
                            Foreground="#C7D1DB"/>
 
@@ -113,7 +113,7 @@
                           ColumnSpacing="8">
 
                         <TextBlock Grid.Column="0"
-                                   Text="Multis"
+                                   Text="多重组件"
                                    FontSize="15"
                                    FontWeight="Bold"
                                    VerticalAlignment="Center"
@@ -127,7 +127,7 @@
                     </Grid>
 
                     <TextBox Grid.Row="1"
-                             Watermark="Search ID / hex"
+                             Watermark="搜索 ID / 十六进制"
                              Text="{Binding MultiSearchText, Mode=TwoWay}"/>
 
                     <ListBox Grid.Row="2"
@@ -154,7 +154,7 @@
                 <Grid RowDefinitions="Auto,*"
                       RowSpacing="8">
 
-                    <TextBlock Text="Preview"
+                    <TextBlock Text="预览"
                                FontSize="15"
                                FontWeight="Bold"
                                Foreground="#E8EDF2"/>
@@ -186,7 +186,7 @@
                 <Grid RowDefinitions="Auto,*"
                       RowSpacing="8">
 
-                    <TextBlock Text="Components"
+                    <TextBlock Text="组件"
                                FontSize="15"
                                FontWeight="Bold"
                                Foreground="#E8EDF2"/>

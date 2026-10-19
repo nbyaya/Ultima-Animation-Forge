@@ -33,33 +33,33 @@ public partial class MainWindowViewModel
     private string dragonBrushPreviewRadius = "50%";
 
     [ObservableProperty]
-    private string dragonMapHoverStatusText = "X: - Y: - | Terrain: -";
+    private string dragonMapHoverStatusText = "X: - Y: - | 地形: -";
 
     private readonly Stack<WriteableBitmap> dragonMapUndoStack = new();
 
-    public ObservableCollection<DragonBrushShape> DragonBrushShapes { get; } = new()
+    public ObservableCollection<UoMapMakerBrushShapeItem> DragonBrushShapes { get; } = new()
 {
-    DragonBrushShape.Circle,
-    DragonBrushShape.Square,
-    DragonBrushShape.Diamond,
-    DragonBrushShape.HorizontalLine,
-    DragonBrushShape.VerticalLine,
-    DragonBrushShape.Slash,
-    DragonBrushShape.Backslash,
-    DragonBrushShape.Cross,
-    DragonBrushShape.X
+    new UoMapMakerBrushShapeItem(DragonBrushShape.Circle),
+    new UoMapMakerBrushShapeItem(DragonBrushShape.Square),
+    new UoMapMakerBrushShapeItem(DragonBrushShape.Diamond),
+    new UoMapMakerBrushShapeItem(DragonBrushShape.HorizontalLine),
+    new UoMapMakerBrushShapeItem(DragonBrushShape.VerticalLine),
+    new UoMapMakerBrushShapeItem(DragonBrushShape.Slash),
+    new UoMapMakerBrushShapeItem(DragonBrushShape.Backslash),
+    new UoMapMakerBrushShapeItem(DragonBrushShape.Cross),
+    new UoMapMakerBrushShapeItem(DragonBrushShape.X)
 };
 
-    public ObservableCollection<DragonMapTool> DragonMapTools { get; } = new()
+    public ObservableCollection<UoMapMakerToolItem> DragonMapTools { get; } = new()
 {
-    DragonMapTool.Paint,
-    DragonMapTool.Eyedropper,
-    DragonMapTool.Fill,
-    DragonMapTool.Erase,
-    DragonMapTool.Rectangle,
-    DragonMapTool.Line,
-    DragonMapTool.Ellipse,
-    DragonMapTool.Stamp
+    new UoMapMakerToolItem(DragonMapTool.Paint),
+    new UoMapMakerToolItem(DragonMapTool.Eyedropper),
+    new UoMapMakerToolItem(DragonMapTool.Fill),
+    new UoMapMakerToolItem(DragonMapTool.Erase),
+    new UoMapMakerToolItem(DragonMapTool.Rectangle),
+    new UoMapMakerToolItem(DragonMapTool.Line),
+    new UoMapMakerToolItem(DragonMapTool.Ellipse),
+    new UoMapMakerToolItem(DragonMapTool.Stamp)
 };
     public ObservableCollection<DragonMapStamp> DragonMapStamps { get; } = new();
 
@@ -77,12 +77,18 @@ public partial class MainWindowViewModel
     private int dragonEllipseStartY;
 
     [ObservableProperty]
-    private DragonMapTool selectedDragonMapTool = DragonMapTool.Paint;
+    private UoMapMakerToolItem? selectedDragonMapTool = new(DragonMapTool.Paint);
+
+    // 获取实际的 DragonMapTool 枚举值
+    private DragonMapTool SelectedDragonMapToolValue => SelectedDragonMapTool?.Tool ?? DragonMapTool.Paint;
 
     private readonly DragonScriptService dragonScriptService = new();
 
     [ObservableProperty]
-    private DragonBrushShape selectedDragonBrushShape = DragonBrushShape.Circle;
+    private UoMapMakerBrushShapeItem? selectedDragonBrushShape = new(DragonBrushShape.Circle);
+
+    // 获取实际的 DragonBrushShape 枚举值
+    private DragonBrushShape SelectedDragonBrushShapeValue => SelectedDragonBrushShape?.Shape ?? DragonBrushShape.Circle;
 
     [ObservableProperty]
     private int dragonMapRefreshKey;
@@ -107,7 +113,7 @@ public partial class MainWindowViewModel
     private int dragonBrushSize = 8;
 
     [ObservableProperty]
-    private string dragonMapStatusText = "No Dragon map loaded.";
+    private string dragonMapStatusText = "未加载龙地图";
 
     [ObservableProperty]
     private double dragonMapZoom = 1.0;
@@ -116,43 +122,43 @@ public partial class MainWindowViewModel
 
     public void HandleDragonMapClick(int x, int y)
     {
-        if (SelectedDragonMapTool == DragonMapTool.Stamp)
+        if (SelectedDragonMapToolValue == DragonMapTool.Stamp)
         {
             PlaceDragonStampAt(x, y);
             return;
         }
 
-        if (SelectedDragonMapTool == DragonMapTool.Eyedropper)
+        if (SelectedDragonMapToolValue == DragonMapTool.Eyedropper)
         {
             PickDragonTerrainAt(x, y);
             return;
         }
 
-        if (SelectedDragonMapTool == DragonMapTool.Fill)
+        if (SelectedDragonMapToolValue == DragonMapTool.Fill)
         {
             FillDragonMapAreaAt(x, y);
             return;
         }
 
-        if (SelectedDragonMapTool == DragonMapTool.Erase)
+        if (SelectedDragonMapToolValue == DragonMapTool.Erase)
         {
             EraseDragonMapAt(x, y);
             return;
         }
 
-        if (SelectedDragonMapTool == DragonMapTool.Rectangle)
+        if (SelectedDragonMapToolValue == DragonMapTool.Rectangle)
         {
             DrawDragonRectangleAt(x, y);
             return;
         }
 
-        if (SelectedDragonMapTool == DragonMapTool.Line)
+        if (SelectedDragonMapToolValue == DragonMapTool.Line)
         {
             DrawDragonLineAt(x, y);
             return;
         }
 
-        if (SelectedDragonMapTool == DragonMapTool.Ellipse)
+        if (SelectedDragonMapToolValue == DragonMapTool.Ellipse)
         {
             DrawDragonEllipseAt(x, y);
             return;
@@ -182,7 +188,7 @@ public partial class MainWindowViewModel
             x,
             y,
             DragonBrushSize,
-            SelectedDragonBrushShape,
+            SelectedDragonBrushShapeValue,
             eraseTerrain.Color);
     }
 
@@ -226,7 +232,7 @@ public partial class MainWindowViewModel
         }
 
         SelectedDragonTerrainColor = match;
-        SelectedDragonMapTool = DragonMapTool.Paint;
+        SelectedDragonMapTool = new UoMapMakerToolItem(DragonMapTool.Paint);
     }
 
     private static int GetColorDistance(Avalonia.Media.Color a, Avalonia.Media.Color b)
@@ -283,11 +289,11 @@ public partial class MainWindowViewModel
                 : Path.GetFileName(palettePath);
 
             DragonMapStatusText =
-                "Loaded Dragon terrain from " +
+                "已从 " +
                 Path.GetFileName(maptransPath) +
-                " using " +
+                " 加载 Dragon 地形，使用 " +
                 paletteText +
-                ".";
+                "。";
         }
         else
         {
@@ -296,7 +302,7 @@ public partial class MainWindowViewModel
                 DragonTerrainColors.Add(color);
             }
 
-            DragonMapStatusText = "Dragon scripts not found. Loaded fallback terrain palette.";
+            DragonMapStatusText = "未找到 Dragon 脚本。已加载备用地形调色板。";
         }
 
         if (DragonTerrainColors.Count > 0)
@@ -385,7 +391,7 @@ public partial class MainWindowViewModel
             x,
             y,
             DragonBrushSize,
-            SelectedDragonBrushShape,
+            SelectedDragonBrushShapeValue,
             SelectedDragonTerrainColor.Color);
     }
 
@@ -507,16 +513,16 @@ public partial class MainWindowViewModel
         DragonMapRefreshKey++;
 
         DragonMapStatusText =
-            $"Filled area with {SelectedDragonTerrainColor.Name} at X:{x} Y:{y}.";
+            $"填充面积中 {SelectedDragonTerrainColor.Name} 在 X:{x} Y:{y}。";
 
-        SelectedDragonMapTool = DragonMapTool.Paint;
+        SelectedDragonMapTool = new UoMapMakerToolItem(DragonMapTool.Paint);
     }
 
     public void UpdateDragonMapHoverStatus(int x, int y)
     {
         if (DragonMapBitmap == null)
         {
-            DragonMapHoverStatusText = "X: - Y: - | Terrain: -";
+            DragonMapHoverStatusText = "X: - Y: - | 地形: -";
             return;
         }
 
@@ -524,7 +530,7 @@ public partial class MainWindowViewModel
 
         if (color == null)
         {
-            DragonMapHoverStatusText = "X: - Y: - | Terrain: -";
+            DragonMapHoverStatusText = "X: - Y: - | 地形: -";
             return;
         }
 
@@ -549,12 +555,12 @@ public partial class MainWindowViewModel
 
         if (match == null)
         {
-            DragonMapHoverStatusText = $"X: {x} Y: {y} | Unknown";
+            DragonMapHoverStatusText = $"X: {x} Y: {y} | 未知";
             return;
         }
 
         DragonMapHoverStatusText =
-            $"X: {x} Y: {y} | {match.GroupName} | Z {match.Z} | Palette {match.PaletteHex}";
+            $"X: {x} Y: {y} | {match.GroupName} | Z {match.Z} | 色板 {match.PaletteHex}";
     }
 
     private DragonTerrainColor? GetEraseTerrain()
@@ -578,7 +584,7 @@ public partial class MainWindowViewModel
         DragonBrushPreviewLeft = (mapX * DragonMapZoom) - (size / 2.0);
         DragonBrushPreviewTop = (mapY * DragonMapZoom) - (size / 2.0);
 
-        DragonBrushPreviewRadius = SelectedDragonBrushShape switch
+        DragonBrushPreviewRadius = SelectedDragonBrushShapeValue switch
         {
             DragonBrushShape.Circle => "50%",
             DragonBrushShape.Diamond => "0",
@@ -586,8 +592,8 @@ public partial class MainWindowViewModel
         };
 
         ShowDragonBrushPreview =
-            SelectedDragonMapTool == DragonMapTool.Paint ||
-            SelectedDragonMapTool == DragonMapTool.Erase;
+            SelectedDragonMapToolValue == DragonMapTool.Paint ||
+            SelectedDragonMapToolValue == DragonMapTool.Erase;
     }
 
     private void DrawDragonRectangleAt(int x, int y)
@@ -603,7 +609,7 @@ public partial class MainWindowViewModel
             dragonRectangleStartY = y;
             dragonRectangleHasStart = true;
 
-            DragonMapStatusText = $"Rectangle start set at X:{x} Y:{y}. Click second corner.";
+            DragonMapStatusText = $"矩形起点设置在 X:{x} Y:{y}。点击第二个角。";
             return;
         }
 
@@ -623,10 +629,10 @@ public partial class MainWindowViewModel
         DragonMapRefreshKey++;
 
         DragonMapStatusText =
-            $"Drew rectangle {SelectedDragonTerrainColor.Name} from X:{dragonRectangleStartX} Y:{dragonRectangleStartY} to X:{x} Y:{y}.";
+            $"绘制了矩形 {SelectedDragonTerrainColor.Name} 从 X:{dragonRectangleStartX} Y:{dragonRectangleStartY} 到 X:{x} Y:{y}。";
 
         dragonRectangleHasStart = false;
-        SelectedDragonMapTool = DragonMapTool.Paint;
+        SelectedDragonMapTool = new UoMapMakerToolItem(DragonMapTool.Paint);
     }
 
     private void DrawDragonLineAt(int x, int y)
@@ -642,7 +648,7 @@ public partial class MainWindowViewModel
             dragonLineStartY = y;
             dragonLineHasStart = true;
 
-            DragonMapStatusText = $"Line start set at X:{x} Y:{y}. Click end point.";
+            DragonMapStatusText = $"直线起点设置在 X:{x} Y:{y}。点击终点。";
             return;
         }
 
@@ -655,7 +661,7 @@ public partial class MainWindowViewModel
             x,
             y,
             DragonBrushSize,
-            SelectedDragonBrushShape,
+            SelectedDragonBrushShapeValue,
             SelectedDragonTerrainColor.Color);
 
         DragonMapBitmap = null;
@@ -664,10 +670,10 @@ public partial class MainWindowViewModel
         DragonMapRefreshKey++;
 
         DragonMapStatusText =
-            $"Drew line {SelectedDragonTerrainColor.Name} from X:{dragonLineStartX} Y:{dragonLineStartY} to X:{x} Y:{y}.";
+            $"绘制了直线 {SelectedDragonTerrainColor.Name} 从 X:{dragonLineStartX} Y:{dragonLineStartY} 到 X:{x} Y:{y}。";
 
         dragonLineHasStart = false;
-        SelectedDragonMapTool = DragonMapTool.Paint;
+        SelectedDragonMapTool = new UoMapMakerToolItem(DragonMapTool.Paint);
     }
 
     private void DrawDragonEllipseAt(int x, int y)
@@ -683,7 +689,7 @@ public partial class MainWindowViewModel
             dragonEllipseStartY = y;
             dragonEllipseHasStart = true;
 
-            DragonMapStatusText = $"Ellipse start set at X:{x} Y:{y}. Click opposite corner.";
+            DragonMapStatusText = $"椭圆起点设置在 X:{x} Y:{y}。点击对角。";
             return;
         }
 
@@ -703,10 +709,10 @@ public partial class MainWindowViewModel
         DragonMapRefreshKey++;
 
         DragonMapStatusText =
-            $"Drew ellipse {SelectedDragonTerrainColor.Name} from X:{dragonEllipseStartX} Y:{dragonEllipseStartY} to X:{x} Y:{y}.";
+            $"绘制了椭圆 {SelectedDragonTerrainColor.Name} 从 X:{dragonEllipseStartX} Y:{dragonEllipseStartY} 到 X:{x} Y:{y}。";
 
         dragonEllipseHasStart = false;
-        SelectedDragonMapTool = DragonMapTool.Paint;
+        SelectedDragonMapTool = new UoMapMakerToolItem(DragonMapTool.Paint);
     }
 
     [RelayCommand]
@@ -714,7 +720,7 @@ public partial class MainWindowViewModel
     {
         if (DragonMapBitmap == null)
         {
-            DragonMapStatusText = "No Dragon map loaded.";
+            DragonMapStatusText = "未加载龙地图。";
             return;
         }
 
@@ -728,7 +734,7 @@ public partial class MainWindowViewModel
     {
         if (DragonMapBitmap == null)
         {
-            DragonMapStatusText = "No Dragon map loaded.";
+            DragonMapStatusText = "未加载龙地图。";
             return;
         }
 
@@ -775,7 +781,7 @@ public partial class MainWindowViewModel
 
         DragonMapStamps.Add(new DragonMapStamp
         {
-            Name = "Small Island",
+            Name = "小岛",
             Pattern = new[,]
             {
             { -1,  5,  5, -1 },
@@ -787,7 +793,7 @@ public partial class MainWindowViewModel
 
         DragonMapStamps.Add(new DragonMapStamp
         {
-            Name = "Mountain Blob",
+            Name = "山脉",
             Pattern = new[,]
             {
             { -1,  6,  6, -1 },

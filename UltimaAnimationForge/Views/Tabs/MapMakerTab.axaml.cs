@@ -36,8 +36,8 @@ public partial class MapMakerTab : UserControl
             return;
         }
 
-        if (vm.SelectedDragonMapTool == DragonMapTool.Paint ||
-            vm.SelectedDragonMapTool == DragonMapTool.Erase)
+        if (vm.SelectedDragonMapTool?.Tool == DragonMapTool.Paint ||
+            vm.SelectedDragonMapTool?.Tool == DragonMapTool.Erase)
         {
             isPaintingDragonMap = true;
         }
@@ -47,7 +47,7 @@ public partial class MapMakerTab : UserControl
         int mapX = (int)(position.X / vm.DragonMapZoom);
         int mapY = (int)(position.Y / vm.DragonMapZoom);
 
-        if (vm.SelectedDragonMapTool == DragonMapTool.Paint)
+        if (vm.SelectedDragonMapTool?.Tool == DragonMapTool.Paint)
         {
             isPaintingDragonMap = true;
         }
@@ -85,8 +85,8 @@ public partial class MapMakerTab : UserControl
             return;
         }
 
-        if (vm.SelectedDragonMapTool != DragonMapTool.Paint &&
-            vm.SelectedDragonMapTool != DragonMapTool.Erase)
+        if (vm.SelectedDragonMapTool?.Tool != DragonMapTool.Paint &&
+            vm.SelectedDragonMapTool?.Tool != DragonMapTool.Erase)
         {
             return;
         }
@@ -99,7 +99,7 @@ public partial class MapMakerTab : UserControl
             return;
         }
 
-        if (vm.SelectedDragonMapTool == DragonMapTool.Erase)
+        if (vm.SelectedDragonMapTool?.Tool == DragonMapTool.Erase)
         {
             vm.EraseDragonMapAt(mapX, mapY);
         }
@@ -127,11 +127,11 @@ public partial class MapMakerTab : UserControl
         IReadOnlyList<IStorageFile> files = await topLevel.StorageProvider.OpenFilePickerAsync(
             new FilePickerOpenOptions
             {
-                Title = "Open Dragon BMP",
+                Title = "打开 Dragon 地图 BMP",
                 AllowMultiple = false,
                 FileTypeFilter =
                 [
-                    new FilePickerFileType("Dragon Map Images")
+                    new FilePickerFileType("Dragon 地图图像")
             {
                 Patterns = ["*.bmp", "*.png"]
             }
@@ -164,11 +164,11 @@ public partial class MapMakerTab : UserControl
         IStorageFile? file = await topLevel.StorageProvider.SaveFilePickerAsync(
             new FilePickerSaveOptions
             {
-                Title = "Save Dragon BMP",
+                Title = "保存 Dragon 地图 BMP",
                 SuggestedFileName = "dragon_map.bmp",
                 FileTypeChoices =
                 [
-                    new FilePickerFileType("Bitmap Image")
+                    new FilePickerFileType("位图图像")
             {
                 Patterns = ["*.bmp"]
             }
@@ -197,11 +197,11 @@ public partial class MapMakerTab : UserControl
 
             IStorageFile? file = await topLevel.StorageProvider.SaveFilePickerAsync(new FilePickerSaveOptions
             {
-                Title = "Export map0LegacyMUL.uop",
+                Title = "导出 map0LegacyMUL.uop",
                 SuggestedFileName = "map0LegacyMUL.uop",
                 FileTypeChoices = new[]
                 {
-                new FilePickerFileType("UOP Map")
+                new FilePickerFileType("UOP 地图")
                 {
                     Patterns = new[] { "*.uop" }
                 }
@@ -232,11 +232,11 @@ public partial class MapMakerTab : UserControl
         IStorageFile? file = await topLevel.StorageProvider.SaveFilePickerAsync(
             new FilePickerSaveOptions
             {
-                Title = "Export map0.mul",
+                Title = "导出 map0.mul",
                 SuggestedFileName = "map0.mul",
                 FileTypeChoices = new[]
                 {
-                new FilePickerFileType("MUL Map")
+                new FilePickerFileType("MUL 地图")
                 {
                     Patterns = new[] { "*.mul" }
                 }
@@ -267,7 +267,7 @@ public partial class MapMakerTab : UserControl
                 IReadOnlyList<IStorageFolder> folders = await topLevel.StorageProvider.OpenFolderPickerAsync(
                     new FolderPickerOpenOptions
             {
-                Title = "Choose export folder",
+                Title = "选择导出文件夹",
                 AllowMultiple = false
             });
 

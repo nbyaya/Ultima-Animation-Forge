@@ -21,7 +21,7 @@
 
                 <Grid RowDefinitions="Auto,*">
                     <TextBlock Grid.Row="0"
-                               Text="Dragon Terrain"
+                               Text="Dragon 地形"
                                FontWeight="Bold"
                                Foreground="#E6EDF3"
                                Margin="0,0,0,8" />
@@ -99,40 +99,40 @@
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel Spacing="8">
 
-                        <TextBlock Text="Map Tools"
+                        <TextBlock Text="地图工具"
                                    FontWeight="Bold"
                                    Foreground="#E6EDF3" />
 
-                        <Button Content="New Dragon Map"
+                        <Button Content="新建 Dragon 地图"
                                 Command="{Binding NewDragonMapCommand}" />
 
-                        <Button Content="Open BMP"
+                        <Button Content="打开 BMP"
                                 Click="OpenDragonMapButton_Click" />
 
-                        <Button Content="Save BMP"
+                        <Button Content="保存 BMP"
                                 Click="SaveDragonMapButton_Click" />
 
-                        <Button Content="Export map0 MUL"
+                        <Button Content="导出 map0 MUL"
                                 Click="ExportDragonMapMulButton_Click" />
 
-                        <Button Content="Validate"
+                        <Button Content="验证"
                                 Command="{Binding ValidateDragonMapCommand}" />
 
-                        <Button Content="Undo"
+                        <Button Content="撤销"
                                 Command="{Binding UndoDragonMapCommand}" />
 
-                        <Button Content="Fill Canvas"
+                        <Button Content="填充画布"
                                 Command="{Binding FillDragonMapCanvasCommand}" />
 
                         <Separator />
 
-                        <TextBlock Text="Tool"
+                        <TextBlock Text="工具"
                                    Foreground="#C7D1DB" />
 
                         <ComboBox ItemsSource="{Binding DragonMapTools}"
                                   SelectedItem="{Binding SelectedDragonMapTool, Mode=TwoWay}" />
 
-                        <TextBlock Text="Brush Size"
+                        <TextBlock Text="笔大小"
                                    Foreground="#C7D1DB" />
 
                         <NumericUpDown Minimum="1"
@@ -141,19 +141,19 @@
                                        FormatString="0"
                                        Value="{Binding DragonBrushSize, Mode=TwoWay}" />
 
-                        <TextBlock Text="Brush Shape"
+                        <TextBlock Text="笔形状"
                                    Foreground="#C7D1DB" />
 
                         <ComboBox ItemsSource="{Binding DragonBrushShapes}"
                                   SelectedItem="{Binding SelectedDragonBrushShape, Mode=TwoWay}" />
 
-                        <TextBlock Text="Stamp"
+                        <TextBlock Text="图章"
                                    Foreground="#C7D1DB" />
 
                         <ComboBox ItemsSource="{Binding DragonMapStamps}"
                                   SelectedItem="{Binding SelectedDragonMapStamp, Mode=TwoWay}" />
 
-                        <TextBlock Text="Zoom"
+                        <TextBlock Text="缩放"
                                    Foreground="#C7D1DB" />
 
                         <NumericUpDown Minimum="0.05"
