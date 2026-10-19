@@ -362,7 +362,7 @@ public partial class MainWindowViewModel
 
         if (water == null)
         {
-            DragonMapStatusText = "No terrain colors loaded.";
+            DragonMapStatusText = "未加载地形颜色。";
             return;
         }
 
@@ -419,27 +419,27 @@ public partial class MainWindowViewModel
 
         DragonMapRefreshKey++;
 
-        DragonMapStatusText = "Filled canvas with " + SelectedDragonTerrainColor.Name + ".";
+        DragonMapStatusText = "用 " + SelectedDragonTerrainColor.Name + " 填充画布。";
     }
 
     public void OpenDragonMapFromFile(string filePath)
     {
         if (string.IsNullOrWhiteSpace(filePath) || !File.Exists(filePath))
         {
-            DragonMapStatusText = "Dragon map file was not found.";
+            DragonMapStatusText = "龙图文件未找到。";
             return;
         }
 
         DragonMapBitmap = dragonMapService.LoadBitmap(filePath);
         DragonMapZoom = 1.0;
-        DragonMapStatusText = "Opened map: " + Path.GetFileName(filePath);
+        DragonMapStatusText = "打开地图：" + Path.GetFileName(filePath);
     }
 
     public void SaveDragonMapToFile(string filePath)
     {
         if (DragonMapBitmap == null)
         {
-            DragonMapStatusText = "No Dragon map to save.";
+            DragonMapStatusText = "没有龙图可保存。";
             return;
         }
 
@@ -449,7 +449,7 @@ public partial class MainWindowViewModel
         }
 
         dragonMapService.SaveBitmap(DragonMapBitmap, filePath);
-        DragonMapStatusText = "Saved map: " + Path.GetFileName(filePath);
+        DragonMapStatusText = "保存地图：" + Path.GetFileName(filePath);
     }
 
     private void PushDragonMapUndo()
@@ -480,14 +480,14 @@ public partial class MainWindowViewModel
     {
         if (dragonMapUndoStack.Count == 0)
         {
-            DragonMapStatusText = "Nothing to undo.";
+            DragonMapStatusText = "没有撤销操作。";
             return;
         }
 
         DragonMapBitmap = dragonMapUndoStack.Pop();
         DragonMapRefreshKey++;
 
-        DragonMapStatusText = "Undo map edit.";
+        DragonMapStatusText = "撤销地图编辑。";
     }
 
     private void FillDragonMapAreaAt(int x, int y)

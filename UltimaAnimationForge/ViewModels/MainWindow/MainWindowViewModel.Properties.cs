@@ -818,11 +818,11 @@ public partial class MainWindowViewModel
         if (!value)
         {
             EndPreviewDrag();
-            StatusText = "Preview drag mode disabled.";
+            StatusText = "预览拖动模式已禁用。";
         }
         else
         {
-            StatusText = "Preview drag mode enabled. Drag preview to move frames.";
+            StatusText = "预览拖动模式已启用。拖动预览以移动帧。";
         }
     }
 
@@ -836,7 +836,7 @@ public partial class MainWindowViewModel
 
             if (!PreviewDragModeEnabled)
             {
-                StatusText = "Compare overlay drag disabled.";
+                StatusText = "比较叠加拖拽已禁用。";
             }
         }
         else
@@ -846,7 +846,7 @@ public partial class MainWindowViewModel
                 PreviewDragModeEnabled = false;
             }
 
-            StatusText = "Compare overlay drag enabled. Drag preview to align compare layer.";
+            StatusText = "比较叠加拖拽已启用。拖拽预览以对齐比较层。";
         }
     }
 

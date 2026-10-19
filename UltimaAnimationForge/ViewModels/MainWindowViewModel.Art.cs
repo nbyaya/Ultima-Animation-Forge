@@ -2070,7 +2070,7 @@ public partial class MainWindowViewModel
     {
         if (string.IsNullOrWhiteSpace(PendingArtImportImagePath))
         {
-            ArtImportAdjustStatusText = "No import image selected.";
+            ArtImportAdjustStatusText = "未选择导入图像。";
             return;
         }
 

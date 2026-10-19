@@ -154,18 +154,18 @@ public partial class MainWindowViewModel
         Window? mainWindow = GetMainWindow();
         if (mainWindow == null)
         {
-            StatusText = "Could not locate main window.";
+            StatusText = "找不到主窗口。";
             return;
         }
 
         IReadOnlyList<IStorageFile> files = await mainWindow.StorageProvider.OpenFilePickerAsync(
             new FilePickerOpenOptions
             {
-                Title = "Choose VD File",
+                Title = "选择 VD 文件",
                 AllowMultiple = false,
                 FileTypeFilter = new[]
                 {
-                    new FilePickerFileType("VD files")
+                    new FilePickerFileType("VD 文件")
                     {
                         Patterns = new[] { "*.vd" }
                     }
@@ -174,14 +174,14 @@ public partial class MainWindowViewModel
 
         if (files.Count == 0)
         {
-            StatusText = "VD -> UOP import cancelled.";
+            StatusText = "VD -> UOP 导入已取消。";
             return;
         }
 
         string? vdPath = files[0].TryGetLocalPath();
         if (string.IsNullOrWhiteSpace(vdPath))
         {
-            StatusText = "Selected VD file does not have a local path.";
+            StatusText = "所选 VD 文件没有本地路径。";
             return;
         }
 
@@ -194,14 +194,14 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(currentFolderPath) || !Directory.Exists(currentFolderPath))
         {
-            StatusText = "Open a valid UO folder first.";
+            StatusText = "先打开有效的 UO 文件夹。";
             return;
         }
 
         Window? mainWindow = GetMainWindow();
         if (mainWindow == null)
         {
-            StatusText = "Could not locate main window.";
+            StatusText = "找不到主窗口。";
             return;
         }
 
@@ -209,7 +209,7 @@ public partial class MainWindowViewModel
 
         if (dialogResult == null || !dialogResult.Confirmed)
         {
-            StatusText = "Create empty MUL/IDX cancelled.";
+            StatusText = "创建空 MUL/IDX 已取消。";
             return;
         }
 
@@ -336,13 +336,13 @@ public partial class MainWindowViewModel
     {
         if (ShowMulSlotView)
         {
-            StatusText = "Delete animation is only available from the animation list view.";
+            StatusText = "删除动画仅在动画列表视图中可用。";
             return;
         }
 
         if (SelectedAnimation == null)
         {
-            StatusText = "Select an animation first.";
+            StatusText = "先选择一个动画。";
             return;
         }
 
@@ -350,14 +350,14 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(currentFolderPath) || !Directory.Exists(currentFolderPath))
         {
-            StatusText = "Open a valid UO folder first.";
+            StatusText = "先打开有效的 UO 文件夹。";
             return;
         }
 
         Window? mainWindow = GetMainWindow();
         if (mainWindow == null)
         {
-            StatusText = "Could not locate main window.";
+            StatusText = "找不到主窗口。";
             return;
         }
 
@@ -367,7 +367,7 @@ public partial class MainWindowViewModel
 
         if (fileType <= 1)
         {
-            StatusText = "Delete-from-slot is intended for anim2-anim6 imported bodyconv animations.";
+            StatusText = "从槽位删除仅用于导入的 anim2-anim6 bodyconv 动画。";
             return;
         }
 
@@ -379,14 +379,14 @@ public partial class MainWindowViewModel
         }
         else
         {
-            StatusText = "Could not resolve bodyconv mapping for this animation.";
+            StatusText = "无法解析此动画的 bodyconv 映射。";
             return;
         }
 
         bool confirmed = await ConfirmDeleteAnimationAsync(mainWindow, entry, fileType, bodyIndex);
         if (!confirmed)
         {
-            StatusText = "Delete cancelled.";
+            StatusText = "删除已取消。";
             return;
         }
 
@@ -419,13 +419,13 @@ public partial class MainWindowViewModel
         }
         catch (UnauthorizedAccessException)
         {
-            StatusText = "Animation slot was cleared, but bodyconv.def could not be updated due to access denied.";
+            StatusText = "动画槽位已清除，但由于访问被拒绝，bodyconv.def 无法更新。";
             ReloadAnimationSourcesAndLists();
             return;
         }
         catch (IOException exception)
         {
-            StatusText = "Animation slot was cleared, but failed updating bodyconv.def: " + exception.Message;
+            StatusText = "动画槽位已清除，但更新 bodyconv.def 失败：" + exception.Message;
             ReloadAnimationSourcesAndLists();
             return;
         }
@@ -452,7 +452,7 @@ public partial class MainWindowViewModel
 
         if (!hasQueuedMulImports)
         {
-            StatusText = "There are no pending changes to save.";
+            StatusText = "没有待保存的更改。";
             return;
         }
 
@@ -460,7 +460,7 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(currentFolderPath) || !Directory.Exists(currentFolderPath))
         {
-            StatusText = "Open a valid UO folder first.";
+            StatusText = "先打开有效的 UO 文件夹。";
             return;
         }
 
@@ -518,19 +518,19 @@ public partial class MainWindowViewModel
             ReloadAnimationSourcesAndLists();
             RefreshUnsavedChangesState();
 
-            StatusText = "Saved all queued MUL changes.";
+            StatusText = "已保存所有排队的 MUL 更改。";
         }
         catch (UnauthorizedAccessException)
         {
-            StatusText = "Access denied while saving pending changes.";
+            StatusText = "保存待处理更改时访问被拒绝。";
         }
         catch (IOException exception)
         {
-            StatusText = "I/O error while saving pending changes: " + exception.Message;
+            StatusText = "保存待处理更改时出现 I/O 错误：" + exception.Message;
         }
         catch (Exception exception)
         {
-            StatusText = "Failed saving pending changes: " + exception.Message;
+            StatusText = "保存待处理更改失败：" + exception.Message;
         }
 
         await Task.CompletedTask;
@@ -545,26 +545,26 @@ public partial class MainWindowViewModel
 
         if (SelectedAnimation == null || currentResolvedAnimationBlock == null)
         {
-            StatusText = "No edited animation is selected.";
+            StatusText = "未选择编辑的动画。";
             return false;
         }
 
         if (currentResolvedAnimationBlock.IsUop)
         {
-            StatusText = "Queued multi-edit Save Changes is not implemented for edited UOP animations yet.";
+            StatusText = "排队的多编辑保存更改对于已编辑的 UOP 动画尚未实现。";
             return false;
         }
 
         if (editableFrames.Count == 0)
         {
-            StatusText = "There are no edited frames to queue.";
+            StatusText = "没有编辑的帧要排队。";
             return false;
         }
 
         byte[] blockData = mulEditedFrameSaveService.BuildEditedDirectionBlock(editableFrames);
         if (blockData.Length == 0)
         {
-            StatusText = "Failed to build edited MUL block data.";
+            StatusText = "无法生成编辑的 MUL 块数据。";
             return false;
         }
 
@@ -689,7 +689,7 @@ public partial class MainWindowViewModel
     {
         if (droppedPaths == null || droppedPaths.Count == 0)
         {
-            StatusText = "Nothing was dropped.";
+            StatusText = "未放置任何文件。";
             return;
         }
 
@@ -710,14 +710,14 @@ public partial class MainWindowViewModel
             return;
         }
 
-        StatusText = "Drop a UO folder, a VD file, or PNG files onto the preview area.";
+        StatusText = "放置 UO 文件夹、VD 文件或 PNG 文件到预览区域。";
     }
 
     public async Task HandlePreviewDroppedFilesAsync(IReadOnlyList<string> droppedPaths)
     {
         if (droppedPaths == null || droppedPaths.Count == 0)
         {
-            StatusText = "Nothing was dropped on the preview.";
+            StatusText = "未放置任何文件到预览。";
             return;
         }
 
@@ -730,7 +730,7 @@ public partial class MainWindowViewModel
 
         if (pngPaths.Count == 0)
         {
-            StatusText = "Preview drop only accepts PNG files.";
+            StatusText = "预览拖放仅接受 PNG 文件。";
             return;
         }
 
@@ -747,7 +747,7 @@ public partial class MainWindowViewModel
     {
         if (string.IsNullOrWhiteSpace(folderPath) || !Directory.Exists(folderPath))
         {
-            StatusText = "Dropped folder is invalid.";
+            StatusText = "放置的文件夹无效。";
             return;
         }
 
@@ -783,13 +783,13 @@ public partial class MainWindowViewModel
     {
         if (string.IsNullOrWhiteSpace(vdPath) || !File.Exists(vdPath))
         {
-            StatusText = "Dropped VD file is invalid.";
+            StatusText = "放置的 VD 文件无效。";
             return;
         }
 
         if (!ShowMulSlotView)
         {
-            StatusText = "Switch to slot view before dropping a VD file.";
+            StatusText = "在放置 VD 文件之前先切换到槽位视图。";
             return;
         }
 
@@ -807,13 +807,13 @@ public partial class MainWindowViewModel
     {
         if (!ShowMulSlotView)
         {
-            StatusText = "VD import is only available in free MUL slot view.";
+            StatusText = "VD 导入仅在空闲 MUL 槽位视图中可用。";
             return;
         }
 
         if (SelectedMulSlot == null)
         {
-            StatusText = "Select a free MUL slot first.";
+            StatusText = "先选择一个空闲的 MUL 槽位。";
             return;
         }
 
@@ -821,7 +821,7 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(currentFolderPath) || !Directory.Exists(currentFolderPath))
         {
-            StatusText = "Open a valid UO folder first.";
+            StatusText = "先打开有效的 UO 文件夹。";
             return;
         }
 
@@ -874,7 +874,7 @@ public partial class MainWindowViewModel
                 Window? mainWindow = GetMainWindow();
                 if (mainWindow == null)
                 {
-                    StatusText = "Could not locate main window.";
+                    StatusText = "找不到主窗口。";
                     return;
                 }
 
@@ -886,7 +886,7 @@ public partial class MainWindowViewModel
 
             if (assignmentResult == null || !assignmentResult.Confirmed)
             {
-                StatusText = "VD import cancelled before body assignment.";
+                StatusText = "VD 导入在身体分配前已取消。";
                 return;
             }
 
@@ -905,10 +905,10 @@ public partial class MainWindowViewModel
         RefreshUnsavedChangesState();
 
         StatusText =
-            "Queued VD import for " +
+            "为 " +
             Path.GetFileName(plan.MulPath) +
-            " slot " + importedTargetSlot.BodyIndex +
-            ". Click Save Changes to write to disk.";
+            " 槽位 " + importedTargetSlot.BodyIndex +
+            " 排队 VD 导入。点击保存更改以写入磁盘。";
     }
 
     private void LoadQueuedVdImportPreview(MulSlotEntry targetSlot, VdImportService.ImportPlan plan)
@@ -934,7 +934,7 @@ public partial class MainWindowViewModel
 
         if (pendingEntry == null || pendingEntry.BlockData.Length == 0)
         {
-            StatusText = "VD import queued, but selected action/direction has no frame data.";
+            StatusText = "VD 导入已排队，但选择的动作/方向没有帧数据。";
             return;
         }
 
@@ -1079,19 +1079,19 @@ public partial class MainWindowViewModel
     {
         if (!ShowMulSlotView)
         {
-            StatusText = "Switch to slot/target view first.";
+            StatusText = "先切换到槽位/目标视图。";
             return;
         }
 
         if (!IsSelectedAnimationFileUop())
         {
-            StatusText = "Select a UOP animation file first.";
+            StatusText = "先选择一个 UOP 动画文件。";
             return;
         }
 
         if (SelectedUopBodySlot == null)
         {
-            StatusText = "Select a UOP body target first.";
+            StatusText = "先选择一个 UOP 身体目标。";
             return;
         }
 
@@ -1099,7 +1099,7 @@ public partial class MainWindowViewModel
 
         if (string.IsNullOrWhiteSpace(currentFolderPath) || !Directory.Exists(currentFolderPath))
         {
-            StatusText = "Open a valid UO folder first.";
+            StatusText = "先打开有效的 UO 文件夹。";
             return;
         }
 
@@ -1125,7 +1125,7 @@ public partial class MainWindowViewModel
         Window? mainWindow = GetMainWindow();
         if (mainWindow == null)
         {
-            StatusText = "Could not locate main window.";
+            StatusText = "找不到主窗口。";
             return;
         }
 
@@ -1133,13 +1133,13 @@ public partial class MainWindowViewModel
         {
             if (IsSelectedAnimationFileUop())
             {
-                StatusText = "Sprite sheet import into empty slots currently supports MUL targets only.";
+                StatusText = "精灵表导入到空槽位目前仅支持 MUL 目标。";
                 return;
             }
 
             if (SelectedMulSlot == null)
             {
-                StatusText = "Select a free MUL slot first.";
+                StatusText = "先选择一个空闲的 MUL 槽位。";
                 return;
             }
         }
@@ -1147,13 +1147,13 @@ public partial class MainWindowViewModel
         {
             if (SelectedAnimation == null || currentResolvedAnimationBlock == null)
             {
-                StatusText = "Select an animation body/action first.";
+                StatusText = "先选择一个动画身体/动作。";
                 return;
             }
 
             if (currentResolvedAnimationBlock.IsUop)
             {
-                StatusText = "Sprite sheet import currently supports MUL animation editing only.";
+                StatusText = "精灵表导入目前仅支持 MUL 动画编辑。";
                 return;
             }
         }
@@ -1174,14 +1174,14 @@ public partial class MainWindowViewModel
 
         if (files.Count == 0)
         {
-            StatusText = "Sprite sheet import cancelled.";
+            StatusText = "精灵表导入已取消。";
             return;
         }
 
         string? filePath = files[0].TryGetLocalPath();
         if (string.IsNullOrWhiteSpace(filePath) || !File.Exists(filePath))
         {
-            StatusText = "Selected sprite sheet does not have a valid local path.";
+            StatusText = "所选精灵表没有有效的本地路径。";
             return;
         }
 
@@ -1198,7 +1198,7 @@ public partial class MainWindowViewModel
 
         if (dialogResult == null || !dialogResult.Confirmed)
         {
-            StatusText = "Sprite sheet import cancelled.";
+            StatusText = "精灵表导入已取消。";
             return;
         }
 
@@ -1207,8 +1207,8 @@ public partial class MainWindowViewModel
             if (dialogResult.ActionIndex < 0 || dialogResult.ActionIndex >= SelectedMulSlot.AnimLength)
             {
                 StatusText =
-                    "Action " + dialogResult.ActionIndex +
-                    " is outside the selected slot action range (0-" + (SelectedMulSlot.AnimLength - 1) + ").";
+                    "动作 " + dialogResult.ActionIndex +
+                    " 在所选槽位动作范围之外(0-" + (SelectedMulSlot.AnimLength - 1) + ")。";
                 return;
             }
         }
@@ -1218,7 +1218,7 @@ public partial class MainWindowViewModel
 
         if (importedByDirection.Count == 0)
         {
-            StatusText = "No frames were found in the sprite sheet.";
+            StatusText = "精灵表中未找到任何帧。";
             return;
         }
 
@@ -1284,26 +1284,26 @@ public partial class MainWindowViewModel
 
         if (!queued)
         {
-            StatusText = "Loaded sprite sheet preview, but failed queuing imported directions.";
+            StatusText = "加载精灵表预览，但队列导入方向失败。";
             return;
         }
 
         if (ShowMulSlotView && SelectedMulSlot != null)
         {
             StatusText =
-                "Loaded sprite sheet action " + dialogResult.ActionIndex +
-                " with " + importedSpriteSheetDirections.Count +
-                " imported direction(s) into free slot " + SelectedMulSlot.FileName +
-                " body " + SelectedMulSlot.BodyIndex +
-                ". Click Save Changes to write them.";
+                "加载精灵表动作 " + dialogResult.ActionIndex +
+                "，共 " + importedSpriteSheetDirections.Count +
+                " 个导入方向到空槽 " + SelectedMulSlot.FileName +
+                " 身体 " + SelectedMulSlot.BodyIndex +
+                "。点击保存更改写入。";
         }
         else
         {
             StatusText =
-                "Loaded sprite sheet action " + dialogResult.ActionIndex +
-                " with " + importedSpriteSheetDirections.Count +
-                " imported direction(s) from " + Path.GetFileName(filePath) +
-                ". Click Save Changes to write them.";
+                "加载精灵表动作 " + dialogResult.ActionIndex +
+                "，共 " + importedSpriteSheetDirections.Count +
+                " 个导入方向自 " + Path.GetFileName(filePath) +
+                "。点击保存更改写入。";
         }
     }
 
@@ -1461,8 +1461,8 @@ public partial class MainWindowViewModel
             frames.Count == 0)
         {
             StatusText =
-                "No imported sprite sheet frames exist for action " + actionIndex +
-                ", direction " + directionIndex + ".";
+                "动作 " + actionIndex +
+                "、方向 " + directionIndex + " 不存在导入的精灵表帧。";
             return;
         }
 
@@ -1495,27 +1495,27 @@ public partial class MainWindowViewModel
 
         if (SelectedAnimation == null)
         {
-            StatusText = "No selected animation exists for sprite sheet import.";
+            StatusText = "不存在所选精灵表导入的动画。";
             return false;
         }
 
         int bodyId = GetEffectiveSelectedBodyId(SelectedAnimation);
         if (bodyId < 0)
         {
-            StatusText = "Could not determine body ID for sprite sheet import.";
+            StatusText = "无法确定精灵表导入的身体 ID。";
             return false;
         }
 
         IAnimationDataSource? dataSource = GetDataSourceForEntry(SelectedAnimation);
         if (dataSource == null)
         {
-            StatusText = "No MUL animation data source is available for sprite sheet import.";
+            StatusText = "精灵表导入没有可用的 MUL 动画数据源。";
             return false;
         }
 
         if (currentResolvedAnimationBlock == null || currentResolvedAnimationBlock.IsUop)
         {
-            StatusText = "Sprite sheet import currently queues MUL directions only.";
+            StatusText = "精灵表导入目前仅队列 MUL 方向。";
             return false;
         }
 
@@ -1526,7 +1526,7 @@ public partial class MainWindowViewModel
                 out Dictionary<int, List<VdFrameData>> directions) ||
             directions.Count == 0)
         {
-            StatusText = "No imported sprite sheet data exists for action " + actionIndex + ".";
+            StatusText = "动作 " + actionIndex + " 不存在导入的精灵表数据。";
             return false;
         }
 
@@ -1600,31 +1600,31 @@ public partial class MainWindowViewModel
     {
         if (!hasImportedSpriteSheetSession)
         {
-            StatusText = "No imported sprite sheet session exists.";
+            StatusText = "不存在导入的精灵表会话。";
             return false;
         }
 
         if (!ShowMulSlotView)
         {
-            StatusText = "Sprite sheet slot queueing only works in free MUL slot view.";
+            StatusText = "精灵表槽位队列仅在空闲 MUL 槽位视图中有效。";
             return false;
         }
 
         if (SelectedMulSlot == null)
         {
-            StatusText = "No free MUL slot is selected.";
+            StatusText = "未选择空闲的 MUL 槽位。";
             return false;
         }
 
         if (IsSelectedAnimationFileUop())
         {
-            StatusText = "Sprite sheet import into empty slots currently supports MUL targets only.";
+            StatusText = "精灵表导入到空槽位目前仅支持 MUL 目标。";
             return false;
         }
 
         if (!SelectedMulSlot.IsEmpty)
         {
-            StatusText = "Selected MUL slot is not empty.";
+            StatusText = "所选 MUL 槽位不为空。";
             return false;
         }
 
@@ -1635,22 +1635,22 @@ public partial class MainWindowViewModel
                 out Dictionary<int, List<VdFrameData>> directions) ||
             directions.Count == 0)
         {
-            StatusText = "No imported sprite sheet data exists for action " + actionIndex + ".";
+            StatusText = "动作 " + actionIndex + " 不存在导入的精灵表数据。";
             return false;
         }
 
         if (actionIndex < 0 || actionIndex >= SelectedMulSlot.AnimLength)
         {
             StatusText =
-                "Sprite sheet action " + actionIndex +
-                " is outside the selected slot action range (0-" + (SelectedMulSlot.AnimLength - 1) + ").";
+                "精灵表动作 " + actionIndex +
+                " 在所选槽位动作范围之外(0-" + (SelectedMulSlot.AnimLength - 1) + ")。";
             return false;
         }
 
         string currentFolderPath = GetCurrentFolderPath();
         if (string.IsNullOrWhiteSpace(currentFolderPath) || !Directory.Exists(currentFolderPath))
         {
-            StatusText = "Open a valid UO folder first.";
+            StatusText = "先打开有效的 UO 文件夹。";
             return false;
         }
 
@@ -1659,13 +1659,13 @@ public partial class MainWindowViewModel
 
         if (!File.Exists(idxPath))
         {
-            StatusText = "Target IDX file was not found: " + Path.GetFileName(idxPath);
+            StatusText = "未找到目标 IDX 文件：" + Path.GetFileName(idxPath);
             return false;
         }
 
         if (!File.Exists(mulPath))
         {
-            StatusText = "Target MUL file was not found: " + Path.GetFileName(mulPath);
+            StatusText = "未找到目标 MUL 文件：" + Path.GetFileName(mulPath);
             return false;
         }
 
@@ -1744,7 +1744,7 @@ public partial class MainWindowViewModel
 
         if (queuedDirections == 0)
         {
-            StatusText = "No sprite sheet directions could be queued into the selected MUL slot.";
+            StatusText = "无法将精灵表方向队列到所选 MUL 槽位。";
             return false;
         }
 
@@ -1753,10 +1753,10 @@ public partial class MainWindowViewModel
         RefreshUnsavedChangesState();
 
         StatusText =
-            "Queued sprite sheet into " + SelectedMulSlot.FileName +
-            " body " + SelectedMulSlot.BodyIndex +
-            ", action " + actionIndex +
-            " (" + queuedDirections + " direction(s)). Click Save Changes to write them.";
+            "精灵表已队列到 " + SelectedMulSlot.FileName +
+            " 身体 " + SelectedMulSlot.BodyIndex +
+            "，动作 " + actionIndex +
+            " (" + queuedDirections + " 个方向)。点击保存更改写入。";
 
         return true;
     }

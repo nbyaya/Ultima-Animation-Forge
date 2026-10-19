@@ -132,63 +132,63 @@ public partial class MainWindowViewModel
 
     public ObservableCollection<string> WearableWizardTypes { get; } = new()
     {
-        "Robe",
-        "Shirt",
-        "Pants",
-        "Cloak",
-        "Hat / Helm",
-        "Gloves",
-        "Sleeves",
-        "Shoes / Boots",
-        "Armor",
-        "Custom"
+        "长袍",
+        "衬衣",
+        "裤子",
+        "披风",
+        "帽子 / 头盔",
+        "手套",
+        "袖子",
+        "鞋子 / 靴子",
+        "护甲",
+        "自定义"
     };
 
     public ObservableCollection<string> WearableWizardLayers { get; } = new()
 {
-    "0x01 - One Handed",
-    "0x02 - Two Handed / Shield",
-    "0x03 - Shoes / Boots",
-    "0x04 - Pants",
-    "0x05 - Shirt / Chest Clothing",
-    "0x06 - Helm / Head",
-    "0x07 - Gloves",
-    "0x08 - Ring",
-    "0x09 - Talisman",
-    "0x0A - Neck",
-    "0x0B - Hair",
-    "0x0C - Waist / Half Apron",
-    "0x0D - Inner Torso / Chest Armor",
-    "0x0E - Bracelet",
-    "0x10 - Facial Hair",
-    "0x11 - Middle Torso / Tunic / Sash",
-    "0x12 - Earrings",
-    "0x13 - Arms",
-    "0x14 - Cloak / Back",
-    "0x15 - Backpack",
-    "0x16 - Outer Torso / Robe",
-    "0x17 - Outer Legs / Skirt / Kilt",
-    "0x18 - Inner Legs / Leg Armor"
+    "0x01 - 单手",
+    "0x02 - 双手 / 盾牌",
+    "0x03 - 鞋子 / 靴子",
+    "0x04 - 裤子",
+    "0x05 - 衬衣 / 胸部衣服",
+    "0x06 - 头盔 / 头部",
+    "0x07 - 手套",
+    "0x08 - 戒指",
+    "0x09 - 护身符",
+    "0x0A - 脖子",
+    "0x0B - 头发",
+    "0x0C - 腰部 / 半围裙",
+    "0x0D - 内层躯体 / 胸甲",
+    "0x0E - 手镯",
+    "0x10 - 胡须",
+    "0x11 - 中层躯体 / 束腰短衣 / 腰带",
+    "0x12 - 耳环",
+    "0x13 - 手臂",
+    "0x14 - 披风 / 背部",
+    "0x15 - 背包",
+    "0x16 - 外层躯体 / 长袍",
+    "0x17 - 外层腿部 / 裙子 / 苏格兰短裙",
+    "0x18 - 内层腿部 / 腿甲"
 };
 
     public ObservableCollection<string> WearableWizardAnimationModes { get; } = new()
     {
-        "Reuse Existing Animation",
-        "Import New VD Later",
-        "No Animation Yet"
+        "复用现有动画",
+        "稍后导入新 VD",
+        "暂无动画"
     };
 
     [ObservableProperty]
     private string wearableWizardName = "New Wearable";
 
     [ObservableProperty]
-    private string wearableWizardType = "Robe";
+    private string wearableWizardType = "长袍";
 
     [ObservableProperty]
-    private string wearableWizardLayer = "0x16 - Outer Torso / Robe";
+    private string wearableWizardLayer = "0x16 - 外层躯体 / 长袍";
 
     [ObservableProperty]
-    private string wearableWizardAnimationMode = "Reuse Existing Animation";
+    private string wearableWizardAnimationMode = "复用现有动画";
 
     [ObservableProperty]
     private string wearableWizardPaperdollImagePath = string.Empty;
@@ -257,10 +257,10 @@ public partial class MainWindowViewModel
     private string wearableWizardHue = "0";
 
     [ObservableProperty]
-    private string wearableWizardPlanText = "No plan generated yet.";
+    private string wearableWizardPlanText = "尚未生成规划。";
 
     [ObservableProperty]
-    private string wearableWizardStatusText = "Ready.";
+    private string wearableWizardStatusText = "就绪。";
 
     private Bitmap? LoadWearablePreviewBitmap(string path)
     {
@@ -282,7 +282,7 @@ public partial class MainWindowViewModel
     [RelayCommand]
     private async Task BrowseWearablePaperdollImageAsync()
     {
-        string? path = await PickWearableImageAsync("Choose Male / Default Paperdoll Gump Image");
+        string? path = await PickWearableImageAsync("选择男性 / 默认纸娃娃 Gump 图片");
         if (string.IsNullOrWhiteSpace(path))
         {
             return;
@@ -298,7 +298,7 @@ public partial class MainWindowViewModel
     [RelayCommand]
     private async Task BrowseWearableFemalePaperdollImageAsync()
     {
-        string? path = await PickWearableImageAsync("Choose Female Paperdoll Gump Image");
+        string? path = await PickWearableImageAsync("选择女性纸娃娃 Gump 图片");
         if (string.IsNullOrWhiteSpace(path))
         {
             return;
@@ -313,7 +313,7 @@ public partial class MainWindowViewModel
     [RelayCommand]
     private async Task BrowseWearableArtImageAsync()
     {
-        string? path = await PickWearableImageAsync("Choose Inventory / World Art Image");
+        string? path = await PickWearableImageAsync("选择库存 / 世界美术图片");
         if (string.IsNullOrWhiteSpace(path))
         {
             return;
@@ -370,7 +370,7 @@ public partial class MainWindowViewModel
             }
 
             WearableWizardStatusText =
-                "No free " + string.Join("/", missingSlots) + " ID was found in the allowed range.";
+                "在允许范围内未找到空闲的 " + string.Join("/", missingSlots) + " ID。";
             return;
         }
 
@@ -380,45 +380,45 @@ public partial class MainWindowViewModel
         WearableWizardAnimationIdInput = animationId.Value;
 
         RebuildWearableWizardPlan();
-        WearableWizardStatusText = "Selected free gump, art, and animation IDs.";
+        WearableWizardStatusText = "已选择空闲的 Gump、美术和动画 ID。";
     }
 
     [RelayCommand]
     private void RebuildWearableWizardPlan()
     {
-        string bodyDefLine = WearableWizardAnimationMode == "Reuse Existing Animation"
+        string bodyDefLine = WearableWizardAnimationMode == "复用现有动画"
             ? WearableWizardAnimationId + " {" + WearableWizardExistingAnimationId + "} " + NormalizeWearableHue()
-            : "(no Body.def line yet)";
+            : "(暂无 Body.def 行)";
 
         WearableWizardPlanText =
-            "Wearable: " + WearableWizardName + Environment.NewLine +
-            "Type: " + WearableWizardType + Environment.NewLine +
-            "Layer: " + WearableWizardLayer + Environment.NewLine +
+            "装扮: " + WearableWizardName + Environment.NewLine +
+            "类型: " + WearableWizardType + Environment.NewLine +
+            "层: " + WearableWizardLayer + Environment.NewLine +
             Environment.NewLine +
-            "Male/default gump: " + WearableWizardMaleGumpId + " [0x" + WearableWizardMaleGumpId.ToString("X") + "]" + Environment.NewLine +
-            "Female gump: " + (WearableWizardCreateFemaleVariant ? WearableWizardFemaleGumpId + " [0x" + WearableWizardFemaleGumpId.ToString("X") + "]" : "not created") + Environment.NewLine +
-            "Art/static ID: " + WearableWizardArtId + " [0x" + WearableWizardArtId.ToString("X") + "]" + Environment.NewLine +
-            "TileData Animation: " + WearableWizardAnimationId + Environment.NewLine +
+            "男性/默认 Gump: " + WearableWizardMaleGumpId + " [0x" + WearableWizardMaleGumpId.ToString("X") + "]" + Environment.NewLine +
+            "女性 Gump: " + (WearableWizardCreateFemaleVariant ? WearableWizardFemaleGumpId + " [0x" + WearableWizardFemaleGumpId.ToString("X") + "]" : "未创建") + Environment.NewLine +
+            "美术/静态 ID: " + WearableWizardArtId + " [0x" + WearableWizardArtId.ToString("X") + "]" + Environment.NewLine +
+            "图块数据动画: " + WearableWizardAnimationId + Environment.NewLine +
             Environment.NewLine +
             "Body.def:" + Environment.NewLine +
             bodyDefLine + Environment.NewLine +
             Environment.NewLine +
-            "Files:" + Environment.NewLine +
-            "Paperdoll: " + DisplayPathOrNone(WearableWizardPaperdollImagePath) + Environment.NewLine +
-            "Female paperdoll: " + DisplayPathOrNone(WearableWizardFemalePaperdollImagePath) + Environment.NewLine +
-            "Art: " + DisplayPathOrNone(WearableWizardArtImagePath);
+            "文件:" + Environment.NewLine +
+            "纸娃娃: " + DisplayPathOrNone(WearableWizardPaperdollImagePath) + Environment.NewLine +
+            "女性纸娃娃: " + DisplayPathOrNone(WearableWizardFemalePaperdollImagePath) + Environment.NewLine +
+            "美术: " + DisplayPathOrNone(WearableWizardArtImagePath);
 
-        WearableWizardStatusText = "Plan updated.";
+        WearableWizardStatusText = "规划已更新。";
         ValidateWearableWizardConflicts();
     }
 
     [RelayCommand]
     private void ResetWearableWizard()
     {
-        WearableWizardName = "New Wearable";
-        WearableWizardType = "Robe";
-        WearableWizardLayer = "0x16 - Outer Torso / Robe";
-        WearableWizardAnimationMode = "Reuse Existing Animation";
+        WearableWizardName = "新装扮";
+        WearableWizardType = "长袍";
+        WearableWizardLayer = "0x16 - 外层躯体 / 长袍";
+        WearableWizardAnimationMode = "复用现有动画";
         WearableWizardPaperdollImagePath = string.Empty;
         WearableWizardFemalePaperdollImagePath = string.Empty;
         WearableWizardArtImagePath = string.Empty;
@@ -430,8 +430,8 @@ public partial class MainWindowViewModel
         WearableWizardAnimationIdInput = 400;
         WearableWizardExistingAnimationId = 435;
         WearableWizardHue = "0";
-        WearableWizardPlanText = "No plan generated yet.";
-        WearableWizardStatusText = "Ready.";
+        WearableWizardPlanText = "尚未生成规划。";
+        WearableWizardStatusText = "就绪。";
         WearableWizardPaperdollPreview = null;
         WearableWizardFemalePaperdollPreview = null;
         WearableWizardArtPreview = null;
@@ -446,7 +446,7 @@ public partial class MainWindowViewModel
         if (WearableWizardHasSlotConflict)
         {
             WearableWizardStatusText =
-                "Resolve slot conflicts before applying.";
+                "应用前请解决槽位冲突。";
 
             return;
         }
@@ -472,7 +472,7 @@ public partial class MainWindowViewModel
             ExistingAnimationId = WearableWizardExistingAnimationId,
             Hue = WearableWizardHue,
             PartialHue = WearableWizardPartialHue,
-            WriteBodyDef = WearableWizardAnimationMode == "Reuse Existing Animation"
+            WriteBodyDef = WearableWizardAnimationMode == "复用现有动画"
         });
 
         WearableWizardStatusText = result.Message;
@@ -552,7 +552,7 @@ public partial class MainWindowViewModel
         Window? mainWindow = GetMainWindow();
         if (mainWindow == null)
         {
-            WearableWizardStatusText = "Could not locate main window.";
+            WearableWizardStatusText = "无法定位主窗口。";
             return null;
         }
 
@@ -563,7 +563,7 @@ public partial class MainWindowViewModel
                 AllowMultiple = false,
                 FileTypeFilter = new[]
                 {
-                    new FilePickerFileType("Image files")
+                    new FilePickerFileType("图片文件")
                     {
                         Patterns = new[] { "*.png", "*.bmp", "*.jpg", "*.jpeg", "*.tif", "*.tiff" }
                     }
@@ -572,18 +572,18 @@ public partial class MainWindowViewModel
 
         if (files.Count == 0)
         {
-            WearableWizardStatusText = "Image selection cancelled.";
+            WearableWizardStatusText = "图片选择已取消。";
             return null;
         }
 
         string? path = files[0].TryGetLocalPath();
         if (string.IsNullOrWhiteSpace(path))
         {
-            WearableWizardStatusText = "Selected image does not have a local path.";
+            WearableWizardStatusText = "选中的图片没有本地路径。";
             return null;
         }
 
-        WearableWizardStatusText = "Selected " + Path.GetFileName(path) + ".";
+        WearableWizardStatusText = "已选择 " + Path.GetFileName(path) + "。";
         return path;
     }
 
@@ -683,7 +683,7 @@ public partial class MainWindowViewModel
     private static string DisplayPathOrNone(string path)
     {
         return string.IsNullOrWhiteSpace(path)
-            ? "None"
+            ? "无"
             : path;
     }
 
@@ -707,14 +707,14 @@ public partial class MainWindowViewModel
             AnimationEntries.Any(x => x.BodyId == WearableWizardAnimationId);
 
         bool bodyDefConflict =
-            WearableWizardAnimationMode == "Reuse Existing Animation" &&
+            WearableWizardAnimationMode == "复用现有动画" &&
             !wearableWizardAnimationIdMissing &&
             new BodyDefService().EntryExists(
                 Path.Combine(GetCurrentFolderPath(), "Body.def"),
                 WearableWizardAnimationId);
 
         bool hueInvalid =
-            WearableWizardAnimationMode == "Reuse Existing Animation" &&
+            WearableWizardAnimationMode == "复用现有动画" &&
             !int.TryParse(NormalizeWearableHue(), out _);
 
         WearableWizardMaleGumpConflict = maleConflict;
@@ -728,57 +728,57 @@ public partial class MainWindowViewModel
 
         if (wearableWizardMaleGumpIdMissing)
         {
-            warnings.Add("Male/default gump ID is required.");
+            warnings.Add("男性/默认 Gump ID 为必填项。");
         }
 
         if (WearableWizardCreateFemaleVariant && wearableWizardFemaleGumpIdMissing)
         {
-            warnings.Add("Female gump ID is required.");
+            warnings.Add("女性 Gump ID 为必填项。");
         }
 
         if (wearableWizardArtIdMissing)
         {
-            warnings.Add("Art ID is required.");
+            warnings.Add("美术 ID 为必填项。");
         }
 
         if (wearableWizardAnimationIdMissing)
         {
-            warnings.Add("Animation ID is required.");
+            warnings.Add("动画 ID 为必填项。");
         }
 
         if (maleConflict)
         {
-            warnings.Add("Male/default gump ID already exists.");
+            warnings.Add("男性/默认 Gump ID 已存在。");
         }
 
         if (femaleConflict)
         {
-            warnings.Add("Female gump ID already exists.");
+            warnings.Add("女性 Gump ID 已存在。");
         }
 
         if (artConflict)
         {
-            warnings.Add("Art ID already exists.");
+            warnings.Add("美术 ID 已存在。");
         }
 
         if (animationConflict)
         {
-            warnings.Add("Animation body ID already exists.");
+            warnings.Add("动画身体 ID 已存在。");
         }
 
         if (bodyDefConflict)
         {
-            warnings.Add("Body.def already contains this animation body ID.");
+            warnings.Add("Body.def 已包含此动画身体 ID。");
         }
 
         if (hueInvalid)
         {
-            warnings.Add("Body.def hue must be a whole number.");
+            warnings.Add("Body.def 色调必须是整数。");
         }
 
         WearableWizardConflictText =
             warnings.Count == 0
-                ? "No slot conflicts detected."
+                ? "未检测到槽位冲突。"
                 : string.Join(Environment.NewLine, warnings);
     }
 
@@ -794,7 +794,7 @@ public partial class MainWindowViewModel
     {
         if (WearableWizardSelectedFreeSlot == null)
         {
-            WearableWizardStatusText = "Select a free animation slot first.";
+            WearableWizardStatusText = "请先选择一个空闲动画槽位。";
             return;
         }
 
@@ -803,13 +803,13 @@ public partial class MainWindowViewModel
         WearableWizardAnimationIdInput = bodyId;
 
         WearableWizardStatusText =
-            "Selected free animation slot " +
+            "已选择空闲动画槽位 " +
             WearableWizardSelectedFreeSlot.DisplayText +
-            ". Body.def will map new animation " +
+            "。Body.def 将把新动画 " +
             WearableWizardAnimationId +
-            " to existing animation " +
+            " 映射到现有动画 " +
             WearableWizardExistingAnimationId +
-            ".";
+            "。";
 
         RebuildWearableWizardPlan();
     }
@@ -892,7 +892,7 @@ public partial class MainWindowViewModel
         }
 
         WearableWizardStatusText =
-            "Showing " + WearableWizardFreeSlots.Count + " wearable animation slot candidates.";
+            "显示 " + WearableWizardFreeSlots.Count + " 个装扮动画槽位候选项。";
     }
 
     partial void OnWearableWizardSlotSearchTextChanged(string value)
@@ -931,16 +931,16 @@ public partial class MainWindowViewModel
     {
         if (WearableWizardSelectedSourceAnimation == null)
         {
-            WearableWizardStatusText = "Select a source animation first.";
+            WearableWizardStatusText = "请先选择一个源动画。";
             return;
         }
 
         WearableWizardExistingAnimationId = WearableWizardSelectedSourceAnimation.BodyId;
 
         WearableWizardStatusText =
-            "Using source animation Body " +
+            "使用源动画身体 " +
             WearableWizardExistingAnimationId +
-            " for Body.def inheritance.";
+            " 进行 Body.def 继承。";
 
         RebuildWearableWizardPlan();
     }
